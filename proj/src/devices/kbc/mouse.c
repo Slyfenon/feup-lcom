@@ -6,9 +6,9 @@
 #include "i8042.h"
 
 int mouse_hook_id = MOUSE_IRQ;
-extern uint8_t bytes[4];
-extern uint8_t indexArray;
-extern uint8_t stat;
+uint8_t mouseBytes[4];
+uint8_t indexArray;
+uint8_t stat;
 
 int (mouse_subscribe_int)(uint8_t *bit_no) {
     *bit_no = mouse_hook_id;
@@ -32,7 +32,9 @@ int (mouse_unsubscribe_int)() {
 void (mouse_ih)() {
     uint8_t byte;
 
-    if (util_sys_inb(KBC_OUT_BUF, &byte) != OK) indexArray = 0;
+    if (util_sys_inb(KBC_CMD_REG, &stat) != OK) indexArray = 0;
+
+    else if (util_sys_inb(KBC_OUT_BUF, &byte) != OK) indexArray = 0;
 
     else if (stat & (KBC_PAR_ERR | KBC_TO_ERR)) indexArray = 0;
 
@@ -41,7 +43,7 @@ void (mouse_ih)() {
     }
 
     else {
-        bytes[indexArray] = byte;
+        mouseBytes[indexArray] = byte;
         indexArray++;
     }
 }

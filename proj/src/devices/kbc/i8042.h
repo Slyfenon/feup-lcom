@@ -17,6 +17,7 @@
 /* KBC errors */
 #define KBC_PAR_ERR BIT(7)
 #define KBC_TO_ERR BIT(6)
+#define KEYBOARD_ERROR 0X00
 
 /* KBC I/O buffer full */
 #define KBC_IBF BIT(1)
