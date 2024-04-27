@@ -3,8 +3,12 @@
 
 #include <lcom/lcf.h>
 
+/* VBE Functions */
 #define VIDEO_SERVICES 0X10
 #define SET_VBE_MODE 0x4F02
+#define SET_VBE_DISPLAY_START 0x4F07
+#define VERTICAL_RETRACE 0x80
+
 #define LINEAR_BIT BIT(14)
 #define DIRECT 0x06
 

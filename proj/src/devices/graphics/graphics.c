@@ -5,7 +5,8 @@
 #include "graphics.h"
 
 vbe_mode_info_t mode_info;
-uint8_t* video_mem;
+uint8_t* buffers[3];
+int indexArrayBuffers = 0;
 
 int (set_graphics_mode)(uint16_t mode) {
     reg86_t reg;
@@ -42,10 +43,14 @@ int (set_frame_buffer)(uint16_t mode) {
         return EXIT_FAILURE;
     }
 
-    video_mem = vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
-    if (video_mem == NULL) {
-        printf("vm_map_phys failed inside %s", __func__);
-        return EXIT_FAILURE;
+    for (int i = 0; i < 3; i++) {
+        buffers[i] = vm_map_phys(SELF, (void *)(mr.mr_base + (vram_size * i)), vram_size);
+        memset(buffers[i], 0, vram_size);
+
+        if (buffers[i] == NULL) {
+            printf("vm_map_phys failed inside %s", __func__);
+            return EXIT_FAILURE;
+        }
     }
 
     return EXIT_SUCCESS;
@@ -56,7 +61,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
     if (y > mode_info.YResolution) return EXIT_FAILURE;
 
     unsigned int bytes_per_pixel = (mode_info.BitsPerPixel + 7) / 8;
-    uint8_t* pixel_pos = video_mem + ((y * mode_info.XResolution + x) * bytes_per_pixel);
+    uint8_t* pixel_pos = buffers[i] + ((y * mode_info.XResolution + x) * bytes_per_pixel);
     
     if (memcpy(pixel_pos, &color, bytes_per_pixel) == NULL) {
         printf("memcpy failed inside %s", __func__);
@@ -125,4 +130,24 @@ uint32_t (G)(uint32_t color) {
 
 uint32_t (B)(uint32_t color) {
     return (color >> mode_info.BlueFieldPosition) & (BIT(mode_info.BlueMaskSize) - 1);
+}
+
+int (vg_page_flipping)() {
+    reg86_t reg;
+    memset(&reg, 0, sizeof(reg));
+
+    reg.intno = VIDEO_SERVICES;
+    reg.ax = SET_VBE_DISPLAY_START;
+    reg.bl = VERTICAL_RETRACE;
+    reg.cx = 0;
+    reg.dx = 0;
+
+    if(sys_int86(&reg) != 0) {
+        printf("sys_int86 failed inside %s", __func__);
+        return EXIT_FAILURE;
+    }
+
+    indexArrayBuffers = (indexArrayBuffers + 1) % 3;
+
+    return EXIT_SUCCESS;
 }

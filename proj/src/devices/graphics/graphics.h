@@ -21,4 +21,6 @@ uint32_t (R)(uint32_t color);
 uint32_t (G)(uint32_t color);
 uint32_t (B)(uint32_t color);
 
+int (vg_page_flipping)();
+
 #endif
