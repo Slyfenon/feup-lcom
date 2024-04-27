@@ -7,7 +7,7 @@
 
 int mouse_hook_id = MOUSE_IRQ;
 uint8_t mouseBytes[4];
-uint8_t indexArray;
+uint8_t mouseIndexArray = 0;
 uint8_t stat;
 
 int (mouse_subscribe_int)(uint8_t *bit_no) {

@@ -6,8 +6,9 @@
 #include "i8042.h"
 
 int keyboard_hook_id = KEYBOARD_IRQ;
+uint8_t keyboardBytes[2];
+uint8_t keyboardIndexArray = 0;
 uint8_t stat;
-uint8_t scancode;
 
 int (kbc_subscribe_int)(uint8_t *bit_no) {
     *bit_no = keyboard_hook_id;
@@ -29,9 +30,16 @@ int (kbc_unsubscribe_int)() {
 }
 
 void (kbc_ih)() {
-    if (util_sys_inb(KBC_CMD_REG, &stat) != OK) scancode = KEYBOARD_ERROR;
+    uint8_t byte;
 
-    else if (util_sys_inb(KBC_OUT_BUF, &scancode) != OK) scancode = KEYBOARD_ERROR;
+    if (util_sys_inb(KBC_CMD_REG, &stat) != OK) keyboardIndexArray = 0;
 
-    else if ((stat & (KBC_PAR_ERR | KBC_TO_ERR)) != 0) scancode = KEYBOARD_ERROR;
+    else if (util_sys_inb(KBC_OUT_BUF, &byte) != OK) keyboardIndexArray = 0;
+
+    else if ((stat & (KBC_PAR_ERR | KBC_TO_ERR)) != 0) keyboardIndexArray = 0;
+
+    else {
+        keyboardBytes[keyboardIndexArray] = byte;
+        keyboardIndexArray++;
+    }
 }
