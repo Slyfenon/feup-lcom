@@ -13,7 +13,7 @@ uint8_t stat;
 int (kbc_subscribe_int)(uint8_t *bit_no) {
     *bit_no = keyboard_hook_id;
     if (sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &keyboard_hook_id) != OK) {
-        printf("sys_irqsetpolicy inside %s", __func__);
+        printf("sys_irqsetpolicy failed inside %s", __func__);
         return EXIT_FAILURE;
     }
 
@@ -22,7 +22,7 @@ int (kbc_subscribe_int)(uint8_t *bit_no) {
 
 int (kbc_unsubscribe_int)() {
     if (sys_irqrmpolicy(&keyboard_hook_id) != OK) {
-        printf("sys_irqrmpolicy inside %s", __func__);
+        printf("sys_irqrmpolicy failed inside %s", __func__);
         return EXIT_FAILURE;
     }
 
