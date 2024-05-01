@@ -57,8 +57,8 @@ int (set_frame_buffer)(uint16_t mode) {
 }
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
-    if (x > mode_info.XResolution) return EXIT_FAILURE;  
-    if (y > mode_info.YResolution) return EXIT_FAILURE;
+    if (x > mode_info.XResolution) return OK;  
+    if (y > mode_info.YResolution) return OK;
 
     unsigned int bytes_per_pixel = (mode_info.BitsPerPixel + 7) / 8;
     uint8_t* pixel_pos = buffers[i] + ((y * mode_info.XResolution + x) * bytes_per_pixel);
@@ -93,7 +93,10 @@ int (vg_draw_xpm)(uint8_t** map, xpm_image_t* img, uint16_t x, uint16_t y) {
 
     for (int i = 0; i < img->height; i++) {
         for (int j = 0; j < img->width; j++) {
-            vg_draw_pixel(x + j, y + i, *aux);
+            if (vg_draw_pixel(x + j, y + i, *aux) != 0) {
+                printf("vg_draw_pixel failed inside %s", __func__);
+                return EXIT_FAILURE;
+            }
             aux++;
         }
     }
