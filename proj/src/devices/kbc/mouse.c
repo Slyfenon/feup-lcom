@@ -49,14 +49,14 @@ void (mouse_ih)() {
 }
 
 bool (mouse_packet_is_done)() {
-    if (mouseIndexArray == 3) {
+    if (mouseIndexArray == 4) {
         mouseIndexArray = 0;
         return true;
     }
     return false;
 }
 
-void (mouse_get_packet)(struct packet *pp) {
+void (mouse_get_packet)(struct mousePacket *pp) {
     pp->bytes[0] = mouseBytes[0];
     pp->bytes[1] = mouseBytes[1];
     pp->bytes[2] = mouseBytes[2];
@@ -67,6 +67,7 @@ void (mouse_get_packet)(struct packet *pp) {
     pp->delta_y = (mouseBytes[0] & MSB_Y_DELTA) ? (0xFF00 | mouseBytes[2]) : mouseBytes[2];
     pp->x_ov = mouseBytes[0] & X_OVF;
     pp->y_ov = mouseBytes[0] & Y_OVF;
+    pp->delta_scroll = mouseBytes[3];
 }
 
 int (kbc_write_command)(uint8_t cmd) {
@@ -247,7 +248,7 @@ int (get_mouse_id)(uint8_t* id) {
     return EXIT_SUCCESS;
 }
 
-int (enable_scrolling)(){
+int (mouse_enable_scrolling)(){
     uint8_t id = 0;
 
     if (mouse_set_sample_rate(200) != OK) {

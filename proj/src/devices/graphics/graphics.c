@@ -57,8 +57,8 @@ int (set_frame_buffer)(uint16_t mode) {
 }
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
-    if (x > mode_info.XResolution) return OK;  
-    if (y > mode_info.YResolution) return OK;
+    if (x >= mode_info.XResolution) return OK;  
+    if (y >= mode_info.YResolution) return OK;
 
     unsigned int bytes_per_pixel = (mode_info.BitsPerPixel + 7) / 8;
     uint8_t* pixel_pos = buffers[indexArrayBuffers] + ((y * mode_info.XResolution + x) * bytes_per_pixel);
