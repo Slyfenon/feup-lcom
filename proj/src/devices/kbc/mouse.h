@@ -9,6 +9,10 @@ int (mouse_subscribe_int)(uint8_t *bit_no);
 
 int (mouse_unsubscribe_int)();
 
+bool (mouse_packet_is_done)();
+
+void (mouse_get_packet)(struct packet *pp);
+
 int (kbc_write_command)(uint8_t cmd);
 
 int (write_byte_to_mouse)(uint8_t byte);

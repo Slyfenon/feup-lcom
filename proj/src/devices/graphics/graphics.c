@@ -36,7 +36,7 @@ int (set_frame_buffer)(uint16_t mode) {
 
     struct minix_mem_range mr;
     mr.mr_base = mode_info.PhysBasePtr;
-    mr.mr_limit = mr.mr_base + vram_size;
+    mr.mr_limit = mr.mr_base + (vram_size * 3);
 
     if(sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) != OK) {
         printf("sys_privctl failed inside %s", __func__);
@@ -45,9 +45,9 @@ int (set_frame_buffer)(uint16_t mode) {
 
     for (int i = 0; i < 3; i++) {
         buffers[i] = vm_map_phys(SELF, (void *)(mr.mr_base + (vram_size * i)), vram_size);
-        memset(buffers[i], 0, vram_size);
+        memset(buffers[indexArrayBuffers], 0, vram_size);
 
-        if (buffers[i] == NULL) {
+        if (buffers[indexArrayBuffers] == NULL) {
             printf("vm_map_phys failed inside %s", __func__);
             return EXIT_FAILURE;
         }
@@ -61,7 +61,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
     if (y > mode_info.YResolution) return OK;
 
     unsigned int bytes_per_pixel = (mode_info.BitsPerPixel + 7) / 8;
-    uint8_t* pixel_pos = buffers[i] + ((y * mode_info.XResolution + x) * bytes_per_pixel);
+    uint8_t* pixel_pos = buffers[indexArrayBuffers] + ((y * mode_info.XResolution + x) * bytes_per_pixel);
     
     if (memcpy(pixel_pos, &color, bytes_per_pixel) == NULL) {
         printf("memcpy failed inside %s", __func__);

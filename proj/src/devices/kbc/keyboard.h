@@ -8,4 +8,8 @@ int (kbc_subscribe_int)(uint8_t *bit_no);
 
 int (kbc_unsubscribe_int)();
 
+bool (kbc_scancode_is_done)();
+
+void (kbc_get_scancode)(uint8_t* scancode);
+
 #endif

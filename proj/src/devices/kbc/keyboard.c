@@ -43,3 +43,16 @@ void (kbc_ih)() {
         keyboardIndexArray++;
     }
 }
+
+bool (kbc_scancode_is_done)() {
+    if ((keyboardBytes[0] != 0xE0) || (keyboardIndexArray == 2)) {
+        keyboardIndexArray = 0;
+        return true;
+    }
+    return false;
+}
+
+void (kbc_get_scancode)(uint8_t* scancode) {
+    *scancode = keyboardBytes[0];
+    if (keyboardBytes[0] == 0xE0) *(scancode + 1) = keyboardBytes[1];
+}

@@ -32,20 +32,41 @@ int (mouse_unsubscribe_int)() {
 void (mouse_ih)() {
     uint8_t byte;
 
-    if (util_sys_inb(KBC_CMD_REG, &stat) != OK) indexArray = 0;
+    if (util_sys_inb(KBC_CMD_REG, &stat) != OK) mouseIndexArray = 0;
 
-    else if (util_sys_inb(KBC_OUT_BUF, &byte) != OK) indexArray = 0;
+    else if (util_sys_inb(KBC_OUT_BUF, &byte) != OK) mouseIndexArray = 0;
 
-    else if (stat & (KBC_PAR_ERR | KBC_TO_ERR)) indexArray = 0;
+    else if (stat & (KBC_PAR_ERR | KBC_TO_ERR)) mouseIndexArray = 0;
 
-    else if ((indexArray == 0) && ((byte & VALIDATION_BIT) == 0)) {
-        indexArray = 0;
+    else if ((mouseIndexArray == 0) && ((byte & VALIDATION_BIT) == 0)) {
+        mouseIndexArray = 0;
     }
 
     else {
-        mouseBytes[indexArray] = byte;
-        indexArray++;
+        mouseBytes[mouseIndexArray] = byte;
+        mouseIndexArray++;
     }
+}
+
+bool (mouse_packet_is_done)() {
+    if (mouseIndexArray == 3) {
+        mouseIndexArray = 0;
+        return true;
+    }
+    return false;
+}
+
+void (mouse_get_packet)(struct packet *pp) {
+    pp->bytes[0] = mouseBytes[0];
+    pp->bytes[1] = mouseBytes[1];
+    pp->bytes[2] = mouseBytes[2];
+    pp->rb = mouseBytes[0] & RIGHT_BUTTON;
+    pp->mb = mouseBytes[0] & MIDDLE_BUTTON;
+    pp->lb = mouseBytes[0] & LEFT_BUTTON;
+    pp->delta_x = (mouseBytes[0] & MSB_X_DELTA) ? (0xFF00 | mouseBytes[1]) : mouseBytes[1];
+    pp->delta_y = (mouseBytes[0] & MSB_Y_DELTA) ? (0xFF00 | mouseBytes[2]) : mouseBytes[2];
+    pp->x_ov = mouseBytes[0] & X_OVF;
+    pp->y_ov = mouseBytes[0] & Y_OVF;
 }
 
 int (kbc_write_command)(uint8_t cmd) {
