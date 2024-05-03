@@ -5,6 +5,7 @@
 #include "devices/kbc/mouse.h"
 #include "devices/graphics/graphics.h"
 #include "event_handler.h"
+#include "sprites/sprite.h"
 
 struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
@@ -13,8 +14,8 @@ enum State state = GAME;
 
 int (main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
-  lcf_trace_calls("/home/lcom/labs/proj/trace.txt");
-  lcf_log_output("/home/lcom/labs/proj/output.txt");
+  lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
+  lcf_log_output("/home/lcom/labs/proj/src/output.txt");
 
   if (lcf_start(argc, argv)) return 1;
 
@@ -33,6 +34,9 @@ int (proj_main_loop)(int argc, char **argv) {
   if (mouse_enable_scrolling() != OK) return EXIT_FAILURE;
   if (mouse_enable_data_reporting_mine() != OK) return EXIT_FAILURE;
   if (mouse_subscribe_int(&mouse_irq_set) != OK) return EXIT_FAILURE;
+
+  load_sprites();
+  draw_sprite(aim, 200, 300);
 
   message msg;
   int ipc_status, r;
