@@ -5,7 +5,7 @@
 #include "devices/kbc/mouse.h"
 #include "devices/graphics/graphics.h"
 #include "event_handler.h"
-#include "sprites/sprite.h"
+#include "game/sprite.h"
 
 struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
