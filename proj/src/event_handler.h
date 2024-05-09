@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
 
-#include "game.h"
+#include "game/game.h"
 #include "utils.h"
 
 typedef enum State {

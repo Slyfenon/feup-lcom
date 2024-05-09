@@ -1,4 +1,5 @@
 #include <lcom/lcf.h>
+#include "position.h"
 
 #define MAX_X 1151
 #define MAX_Y 862
