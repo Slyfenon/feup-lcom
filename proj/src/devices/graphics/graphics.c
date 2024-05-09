@@ -80,7 +80,7 @@ int (vg_page_flipping)() {
     reg.ax = SET_VBE_DISPLAY_START;
     reg.bl = VERTICAL_RETRACE;
     reg.cx = 0;
-    reg.dx = 0;
+    reg.dx = indexArrayBuffers * mode_info.YResolution;;
 
     if(sys_int86(&reg) != 0) {
         printf("sys_int86 failed inside %s", __func__);
