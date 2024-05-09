@@ -1,30 +1,28 @@
 #include "event_handler.h"
 #include "devices/graphics/graphics.h"
+#include "game/sprite.h"
 
 uint32_t color = 0;
 
 State (handle_keyBoard)(enum State state, uint8_t* keyboardBytes) {
-    if (state == GAME) {
-        // não há nada ainda
-    }
+  if (state == GAME) {
+      // não há nada ainda
+  }
 
-    return GAME;
+  return GAME;
 }
 
 State (handle_mouse)(enum State state, struct mousePacket* pp) {
-    if (state == GAME) {
-        addToX(pp->delta_x);
-        addToY(pp->delta_y);
+  if (state == GAME) {
+      addToX(pp->delta_x);
+      addToY(pp->delta_y);
+  }
 
-        uint16_t x = getX();
-        uint16_t y = getY(); 
+  return GAME;
+}
 
-        for (int i = 0; i < 50; i++) {
-          for (int j = 0; j < 50; j++) {
-            if (vg_draw_pixel(x + j, y + i, ++color) != OK) return EXIT_FAILURE;
-          }
-        }
-    }
+void (draw_game)() {
+  vg_reset_current_buffer();
 
-    return GAME;
+  draw_sprite(aim, getX(), getY());
 }

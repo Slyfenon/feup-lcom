@@ -7,6 +7,7 @@
 vbe_mode_info_t mode_info;
 uint8_t* buffers[3];
 int indexArrayBuffers = 0;
+int vram_size;
 
 int (set_graphics_mode)(uint16_t mode) {
     reg86_t reg;
@@ -32,7 +33,7 @@ int (set_frame_buffer)(uint16_t mode) {
         return EXIT_FAILURE;
     }    
 
-    int vram_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
+    vram_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
 
     struct minix_mem_range mr;
     mr.mr_base = mode_info.PhysBasePtr;
@@ -87,6 +88,12 @@ int (vg_page_flipping)() {
     }
 
     indexArrayBuffers = (indexArrayBuffers + 1) % 3;
+
+    return EXIT_SUCCESS;
+}
+
+int (vg_reset_current_buffer)() {
+    memset(buffers[indexArrayBuffers], 0, vram_size);
 
     return EXIT_SUCCESS;
 }

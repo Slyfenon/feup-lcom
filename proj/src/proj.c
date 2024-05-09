@@ -36,7 +36,6 @@ int (proj_main_loop)(int argc, char **argv) {
   if (mouse_subscribe_int(&mouse_irq_set) != OK) return EXIT_FAILURE;
 
   load_sprites();
-  draw_sprite(aim, 200, 300);
 
   message msg;
   int ipc_status, r;
@@ -61,6 +60,10 @@ int (proj_main_loop)(int argc, char **argv) {
           kbc_get_scancode(keyboard_scancode);
         }
       }
+
+      //AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER
+      vg_page_flipping();
+      draw_game();
     }
   }
 

@@ -14,4 +14,6 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 
 int (vg_page_flipping)();
 
+int (vg_reset_current_buffer)();
+
 #endif
