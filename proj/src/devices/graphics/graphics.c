@@ -45,9 +45,9 @@ int (set_frame_buffer)(uint16_t mode) {
 
     for (int i = 0; i < 3; i++) {
         buffers[i] = vm_map_phys(SELF, (void *)(mr.mr_base + (vram_size * i)), vram_size);
-        memset(buffers[indexArrayBuffers], 0, vram_size);
+        memset(buffers[i], 0, vram_size);
 
-        if (buffers[indexArrayBuffers] == NULL) {
+        if (buffers[i] == NULL) {
             printf("vm_map_phys failed inside %s", __func__);
             return EXIT_FAILURE;
         }
