@@ -4,6 +4,7 @@
 #include "devices/kbc/keyboard.h"
 #include "devices/kbc/mouse.h"
 #include "devices/graphics/graphics.h"
+#include <lcom/timer.h>
 #include "event_handler.h"
 #include "game/sprite.h"
 
@@ -25,17 +26,19 @@ int (main)(int argc, char *argv[]) {
 }
 
 int (proj_main_loop)(int argc, char **argv) {
-  uint8_t keyboard_irq_set, mouse_irq_set;
+  uint8_t keyboard_irq_set, mouse_irq_set, timer_irq_set;
 
   if (set_graphics_mode(DIRECT_COLOR_WITH_32BITS) != OK) return EXIT_FAILURE;
   if (set_frame_buffer(DIRECT_COLOR_WITH_32BITS) != OK) return EXIT_FAILURE;
 
+  if (timer_subscribe_int(&timer_irq_set) != OK) return EXIT_FAILURE;
   if (kbc_subscribe_int(&keyboard_irq_set) != OK) return EXIT_FAILURE;
   if (mouse_enable_scrolling() != OK) return EXIT_FAILURE;
   if (mouse_enable_data_reporting_mine() != OK) return EXIT_FAILURE;
   if (mouse_subscribe_int(&mouse_irq_set) != OK) return EXIT_FAILURE;
 
   load_sprites();
+  draw_sprite(desert, 0, 0);
 
   message msg;
   int ipc_status, r;
@@ -61,15 +64,19 @@ int (proj_main_loop)(int argc, char **argv) {
         }
       }
 
+      if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
+        //vg_page_flipping();
+        draw_game();
+      }
+
       //AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER
-      vg_page_flipping();
-      draw_game();
     }
   }
 
   if (mouse_unsubscribe_int() != OK) return EXIT_FAILURE;
   if (mouse_disable_data_reporting() != OK) return EXIT_FAILURE;
   if (kbc_unsubscribe_int() != OK) return EXIT_FAILURE;
+  if (timer_unsubscribe_int() != OK) return EXIT_FAILURE;
   if (vg_exit() != OK) return EXIT_FAILURE;
 
   return 0;

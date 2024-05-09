@@ -30,8 +30,27 @@ int draw_sprite(Sprite* sprite, int x, int y) {
   return EXIT_SUCCESS; 
 }
 
+int erase_sprite(Sprite* sprite, int x, int y) {
+  int width = sprite->width;
+  int height = sprite->height;
+
+  uint32_t aux;
+
+  for (int i = 0 ; i < height; i++) {
+    for (int j = 0 ; j < width; j++) {
+      if ((y + i) >= desert->height) continue;
+      if ((x + j) >= desert->width) continue;
+
+      aux = desert->map[(y+i)*desert->width + (x + j)];
+      if (vg_draw_pixel(x + j, y + i, aux)) return EXIT_FAILURE;
+    }
+  }
+  return EXIT_SUCCESS;
+}
+
 int load_sprites() {
   aim = create_sprite(aim_xpm);
+  desert = create_sprite(desert_xpm);
 
   return EXIT_SUCCESS;
 }

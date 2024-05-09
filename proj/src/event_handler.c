@@ -22,7 +22,8 @@ State (handle_mouse)(enum State state, struct mousePacket* pp) {
 }
 
 void (draw_game)() {
-  vg_reset_current_buffer();
+  erase_sprite(aim, getLastX(), getLastY());
 
   draw_sprite(aim, getX(), getY());
+  updateLastPositionDrawn();
 }
