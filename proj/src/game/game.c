@@ -7,7 +7,18 @@ int16_t lastX = 500;
 int16_t lastY = 400;
 
 int score = 0;
-int timeLeft = 30; 
+int timeLeft = 30;
+
+Position positions[] = {{10, 300}, {110, 300}, {210, 300}, {310, 300}, {410, 300}};
+Direction directions[] = {RIGHT, RIGHT, RIGHT, RIGHT, RIGHT};
+
+Target* targets[5];
+
+void (initGame)() {
+    for (int i = 0; i < 5; i++) {
+        targets[i] = createTarget(positions[i], directions[i]);
+    }
+}
 
 uint16_t (getX)() {
     return (uint16_t)x;

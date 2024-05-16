@@ -51,6 +51,8 @@ int erase_sprite(Sprite* sprite, int x, int y) {
 int load_sprites() {
   aim = create_sprite(aim_xpm);
   desert = create_sprite(desert_xpm);
+  targettt = create_sprite(target_xpm);
 
   return EXIT_SUCCESS;
 }
+

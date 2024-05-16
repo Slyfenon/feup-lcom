@@ -16,4 +16,10 @@ int (vg_page_flipping)();
 
 int (vg_reset_current_buffer)();
 
+uint8_t* (get_actual_buffer)();
+
+int (get_vram_size)();
+
+int (draw_back)(uint32_t* map);
+
 #endif

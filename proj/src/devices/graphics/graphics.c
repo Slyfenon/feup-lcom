@@ -97,3 +97,17 @@ int (vg_reset_current_buffer)() {
 
     return EXIT_SUCCESS;
 }
+
+uint8_t* (get_actual_buffer)() {
+    return buffers[indexArrayBuffers];
+}
+
+int (get_vram_size)() {
+    return vram_size;
+}
+
+int (draw_back)(uint32_t* map) {
+    memcpy(buffers[indexArrayBuffers], map, vram_size);
+
+    return 0;
+}

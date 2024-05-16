@@ -1,8 +1,10 @@
 #include <lcom/lcf.h>
-#include "position.h"
+#include "target.h"
 
 #define MAX_X 1151
 #define MAX_Y 862
+
+void (initGame)();
 
 uint16_t (getX)();
 

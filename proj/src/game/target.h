@@ -4,10 +4,8 @@
 typedef struct{
     Position pos;
     bool active;
-    enum Direction dir;
-    xpm_image_t body;
-
+    Direction dir;
 } Target;
 
 
-Target* createTarget(Position pos, enum Direction dir);
+Target* createTarget(Position pos, Direction dir);

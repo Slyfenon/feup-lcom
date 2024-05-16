@@ -22,8 +22,8 @@ State (handle_mouse)(enum State state, struct mousePacket* pp) {
 }
 
 void (draw_game)() {
-  erase_sprite(aim, getLastX(), getLastY());
+  draw_back(desert->map);
 
   draw_sprite(aim, getX(), getY());
-  updateLastPositionDrawn();
+  draw_sprite(targettt, 200, 300);
 }

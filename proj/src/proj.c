@@ -38,7 +38,8 @@ int (proj_main_loop)(int argc, char **argv) {
   if (mouse_subscribe_int(&mouse_irq_set) != OK) return EXIT_FAILURE;
 
   load_sprites();
-  draw_sprite(desert, 0, 0);
+  //draw_sprite(desert, 0, 0);
+  initGame();
 
   message msg;
   int ipc_status, r;
