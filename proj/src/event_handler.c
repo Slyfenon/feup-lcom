@@ -26,4 +26,6 @@ void (draw_game)() {
 
   draw_sprite(aim, getX(), getY());
   draw_sprite(targettt, 200, 300);
+
+  vg_page_flipping();
 }
