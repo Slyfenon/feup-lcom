@@ -23,6 +23,11 @@ int draw_sprite(Sprite* sprite, int x, int y) {
 
   for (int i = 0 ; i < sprite->height ; i++) {
     for (int j = 0 ; j < sprite->width ; j++) {
+      if (*aux == 0xFF000000) {
+        aux++;
+        continue;
+      }
+      
       if (vg_draw_pixel(x + j, y + i, *aux)) return EXIT_FAILURE;
       aux++;
     }

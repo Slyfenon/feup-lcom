@@ -2,7 +2,7 @@
 static const char *target_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "256 256 234 2 ",
-"   c #00000000",
+"   c None",
 ".  c #740E09",
 "X  c #7C0E08",
 "o  c #750C06",
