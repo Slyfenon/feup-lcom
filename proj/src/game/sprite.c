@@ -23,7 +23,7 @@ int draw_sprite(Sprite* sprite, int x, int y) {
 
   for (int i = 0 ; i < sprite->height ; i++) {
     for (int j = 0 ; j < sprite->width ; j++) {
-      if (*aux == 0xFF000000) {
+      if (*aux == TRANSPARENT) {
         aux++;
         continue;
       }
@@ -56,7 +56,7 @@ int erase_sprite(Sprite* sprite, int x, int y) {
 int load_sprites() {
   aim = create_sprite(aim_xpm);
   desert = create_sprite(desert_xpm);
-  targettt = create_sprite(target_xpm);
+  target = create_sprite(target_xpm);
 
   return EXIT_SUCCESS;
 }

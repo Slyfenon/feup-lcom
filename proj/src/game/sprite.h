@@ -1,7 +1,9 @@
 #include "../devices/graphics/graphics.h"
 #include "../resources/sprites/aim.xpm"
 #include "../resources/sprites/desert.xpm"
-#include "../resources/sprites/targettttt.xpm"
+#include "../resources/sprites/target.xpm"
+
+#define TRANSPARENT 0xFF000000
 
 typedef struct Sprite{
     uint16_t height, width;
@@ -10,7 +12,7 @@ typedef struct Sprite{
 
 Sprite* desert;
 Sprite* aim;
-Sprite* targettt;
+Sprite* target;
 
 Sprite* create_sprite(xpm_map_t xpm);
 

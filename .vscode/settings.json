@@ -3,6 +3,9 @@
         "sprite.h": "c",
         "graphics.h": "c",
         "__tree": "c",
-        "map": "c"
+        "map": "c",
+        "locale": "c",
+        "string": "c",
+        "system_error": "c"
     }
 }

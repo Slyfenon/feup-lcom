@@ -10,7 +10,7 @@
 
 struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
-enum State state = GAME;
+enum State state = MENU;
 
 
 int (main)(int argc, char *argv[]) {
@@ -38,9 +38,7 @@ int (proj_main_loop)(int argc, char **argv) {
   if (mouse_subscribe_int(&mouse_irq_set) != OK) return EXIT_FAILURE;
 
   load_sprites();
-  //draw_sprite(desert, 0, 0);
-  initGame();
-
+  
   message msg;
   int ipc_status, r;
   while (keyboard_scancode[0] != 0x81) {
@@ -62,12 +60,12 @@ int (proj_main_loop)(int argc, char **argv) {
         kbc_ih();
         if (kbc_scancode_is_done()) {
           kbc_get_scancode(keyboard_scancode);
+          state = handle_keyboard(state, keyboard_scancode);
         }
       }
 
       if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
-        updateTargets();
-        draw_game();
+        handle_timer(state);
       }
 
       //AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER
@@ -79,6 +77,8 @@ int (proj_main_loop)(int argc, char **argv) {
   if (kbc_unsubscribe_int() != OK) return EXIT_FAILURE;
   if (timer_unsubscribe_int() != OK) return EXIT_FAILURE;
   if (vg_exit() != OK) return EXIT_FAILURE;
+
+  //acho que devemos libertar os sprites
 
   return 0;
 }
