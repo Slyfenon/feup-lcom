@@ -106,7 +106,7 @@ int (get_vram_size)() {
     return vram_size;
 }
 
-int (draw_back)(uint32_t* map) {
+int (draw_background)(uint32_t* map) {
     memcpy(buffers[indexArrayBuffers], map, vram_size);
 
     return 0;

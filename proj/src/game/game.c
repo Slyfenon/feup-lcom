@@ -9,8 +9,8 @@ int16_t lastY = 400;
 int score = 0;
 int timeLeft = 30;
 
-Position positions[] = {{10, 300}, {110, 300}, {210, 300}, {310, 300}, {410, 300}};
-Direction directions[] = {RIGHT, RIGHT, RIGHT, RIGHT, RIGHT};
+Position positions[] = {{10, 300}, {110, 300}, {210, 300}, {310, 300}, {410, 100}};
+Direction directions[] = {RIGHT, RIGHT, RIGHT, RIGHT, LEFT};
 
 Target* targets[5];
 
@@ -26,6 +26,14 @@ uint16_t (getX)() {
 
 uint16_t (getY)() {
     return (uint16_t)y;
+}
+
+uint16_t (getXOfTarget)(int i) {
+    return (uint16_t)targets[i]->pos.x;
+}
+
+uint16_t (getYOfTarget)(int i) {
+    return (uint16_t)targets[i]->pos.y;
 }
 
 uint16_t (getLastX)() {
@@ -48,6 +56,16 @@ void (addToY)(int16_t delta_y) {
 
     if (y < 0) y = 0;
     if (y > MAX_Y) y = MAX_Y;
+}
+
+void (updateTargets)() {
+    for (int i = 0; i < 5; i++) {
+        if (targets[i]->dir == RIGHT) targets[i]->pos.x = targets[i]->pos.x + 5;
+        else if (targets[i]->dir == LEFT) targets[i]->pos.x = targets[i]->pos.x - 5;
+
+        if (targets[i]->pos.x > 1100) targets[i]->pos.x = 0;
+        else if (targets[i]->pos.x < -20) targets[i]->pos.x = 1000;
+    }
 }
 
 void (updateLastPositionDrawn)() {

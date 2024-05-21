@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "sprite.h": "c",
-        "graphics.h": "c"
+        "graphics.h": "c",
+        "__tree": "c",
+        "map": "c"
     }
 }

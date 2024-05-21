@@ -21,11 +21,17 @@ State (handle_mouse)(enum State state, struct mousePacket* pp) {
   return GAME;
 }
 
-void (draw_game)() {
-  draw_back(desert->map);
+void (draw_targets)() {
+  for (int i = 0; i < 5; i++) {
+    draw_sprite(targettt, getXOfTarget(i), getYOfTarget(i));
+  }
+}
 
+void (draw_game)() {
+  draw_background(desert->map);
+
+  draw_targets();
   draw_sprite(aim, getX(), getY());
-  draw_sprite(targettt, 200, 300);
 
   vg_page_flipping();
 }

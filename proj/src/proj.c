@@ -66,7 +66,7 @@ int (proj_main_loop)(int argc, char **argv) {
       }
 
       if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
-        //vg_page_flipping();
+        updateTargets();
         draw_game();
       }
 

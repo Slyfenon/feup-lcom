@@ -20,6 +20,6 @@ uint8_t* (get_actual_buffer)();
 
 int (get_vram_size)();
 
-int (draw_back)(uint32_t* map);
+int (draw_background)(uint32_t* map);
 
 #endif
