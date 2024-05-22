@@ -19,3 +19,5 @@ void (handle_timer)(State state);
 void (draw_targets)();
 
 void (draw_game)();
+
+void (draw_menu)();

@@ -1,3 +1,5 @@
+#ifndef SPRITE_H
+#define SPRITE_H
 #include "../devices/graphics/graphics.h"
 #include "../resources/sprites/aim.xpm"
 #include "../resources/sprites/desert.xpm"
@@ -21,4 +23,6 @@ int draw_sprite(Sprite* sprite, int x, int y);
 int erase_sprite(Sprite* sprite, int x, int y);
 
 int load_sprites();
+
+#endif
 

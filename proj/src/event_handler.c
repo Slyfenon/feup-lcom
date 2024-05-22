@@ -9,6 +9,9 @@ void(handle_timer)(State state) {
     updateTargets();
     draw_game();
   }
+  if (state == MENU) {
+    draw_menu();
+  }
 }
 
 State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
@@ -71,4 +74,14 @@ void(draw_game)() {
   draw_sprite(aim, getX(), getY());
 
   vg_page_flipping();
+}
+
+void draw_menu() {
+
+  createPlay();
+
+ for(int i = 0; i < 4; i++){
+    draw_sprite(play[i], 100 + i*100, 100);
+  }
+
 }
