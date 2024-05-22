@@ -4,6 +4,9 @@
 #include <lcom/lcf.h>
 #include "position.h"
 
+#define TARGET_RADIUS 54
+#define TARGET_RADIUS_2 2916  //TARGET_RADIUS²
+
 typedef struct {
     Position pos;
     bool active;

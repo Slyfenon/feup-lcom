@@ -9,15 +9,26 @@ int16_t lastY = 400;
 int score = 0;
 int timeLeft = 30;
 
-Position positions[] = {{10, 300}, {110, 300}, {210, 300}, {310, 300}, {410, 100}};
-Direction directions[] = {RIGHT, RIGHT, RIGHT, RIGHT, LEFT};
+Position positions[] = {{100, 100}, {300, 100}, {500, 100}, {700, 100}, {900, 100}, {1100, 100}, {100, 250}, {300, 250}, {500, 250}, {700, 250}, {900, 250}, {1100, 250}, {100, 400}, {300, 400}, {500, 400}, {700, 400}, {900, 400}, {1100, 400}};
 
-Target* targets[5];
+Target* targets[NUM_TARGETS];
 
 void (initGame)() {
-    for (int i = 0; i < NUM_TARGETS; i++) {
-        targets[i] = createTarget(positions[i], directions[i]);
-    }
+    int i = 0;
+
+    while (i < NUM_TARGETS) {
+        for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
+            targets[i] = createTarget(positions[i], RIGHT);
+            i++;
+        }
+
+        if (i == NUM_TARGETS) break;
+
+        for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
+            targets[i] = createTarget(positions[i], LEFT);
+            i++;
+        }
+    }    
 }
 
 int16_t (getX)() {
@@ -72,8 +83,15 @@ void (updateTargets)() {
         if (targets[i]->dir == RIGHT) targets[i]->pos.x = targets[i]->pos.x + 5;
         else if (targets[i]->dir == LEFT) targets[i]->pos.x = targets[i]->pos.x - 5;
 
-        if (targets[i]->pos.x > 1100) targets[i]->pos.x = 0;
-        else if (targets[i]->pos.x < -20) targets[i]->pos.x = 1000;
+        if (targets[i]->pos.x > 1200) {
+            targets[i]->pos.x = -200;
+            targets[i]->active = true;
+        }
+
+        else if (targets[i]->pos.x < -200) {
+            targets[i]->pos.x = 1200;
+            targets[i]->active = true;
+        }    
     }
 }
 
@@ -89,7 +107,7 @@ int (getScore)() {
 bool checkCollisionWithTarget(int i) {
     int distance = (x - getXOfTarget(i)) * (x - getXOfTarget(i)) + (y - getYOfTarget(i)) * (y - getYOfTarget(i));
 
-    if (distance < 300) {
+    if (distance < TARGET_RADIUS_2) {
         setActiveTarget(i, false);
         return true;
     }
