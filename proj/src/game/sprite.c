@@ -20,6 +20,8 @@ Sprite* create_sprite(xpm_map_t xpm) {
 
 int draw_sprite(Sprite* sprite, int x, int y) { 
   uint32_t* aux = sprite->map;
+  int xBeginning = x - (sprite->width / 2);
+  int yBeginning = y - (sprite->height / 2);
 
   for (int i = 0 ; i < sprite->height ; i++) {
     for (int j = 0 ; j < sprite->width ; j++) {
@@ -28,7 +30,7 @@ int draw_sprite(Sprite* sprite, int x, int y) {
         continue;
       }
       
-      if (vg_draw_pixel(x + j, y + i, *aux)) return EXIT_FAILURE;
+      if (vg_draw_pixel(xBeginning + j, yBeginning + i, *aux)) return EXIT_FAILURE;
       aux++;
     }
   }

@@ -43,6 +43,10 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     addToX(pp->delta_x);
     addToY(pp->delta_y);
 
+    if (pp->lb) {
+      checkAllCollisions();
+    }
+
     return GAME;
   }
   if (state == MENU) {
@@ -54,8 +58,9 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
 }
 
 void(draw_targets)() {
-  for (int i = 0; i < 5; i++) {
-    draw_sprite(target, getXOfTarget(i), getYOfTarget(i));
+  for (int i = 0; i < NUM_TARGETS; i++) {
+    if (isActiveTarget(i))
+      draw_sprite(target, getXOfTarget(i), getYOfTarget(i));
   }
 }
 

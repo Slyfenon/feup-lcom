@@ -5,6 +5,7 @@ Target* createTarget(Position pos, Direction dir) {
 
     target->pos = pos;
     target->dir = dir;
+    target->active = true;
 
     return target;
 }

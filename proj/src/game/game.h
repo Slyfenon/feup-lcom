@@ -3,20 +3,25 @@
 
 #define MAX_X 1151
 #define MAX_Y 862
+#define NUM_TARGETS 5
 
 void (initGame)();
 
-uint16_t (getX)();
+int16_t (getX)();
 
-uint16_t (getY)();
+int16_t (getY)();
 
-uint16_t (getXOfTarget)(int i);
+int16_t (getXOfTarget)(int i);
 
-uint16_t (getYOfTarget)(int i);
+int16_t (getYOfTarget)(int i);
 
-uint16_t (getLastX)();
+bool (isActiveTarget)(int i);
 
-uint16_t (getLastY)();
+void (setActiveTarget)(int i, bool value);
+
+int16_t (getLastX)();
+
+int16_t (getLastY)();
 
 void (addToX)(int16_t delta_x);
 
@@ -29,5 +34,9 @@ void (updateLastPositionDrawn)();
 int (getScore)();
 
 int (decrementAndReturnTimeLeft)();
+
+bool checkCollisionWithTarget(int i);
+
+bool checkAllCollisions();
 
 void (endGame)();

@@ -15,33 +15,42 @@ Direction directions[] = {RIGHT, RIGHT, RIGHT, RIGHT, LEFT};
 Target* targets[5];
 
 void (initGame)() {
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < NUM_TARGETS; i++) {
         targets[i] = createTarget(positions[i], directions[i]);
     }
 }
 
-uint16_t (getX)() {
-    return (uint16_t)x;
+int16_t (getX)() {
+    return x;
 }
 
-uint16_t (getY)() {
-    return (uint16_t)y;
+int16_t (getY)() {
+    return y;
 }
 
-uint16_t (getXOfTarget)(int i) {
-    return (uint16_t)targets[i]->pos.x;
+int16_t (getXOfTarget)(int i) {
+    return targets[i]->pos.x;
 }
 
-uint16_t (getYOfTarget)(int i) {
-    return (uint16_t)targets[i]->pos.y;
+int16_t (getYOfTarget)(int i) {
+    return targets[i]->pos.y;
 }
 
-uint16_t (getLastX)() {
-    return (uint16_t)lastX;
+bool (isActiveTarget)(int i) {
+    return targets[i]->active;
 }
 
-uint16_t (getLastY)() {
-    return (uint16_t)lastY;
+void (setActiveTarget)(int i, bool value) {
+    targets[i]->active = value;
+}
+
+
+int16_t (getLastX)() {
+    return lastX;
+}
+
+int16_t (getLastY)() {
+    return lastY;
 }
 
 void (addToX)(int16_t delta_x) {
@@ -59,7 +68,7 @@ void (addToY)(int16_t delta_y) {
 }
 
 void (updateTargets)() {
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < NUM_TARGETS; i++) {
         if (targets[i]->dir == RIGHT) targets[i]->pos.x = targets[i]->pos.x + 5;
         else if (targets[i]->dir == LEFT) targets[i]->pos.x = targets[i]->pos.x - 5;
 
@@ -75,6 +84,25 @@ void (updateLastPositionDrawn)() {
 
 int (getScore)() {
     return score;
+}
+
+bool checkCollisionWithTarget(int i) {
+    int distance = (x - getXOfTarget(i)) * (x - getXOfTarget(i)) + (y - getYOfTarget(i)) * (y - getYOfTarget(i));
+
+    if (distance < 300) {
+        setActiveTarget(i, false);
+        return true;
+    }
+
+    return false;
+}
+
+bool checkAllCollisions() {
+    for (int i = NUM_TARGETS - 1; i >= 0; i--) {
+        if (checkCollisionWithTarget(i)) return true;
+    }
+
+    return false;
 }
 
 void (endGame)() {
