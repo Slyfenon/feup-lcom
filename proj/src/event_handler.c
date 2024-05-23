@@ -11,6 +11,19 @@ void(handle_timer)(State state) {
   }
   if (state == MENU) {
     draw_menu();
+    switch (getCurrentOption()) {
+      case SINGLEPLAYER:
+        vg_draw_rectangle(410, 120, 240, 15, 0x000000);
+        break;
+      case QUIT:
+        vg_draw_rectangle(410, 220, 240, 15, 0x000000);
+        break;
+      default:
+        break;
+    }
+  }
+  if (state == ENDGAME) {
+    // não há nada ainda
   }
 }
 
@@ -20,12 +33,14 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
     // não há nada ainda
   }
   if (state == MENU) {
+    printf("getCurrentOption(): %d\n", getCurrentOption());
     if (keyboardBytes[0] == 0x1C) {
       switch (getCurrentOption()) {
         case 0:
           initGame();
           return GAME;
-          break;
+        case 2:
+          return ENDGAME;
         default:
           break;
       }
@@ -57,6 +72,10 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     return MENU;
   }
 
+  if (state == ENDGAME) {
+    return ENDGAME;
+  }
+
   return MENU;
 }
 
@@ -78,10 +97,13 @@ void(draw_game)() {
 
 void draw_menu() {
 
+  draw_background(desert->map);
+
   createPlay();
+  createQuit();
 
- for(int i = 0; i < 4; i++){
-    draw_sprite(play[i], 100 + i*100, 100);
+  for (int i = 0; i < 4; i++) {
+    draw_sprite(play[i], 450 + i * 60, 100);
+    draw_sprite(quit[i], 450 + i * 60, 200);
   }
-
 }

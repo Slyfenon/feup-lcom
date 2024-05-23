@@ -21,3 +21,5 @@ void (draw_targets)();
 void (draw_game)();
 
 void (draw_menu)();
+
+void (draw_line)(int len, uint16_t color, int x, int y);

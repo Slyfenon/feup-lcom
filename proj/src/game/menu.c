@@ -46,3 +46,22 @@ for(int i = 0; i < 4; i++) {
     }
   }
 }
+
+void createQuit(){
+  for(int i = 0; i < 4; i++) {
+    switch(i) {
+      case 0:
+        quit[i] = create_sprite(q_xpm);
+        break;
+      case 1:
+        quit[i] = create_sprite(u_xpm);
+        break;
+      case 2:
+        quit[i] = create_sprite(i_xpm);
+        break;
+      case 3:
+        quit[i] = create_sprite(t_xpm);
+        break;
+    }
+  }
+}

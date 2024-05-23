@@ -72,6 +72,19 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
     return EXIT_SUCCESS;
 }
 
+int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            if (vg_draw_pixel(x + j, y + i, color) != OK) {
+                printf("vg_draw_pixel failed inside %s", __func__);
+                return EXIT_FAILURE;
+            }
+        }
+    }
+
+    return EXIT_SUCCESS;
+}
+
 int (vg_page_flipping)() {
     reg86_t reg;
     memset(&reg, 0, sizeof(reg));
