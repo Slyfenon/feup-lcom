@@ -3,8 +3,8 @@
 
 #define MAX_X 1151
 #define MAX_Y 862
-#define NUM_TARGETS 18
-#define NUM_TARGETS_PER_LINE 6
+#define NUM_TARGETS 21
+#define NUM_TARGETS_PER_LINE 7
 
 void (initGame)();
 

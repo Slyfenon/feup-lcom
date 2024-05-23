@@ -13,7 +13,6 @@ typedef struct {
     Direction dir;
 } Target;
 
-
-Target* createTarget(Position pos, Direction dir);
+Target* createTarget(int x, int y, Direction dir);
 
 #endif

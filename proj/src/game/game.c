@@ -9,26 +9,24 @@ int16_t lastY = 400;
 int score = 0;
 int timeLeft = 30;
 
-Position positions[] = {{100, 100}, {300, 100}, {500, 100}, {700, 100}, {900, 100}, {1100, 100}, {100, 250}, {300, 250}, {500, 250}, {700, 250}, {900, 250}, {1100, 250}, {100, 400}, {300, 400}, {500, 400}, {700, 400}, {900, 400}, {1100, 400}};
-
 Target* targets[NUM_TARGETS];
 
 void (initGame)() {
     int i = 0;
 
+    int x = -100;
+    int y = 100;
+
     while (i < NUM_TARGETS) {
         for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
-            targets[i] = createTarget(positions[i], RIGHT);
+            targets[i] = createTarget(x, y, (y % 100) ? LEFT : RIGHT);
             i++;
+            x += 200;
         }
 
-        if (i == NUM_TARGETS) break;
-
-        for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
-            targets[i] = createTarget(positions[i], LEFT);
-            i++;
-        }
-    }    
+        x = -100;
+        y += 150;
+    }
 }
 
 int16_t (getX)() {
