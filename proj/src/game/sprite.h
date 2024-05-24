@@ -4,6 +4,8 @@
 #include "../resources/sprites/aim.xpm"
 #include "../resources/sprites/desert.xpm"
 #include "../resources/sprites/target.xpm"
+#include "../resources/font/score.xpm"
+#include "../resources/font/numbers.xpm"
 
 #define TRANSPARENT 0xFF000000
 
@@ -15,6 +17,8 @@ typedef struct Sprite{
 Sprite* desert;
 Sprite* aim;
 Sprite* target;
+Sprite* scoreSprite;
+Sprite* numbers[10];
 
 Sprite* create_sprite(xpm_map_t xpm);
 

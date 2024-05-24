@@ -6,12 +6,15 @@ int16_t y = 400;
 int16_t lastX = 500;
 int16_t lastY = 400;
 
-int score = 0;
-int timeLeft = 30;
+int score;
+int timeLeft;
 
 Target* targets[NUM_TARGETS];
 
 void (initGame)() {
+    score = 0;
+    timeLeft = 30;
+
     int i = 0;
 
     int x = -100;
@@ -107,6 +110,21 @@ bool checkCollisionWithTarget(int i) {
 
     if (distance < TARGET_RADIUS_2) {
         setActiveTarget(i, false);
+
+        if (distance < TARGET_RADIUS_2_CENTER) {
+            score += 50;
+        }
+
+        else if (distance < TARGET_RADIUS_2_MIDDLE) {
+            score += 25;
+        }
+
+        else {
+            score += 10;
+        }
+
+        printf("Score: %u\n", score);
+
         return true;
     }
 

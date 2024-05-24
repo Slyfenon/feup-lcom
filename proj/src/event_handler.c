@@ -11,16 +11,6 @@ void(handle_timer)(State state) {
   }
   if (state == MENU) {
     draw_menu();
-    switch (getCurrentOption()) {
-      case SINGLEPLAYER:
-        vg_draw_rectangle(410, 120, 240, 15, 0x000000);
-        break;
-      case QUIT:
-        vg_draw_rectangle(410, 220, 240, 15, 0x000000);
-        break;
-      default:
-        break;
-    }
   }
   if (state == ENDGAME) {
     // não há nada ainda
@@ -28,12 +18,12 @@ void(handle_timer)(State state) {
 }
 
 State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
-  printf("keyboardBytes[0]: %x\n", keyboardBytes[0]);
   if (state == GAME) {
-    // não há nada ainda
+    if (keyboardBytes[0] == 0x81) {
+      return MENU;
+    }
   }
   if (state == MENU) {
-    printf("getCurrentOption(): %d\n", getCurrentOption());
     if (keyboardBytes[0] == 0x1C) {
       switch (getCurrentOption()) {
         case 0:
@@ -91,6 +81,27 @@ void(draw_game)() {
 
   draw_targets();
   draw_sprite(aim, getX(), getY());
+  draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
+
+  int score = getScore();
+
+  int numDigits = 0;
+  int tempScore = score;
+  while (tempScore != 0) {
+    tempScore /= 10;
+    numDigits++;
+  }
+
+  int startX = MAX_X - 30;
+
+  tempScore = score;
+  for (int i = numDigits - 1; i >= 0; i--) {
+    int digit = tempScore % 10;
+    draw_sprite(numbers[digit], startX, MAX_Y - 65);
+    startX -= 50;
+    tempScore /= 10;
+  }
+ 
 
   vg_page_flipping();
 }
@@ -102,8 +113,19 @@ void draw_menu() {
   createPlay();
   createQuit();
 
-  for (int i = 0; i < 4; i++) {
-    draw_sprite(play[i], 450 + i * 60, 100);
-    draw_sprite(quit[i], 450 + i * 60, 200);
+  draw_sprite(play, MAX_X / 2, 100);
+  draw_sprite(quit, MAX_X / 2, 200);
+
+  switch (getCurrentOption()) {
+    case SINGLEPLAYER:
+      vg_draw_rectangle(MAX_X / 2 - 120, 140, 240, 10, 0x000000);
+      break;
+    case QUIT:
+      vg_draw_rectangle(MAX_X / 2 - 120, 240, 240, 10, 0x000000);
+      break;
+    default:
+      break;
   }
+
+  vg_page_flipping();
 }

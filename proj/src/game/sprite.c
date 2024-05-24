@@ -59,6 +59,10 @@ int load_sprites() {
   aim = create_sprite(aim_xpm);
   desert = create_sprite(desert_xpm);
   target = create_sprite(target_xpm);
+  scoreSprite = create_sprite(score_xpm);
+  for(int i = 0; i < 10; i++) {
+    numbers[i] = create_sprite(numbers_xpm[i]);
+  }
 
   return EXIT_SUCCESS;
 }
