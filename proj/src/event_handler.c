@@ -81,6 +81,27 @@ void(draw_game)() {
 
   draw_targets();
   draw_sprite(aim, getX(), getY());
+  draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
+
+  int score = getScore();
+
+  int numDigits = 0;
+  int tempScore = score;
+  while (tempScore != 0) {
+    tempScore /= 10;
+    numDigits++;
+  }
+
+  int startX = MAX_X - 30;
+
+  tempScore = score;
+  for (int i = numDigits - 1; i >= 0; i--) {
+    int digit = tempScore % 10;
+    draw_sprite(numbers[digit], startX, MAX_Y - 65);
+    startX -= 50;
+    tempScore /= 10;
+  }
+ 
 
   vg_page_flipping();
 }
