@@ -1,6 +1,9 @@
 #include <lcom/lcf.h>
 #include "sprite.h"
 #include "../resources/font/font.xpm"
+#include "../resources/font/play.xpm"
+#include "../resources/font/quit.xpm"
+
 
 typedef enum Option {
   SINGLEPLAYER,
@@ -8,8 +11,8 @@ typedef enum Option {
   QUIT
 } Option;
 
-Sprite* play[4];
-Sprite* quit[4];
+Sprite* play;
+Sprite* quit;
 
 int getCurrentOption();
 

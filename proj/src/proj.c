@@ -41,7 +41,7 @@ int (proj_main_loop)(int argc, char **argv) {
   
   message msg;
   int ipc_status, r;
-  while (keyboard_scancode[0] != 0x81 && state != ENDGAME) {
+  while (state != ENDGAME) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
