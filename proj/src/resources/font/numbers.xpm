@@ -1,8 +1,9 @@
+
 /* XPM */
-static char * zero_xpm[] = {
+static const char * zero_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "           .................             ",
 "       ........................          ",
 "      ...........................        ",
@@ -73,10 +74,10 @@ static char * zero_xpm[] = {
 
 
 /* XPM */
-static char * one_xpm[] = {
+static const char * one_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "                  ........               ",
 "                ..........               ",
 "              ............               ",
@@ -147,10 +148,10 @@ static char * one_xpm[] = {
 
 
 /* XPM */
-static char * two_xpm[] = {
+static const char * two_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "              ..................         ",
 "          ........................       ",
 "        ............................     ",
@@ -220,10 +221,10 @@ static char * two_xpm[] = {
 "     ..............................      "};
 
 /* XPM */
-static char * three_xpm[] = {
+static const char * three_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "       .............................     ",
 "    ................................     ",
 "    .................................    ",
@@ -294,10 +295,10 @@ static char * three_xpm[] = {
 
 
 /* XPM */
-static char * four_xpm[] = {
+static const char * four_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "           ...............               ",
 "           ...............               ",
 "           ...............               ",
@@ -368,10 +369,10 @@ static char * four_xpm[] = {
 
 
 /* XPM */
-static char * five_xpm[] = {
+static const char * five_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "     ...................  ............   ",
 "     .................................   ",
 "     .................................   ",
@@ -442,10 +443,10 @@ static char * five_xpm[] = {
 
 
 /* XPM */
-static char * six_xpm[] = {
+static const char * six_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "        ..........................       ",
 "      ............................       ",
 "     .............................       ",
@@ -515,10 +516,10 @@ static char * six_xpm[] = {
 "          .............                  "};
 
 /* XPM */
-static char * seven_xpm[] = {
+static const char * seven_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "     ............................        ",
 "   ...............................       ",
 "  ................................       ",
@@ -589,10 +590,10 @@ static char * seven_xpm[] = {
 
 
 /* XPM */
-static char * eight_xpm[] = {
+static const char * eight_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "                                         ",
 "              ....................       ",
 "         ............................    ",
@@ -663,10 +664,10 @@ static char * eight_xpm[] = {
 
 
 /* XPM */
-static char * nine_xpm[] = {
+static const char * nine_xpm[] = {
 "41 67 2 1",
-" 	c #FFFFFF",
-".	c #000000",
+" 	c None",
+".	c #FFFFFF",
 "                                         ",
 "           ............                  ",
 "        .........................        ",
@@ -734,3 +735,15 @@ static char * nine_xpm[] = {
 "      ..............................     ",
 "      .............................      ",
 "      ............................       "};
+static const char **numbers_xpm[] = {
+  zero_xpm,
+  one_xpm,
+  two_xpm,
+  three_xpm,
+  four_xpm,
+  five_xpm,
+  six_xpm,
+  seven_xpm,
+  eight_xpm,
+  nine_xpm
+};
