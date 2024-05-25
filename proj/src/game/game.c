@@ -9,12 +9,13 @@ int16_t lastY = 400;
 int score;
 int timeLeft;
 bool canShoot = true;
+bool canSlowTime = true;
 
 Target* targets[NUM_TARGETS];
 
 void (initGame)() {
     score = 0;
-    timeLeft = 30;
+    timeLeft = 10 * 60;
 
     int i = 0;
 
@@ -106,6 +107,14 @@ int (getScore)() {
     return score;
 }
 
+void (updateTimeLeft)() {
+    timeLeft--;
+}
+
+bool (endTime)() {
+    return (timeLeft == 0);
+}
+
 bool checkCollisionWithTarget(int i) {
     int distance = (x - getXOfTarget(i)) * (x - getXOfTarget(i)) + (y - getYOfTarget(i)) * (y - getYOfTarget(i));
 
@@ -152,5 +161,5 @@ void (endGame)() {
     x = 500;
     y = 400;
     score = 0;
-    timeLeft = 30; 
+    timeLeft = 10 * 60; 
 }

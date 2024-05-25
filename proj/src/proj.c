@@ -48,15 +48,11 @@ int (proj_main_loop)(int argc, char **argv) {
     }
     if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source == HARDWARE)) {
 
-      if (msg.m_notify.interrupts & BIT(mouse_irq_set)){
-        mouse_ih();
-        if (mouse_packet_is_done()){
-          mouse_get_packet(&mouse_packet);
-          handle_mouse(state, &mouse_packet);
-        }
+      if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
+        state = handle_timer(state);
       }
 
-      if (msg.m_notify.interrupts & BIT(keyboard_irq_set)) {
+       if (msg.m_notify.interrupts & BIT(keyboard_irq_set)) {
         kbc_ih();
         if (kbc_scancode_is_done()) {
           kbc_get_scancode(keyboard_scancode);
@@ -64,8 +60,12 @@ int (proj_main_loop)(int argc, char **argv) {
         }
       }
 
-      if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
-        handle_timer(state);
+      if (msg.m_notify.interrupts & BIT(mouse_irq_set)){
+        mouse_ih();
+        if (mouse_packet_is_done()){
+          mouse_get_packet(&mouse_packet);
+          state = handle_mouse(state, &mouse_packet);
+        }
       }
 
       //AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER

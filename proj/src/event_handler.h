@@ -10,11 +10,11 @@ typedef enum State{
     ENDGAME
 } State;
 
+State (handle_timer)(State state);
+
 State (handle_keyboard)(State state, uint8_t* keyboardBytes);
 
 State (handle_mouse)(State state, struct mousePacket* pp);
-
-void (handle_timer)(State state);
 
 void (draw_targets)();
 

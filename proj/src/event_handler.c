@@ -4,10 +4,16 @@
 
 uint32_t color = 0;
 
-void(handle_timer)(State state) {
+State(handle_timer)(State state) {
   if (state == GAME) {
+    updateTimeLeft();
     updateTargets();
     draw_game();
+
+    if (endTime()) {
+      endGame();
+      return MENU;
+    }
   }
   if (state == MENU) {
     draw_menu();
@@ -15,6 +21,8 @@ void(handle_timer)(State state) {
   if (state == ENDGAME) {
     // não há nada ainda
   }
+
+  return state;
 }
 
 State(handle_keyboard)(State state, uint8_t *keyboardBytes) {

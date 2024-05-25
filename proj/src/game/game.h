@@ -34,7 +34,9 @@ void (updateLastPositionDrawn)();
 
 int (getScore)();
 
-int (decrementAndReturnTimeLeft)();
+void (updateTimeLeft)();
+
+bool (endTime)();
 
 bool checkCollisionWithTarget(int i);
 
