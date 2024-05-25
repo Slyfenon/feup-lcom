@@ -145,11 +145,6 @@ void draw_menu() {
     startX -= 50;
   }
 
-  if (nightDesert == NULL) {
-    printf("Error in load_sprites inside: %s\n", __func__);
-    return;
-  }
-
   createPlay();
   createQuit();
 
