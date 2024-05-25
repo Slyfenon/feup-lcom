@@ -52,7 +52,13 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     addToY(pp->delta_y);
 
     if (pp->lb) {
-      checkAllCollisions();
+      if (getCanShoot()) {
+        checkAllCollisions();
+        setCanShoot(false);
+      }
+    }
+    else {
+      setCanShoot(true);
     }
 
     return GAME;

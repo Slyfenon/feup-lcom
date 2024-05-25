@@ -40,4 +40,8 @@ bool checkCollisionWithTarget(int i);
 
 bool checkAllCollisions();
 
+bool getCanShoot();
+
+void setCanShoot(bool value);
+
 void (endGame)();

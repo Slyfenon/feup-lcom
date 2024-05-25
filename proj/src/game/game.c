@@ -8,6 +8,7 @@ int16_t lastY = 400;
 
 int score;
 int timeLeft;
+bool canShoot = true;
 
 Target* targets[NUM_TARGETS];
 
@@ -137,6 +138,14 @@ bool checkAllCollisions() {
     }
 
     return false;
+}
+
+bool getCanShoot() {
+    return canShoot;
+}
+
+void setCanShoot(bool value) {
+    canShoot = value;
 }
 
 void (endGame)() {
