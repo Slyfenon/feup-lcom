@@ -2,7 +2,6 @@
 #define SPRITE_H
 #include "../devices/graphics/graphics.h"
 #include "../resources/sprites/aim.xpm"
-#include "../resources/sprites/desert.xpm"
 #include "../resources/sprites/dayDesert.xpm"
 #include "../resources/sprites/nightDesert.xpm"
 #include "../resources/sprites/target.xpm"
