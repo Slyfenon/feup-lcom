@@ -76,8 +76,26 @@ void(draw_targets)() {
   }
 }
 
+int checkTime() {
+  if (readTime() != 0) {
+    printf("Error in readTime inside: %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+
+  if (timeRTC.hours > 19 || timeRTC.hours < 7) {
+    draw_background(nightDesert->map);
+  }
+  else {
+    draw_background(dayDesert->map);
+  }
+  return EXIT_SUCCESS;
+}
+
 void(draw_game)() {
-  draw_background(desert->map);
+  if (checkTime() != 0) {
+    printf("Error in checkTime inside: %s\n", __func__);
+    return;
+  }
 
   draw_targets();
   draw_sprite(aim, getX(), getY());
@@ -101,14 +119,31 @@ void(draw_game)() {
     startX -= 50;
     tempScore /= 10;
   }
- 
 
   vg_page_flipping();
 }
 
 void draw_menu() {
 
-  draw_background(desert->map);
+  if (checkTime() != 0) {
+    printf("Error in checkTime inside: %s\n", __func__);
+    return;
+  }
+
+  int startX = MAX_X - 170;
+
+  for (int i = 0; i < 2; i++) {
+    draw_sprite(hours[i], startX, MAX_Y - 65);
+    startX -= 50;
+  }
+
+  draw_sprite(dots, startX + 145, MAX_Y - 65);
+
+  startX = MAX_X - 30;
+  for (int i = 0; i < 2; i++) {
+    draw_sprite(minutes[i], startX, MAX_Y - 65);
+    startX -= 50;
+  }
 
   createPlay();
   createQuit();

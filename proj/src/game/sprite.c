@@ -45,10 +45,10 @@ int erase_sprite(Sprite* sprite, int x, int y) {
 
   for (int i = 0 ; i < height; i++) {
     for (int j = 0 ; j < width; j++) {
-      if ((y + i) >= desert->height) continue;
-      if ((x + j) >= desert->width) continue;
+      if ((y + i) >= dayDesert->height) continue;
+      if ((x + j) >= dayDesert->width) continue;
 
-      aux = desert->map[(y+i)*desert->width + (x + j)];
+      aux = dayDesert->map[(y+i)*dayDesert->width + (x + j)];
       if (vg_draw_pixel(x + j, y + i, aux)) return EXIT_FAILURE;
     }
   }
@@ -57,7 +57,8 @@ int erase_sprite(Sprite* sprite, int x, int y) {
 
 int load_sprites() {
   aim = create_sprite(aim_xpm);
-  desert = create_sprite(desert_xpm);
+  dayDesert = create_sprite(dayDesert_xpm);
+  nightDesert = create_sprite(nightDesert_xpm);
   target = create_sprite(target_xpm);
   scoreSprite = create_sprite(score_xpm);
   for(int i = 0; i < 10; i++) {
