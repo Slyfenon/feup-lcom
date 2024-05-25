@@ -3,6 +3,8 @@
 #include "../devices/graphics/graphics.h"
 #include "../resources/sprites/aim.xpm"
 #include "../resources/sprites/desert.xpm"
+#include "../resources/sprites/dayDesert.xpm"
+#include "../resources/sprites/nightDesert.xpm"
 #include "../resources/sprites/target.xpm"
 #include "../resources/font/score.xpm"
 #include "../resources/font/numbers.xpm"
@@ -14,7 +16,8 @@ typedef struct Sprite{
     uint32_t* map;
 } Sprite; 
 
-Sprite* desert;
+Sprite* dayDesert;
+Sprite* nightDesert;
 Sprite* aim;
 Sprite* target;
 Sprite* scoreSprite;

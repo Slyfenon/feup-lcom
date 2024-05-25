@@ -35,3 +35,26 @@ void createPlay() {
 void createQuit(){
   quit = create_sprite(quit_xpm);
 }
+
+int readTime() {
+  if( rtc_read_time(&timeRTC) != 0) {
+    printf("Error in rtc_read_time inside: %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+
+  int tempHours = timeRTC.hours;
+  int tempMinutes = timeRTC.minutes;
+
+  for(int i = 0; i < 2; i++) {
+    uint8_t digit = tempHours % 10;
+    tempHours /= 10;
+    hours[i] = numbers[digit];
+  }
+  for(int i = 0; i < 2; i++) {
+    uint8_t digit = tempMinutes % 10;
+    tempMinutes /= 10;
+    minutes[i] = numbers[digit];
+  }
+  dots = create_sprite(dots_xpm);
+  return EXIT_SUCCESS;
+}

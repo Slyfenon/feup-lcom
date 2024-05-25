@@ -22,4 +22,6 @@ void (draw_game)();
 
 void (draw_menu)();
 
+int (checkTime)();
+
 void (draw_line)(int len, uint16_t color, int x, int y);

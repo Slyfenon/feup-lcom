@@ -5,10 +5,11 @@ PROG=proj
 .PATH: ${.CURDIR}/devices/graphics
 .PATH: ${.CURDIR}/devices/kbc
 .PATH: ${.CURDIR}/devices/timer
+.PATH: ${.CURDIR}/devices/rtc
 .PATH: ${.CURDIR}/game
 
 # source code files to be compiled
-SRCS = proj.c keyboard.c mouse.c graphics.c utils.c event_handler.c game.c sprite.c target.c position.h timer.c menu.c
+SRCS = proj.c keyboard.c mouse.c graphics.c utils.c event_handler.c game.c sprite.c target.c position.h timer.c menu.c rtc.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set

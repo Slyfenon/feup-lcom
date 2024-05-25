@@ -2,11 +2,11 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
-int hook_id = RTC_IRQ;
+int rtc_hook_id = RTC_IRQ;
 
 int(rtc_subscribe_int)(uint8_t *bit_no) {
-  *bit_no = hook_id;
-  if (sys_irqsetpolicy(RTC_IRQ, IRQ_REENABLE, &hook_id) != 0) {
+  *bit_no = rtc_hook_id;
+  if (sys_irqsetpolicy(RTC_IRQ, IRQ_REENABLE, &rtc_hook_id) != 0) {
     printf("Error in sys_irqsetpolicy inside: %s\n", __func__);
     return 1;
   }
@@ -15,7 +15,7 @@ int(rtc_subscribe_int)(uint8_t *bit_no) {
 }
 
 int(rtc_unsubscribe_int)() {
-  if (sys_irqrmpolicy(&hook_id) != 0) {
+  if (sys_irqrmpolicy(&rtc_hook_id) != 0) {
     printf("Error in sys_irqrmpolicy inside: %s\n", __func__);
     return 1;
   }
