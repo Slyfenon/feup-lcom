@@ -8,14 +8,18 @@ int16_t lastY = 400;
 
 int score;
 int timeLeft;
-bool canShoot = true;
-bool canSlowTime = true;
+bool canShoot;
+bool slowTime;
+int timerSlowTime;
 
 Target *targets[NUM_TARGETS];
 
 void(initGame)() {
   score = 0;
-  timeLeft = 10 * 60;
+  timeLeft = 30 * 60;
+  timerSlowTime = 0;
+  canShoot = true;
+  slowTime = false;
 
   int i = 0;
 
@@ -85,11 +89,13 @@ void(addToY)(int16_t delta_y) {
 }
 
 void(updateTargets)() {
+  int step = slowTime ? 2 : 5;
+
   for (int i = 0; i < NUM_TARGETS; i++) {
     if (targets[i]->dir == RIGHT)
-      targets[i]->pos.x = targets[i]->pos.x + 5;
+      targets[i]->pos.x = targets[i]->pos.x + step;
     else if (targets[i]->dir == LEFT)
-      targets[i]->pos.x = targets[i]->pos.x - 5;
+      targets[i]->pos.x = targets[i]->pos.x - step;
 
     if (targets[i]->pos.x > 1200) {
       targets[i]->pos.x = -200;
@@ -116,8 +122,13 @@ int(getTimeLeft)() {
   return timeLeft;
 }
 
-void(updateTimeLeft)() {
+void(updateTimes)() {
   timeLeft--;
+  if (timerSlowTime > 0) timerSlowTime--;
+
+  if (slowTime && (timerSlowTime == 0)) {
+    endSlowTime();
+  }
 }
 
 bool(endTime)() {
@@ -141,8 +152,6 @@ bool checkCollisionWithTarget(int i) {
     else {
       score += 10;
     }
-
-    printf("Score: %u\n", score);
 
     return true;
   }
@@ -174,6 +183,18 @@ void(endGame)() {
   timeLeft = 10 * 60;
 }
 
+void setSlowTime() {
+  if (!slowTime && (timerSlowTime == 0)) {
+    slowTime = true;
+    timerSlowTime = 5 * 60;
+  }
+}
+
+void endSlowTime() {
+  slowTime = false;
+  timerSlowTime = 10 * 60;
+}
+
 void(draw_targets)() {
   for (int i = 0; i < NUM_TARGETS; i++) {
     if (isActiveTarget(i))
@@ -181,14 +202,7 @@ void(draw_targets)() {
   }
 }
 
-void(draw_game)() {
-
-  draw_targets();
-  draw_sprite(aim, getX(), getY());
-  draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
-
-  int score = getScore();
-
+void (draw_score)() {
   int numDigits = 0;
   int tempScore = score;
   while (tempScore != 0) {
@@ -205,7 +219,9 @@ void(draw_game)() {
     startX -= 50;
     tempScore /= 10;
   }
+}
 
+void (draw_timeLeft)() {
   int tempTime = getTimeLeft() / 60;
   int numDigitsTime = 0;
   while (tempTime != 0) {
@@ -213,12 +229,21 @@ void(draw_game)() {
     numDigitsTime++;
   }
 
-  startX = MAX_X / 2;
+  int startX = MAX_X / 2;
   tempTime = getTimeLeft() / 60;
-  for (int i = numDigitsTime ; i >= 0; i--) {
+  for (int i = numDigitsTime ; i > 0; i--) {
     int digit = tempTime % 10;
     draw_sprite(numbers[digit], startX, MAX_Y - 65);
     startX -= 50;
     tempTime /= 10;
   }
+}
+
+void(draw_game)() {
+
+  draw_targets();
+  draw_sprite(aim, getX(), getY());
+  draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
+  draw_score();
+  draw_timeLeft();
 }

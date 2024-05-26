@@ -23,8 +23,6 @@ bool(isActiveTarget)(int i);
 
 void(setActiveTarget)(int i, bool value);
 
-void(draw_game)();
-
 int16_t(getLastX)();
 
 int16_t(getLastY)();
@@ -41,7 +39,7 @@ int(getScore)();
 
 int(getTimeLeft)();
 
-void(updateTimeLeft)();
+void(updateTimes)();
 
 bool(endTime)();
 
@@ -55,5 +53,16 @@ void setCanShoot(bool value);
 
 void(endGame)();
 
+void (setSlowTime)();
+
+void (endSlowTime)();
+
+void(draw_game)();
+
 void(draw_targets)();
+
+void (draw_score)();
+
+void (draw_timeLeft)();
+
 #endif

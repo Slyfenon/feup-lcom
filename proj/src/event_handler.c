@@ -21,7 +21,7 @@ int checkTime() {
 
 State(handle_timer)(State state) {
   if (state == GAME) {
-    updateTimeLeft();
+    updateTimes();
     updateTargets();
     if (checkTime() != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
@@ -91,6 +91,10 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     }
     else {
       setCanShoot(true);
+    }
+
+    if (pp->delta_scroll > 1) {
+      setSlowTime();
     }
 
     return GAME;
