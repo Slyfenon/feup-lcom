@@ -1,10 +1,10 @@
-#include <lcom/lcf.h>
-#include "sprite.h"
 #include "../devices/rtc/rtc.h"
 #include "../resources/font/font.xpm"
 #include "../resources/font/play.xpm"
 #include "../resources/font/quit.xpm"
-
+#include "sprite.h"
+#include "game.h"
+#include <lcom/lcf.h>
 
 typedef enum Option {
   SINGLEPLAYER,
@@ -12,11 +12,11 @@ typedef enum Option {
   QUIT
 } Option;
 
-Sprite* play;
-Sprite* quit;
-Sprite* dots;
-Sprite* hours[2];
-Sprite* minutes[2];
+Sprite *play;
+Sprite *quit;
+Sprite *dots;
+Sprite *hours[2];
+Sprite *minutes[2];
 
 rtc_time timeRTC;
 
@@ -34,4 +34,4 @@ void createQuit();
 
 int readTime();
 
-void initMenu();
+void draw_menu();

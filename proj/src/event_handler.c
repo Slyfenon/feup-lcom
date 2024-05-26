@@ -4,19 +4,43 @@
 
 uint32_t color = 0;
 
+int checkTime() {
+  if (readTime() != 0) {
+    printf("Error in readTime inside: %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+
+  if (timeRTC.hours > 19 || timeRTC.hours < 7) {
+    draw_background(nightDesert->map);
+  }
+  else {
+    draw_background(dayDesert->map);
+  }
+  return EXIT_SUCCESS;
+}
+
 State(handle_timer)(State state) {
   if (state == GAME) {
     updateTimeLeft();
     updateTargets();
+    if (checkTime() != 0) {
+      printf("Error in checkTime inside: %s\n", __func__);
+      return ENDGAME;
+    }
     draw_game();
-
     if (endTime()) {
       endGame();
       return MENU;
     }
+    vg_page_flipping();
   }
   if (state == MENU) {
+    if (checkTime() != 0) {
+      printf("Error in checkTime inside: %s\n", __func__);
+      return ENDGAME;
+    }
     draw_menu();
+    vg_page_flipping();
   }
   if (state == ENDGAME) {
     // não há nada ainda
@@ -81,100 +105,4 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
   }
 
   return MENU;
-}
-
-void(draw_targets)() {
-  for (int i = 0; i < NUM_TARGETS; i++) {
-    if (isActiveTarget(i))
-      draw_sprite(target, getXOfTarget(i), getYOfTarget(i));
-  }
-}
-
-int checkTime() {
-  if (readTime() != 0) {
-    printf("Error in readTime inside: %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-
-  if (timeRTC.hours > 19 || timeRTC.hours < 7) {
-    draw_background(nightDesert->map);
-  }
-  else {
-    draw_background(dayDesert->map);
-  }
-  return EXIT_SUCCESS;
-}
-
-void(draw_game)() {
-  if (checkTime() != 0) {
-    printf("Error in checkTime inside: %s\n", __func__);
-    return;
-  }
-
-  draw_targets();
-  draw_sprite(aim, getX(), getY());
-  draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
-
-  int score = getScore();
-
-  int numDigits = 0;
-  int tempScore = score;
-  while (tempScore != 0) {
-    tempScore /= 10;
-    numDigits++;
-  }
-
-  int startX = MAX_X - 30;
-
-  tempScore = score;
-  for (int i = numDigits - 1; i >= 0; i--) {
-    int digit = tempScore % 10;
-    draw_sprite(numbers[digit], startX, MAX_Y - 65);
-    startX -= 50;
-    tempScore /= 10;
-  }
-
-  vg_page_flipping();
-}
-
-void draw_menu() {
-
-  if (checkTime() != 0) {
-    printf("Error in checkTime inside: %s\n", __func__);
-    return;
-  }
-
-  int startX = MAX_X - 170;
-
-  for (int i = 0; i < 2; i++) {
-    draw_sprite(hours[i], startX, MAX_Y - 65);
-    startX -= 50;
-  }
-
-  draw_sprite(dots, startX + 145, MAX_Y - 65);
-
-  startX = MAX_X - 30;
-  for (int i = 0; i < 2; i++) {
-    draw_sprite(minutes[i], startX, MAX_Y - 65);
-    startX -= 50;
-  }
-
-  createPlay();
-  createQuit();
-
-  draw_sprite(play, MAX_X / 2, 100);
-  draw_sprite(quit, MAX_X / 2, 200);
-
-  switch (getCurrentOption()) {
-    case SINGLEPLAYER:
-      vg_draw_rectangle(MAX_X / 2 - 120, 140, 240, 10, 0x000000);
-      break;
-    case QUIT:
-      vg_draw_rectangle(MAX_X / 2 - 120, 240, 240, 10, 0x000000);
-      break;
-    default:
-      break;
-  }
-
-  vg_page_flipping();
 }

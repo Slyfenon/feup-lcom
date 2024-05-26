@@ -4,24 +4,16 @@
 #include "game/menu.h"
 #include "utils.h"
 
-typedef enum State{
-    MENU,
-    GAME,
-    ENDGAME
+typedef enum State {
+  MENU,
+  GAME,
+  ENDGAME
 } State;
 
-State (handle_timer)(State state);
+State(handle_timer)(State state);
 
-State (handle_keyboard)(State state, uint8_t* keyboardBytes);
+State(handle_keyboard)(State state, uint8_t *keyboardBytes);
 
-State (handle_mouse)(State state, struct mousePacket* pp);
+State(handle_mouse)(State state, struct mousePacket *pp);
 
-void (draw_targets)();
-
-void (draw_game)();
-
-void (draw_menu)();
-
-int (checkTime)();
-
-void (draw_line)(int len, uint16_t color, int x, int y);
+int(checkTime)();

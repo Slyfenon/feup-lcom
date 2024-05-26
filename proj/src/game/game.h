@@ -1,42 +1,49 @@
-#include <lcom/lcf.h>
+#ifndef __GAME_H
+#define __GAME_H
+#include "sprite.h"
 #include "target.h"
+#include <lcom/lcf.h>
 
 #define MAX_X 1151
 #define MAX_Y 862
 #define NUM_TARGETS 21
 #define NUM_TARGETS_PER_LINE 7
 
-void (initGame)();
+void(initGame)();
 
-int16_t (getX)();
+int16_t(getX)();
 
-int16_t (getY)();
+int16_t(getY)();
 
-int16_t (getXOfTarget)(int i);
+int16_t(getXOfTarget)(int i);
 
-int16_t (getYOfTarget)(int i);
+int16_t(getYOfTarget)(int i);
 
-bool (isActiveTarget)(int i);
+bool(isActiveTarget)(int i);
 
-void (setActiveTarget)(int i, bool value);
+void(setActiveTarget)(int i, bool value);
 
-int16_t (getLastX)();
+void(draw_game)();
 
-int16_t (getLastY)();
+int16_t(getLastX)();
 
-void (addToX)(int16_t delta_x);
+int16_t(getLastY)();
 
-void (addToY)(int16_t delta_y);
+void(addToX)(int16_t delta_x);
 
-void (updateTargets)();
+void(addToY)(int16_t delta_y);
 
-void (updateLastPositionDrawn)();
+void(updateTargets)();
 
-int (getScore)();
+void(updateLastPositionDrawn)();
 
-void (updateTimeLeft)();
+int(getScore)();
 
-bool (endTime)();
+int(getTimeLeft)();
+
+void(updateTimeLeft)();
+
+bool(endTime)();
 
 bool checkCollisionWithTarget(int i);
 
@@ -46,4 +53,7 @@ bool getCanShoot();
 
 void setCanShoot(bool value);
 
-void (endGame)();
+void(endGame)();
+
+void(draw_targets)();
+#endif
