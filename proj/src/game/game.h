@@ -57,6 +57,8 @@ void (setSlowTime)();
 
 void (endSlowTime)();
 
+bool (canSlowTime)();
+
 void(draw_game)();
 
 void(draw_targets)();

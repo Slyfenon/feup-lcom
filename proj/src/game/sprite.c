@@ -60,6 +60,7 @@ int load_sprites() {
   dayDesert = create_sprite(dayDesert_xpm);
   nightDesert = create_sprite(nightDesert_xpm);
   target = create_sprite(target_xpm);
+  clockIcon = create_sprite(clock_xpm);
   scoreSprite = create_sprite(score_xpm);
   for(int i = 0; i < 10; i++) {
     numbers[i] = create_sprite(numbers_xpm[i]);

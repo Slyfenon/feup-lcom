@@ -195,6 +195,10 @@ void endSlowTime() {
   timerSlowTime = 10 * 60;
 }
 
+bool (canSlowTime)() {
+  return (!slowTime && (timerSlowTime == 0));
+}
+
 void(draw_targets)() {
   for (int i = 0; i < NUM_TARGETS; i++) {
     if (isActiveTarget(i))
@@ -240,10 +244,11 @@ void (draw_timeLeft)() {
 }
 
 void(draw_game)() {
-
   draw_targets();
   draw_sprite(aim, getX(), getY());
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
+
+  if (canSlowTime()) draw_sprite(clockIcon, 70, MAX_Y - 70);
 }

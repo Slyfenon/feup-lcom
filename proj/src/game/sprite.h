@@ -5,6 +5,7 @@
 #include "../resources/sprites/dayDesert.xpm"
 #include "../resources/sprites/nightDesert.xpm"
 #include "../resources/sprites/target.xpm"
+#include "../resources/sprites/clock.xpm"
 #include "../resources/font/score.xpm"
 #include "../resources/font/numbers.xpm"
 
@@ -19,6 +20,7 @@ Sprite* dayDesert;
 Sprite* nightDesert;
 Sprite* aim;
 Sprite* target;
+Sprite* clockIcon;
 Sprite* scoreSprite;
 Sprite* numbers[10];
 
