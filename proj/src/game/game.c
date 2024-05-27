@@ -130,7 +130,7 @@ void(updateDynamites)() {
   int step = slowTime ? 2 : 5;
 
   if (!isUpdatingDynamites) {
-    dynamiteIndex = (x + y) % NUM_DYNAMITE;  //pseudorandom
+    dynamiteIndex = (x + y) % NUM_DYNAMITE; // pseudorandom
     isUpdatingDynamites = true;
   }
 
@@ -206,11 +206,14 @@ bool checkCollisionWithDynamite(int i) {
 
   if (distance < TARGET_RADIUS_2) {
     setActiveDynamite(i, false);
-    if(score < 50)
+    if (score < 50)
       score = 0;
     else {
       score -= 50;
     }
+    isUpdatingDynamites = false;
+    dynamites[i]->pos.y = -100;
+    dynamites[i]->active = true;
     return true;
   }
 
@@ -218,13 +221,14 @@ bool checkCollisionWithDynamite(int i) {
 }
 
 bool checkAllCollisions() {
+
+  if (checkCollisionWithDynamite(dynamiteIndex))
+    return true;
+
   for (int i = NUM_TARGETS - 1; i >= 0; i--) {
     if (checkCollisionWithTarget(i))
       return true;
   }
-
-  if (checkCollisionWithDynamite(dynamiteIndex))
-    return true;
 
   return false;
 }
