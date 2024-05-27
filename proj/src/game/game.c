@@ -12,7 +12,11 @@ bool canShoot;
 bool slowTime;
 int timerSlowTime;
 
+bool isUpdatingDynamites = false;
+int randomIndex;
+
 Target *targets[NUM_TARGETS];
+Dynamite *dynamites[NUM_DYNAMITE];
 
 void(initGame)() {
   score = 0;
@@ -36,6 +40,11 @@ void(initGame)() {
     x = -100;
     y += 150;
   }
+  i = 0;
+  while (i < NUM_DYNAMITE) {
+    dynamites[i] = createDynamite(100 + i * 200, -100, DOWN);
+    i++;
+  }
 }
 
 int16_t(getX)() {
@@ -52,6 +61,14 @@ int16_t(getXOfTarget)(int i) {
 
 int16_t(getYOfTarget)(int i) {
   return targets[i]->pos.y;
+}
+
+bool isActiveDynamite(int i) {
+  return dynamites[i]->active;
+}
+
+void setActiveDynamite(int i, bool value) {
+  dynamites[i]->active = value;
 }
 
 bool(isActiveTarget)(int i) {
@@ -109,6 +126,32 @@ void(updateTargets)() {
   }
 }
 
+void(updateDynamites)() {
+
+  if (!isUpdatingDynamites) {
+    randomIndex = rand() % NUM_DYNAMITE;
+    isUpdatingDynamites = true;
+  }
+  for (int i = 0; i < NUM_DYNAMITE; i++) {
+    if (i == randomIndex) {
+      if (dynamites[i]->dir == DOWN) {
+        dynamites[i]->pos.y = dynamites[i]->pos.y + 5;
+        if (dynamites[i]->pos.y > 500) {
+          dynamites[i]->dir = UP;
+        }
+      }
+      else if (dynamites[i]->dir == UP) {
+        dynamites[i]->pos.y = dynamites[i]->pos.y - 5;
+        if (dynamites[i]->pos.y < -100) {
+          dynamites[i]->dir = DOWN;
+          isUpdatingDynamites = false;
+          break;
+        }
+      }
+    }
+  }
+}
+
 void(updateLastPositionDrawn)() {
   lastX = x;
   lastY = y;
@@ -124,7 +167,8 @@ int(getTimeLeft)() {
 
 void(updateTimes)() {
   timeLeft--;
-  if (timerSlowTime > 0) timerSlowTime--;
+  if (timerSlowTime > 0)
+    timerSlowTime--;
 
   if (slowTime && (timerSlowTime == 0)) {
     endSlowTime();
@@ -159,9 +203,26 @@ bool checkCollisionWithTarget(int i) {
   return false;
 }
 
+bool checkCollisionWithDynamite(int i) {
+  int distance = (x - dynamites[i]->pos.x) * (x - dynamites[i]->pos.x) + (y - dynamites[i]->pos.y) * (y - dynamites[i]->pos.y);
+
+  if (distance < DYNAMITE_X * DYNAMITE_Y) {
+    setActiveDynamite(i, false);
+    score -= 100;
+    return true;
+  }
+
+  return false;
+}
+
 bool checkAllCollisions() {
   for (int i = NUM_TARGETS - 1; i >= 0; i--) {
     if (checkCollisionWithTarget(i))
+      return true;
+  }
+
+  for (int i = NUM_DYNAMITE - 1; i >= 0; i--) {
+    if (checkCollisionWithDynamite(i))
       return true;
   }
 
@@ -195,7 +256,7 @@ void endSlowTime() {
   timerSlowTime = 10 * 60;
 }
 
-bool (canSlowTime)() {
+bool(canSlowTime)() {
   return (!slowTime && (timerSlowTime == 0));
 }
 
@@ -206,7 +267,14 @@ void(draw_targets)() {
   }
 }
 
-void (draw_score)() {
+void(draw_dynamites)() {
+  for (int i = 0; i < NUM_DYNAMITE; i++) {
+    if (isActiveDynamite(i))
+      draw_sprite(dynamite, dynamites[i]->pos.x, dynamites[i]->pos.y);
+  }
+}
+
+void(draw_score)() {
   int numDigits = 0;
   int tempScore = score;
   while (tempScore != 0) {
@@ -225,7 +293,7 @@ void (draw_score)() {
   }
 }
 
-void (draw_timeLeft)() {
+void(draw_timeLeft)() {
   int tempTime = getTimeLeft() / 60;
   int numDigitsTime = 0;
   while (tempTime != 0) {
@@ -235,7 +303,7 @@ void (draw_timeLeft)() {
 
   int startX = MAX_X / 2;
   tempTime = getTimeLeft() / 60;
-  for (int i = numDigitsTime ; i > 0; i--) {
+  for (int i = numDigitsTime; i > 0; i--) {
     int digit = tempTime % 10;
     draw_sprite(numbers[digit], startX, MAX_Y - 65);
     startX -= 50;
@@ -245,10 +313,12 @@ void (draw_timeLeft)() {
 
 void(draw_game)() {
   draw_targets();
+  draw_dynamites();
   draw_sprite(aim, getX(), getY());
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
 
-  if (canSlowTime()) draw_sprite(clockIcon, 70, MAX_Y - 70);
+  if (canSlowTime())
+    draw_sprite(clockIcon, 70, MAX_Y - 70);
 }

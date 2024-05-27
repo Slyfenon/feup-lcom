@@ -23,6 +23,7 @@ State(handle_timer)(State state) {
   if (state == GAME) {
     updateTimes();
     updateTargets();
+    updateDynamites();
     if (checkTime() != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
       return ENDGAME;
