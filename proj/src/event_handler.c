@@ -2,7 +2,7 @@
 #include "devices/graphics/graphics.h"
 #include "game/sprite.h"
 
-uint32_t color = 0;
+bool draw = true;
 
 int checkTime() {
   if (readTime() != 0) {
@@ -24,11 +24,14 @@ State(handle_timer)(State state) {
     updateTimes();
     updateTargets();
     updateDynamites();
+
     if (checkTime() != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
       return ENDGAME;
     }
+    
     draw_game();
+    
     if (endTime()) {
       endGame();
       return MENU;

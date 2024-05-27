@@ -13,7 +13,7 @@ bool slowTime;
 int timerSlowTime;
 
 bool isUpdatingDynamites = false;
-int randomIndex;
+int dynamiteIndex;
 
 Target *targets[NUM_TARGETS];
 Dynamite *dynamites[NUM_DYNAMITE];
@@ -127,27 +127,25 @@ void(updateTargets)() {
 }
 
 void(updateDynamites)() {
+  int step = slowTime ? 2 : 5;
 
   if (!isUpdatingDynamites) {
-    randomIndex = rand() % NUM_DYNAMITE;
+    dynamiteIndex = (x + y) % NUM_DYNAMITE;  //pseudorandom
     isUpdatingDynamites = true;
   }
-  for (int i = 0; i < NUM_DYNAMITE; i++) {
-    if (i == randomIndex) {
-      if (dynamites[i]->dir == DOWN) {
-        dynamites[i]->pos.y = dynamites[i]->pos.y + 5;
-        if (dynamites[i]->pos.y > 500) {
-          dynamites[i]->dir = UP;
-        }
-      }
-      else if (dynamites[i]->dir == UP) {
-        dynamites[i]->pos.y = dynamites[i]->pos.y - 5;
-        if (dynamites[i]->pos.y < -100) {
-          dynamites[i]->dir = DOWN;
-          isUpdatingDynamites = false;
-          break;
-        }
-      }
+
+  if (dynamites[dynamiteIndex]->dir == DOWN) {
+    dynamites[dynamiteIndex]->pos.y = dynamites[dynamiteIndex]->pos.y + step;
+    if (dynamites[dynamiteIndex]->pos.y > 500) {
+      dynamites[dynamiteIndex]->dir = UP;
+    }
+  }
+
+  else if (dynamites[dynamiteIndex]->dir == UP) {
+    dynamites[dynamiteIndex]->pos.y = dynamites[dynamiteIndex]->pos.y - step;
+    if (dynamites[dynamiteIndex]->pos.y < -100) {
+      dynamites[dynamiteIndex]->dir = DOWN;
+      isUpdatingDynamites = false;
     }
   }
 }
@@ -206,10 +204,13 @@ bool checkCollisionWithTarget(int i) {
 bool checkCollisionWithDynamite(int i) {
   int distance = (x - dynamites[i]->pos.x) * (x - dynamites[i]->pos.x) + (y - dynamites[i]->pos.y) * (y - dynamites[i]->pos.y);
 
-  if (distance < DYNAMITE_X * DYNAMITE_Y) {
+  if (distance < TARGET_RADIUS_2) {
     setActiveDynamite(i, false);
-    if(score > 0)
+    if(score < 50)
+      score = 0;
+    else {
       score -= 50;
+    }
     return true;
   }
 
@@ -222,10 +223,8 @@ bool checkAllCollisions() {
       return true;
   }
 
-  for (int i = NUM_DYNAMITE - 1; i >= 0; i--) {
-    if (checkCollisionWithDynamite(i))
-      return true;
-  }
+  if (checkCollisionWithDynamite(dynamiteIndex))
+    return true;
 
   return false;
 }
