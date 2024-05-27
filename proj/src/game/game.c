@@ -208,7 +208,8 @@ bool checkCollisionWithDynamite(int i) {
 
   if (distance < DYNAMITE_X * DYNAMITE_Y) {
     setActiveDynamite(i, false);
-    score -= 100;
+    if(score > 0)
+      score -= 50;
     return true;
   }
 

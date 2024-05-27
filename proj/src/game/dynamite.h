@@ -5,7 +5,7 @@
 #include "position.h"
 
 #define DYNAMITE_X 106
-#define DYNAMITE_Y 109
+#define DYNAMITE_Y 10
 
 
 typedef struct {
