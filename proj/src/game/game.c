@@ -286,6 +286,9 @@ void(draw_score)() {
     numDigits++;
   }
 
+  if (numDigits == 0)
+    numDigits = 1;
+
   int startX = MAX_X - 30;
 
   tempScore = score;
@@ -304,6 +307,9 @@ void(draw_timeLeft)() {
     tempTime /= 10;
     numDigitsTime++;
   }
+
+  if (numDigitsTime == 0)
+    numDigitsTime = 1;
 
   int startX = MAX_X / 2;
   tempTime = getTimeLeft() / 60;
