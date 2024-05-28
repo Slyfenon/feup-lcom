@@ -2,32 +2,25 @@
 #include "devices/graphics/graphics.h"
 #include "game/sprite.h"
 
-uint32_t color = 0;
+bool draw = true;
 
-int checkTime() {
-  if (readTime() != 0) {
-    printf("Error in readTime inside: %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-
+void background() {
   if (timeRTC.hours > 19 || timeRTC.hours < 7) {
     draw_background(nightDesert->map);
   }
   else {
     draw_background(dayDesert->map);
   }
-  return EXIT_SUCCESS;
 }
 
 State(handle_timer)(State state) {
   if (state == GAME) {
     updateTimes();
     updateTargets();
-    if (checkTime() != 0) {
-      printf("Error in checkTime inside: %s\n", __func__);
-      return ENDGAME;
-    }
+    updateDynamites();
+    background();
     draw_game();
+
     if (endTime()) {
       endGame();
       return MENU;
@@ -35,10 +28,11 @@ State(handle_timer)(State state) {
     vg_page_flipping();
   }
   if (state == MENU) {
-    if (checkTime() != 0) {
+    if (readTime() != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
       return ENDGAME;
     }
+    background();
     draw_menu();
     vg_page_flipping();
   }

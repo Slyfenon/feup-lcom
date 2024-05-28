@@ -16,4 +16,4 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes);
 
 State(handle_mouse)(State state, struct mousePacket *pp);
 
-int(checkTime)();
+void(background)();
