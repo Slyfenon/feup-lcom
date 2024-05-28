@@ -189,17 +189,18 @@ bool checkCollisionWithTarget(int i) {
     setActiveTarget(i, false);
 
     if (distance < TARGET_RADIUS_2_CENTER) {
-      score += 50;
-    }
-
-    else if (distance < TARGET_RADIUS_2_MIDDLE) {
-      score += 25;
-    }
-
-    else {
       score += 10;
     }
 
+    else if (distance < TARGET_RADIUS_2_MIDDLE) {
+      score += 5;
+    }
+
+    else {
+      score += 1;
+    }
+    if (score > 999)
+      score = 999;
     return true;
   }
 
