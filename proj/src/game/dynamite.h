@@ -12,9 +12,9 @@ typedef struct {
     Position pos;
     bool active;
     Direction dir;
+    int explosionFrame;
 } Dynamite;
 
 Dynamite* createDynamite(int x, int y, Direction dir);
-
 
 #endif

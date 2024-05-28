@@ -12,6 +12,11 @@ bool canShoot;
 bool slowTime;
 int timerSlowTime;
 
+bool checkExplosion = false;
+int explosionX;
+int explosionY;
+int frameExplosion = 0;
+
 bool isUpdatingDynamites = false;
 int dynamiteIndex;
 
@@ -206,11 +211,15 @@ bool checkCollisionWithDynamite(int i) {
 
   if (distance < TARGET_RADIUS_2) {
     setActiveDynamite(i, false);
+    checkExplosion = true;
+    explosionX = dynamites[i]->pos.x;
+    explosionY = dynamites[i]->pos.y;
     if (score < 50)
       score = 0;
     else {
       score -= 50;
     }
+
     isUpdatingDynamites = false;
     dynamites[i]->pos.y = -100;
     dynamites[i]->active = true;
@@ -328,6 +337,16 @@ void(draw_game)() {
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
+
+  if (checkExplosion) {
+    draw_sprite(explosion[frameExplosion / 5], explosionX, explosionY);
+    frameExplosion++;
+
+    if (frameExplosion == 25) {
+      checkExplosion = false;
+      frameExplosion = 0;
+    }
+  }
 
   if (canSlowTime())
     draw_sprite(clockIcon, 70, MAX_Y - 70);

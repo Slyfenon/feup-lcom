@@ -7,6 +7,7 @@
 #include "../resources/sprites/dynamite.xpm"
 #include "../resources/sprites/nightDesert.xpm"
 #include "../resources/sprites/target.xpm"
+#include "../resources/sprites/explosion.xpm"
 #include "../resources/font/numbers.xpm"
 #include "../resources/font/score.xpm"
 
@@ -22,6 +23,7 @@ Sprite *nightDesert;
 Sprite *aim;
 Sprite *target;
 Sprite *dynamite;
+Sprite *explosion[5];
 Sprite *clockIcon;
 Sprite *scoreSprite;
 Sprite *numbers[10];

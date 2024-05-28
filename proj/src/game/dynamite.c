@@ -10,6 +10,7 @@ Dynamite* createDynamite(int x, int y, Direction dir) {
     dynamite->pos = *pos;
     dynamite->dir = dir;
     dynamite->active = true;
+    dynamite->explosionFrame = 0;
 
     return dynamite;
 }
