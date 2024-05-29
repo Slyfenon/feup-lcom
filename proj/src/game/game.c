@@ -149,8 +149,10 @@ void(updateDynamite)() {
   dynamite->pos.y += step;
   if (dynamite->pos.y > 900) {
     dynamite->pos.y = -100;
-    if (score < 10) score = 0;
-    else score -= 10;
+    if (score < 10)
+      score = 0;
+    else
+      score -= 10;
     isUpdatingDynamites = false;
   }
 }
@@ -296,6 +298,15 @@ void(draw_dynamites)() {
   }
 }
 
+void drawLines() {
+
+  int lineY = 100 + TARGET_RADIUS - 15;
+  for (int i = 0; i < 3; i++) {
+    vg_draw_rectangle(0, lineY, MAX_X, 5, 0x696969);
+    lineY += 150;
+  }
+}
+
 void(draw_score)() {
   int numDigits = 0;
   int tempScore = score;
@@ -340,6 +351,7 @@ void(draw_timeLeft)() {
 }
 
 void(draw_game)() {
+  drawLines();
   draw_targets();
   draw_dynamites();
   draw_sprite(aim, getX(), getY());

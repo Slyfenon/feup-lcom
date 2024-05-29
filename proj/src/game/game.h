@@ -76,6 +76,8 @@ void(draw_targets)();
 
 void(draw_dynamites)();
 
+void(drawLines)();
+
 void(draw_score)();
 
 void(draw_timeLeft)();
