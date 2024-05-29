@@ -146,19 +146,12 @@ void(updateDynamite)() {
     isUpdatingDynamites = true;
   }
 
-  if (dynamite->dir == DOWN) {
-    dynamite->pos.y = dynamite->pos.y + step;
-    if (dynamite->pos.y > 500) {
-      dynamite->dir = UP;
-    }
-  }
-
-  else if (dynamite->dir == UP) {
-    dynamite->pos.y = dynamite->pos.y - step;
-    if (dynamite->pos.y < -100) {
-      dynamite->dir = DOWN;
-      isUpdatingDynamites = false;
-    }
+  dynamite->pos.y += step;
+  if (dynamite->pos.y > 900) {
+    dynamite->pos.y = -100;
+    if (score < 10) score = 0;
+    else score -= 10;
+    isUpdatingDynamites = false;
   }
 }
 
@@ -222,12 +215,6 @@ bool checkCollisionWithDynamite() {
     checkExplosion = true;
     explosionX = dynamite->pos.x;
     explosionY = dynamite->pos.y;
-    if (score < 10)
-      score = 0;
-    else {
-      score -= 10;
-    }
-
     isUpdatingDynamites = false;
     dynamite->pos.y = -100;
     dynamite->active = true;
