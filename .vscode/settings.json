@@ -6,6 +6,8 @@
         "map": "c",
         "locale": "c",
         "string": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "chrono": "c",
+        "*.xpm": "c"
     }
 }

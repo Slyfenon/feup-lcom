@@ -22,7 +22,7 @@ Sprite *dayDesert;
 Sprite *nightDesert;
 Sprite *aim;
 Sprite *target;
-Sprite *dynamite;
+Sprite *dynamiteIcon;
 Sprite *explosion[5];
 Sprite *clockIcon;
 Sprite *scoreSprite;

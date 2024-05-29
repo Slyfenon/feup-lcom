@@ -8,7 +8,6 @@
 #define MAX_X 1151
 #define MAX_Y 862
 #define NUM_TARGETS 21
-#define NUM_DYNAMITE 5
 #define NUM_TARGETS_PER_LINE 7
 
 void(initGame)();
@@ -21,9 +20,9 @@ int16_t(getXOfTarget)(int i);
 
 int16_t(getYOfTarget)(int i);
 
-bool isActiveDynamite(int i);
+bool isActiveDynamite();
 
-void setActiveDynamite(int i, bool value);
+void setActiveDynamite(bool value);
 
 bool(isActiveTarget)(int i);
 
@@ -39,7 +38,7 @@ void(addToY)(int16_t delta_y);
 
 void(updateTargets)();
 
-void(updateDynamites)();
+void(updateDynamite)();
 
 void(updateLastPositionDrawn)();
 

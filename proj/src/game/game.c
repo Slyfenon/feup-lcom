@@ -18,10 +18,9 @@ int explosionY;
 int frameExplosion = 0;
 
 bool isUpdatingDynamites = false;
-int dynamiteIndex;
 
 Target *targets[NUM_TARGETS];
-Dynamite *dynamites[NUM_DYNAMITE];
+Dynamite *dynamite;
 
 void(initGame)() {
   score = 0;
@@ -46,10 +45,8 @@ void(initGame)() {
     y += 150;
   }
   i = 0;
-  while (i < NUM_DYNAMITE) {
-    dynamites[i] = createDynamite(100 + i * 200, -100, DOWN);
-    i++;
-  }
+
+  dynamite = createDynamite(100, -100, DOWN);
 }
 
 int16_t(getX)() {
@@ -68,12 +65,12 @@ int16_t(getYOfTarget)(int i) {
   return targets[i]->pos.y;
 }
 
-bool isActiveDynamite(int i) {
-  return dynamites[i]->active;
+bool isActiveDynamite() {
+  return dynamite->active;
 }
 
-void setActiveDynamite(int i, bool value) {
-  dynamites[i]->active = value;
+void setActiveDynamite(bool value) {
+  dynamite->active = value;
 }
 
 bool(isActiveTarget)(int i) {
@@ -131,25 +128,25 @@ void(updateTargets)() {
   }
 }
 
-void(updateDynamites)() {
+void(updateDynamite)() {
   int step = slowTime ? 2 : 5;
 
   if (!isUpdatingDynamites) {
-    dynamiteIndex = (x + y) % NUM_DYNAMITE; // pseudorandom
+    dynamite->pos.x = ((x + y) * timeLeft) % MAX_X; // pseudorandom
     isUpdatingDynamites = true;
   }
 
-  if (dynamites[dynamiteIndex]->dir == DOWN) {
-    dynamites[dynamiteIndex]->pos.y = dynamites[dynamiteIndex]->pos.y + step;
-    if (dynamites[dynamiteIndex]->pos.y > 500) {
-      dynamites[dynamiteIndex]->dir = UP;
+  if (dynamite->dir == DOWN) {
+    dynamite->pos.y = dynamite->pos.y + step;
+    if (dynamite->pos.y > 500) {
+      dynamite->dir = UP;
     }
   }
 
-  else if (dynamites[dynamiteIndex]->dir == UP) {
-    dynamites[dynamiteIndex]->pos.y = dynamites[dynamiteIndex]->pos.y - step;
-    if (dynamites[dynamiteIndex]->pos.y < -100) {
-      dynamites[dynamiteIndex]->dir = DOWN;
+  else if (dynamite->dir == UP) {
+    dynamite->pos.y = dynamite->pos.y - step;
+    if (dynamite->pos.y < -100) {
+      dynamite->dir = DOWN;
       isUpdatingDynamites = false;
     }
   }
@@ -207,23 +204,23 @@ bool checkCollisionWithTarget(int i) {
   return false;
 }
 
-bool checkCollisionWithDynamite(int i) {
-  int distance = (x - dynamites[i]->pos.x) * (x - dynamites[i]->pos.x) + (y - dynamites[i]->pos.y) * (y - dynamites[i]->pos.y);
+bool checkCollisionWithDynamite() {
+  int distance = (x - dynamite->pos.x) * (x - dynamite->pos.x) + (y - dynamite->pos.y) * (y - dynamite->pos.y);
 
   if (distance < TARGET_RADIUS_2) {
-    setActiveDynamite(i, false);
+    setActiveDynamite(false);
     checkExplosion = true;
-    explosionX = dynamites[i]->pos.x;
-    explosionY = dynamites[i]->pos.y;
-    if (score < 50)
+    explosionX = dynamite->pos.x;
+    explosionY = dynamite->pos.y;
+    if (score < 10)
       score = 0;
     else {
-      score -= 50;
+      score -= 10;
     }
 
     isUpdatingDynamites = false;
-    dynamites[i]->pos.y = -100;
-    dynamites[i]->active = true;
+    dynamite->pos.y = -100;
+    dynamite->active = true;
     return true;
   }
 
@@ -232,7 +229,7 @@ bool checkCollisionWithDynamite(int i) {
 
 bool checkAllCollisions() {
 
-  if (checkCollisionWithDynamite(dynamiteIndex))
+  if (checkCollisionWithDynamite())
     return true;
 
   for (int i = NUM_TARGETS - 1; i >= 0; i--) {
@@ -282,9 +279,8 @@ void(draw_targets)() {
 }
 
 void(draw_dynamites)() {
-  for (int i = 0; i < NUM_DYNAMITE; i++) {
-    if (isActiveDynamite(i))
-      draw_sprite(dynamite, dynamites[i]->pos.x, dynamites[i]->pos.y);
+  if (isActiveDynamite()) {
+    draw_sprite(dynamiteIcon, dynamite->pos.x, dynamite->pos.y);
   }
 }
 

@@ -17,7 +17,7 @@ State(handle_timer)(State state) {
   if (state == GAME) {
     updateTimes();
     updateTargets();
-    updateDynamites();
+    updateDynamite();
     background();
     draw_game();
 
