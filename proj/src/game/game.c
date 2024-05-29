@@ -65,6 +65,14 @@ int16_t(getYOfTarget)(int i) {
   return targets[i]->pos.y;
 }
 
+int16_t(getFallCounterOfTarget)(int i) {
+  return targets[i]->fallCounter;
+}
+
+void(incrementFallCounterOfTarget)(int i) {
+  targets[i]->fallCounter++;
+}
+
 bool isActiveDynamite() {
   return dynamite->active;
 }
@@ -119,11 +127,13 @@ void(updateTargets)() {
     if (targets[i]->pos.x > 1200) {
       targets[i]->pos.x = -200;
       targets[i]->active = true;
+      targets[i]->fallCounter = 0;
     }
 
     else if (targets[i]->pos.x < -200) {
       targets[i]->pos.x = 1200;
       targets[i]->active = true;
+      targets[i]->fallCounter = 0;
     }
   }
 }
@@ -275,12 +285,27 @@ void(draw_targets)() {
   for (int i = 0; i < NUM_TARGETS; i++) {
     if (isActiveTarget(i))
       draw_sprite(target, getXOfTarget(i), getYOfTarget(i));
+
+    else if (targets[i]->fallCounter < 12) {
+      draw_sprite(fall[getFallCounterOfTarget(i) / 4], getXOfTarget(i), getYOfTarget(i));
+      targets[i]->fallCounter++;
+    }
   }
 }
 
 void(draw_dynamites)() {
   if (isActiveDynamite()) {
     draw_sprite(dynamiteIcon, dynamite->pos.x, dynamite->pos.y);
+  }
+
+  if (checkExplosion) {
+    draw_sprite(explosion[frameExplosion / 5], explosionX, explosionY);
+    frameExplosion++;
+
+    if (frameExplosion == 25) {
+      checkExplosion = false;
+      frameExplosion = 0;
+    }
   }
 }
 
@@ -334,16 +359,6 @@ void(draw_game)() {
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
-
-  if (checkExplosion) {
-    draw_sprite(explosion[frameExplosion / 5], explosionX, explosionY);
-    frameExplosion++;
-
-    if (frameExplosion == 25) {
-      checkExplosion = false;
-      frameExplosion = 0;
-    }
-  }
 
   if (canSlowTime())
     draw_sprite(clockIcon, 70, MAX_Y - 70);

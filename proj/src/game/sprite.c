@@ -66,6 +66,9 @@ int load_sprites() {
   for(int i = 0; i < 10; i++) {
     numbers[i] = create_sprite(numbers_xpm[i]);
   }
+  for(int i = 0; i < 3; i++) {
+    fall[i] = create_sprite(fall_xpm[i]);
+  }
   for(int i = 0; i < 5; i++) {
     explosion[i] = create_sprite(explosion_xpm[i]);
   }

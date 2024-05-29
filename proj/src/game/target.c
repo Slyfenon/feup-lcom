@@ -10,6 +10,7 @@ Target* createTarget(int x, int y, Direction dir) {
     target->pos = *pos;
     target->dir = dir;
     target->active = true;
+    target->fallCounter = 0;
 
     return target;
 }

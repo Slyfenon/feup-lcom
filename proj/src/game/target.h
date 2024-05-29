@@ -12,6 +12,7 @@
 typedef struct {
     Position pos;
     bool active;
+    int16_t fallCounter;
     Direction dir;
 } Target;
 

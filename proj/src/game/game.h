@@ -20,6 +20,10 @@ int16_t(getXOfTarget)(int i);
 
 int16_t(getYOfTarget)(int i);
 
+int16_t(getFallCounterOfTarget)(int i);
+
+void(incrementFallCounterOfTarget)(int i);
+
 bool isActiveDynamite();
 
 void setActiveDynamite(bool value);
