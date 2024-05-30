@@ -56,6 +56,8 @@ bool(endTime)();
 
 bool checkCollisionWithTarget(int i);
 
+bool checkCollisionWithTargets();
+
 bool checkAllCollisions();
 
 bool getCanShoot();

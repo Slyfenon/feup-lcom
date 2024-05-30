@@ -212,6 +212,31 @@ bool checkCollisionWithTarget(int i) {
   return false;
 }
 
+bool checkCollisionWithTargets() {
+  if ((y > 46) && (y < 154)) {
+    for (int i = 0; i < 7; i++) {
+      if (checkCollisionWithTarget(i))
+        return true;
+    }
+  }
+
+  else if ((y > 196) && (y < 304)) {
+    for (int i = 7; i < 14; i++) {
+      if (checkCollisionWithTarget(i))
+        return true;
+    }
+  }
+
+  else if ((y > 346) && (y < 454)) {
+    for (int i = 14; i < 21; i++) {
+      if (checkCollisionWithTarget(i))
+        return true;
+    }
+  }
+
+  return false;
+}
+
 bool checkCollisionWithDynamite() {
   int distance = (x - dynamite->pos.x) * (x - dynamite->pos.x) + (y - dynamite->pos.y) * (y - dynamite->pos.y);
 
@@ -234,9 +259,8 @@ bool checkAllCollisions() {
   if (checkCollisionWithDynamite())
     return true;
 
-  for (int i = NUM_TARGETS - 1; i >= 0; i--) {
-    if (checkCollisionWithTarget(i))
-      return true;
+  if (checkCollisionWithTargets()) {
+    return true;
   }
 
   return false;
