@@ -2,15 +2,19 @@
 
 int currentOption = 0;
 
-int getCurrentOption() {
+/**
+ * GETTERS AND SETTERS OF MENU VARIABLES
+*/
+
+int (getCurrentOption)() {
   return currentOption;
 }
 
-void setCurrentOption(int option) {
+void (setCurrentOption)(int option) {
   currentOption = option;
 }
 
-void increaseCurrentOption() {
+void (increaseCurrentOption)() {
   if (currentOption == 2) {
     currentOption = 0;
   }
@@ -19,7 +23,7 @@ void increaseCurrentOption() {
   }
 }
 
-void decreaseCurrentOption() {
+void (decreaseCurrentOption)() {
   if (currentOption == 0) {
     currentOption = 2;
   }
@@ -28,12 +32,13 @@ void decreaseCurrentOption() {
   }
 }
 
-void loadMenu() {
-  quit = create_sprite(quit_xpm);
-  play = create_sprite(play_xpm);
-}
 
-int readTime() {
+
+/**
+ * TIME FUNCTION
+*/
+
+int (readTime)() {
   if (rtc_read_time(&timeRTC) != 0) {
     printf("Error in rtc_read_time inside: %s\n", __func__);
     return EXIT_FAILURE;
@@ -56,7 +61,18 @@ int readTime() {
   return EXIT_SUCCESS;
 }
 
-void draw_menu() {
+
+
+/**
+ * DRAW FUNCTIONS 
+*/
+
+void (loadMenu)() {
+  quit = create_sprite(quit_xpm);
+  play = create_sprite(play_xpm);
+}
+
+void (draw_menu)() {
 
   int startX = MAX_X - 170;
 

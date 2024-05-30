@@ -20,16 +20,32 @@ Sprite *minutes[2];
 
 rtc_time timeRTC;
 
-int getCurrentOption();
+/**
+ * GETTERS AND SETTERS OF MENU VARIABLES
+*/
 
-void setCurrentOption(int option);
+int (getCurrentOption)();
 
-void increaseCurrentOption();
+void (setCurrentOption)(int option);
 
-void decreaseCurrentOption();
+void (increaseCurrentOption)();
 
-void loadMenu();
+void (decreaseCurrentOption)();
 
-int readTime();
 
-void draw_menu();
+
+/**
+ * TIME FUNCTION
+*/
+
+int (readTime)();
+
+
+
+/**
+ * DRAW FUNCTIONS 
+*/
+
+void (loadMenu)();
+
+void (draw_menu)();

@@ -1,5 +1,9 @@
 #include "gameover.h"
 
+/**
+ * DRAW FUNCTIONS 
+*/
+
 void load_gameover() {
   GameOver = create_sprite(gameover_xpm);
   GameOverESC = create_sprite(gameoverEsc_xpm);

@@ -8,6 +8,10 @@ Sprite *GameOver;
 Sprite *GameOverESC; 
 
 /**
+ * DRAW FUNCTIONS 
+*/
+
+/**
  * @brief Loads the game over screen.
  * 
  * This function is responsible for loading the game over screen, which is displayed when the game ends.
