@@ -2,11 +2,13 @@
 
 #include "game/game.h"
 #include "game/menu.h"
+#include "game/gameover.h"
 #include "utils.h"
 
 typedef enum State {
   MENU,
   GAME,
+  GAMEOVER,
   ENDGAME
 } State;
 

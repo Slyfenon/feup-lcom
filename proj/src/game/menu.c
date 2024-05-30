@@ -28,12 +28,9 @@ void decreaseCurrentOption() {
   }
 }
 
-void createPlay() {
-  play = create_sprite(play_xpm);
-}
-
-void createQuit() {
+void loadMenu() {
   quit = create_sprite(quit_xpm);
+  play = create_sprite(play_xpm);
 }
 
 int readTime() {
@@ -75,9 +72,7 @@ void draw_menu() {
     draw_sprite(minutes[i], startX, MAX_Y - 65);
     startX -= 50;
   }
-
-  createPlay();
-  createQuit();
+  loadMenu();
 
   draw_sprite(play, MAX_X / 2, 100);
   draw_sprite(quit, MAX_X / 2, 200);

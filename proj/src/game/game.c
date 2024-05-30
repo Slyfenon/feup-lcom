@@ -23,7 +23,10 @@ Target *targets[NUM_TARGETS];
 Dynamite *dynamite;
 
 void(initGame)() {
-  score = 0;
+
+  if (score >= 0) {
+    score = 0;
+  }
   timeLeft = 30 * 60;
   timerSlowTime = 0;
   canShoot = true;
@@ -250,7 +253,6 @@ void setCanShoot(bool value) {
 void(endGame)() {
   x = 500;
   y = 400;
-  score = 0;
   timeLeft = 10 * 60;
 }
 

@@ -2,8 +2,8 @@
 #include "../resources/font/font.xpm"
 #include "../resources/font/play.xpm"
 #include "../resources/font/quit.xpm"
-#include "sprite.h"
 #include "game.h"
+#include "sprite.h"
 #include <lcom/lcf.h>
 
 typedef enum Option {
@@ -28,9 +28,7 @@ void increaseCurrentOption();
 
 void decreaseCurrentOption();
 
-void createPlay();
-
-void createQuit();
+void loadMenu();
 
 int readTime();
 

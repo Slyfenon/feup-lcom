@@ -23,7 +23,7 @@ State(handle_timer)(State state) {
 
     if (endTime()) {
       endGame();
-      return MENU;
+      return GAMEOVER;
     }
     vg_page_flipping();
   }
@@ -37,7 +37,14 @@ State(handle_timer)(State state) {
     vg_page_flipping();
   }
   if (state == ENDGAME) {
-    // não há nada ainda
+    return ENDGAME;
+  }
+
+  if (state == GAMEOVER) {
+    background();
+    draw_gameover();
+    vg_page_flipping();
+    return GAMEOVER;
   }
 
   return state;
@@ -69,6 +76,12 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
     }
     return MENU;
   }
+  if (state == GAMEOVER) {
+    if (keyboardBytes[0] == 0x81) {
+      return MENU;
+    }
+    return GAMEOVER;
+  }
   return GAME;
 }
 
@@ -94,12 +107,15 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     return GAME;
   }
   if (state == MENU) {
-    // não há nada ainda
     return MENU;
   }
 
   if (state == ENDGAME) {
     return ENDGAME;
+  }
+
+  if (state == GAMEOVER) {
+    return GAMEOVER;
   }
 
   return MENU;
