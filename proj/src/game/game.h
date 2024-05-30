@@ -10,78 +10,123 @@
 #define NUM_TARGETS 21
 #define NUM_TARGETS_PER_LINE 7
 
-void(initGame)();
+/**
+ * GENERIC GAME FUNCTIONS
+*/
 
-int16_t(getX)();
+void (initGame)();
 
-int16_t(getY)();
+void (endGame)();
 
-int16_t(getXOfTarget)(int i);
 
-int16_t(getYOfTarget)(int i);
+// GAME UPDATES
 
-int16_t(getFallCounterOfTarget)(int i);
+void (updateTimes)();
 
-void(incrementFallCounterOfTarget)(int i);
+void (updateTargets)();
 
-bool isActiveDynamite();
+void (updateDynamite)();
 
-void setActiveDynamite(bool value);
 
-bool(isActiveTarget)(int i);
+// SHOTS AND COLLISIONS
 
-void(setActiveTarget)(int i, bool value);
+bool (getCanShoot)();
 
-int16_t(getLastX)();
+void (setCanShoot)(bool value);
 
-int16_t(getLastY)();
+bool (checkAllCollisions)();
 
-void(addToX)(int16_t delta_x);
+bool (checkCollisionWithTargets)();
 
-void(addToY)(int16_t delta_y);
+bool (checkCollisionWithTarget)(int i);
 
-void(updateTargets)();
+bool (checkCollisionWithDynamite)();
 
-void(updateDynamite)();
 
-void(updateLastPositionDrawn)();
+// SLOW TIME
 
-int(getScore)();
+bool (canSlowTime)();
 
-int(getTimeLeft)();
+void (setSlowTime)();
 
-void(updateTimes)();
+void (endSlowTime)();
 
-bool(endTime)();
 
-bool checkCollisionWithTarget(int i);
 
-bool checkCollisionWithTargets();
+/**
+ * GETTERS AND SETTERS OF GAME VARIABLES
+*/
 
-bool checkAllCollisions();
+// PLAYER POSITION
 
-bool getCanShoot();
+int16_t (getX)();
 
-void setCanShoot(bool value);
+int16_t (getY)();
 
-void(endGame)();
+void (addToX)(int16_t delta_x);
 
-void(setSlowTime)();
+void (addToY)(int16_t delta_y);
 
-void(endSlowTime)();
 
-bool(canSlowTime)();
+// TARGETS
 
-void(draw_game)();
+int16_t (getXOfTarget)(int i);
 
-void(draw_targets)();
+int16_t (getYOfTarget)(int i);
 
-void(draw_dynamites)();
+int16_t (getFallCounterOfTarget)(int i);
 
-void(drawLines)();
+void (incrementFallCounterOfTarget)(int i);
 
-void(draw_score)();
+bool (isActiveTarget)(int i);
 
-void(draw_timeLeft)();
+void (setActiveTarget)(int i, bool value);
+
+
+// DYNAMITE
+
+bool (isActiveDynamite)();
+
+void (setActiveDynamite)(bool value);
+
+int16_t (getXOfDynamite)();
+
+int16_t (getYOfDynamite)();
+
+
+// SCORE
+
+int (getScore)();
+
+void (addToScore)(int value);
+
+void (subractToScore)(int value);
+
+void (resetScore)();
+
+
+// TIME
+
+int (getTimeLeft)();
+
+bool (endTime)();
+
+
+
+/**
+ * DRAW FUNCTIONS 
+*/
+
+void (draw_game)();
+
+void (draw_lines)();
+
+void (draw_targets)();
+
+void (draw_dynamite)();
+
+void (draw_score)();
+
+void (draw_timeLeft)();
 
 #endif
