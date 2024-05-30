@@ -2,8 +2,6 @@
 #include "devices/graphics/graphics.h"
 #include "game/sprite.h"
 
-bool draw = true;
-
 void background() {
   if (timeRTC.hours > 19 || timeRTC.hours < 7) {
     draw_background(nightDesert->map);

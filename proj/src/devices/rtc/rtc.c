@@ -66,9 +66,12 @@ uint8_t(convert_bcd_to_decimal)(uint8_t *bcd) {
 
 int(rtc_read_time)(rtc_time *time) {
   uint8_t seconds, minutes, hours;
+  int tries = 20;
 
-  if (rtc_is_blocked())
-    return 1;
+  while (rtc_is_blocked()) {
+    tries--;
+    if (tries == 0) return 1;
+  }
   if (read_time_register(SECONDS, &seconds) != 0)
     return 1;
   if (read_time_register(MINUTES, &minutes) != 0)
