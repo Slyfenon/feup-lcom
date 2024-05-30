@@ -49,7 +49,6 @@ int(proj_main_loop)(int argc, char **argv) {
   message msg;
   int ipc_status, r;
   while (state != ENDGAME) {
-    printf("state: %d\n", state);
     if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
       printf("driver_receive failed with: %d", r);
       continue;
