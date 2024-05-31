@@ -1,13 +1,8 @@
 #include "gameover.h"
 
 /**
- * DRAW FUNCTIONS 
-*/
-
-void load_gameover() {
-  GameOver = create_sprite(gameover_xpm);
-  GameOverESC = create_sprite(gameoverEsc_xpm);
-}
+ * DRAW FUNCTIONS
+ */
 
 void draw_GameOverScore() {
   int tempScore = getScore();
@@ -19,7 +14,6 @@ void draw_GameOverScore() {
 }
 
 void draw_gameover() {
-  load_gameover();
   draw_sprite(GameOver, MAX_X / 2, 100);
   draw_GameOverScore();
   draw_sprite(GameOverESC, MAX_X / 2, MAX_Y - 60);

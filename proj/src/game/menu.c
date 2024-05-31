@@ -67,10 +67,6 @@ int (readTime)() {
  * DRAW FUNCTIONS 
 */
 
-void (loadMenu)() {
-  quit = create_sprite(quit_xpm);
-  play = create_sprite(play_xpm);
-}
 
 void (draw_menu)() {
 
@@ -88,7 +84,6 @@ void (draw_menu)() {
     draw_sprite(minutes[i], startX, MAX_Y - 65);
     startX -= 50;
   }
-  loadMenu();
 
   draw_sprite(play, MAX_X / 2, 100);
   draw_sprite(quit, MAX_X / 2, 200);
