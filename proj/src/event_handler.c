@@ -28,6 +28,7 @@ State(handle_timer)(State state) {
   if (state == MENU) {
     if (readTime() != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
+      delete_sprites();
       return ENDGAME;
     }
     background();
@@ -35,6 +36,7 @@ State(handle_timer)(State state) {
     vg_page_flipping();
   }
   if (state == ENDGAME) {
+    delete_sprites();
     return ENDGAME;
   }
 
@@ -61,6 +63,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
           initGame();
           return GAME;
         case 2:
+          delete_sprites(); 
           return ENDGAME;
         default:
           break;
