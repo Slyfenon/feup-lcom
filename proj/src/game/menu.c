@@ -4,17 +4,17 @@ int currentOption = 0;
 
 /**
  * GETTERS AND SETTERS OF MENU VARIABLES
-*/
+ */
 
-int (getCurrentOption)() {
+int(getCurrentOption)() {
   return currentOption;
 }
 
-void (setCurrentOption)(int option) {
+void(setCurrentOption)(int option) {
   currentOption = option;
 }
 
-void (increaseCurrentOption)() {
+void(increaseCurrentOption)() {
   if (currentOption == 2) {
     currentOption = 0;
   }
@@ -23,7 +23,7 @@ void (increaseCurrentOption)() {
   }
 }
 
-void (decreaseCurrentOption)() {
+void(decreaseCurrentOption)() {
   if (currentOption == 0) {
     currentOption = 2;
   }
@@ -32,20 +32,14 @@ void (decreaseCurrentOption)() {
   }
 }
 
-
-
 /**
  * TIME FUNCTION
-*/
+ */
 
-int (readTime)() {
-  if (rtc_read_time(&timeRTC) != 0) {
-    printf("Error in rtc_read_time inside: %s\n", __func__);
-    return EXIT_FAILURE;
-  }
+int(readTime)(rtc_time *timeRTC) {
 
-  int tempHours = timeRTC.hours;
-  int tempMinutes = timeRTC.minutes;
+  int tempHours = timeRTC->hours;
+  int tempMinutes = timeRTC->minutes;
 
   for (int i = 0; i < 2; i++) {
     uint8_t digit = tempHours % 10;
@@ -57,18 +51,21 @@ int (readTime)() {
     tempMinutes /= 10;
     minutes[i] = numbers[digit];
   }
-  dots = create_sprite(dots_xpm);
   return EXIT_SUCCESS;
 }
 
-
-
 /**
- * DRAW FUNCTIONS 
-*/
+ * DRAW FUNCTIONS
+ */
 
+void(draw_menu)(bool isDay) {
 
-void (draw_menu)() {
+  if (isDay) {
+    draw_background(dayDesert->map);
+  }
+  else {
+    draw_background(nightDesert->map);
+  }
 
   int startX = MAX_X - 170;
 

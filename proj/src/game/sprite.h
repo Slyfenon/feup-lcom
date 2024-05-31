@@ -1,6 +1,7 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 #include "../devices/graphics/graphics.h"
+#include "../resources/font/font.xpm"
 #include "../resources/font/gameover.xpm"
 #include "../resources/font/gameoverEsc.xpm"
 #include "../resources/font/numbers.xpm"

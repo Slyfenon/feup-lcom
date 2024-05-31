@@ -11,6 +11,8 @@
 struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
 enum State state = MENU;
+rtc_time timeRTC;
+
 
 int(main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -27,6 +29,11 @@ int(main)(int argc, char *argv[]) {
 
 int(proj_main_loop)(int argc, char **argv) {
   uint8_t keyboard_irq_set, mouse_irq_set, timer_irq_set;
+
+  if (rtc_read_time(&timeRTC) != 0) {
+    printf("Error in rtc_read_time inside: %s\n", __func__);
+    return EXIT_FAILURE;
+  }
 
   if (set_graphics_mode(DIRECT_COLOR_WITH_32BITS) != OK)
     return EXIT_FAILURE;
@@ -56,7 +63,8 @@ int(proj_main_loop)(int argc, char **argv) {
     if (is_ipc_notify(ipc_status) && _ENDPOINT_P(msg.m_source == HARDWARE)) {
 
       if (msg.m_notify.interrupts & BIT(timer_irq_set)) {
-        state = handle_timer(state);
+        rtc_update_time(&timeRTC);
+        state = handle_timer(state, &timeRTC);
       }
 
       if (msg.m_notify.interrupts & BIT(mouse_irq_set)) {

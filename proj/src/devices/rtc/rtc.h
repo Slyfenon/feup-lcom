@@ -40,6 +40,8 @@ int (rtc_is_binary)();
 
 int (rtc_read_time)(rtc_time *time);
 
+void (rtc_update_time)(rtc_time *time);
+
 int(rtc_to_binary)();
 
 uint8_t (convert_bcd_to_decimal)(uint8_t *bcd);

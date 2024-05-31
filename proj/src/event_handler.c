@@ -2,22 +2,15 @@
 #include "devices/graphics/graphics.h"
 #include "game/sprite.h"
 
-void background() {
-  if (timeRTC.hours > 19 || timeRTC.hours < 7) {
-    draw_background(nightDesert->map);
-  }
-  else {
-    draw_background(dayDesert->map);
-  }
-}
+bool isDay;
 
-State(handle_timer)(State state) {
+State(handle_timer)(State state, rtc_time *timeRTC) {
+  isDay = timeRTC->hours >= 7 && timeRTC->hours < 19;
   if (state == GAME) {
     updateTimes();
     updateTargets();
     updateDynamite();
-    background();
-    draw_game();
+    draw_game(isDay);
 
     if (endTime()) {
       endGame();
@@ -25,20 +18,18 @@ State(handle_timer)(State state) {
     }
   }
   if (state == MENU) {
-    if (readTime() != 0) {
+    if (readTime(timeRTC) != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
       return ENDGAME;
     }
-    background();
-    draw_menu();
+    draw_menu(isDay);
   }
   if (state == ENDGAME) {
     return ENDGAME;
   }
 
   if (state == GAMEOVER) {
-    background();
-    draw_gameover();
+    draw_gameover(isDay);
     vg_page_flipping();
     return GAMEOVER;
   }

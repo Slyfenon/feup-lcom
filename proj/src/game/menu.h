@@ -1,7 +1,6 @@
 #ifndef __MENU_H
 #define __MENU_H
 #include "../devices/rtc/rtc.h"
-#include "../resources/font/font.xpm"
 #include "game.h"
 #include "sprite.h"
 #include <lcom/lcf.h>
@@ -14,8 +13,6 @@ typedef enum Option {
 
 Sprite *hours[2];
 Sprite *minutes[2];
-
-rtc_time timeRTC;
 
 /**
  * GETTERS AND SETTERS OF MENU VARIABLES
@@ -33,11 +30,11 @@ void(decreaseCurrentOption)();
  * TIME FUNCTION
  */
 
-int(readTime)();
+int(readTime)(rtc_time *timeRTC);
 
 /**
  * DRAW FUNCTIONS
  */
 
-void(draw_menu)();
+void(draw_menu)(bool isDay);
 #endif

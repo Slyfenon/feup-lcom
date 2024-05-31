@@ -13,7 +13,13 @@ void draw_GameOverScore() {
   }
 }
 
-void draw_gameover() {
+void draw_gameover(bool isDay) {
+  if (isDay) {
+    draw_background(dayDesert->map);
+  }
+  else {
+    draw_background(nightDesert->map);
+  }
   draw_sprite(GameOver, MAX_X / 2, 100);
   draw_GameOverScore();
   draw_sprite(GameOverESC, MAX_X / 2, MAX_Y - 60);

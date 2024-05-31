@@ -67,6 +67,7 @@ int load_sprites() {
   for (int i = 0; i < 5; i++) {
     explosion[i] = create_sprite(explosion_xpm[i]);
   }
+  dots = create_sprite(dots_xpm);
   loadGameOver();
   return EXIT_SUCCESS;
 }
