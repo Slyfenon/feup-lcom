@@ -51,6 +51,9 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
         case 0:
           initGame();
           return GAME;
+        case 1:
+          initGame();
+          return GAME;  
         case 2:
           delete_sprites(); 
           return ENDGAME;
@@ -58,10 +61,10 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
           break;
       }
     }
-    if (keyboardBytes[0] == 0xE0 && keyboardBytes[1] == 0x48) {
+    if (keyboardBytes[0] == 0xE0 && keyboardBytes[1] == 0x50) {
       increaseCurrentOption();
     }
-    if (keyboardBytes[0] == 0xE0 && keyboardBytes[1] == 0x50) {
+    if (keyboardBytes[0] == 0xE0 && keyboardBytes[1] == 0x48) {
       decreaseCurrentOption();
     }
     return MENU;

@@ -5,7 +5,8 @@
 #include "../resources/font/gameover.xpm"
 #include "../resources/font/gameoverEsc.xpm"
 #include "../resources/font/numbers.xpm"
-#include "../resources/font/play.xpm"
+#include "../resources/font/singleplayer.xpm"
+#include "../resources/font/multiplayer.xpm"
 #include "../resources/font/quit.xpm"
 #include "../resources/font/score.xpm"
 #include "../resources/sprites/aim.xpm"
@@ -34,7 +35,8 @@ Sprite *explosion[5];
 Sprite *clockIcon;
 Sprite *scoreSprite;
 Sprite *numbers[10];
-Sprite *play;
+Sprite *singleplayer;
+Sprite *multiplayer;
 Sprite *quit;
 Sprite *dots;
 Sprite *GameOver;

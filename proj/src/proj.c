@@ -17,7 +17,7 @@ rtc_time timeRTC;
 int(main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
   lcf_trace_calls("/home/lcom/labs/proj/src/trace.txt");
-  lcf_log_output("/home/lcom/labs/proj/src/output.txt");
+  lcf_log_output("/home/lcom/labs/g4/proj/src/output.txt");
 
   if (lcf_start(argc, argv))
     return 1;

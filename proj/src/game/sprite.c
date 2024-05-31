@@ -36,11 +36,12 @@ int draw_sprite(Sprite *sprite, int x, int y) {
       aux++;
     }
   }
-  return EXIT_SUCCESS; 
+  return EXIT_SUCCESS;
 }
 
 void loadMenu() {
-  play = create_sprite(play_xpm);
+  singleplayer = create_sprite(singleplayer_xpm);
+  multiplayer = create_sprite(multiplayer_xpm);
   quit = create_sprite(quit_xpm);
 }
 
@@ -127,10 +128,19 @@ int delete_sprites() {
     free(GameOverESC->map);
     free(GameOverESC);
   }
-  if (play != NULL) {
-    free(play->map);
-    free(play);
+  if (dots != NULL) {
+    free(dots->map);
+    free(dots);
   }
+  if (singleplayer != NULL) {
+    free(singleplayer->map);
+    free(singleplayer);
+  }
+  if (multiplayer != NULL) {
+    free(multiplayer->map);
+    free(multiplayer);
+  }
+
   if (quit != NULL) {
     free(quit->map);
     free(quit);
