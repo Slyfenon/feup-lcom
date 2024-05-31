@@ -117,7 +117,7 @@ bool (endTime)();
  * DRAW FUNCTIONS 
 */
 
-void (draw_game)();
+void (draw_game)(bool isDa);
 
 void (draw_lines)();
 

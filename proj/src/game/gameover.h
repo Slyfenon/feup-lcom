@@ -14,7 +14,10 @@
 void draw_GameOverScore();
 
 /**
- * @brief Draws the game over screen.
- * Draws all the elements of the game over screen, such as the game over text and the score.
+ * Draws the game over screen on the screen.
+ * This function is responsible for displaying the game over
+ * screen, showing the final score and the message to exit the game.
+ * 
+ * @param isDay boolean that indicates if the game is in day mode or night mode
  */
-void draw_gameover();
+void draw_gameover(bool isDay);

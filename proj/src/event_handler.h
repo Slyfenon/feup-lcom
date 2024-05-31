@@ -12,7 +12,8 @@ typedef enum State {
   ENDGAME
 } State;
 
-State(handle_timer)(State state);
+
+State(handle_timer)(State state, rtc_time *timeRTC);
 
 State(handle_keyboard)(State state, uint8_t *keyboardBytes);
 

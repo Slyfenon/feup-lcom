@@ -64,13 +64,35 @@ uint8_t(convert_bcd_to_decimal)(uint8_t *bcd) {
   return 0;
 }
 
+void(rtc_update_time)(rtc_time *time) {
+  static int rtcCounter; // Time only updates when this value is 60
+  rtcCounter++;
+
+  if (rtcCounter == 60) {
+    time->seconds++;
+    if (time->seconds == 60) {
+      time->seconds = 0;
+      time->minutes++;
+      if (time->minutes == 60) {
+        time->minutes = 0;
+        time->hours++;
+        if (time->hours == 24) {
+          time->hours = 0;
+        }
+      }
+    }
+    rtcCounter = 0;
+  }
+}
+
 int(rtc_read_time)(rtc_time *time) {
   uint8_t seconds, minutes, hours;
   int tries = 20;
 
   while (rtc_is_blocked()) {
     tries--;
-    if (tries == 0) return 1;
+    if (tries == 0)
+      return 1;
   }
   if (read_time_register(SECONDS, &seconds) != 0)
     return 1;
@@ -87,6 +109,6 @@ int(rtc_read_time)(rtc_time *time) {
   time->seconds = seconds;
   time->minutes = minutes;
   time->hours = hours;
-  
+
   return 0;
 }
