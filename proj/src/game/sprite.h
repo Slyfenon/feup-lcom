@@ -34,8 +34,6 @@ Sprite *create_sprite(xpm_map_t xpm);
 
 int draw_sprite(Sprite *sprite, int x, int y);
 
-int erase_sprite(Sprite *sprite, int x, int y);
-
 int load_sprites();
 
 #endif

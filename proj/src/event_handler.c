@@ -23,7 +23,6 @@ State(handle_timer)(State state) {
       endGame();
       return GAMEOVER;
     }
-    vg_page_flipping();
   }
   if (state == MENU) {
     if (readTime() != 0) {
@@ -32,7 +31,6 @@ State(handle_timer)(State state) {
     }
     background();
     draw_menu();
-    vg_page_flipping();
   }
   if (state == ENDGAME) {
     return ENDGAME;

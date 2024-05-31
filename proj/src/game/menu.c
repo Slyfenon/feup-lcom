@@ -103,4 +103,6 @@ void (draw_menu)() {
     default:
       break;
   }
+
+  vg_page_flipping();
 }

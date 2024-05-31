@@ -350,7 +350,7 @@ void (draw_game)() {
   if (canSlowTime())
     draw_sprite(clockIcon, 70, MAX_Y - 70);
 
-
+  vg_page_flipping();
 }
 
 void (draw_lines)() {

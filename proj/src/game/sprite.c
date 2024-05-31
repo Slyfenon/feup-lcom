@@ -37,24 +37,6 @@ int draw_sprite(Sprite* sprite, int x, int y) {
   return EXIT_SUCCESS; 
 }
 
-int erase_sprite(Sprite* sprite, int x, int y) {
-  int width = sprite->width;
-  int height = sprite->height;
-
-  uint32_t aux;
-
-  for (int i = 0 ; i < height; i++) {
-    for (int j = 0 ; j < width; j++) {
-      if ((y + i) >= dayDesert->height) continue;
-      if ((x + j) >= dayDesert->width) continue;
-
-      aux = dayDesert->map[(y+i)*dayDesert->width + (x + j)];
-      if (vg_draw_pixel(x + j, y + i, aux)) return EXIT_FAILURE;
-    }
-  }
-  return EXIT_SUCCESS;
-}
-
 int load_sprites() {
   aim = create_sprite(aim_xpm);
   dayDesert = create_sprite(dayDesert_xpm);
