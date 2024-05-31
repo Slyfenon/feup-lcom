@@ -20,13 +20,11 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
   if (state == MENU) {
     if (readTime(timeRTC) != 0) {
       printf("Error in checkTime inside: %s\n", __func__);
-      delete_sprites();
       return ENDGAME;
     }
     draw_menu(isDay);
   }
   if (state == ENDGAME) {
-    delete_sprites();
     return ENDGAME;
   }
 
@@ -55,7 +53,6 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
           initGame();
           return GAME;  
         case 2:
-          delete_sprites(); 
           return ENDGAME;
         default:
           break;

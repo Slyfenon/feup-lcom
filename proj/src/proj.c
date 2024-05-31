@@ -83,9 +83,10 @@ int(proj_main_loop)(int argc, char **argv) {
         }
       }
 
-      // AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER
     }
   }
+
+  delete_sprites();
 
   if (mouse_unsubscribe_int() != OK)
     return EXIT_FAILURE;
@@ -97,8 +98,6 @@ int(proj_main_loop)(int argc, char **argv) {
     return EXIT_FAILURE;
   if (vg_exit() != OK)
     return EXIT_FAILURE;
-
-  // acho que devemos libertar os sprites
 
   return 0;
 }
