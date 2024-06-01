@@ -4,6 +4,7 @@
 #include "devices/graphics/graphics.h"
 #include "devices/kbc/keyboard.h"
 #include "devices/kbc/mouse.h"
+#include "devices/uart/uart.h"
 #include "event_handler.h"
 #include "game/sprite.h"
 #include <lcom/timer.h>
@@ -12,7 +13,6 @@ struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
 enum State state = MENU;
 rtc_time timeRTC;
-
 
 int(main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -28,13 +28,23 @@ int(main)(int argc, char *argv[]) {
 }
 
 int(proj_main_loop)(int argc, char **argv) {
-  uint8_t keyboard_irq_set, mouse_irq_set, timer_irq_set;
+  uint8_t keyboard_irq_set, mouse_irq_set, timer_irq_set, ser_irq_set;
 
   if (rtc_read_time(&timeRTC) != 0) {
     printf("Error in rtc_read_time inside: %s\n", __func__);
     return EXIT_FAILURE;
   }
 
+  
+  conf_t config;
+  config.bit_rate = 115200;
+  config.no_bits = 8;
+  config.stop_bits = 1;
+  config.parity = 0;
+
+  if(ser_conf(0x3F8, config) != OK)
+    return EXIT_FAILURE;
+  
   if (set_graphics_mode(DIRECT_COLOR_WITH_32BITS) != OK)
     return EXIT_FAILURE;
   if (set_frame_buffer(DIRECT_COLOR_WITH_32BITS) != OK)
@@ -43,6 +53,8 @@ int(proj_main_loop)(int argc, char **argv) {
   if (timer_subscribe_int(&timer_irq_set) != OK)
     return EXIT_FAILURE;
   if (kbc_subscribe_int(&keyboard_irq_set) != OK)
+    return EXIT_FAILURE;
+  if (ser_subscribe_int(&ser_irq_set) != OK)
     return EXIT_FAILURE;
   if (mouse_enable_scrolling() != OK)
     return EXIT_FAILURE;
@@ -67,14 +79,6 @@ int(proj_main_loop)(int argc, char **argv) {
         state = handle_timer(state, &timeRTC);
       }
 
-      if (msg.m_notify.interrupts & BIT(mouse_irq_set)) {
-        mouse_ih();
-        if (mouse_packet_is_done()) {
-          mouse_get_packet(&mouse_packet);
-          state = handle_mouse(state, &mouse_packet);
-        }
-      }
-
       if (msg.m_notify.interrupts & BIT(keyboard_irq_set)) {
         kbc_ih();
         if (kbc_scancode_is_done()) {
@@ -82,21 +86,37 @@ int(proj_main_loop)(int argc, char **argv) {
           state = handle_keyboard(state, keyboard_scancode);
         }
       }
+
+      if (msg.m_notify.interrupts & BIT(ser_irq_set)) {
+        ser_ih();
+        
+      }
+
+      if (msg.m_notify.interrupts & BIT(mouse_irq_set)) {
+        mouse_ih();
+        if (mouse_packet_is_done()) {
+          mouse_get_packet(&mouse_packet);
+          state = handle_mouse(state, &mouse_packet);
+        }
+      }
     }
   }
+
+  delete_sprites();
 
   if (mouse_unsubscribe_int() != OK)
     return EXIT_FAILURE;
   if (mouse_disable_data_reporting() != OK)
     return EXIT_FAILURE;
+  if(ser_unsubscribe_int() != OK)
+    return EXIT_FAILURE;
   if (kbc_unsubscribe_int() != OK)
     return EXIT_FAILURE;
   if (timer_unsubscribe_int() != OK)
     return EXIT_FAILURE;
+  if(ser_exit() != OK)
+    return EXIT_FAILURE;
   if (vg_exit() != OK)
     return EXIT_FAILURE;
-
-  // acho que devemos libertar os sprites
-
   return 0;
 }

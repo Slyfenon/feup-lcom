@@ -14,17 +14,18 @@ void (setCurrentOption)(int option) {
   currentOption = option;
 }
 
-void (increaseCurrentOption)() {
-  if (currentOption == 2) {
+void(increaseCurrentOption)() {
+  if (currentOption >= 2) {
     currentOption = 0;
   }
   else {
     currentOption++;
   }
+
 }
 
-void (decreaseCurrentOption)() {
-  if (currentOption == 0) {
+void(decreaseCurrentOption)() {
+  if (currentOption <= 0) {
     currentOption = 2;
   }
   else {
@@ -78,15 +79,19 @@ void (draw_menu)(bool isDay) {
     startX -= 50;
   }
 
-  (draw_sprite)(play, MAX_X / 2, 100);
-  (draw_sprite)(quit, MAX_X / 2, 200);
+  draw_sprite(singleplayer, MAX_X / 2, 100);
+  draw_sprite(multiplayer, MAX_X / 2, 200);
+  draw_sprite(quit, MAX_X / 2, 300);
 
   switch (getCurrentOption()) {
     case SINGLEPLAYER:
-      vg_draw_rectangle(MAX_X / 2 - 120, 140, 240, 10, 0x000000);
+      vg_draw_rectangle(MAX_X / 2 - 250, 140, 502, 6, 0x000000);
+      break;
+    case MULTIPLAYER:
+      vg_draw_rectangle(MAX_X / 2 - 240, 240, 480, 6, 0x000000);
       break;
     case QUIT:
-      vg_draw_rectangle(MAX_X / 2 - 120, 240, 240, 10, 0x000000);
+      vg_draw_rectangle(MAX_X / 2 - 85, 340, 170, 6, 0x000000);
       break;
     default:
       break;
