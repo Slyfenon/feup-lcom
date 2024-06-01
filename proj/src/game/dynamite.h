@@ -33,6 +33,12 @@ typedef struct {
  *
  * @return A pointer to the created Dynamite object.
  */
-Dynamite* createDynamite(int x, int y, Direction dir);
+Dynamite* (createDynamite)(int x, int y, Direction dir);
+
+int16_t (getDynamiteX)(Dynamite* dynamite);
+
+int16_t (getDynamiteY)(Dynamite* dynamite);
+
+void (destroyDynamite)(Dynamite* dynamite);
 
 #endif

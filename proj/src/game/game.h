@@ -1,132 +1,106 @@
 #ifndef __GAME_H
 #define __GAME_H
 #include "dynamite.h"
+#include "player.h"
+#include "position.h"
 #include "sprite.h"
 #include "target.h"
 #include <lcom/lcf.h>
 
 #define MAX_X 1151
-#define MAX_Y 862
-#define NUM_TARGETS 21
+#define MAX_Y 863
+#define NUM_TARGETS (NUM_TARGET_LINES * NUM_TARGETS_PER_LINE)
+#define NUM_TARGET_LINES 3
 #define NUM_TARGETS_PER_LINE 7
 
 /**
  * GENERIC GAME FUNCTIONS
-*/
+ */
 
-void (initGame)();
+void(initGame)();
 
-void (endGame)();
-
+void(endGame)();
 
 // GAME UPDATES
 
-void (updateTimes)();
+void(updateTimes)();
 
-void (updateTargets)();
+void(updateTargets)();
 
-void (updateDynamite)();
-
+void(updateDynamite)();
 
 // SHOTS AND COLLISIONS
 
-bool (getCanShoot)();
+bool(checkAllCollisions)(Player *player);
 
-void (setCanShoot)(bool value);
+bool(checkCollisionWithTargets)(Player *player);
 
-bool (checkAllCollisions)();
+bool(checkCollisionWithTarget)(Player *player, int i);
 
-bool (checkCollisionWithTargets)();
-
-bool (checkCollisionWithTarget)(int i);
-
-bool (checkCollisionWithDynamite)();
-
+bool(checkCollisionWithDynamite)(Player *player);
 
 // SLOW TIME
 
-bool (canSlowTime)();
+bool(canSlowTime)();
 
-void (setSlowTime)();
+void(setSlowTime)();
 
-void (endSlowTime)();
-
-
+void(endSlowTime)();
 
 /**
  * GETTERS AND SETTERS OF GAME VARIABLES
-*/
+ */
+
+Player *(getPlayer1) ();
+
+Player *(getPlayer2) ();
 
 // PLAYER POSITION
+void(addToX)(Player *player, int16_t delta_x);
 
-int16_t (getX)();
-
-int16_t (getY)();
-
-void (addToX)(int16_t delta_x);
-
-void (addToY)(int16_t delta_y);
-
+void(addToY)(Player *player, int16_t delta_y);
 
 // TARGETS
+int16_t(getFallCounterOfTarget)(int i);
 
-int16_t (getXOfTarget)(int i);
+void(incrementFallCounterOfTarget)(int i);
 
-int16_t (getYOfTarget)(int i);
+bool(isActiveTarget)(int i);
 
-int16_t (getFallCounterOfTarget)(int i);
-
-void (incrementFallCounterOfTarget)(int i);
-
-bool (isActiveTarget)(int i);
-
-void (setActiveTarget)(int i, bool value);
-
+void(setActiveTarget)(int i, bool value);
 
 // DYNAMITE
 
-bool (isActiveDynamite)();
+bool(isActiveDynamite)();
 
-void (setActiveDynamite)(bool value);
-
-int16_t (getXOfDynamite)();
-
-int16_t (getYOfDynamite)();
-
+void(setActiveDynamite)(bool value);
 
 // SCORE
 
-int (getScore)();
+void(addToScore)(Player *player, int value);
 
-void (addToScore)(int value);
-
-void (subractToScore)(int value);
-
-void (resetScore)();
-
+void(subractToScore)(Player *player, int value);
 
 // TIME
 
-int (getTimeLeft)();
+int(getTimeLeft)();
 
-bool (endTime)();
-
-
+bool(endTime)();
 
 /**
- * DRAW FUNCTIONS 
-*/
+ * DRAW FUNCTIONS
+ */
 
-void (draw_game)(bool isDa);
+void(draw_game)(bool isDa);
 
-void (draw_lines)();
+void(draw_lines)();
 
-void (draw_targets)();
+void(draw_targets)();
 
-void (draw_dynamite)();
+void(draw_dynamite)();
 
-void (draw_score)();
+void(draw_score)();
 
-void (draw_timeLeft)();
+void(draw_timeLeft)();
 
 #endif

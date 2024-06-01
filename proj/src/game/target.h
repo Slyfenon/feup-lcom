@@ -16,6 +16,11 @@ typedef struct {
     Direction dir;
 } Target;
 
-Target* createTarget(int x, int y, Direction dir);
+Target* (createTarget)(int x, int y, Direction dir);
 
+int16_t (getTargetX)(Target* target);
+
+int16_t (getTargetY)(Target* target);
+
+void (destroyTarget)(Target* target);
 #endif

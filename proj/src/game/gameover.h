@@ -11,7 +11,7 @@
  * This function is responsible for displaying the final score
  * achieved by the player after the game is over.
  */
-void draw_GameOverScore();
+void (draw_GameOverScore)();
 
 /**
  * Draws the game over screen on the screen.
@@ -20,4 +20,4 @@ void draw_GameOverScore();
  * 
  * @param isDay boolean that indicates if the game is in day mode or night mode
  */
-void draw_gameover(bool isDay);
+void (draw_gameover)(bool isDay);

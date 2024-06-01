@@ -6,15 +6,15 @@ int currentOption = 0;
  * GETTERS AND SETTERS OF MENU VARIABLES
  */
 
-int(getCurrentOption)() {
+int (getCurrentOption)() {
   return currentOption;
 }
 
-void(setCurrentOption)(int option) {
+void (setCurrentOption)(int option) {
   currentOption = option;
 }
 
-void(increaseCurrentOption)() {
+void (increaseCurrentOption)() {
   if (currentOption == 2) {
     currentOption = 0;
   }
@@ -23,7 +23,7 @@ void(increaseCurrentOption)() {
   }
 }
 
-void(decreaseCurrentOption)() {
+void (decreaseCurrentOption)() {
   if (currentOption == 0) {
     currentOption = 2;
   }
@@ -36,7 +36,7 @@ void(decreaseCurrentOption)() {
  * TIME FUNCTION
  */
 
-int(readTime)(rtc_time *timeRTC) {
+int (readTime)(rtc_time *timeRTC) {
 
   int tempHours = timeRTC->hours;
   int tempMinutes = timeRTC->minutes;
@@ -54,36 +54,32 @@ int(readTime)(rtc_time *timeRTC) {
   return EXIT_SUCCESS;
 }
 
-/**
- * DRAW FUNCTIONS
- */
-
-void(draw_menu)(bool isDay) {
+void (draw_menu)(bool isDay) {
 
   if (isDay) {
-    draw_background(dayDesert->map);
+    (draw_background)(dayDesert->map);
   }
   else {
-    draw_background(nightDesert->map);
+    (draw_background)(nightDesert->map);
   }
 
   int startX = MAX_X - 170;
 
   for (int i = 0; i < 2; i++) {
-    draw_sprite(hours[i], startX, MAX_Y - 65);
+    (draw_sprite)(hours[i], startX, MAX_Y - 65);
     startX -= 50;
   }
 
-  draw_sprite(dots, startX + 145, MAX_Y - 65);
+  (draw_sprite)(dots, startX + 145, MAX_Y - 65);
 
   startX = MAX_X - 30;
   for (int i = 0; i < 2; i++) {
-    draw_sprite(minutes[i], startX, MAX_Y - 65);
+    (draw_sprite)(minutes[i], startX, MAX_Y - 65);
     startX -= 50;
   }
 
-  draw_sprite(play, MAX_X / 2, 100);
-  draw_sprite(quit, MAX_X / 2, 200);
+  (draw_sprite)(play, MAX_X / 2, 100);
+  (draw_sprite)(quit, MAX_X / 2, 200);
 
   switch (getCurrentOption()) {
     case SINGLEPLAYER:

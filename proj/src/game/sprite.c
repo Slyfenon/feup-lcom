@@ -1,6 +1,6 @@
 #include "sprite.h"
 
-Sprite *create_sprite(xpm_map_t xpm) {
+Sprite *(create_sprite)(xpm_map_t xpm) {
 
   Sprite *sprite = (Sprite *) malloc(sizeof(Sprite));
   if (sprite == NULL)
@@ -19,7 +19,7 @@ Sprite *create_sprite(xpm_map_t xpm) {
   return sprite;
 }
 
-int draw_sprite(Sprite *sprite, int x, int y) {
+int (draw_sprite)(Sprite *sprite, int x, int y) {
   uint32_t *aux = sprite->map;
   int xBeginning = x - (sprite->width / 2);
   int yBeginning = y - (sprite->height / 2);
@@ -39,40 +39,40 @@ int draw_sprite(Sprite *sprite, int x, int y) {
   return EXIT_SUCCESS; 
 }
 
-void loadMenu() {
-  play = create_sprite(play_xpm);
-  quit = create_sprite(quit_xpm);
+void (loadMenu)() {
+  play = (create_sprite)(play_xpm);
+  quit = (create_sprite)(quit_xpm);
 }
 
-void loadGameOver() {
-  GameOver = create_sprite(gameover_xpm);
-  GameOverESC = create_sprite(gameoverEsc_xpm);
+void (loadGameOver)() {
+  GameOver = (create_sprite)(gameover_xpm);
+  GameOverESC = (create_sprite)(gameoverEsc_xpm);
 }
 
-int load_sprites() {
+int (load_sprites)() {
   loadMenu();
-  aim = create_sprite(aim_xpm);
-  dayDesert = create_sprite(dayDesert_xpm);
-  nightDesert = create_sprite(nightDesert_xpm);
-  target = create_sprite(target_xpm);
-  dynamiteIcon = create_sprite(dynamite_xpm);
-  clockIcon = create_sprite(clock_xpm);
-  scoreSprite = create_sprite(score_xpm);
+  aim = (create_sprite)(aim_xpm);
+  dayDesert = (create_sprite)(dayDesert_xpm);
+  nightDesert = (create_sprite)(nightDesert_xpm);
+  target = (create_sprite)(target_xpm);
+  dynamiteIcon = (create_sprite)(dynamite_xpm);
+  clockIcon = (create_sprite)(clock_xpm);
+  scoreSprite = (create_sprite)(score_xpm);
   for (int i = 0; i < 10; i++) {
-    numbers[i] = create_sprite(numbers_xpm[i]);
+    numbers[i] = (create_sprite)(numbers_xpm[i]);
   }
   for (int i = 0; i < 3; i++) {
-    fall[i] = create_sprite(fall_xpm[i]);
+    fall[i] = (create_sprite)(fall_xpm[i]);
   }
   for (int i = 0; i < 5; i++) {
-    explosion[i] = create_sprite(explosion_xpm[i]);
+    explosion[i] = (create_sprite)(explosion_xpm[i]);
   }
-  dots = create_sprite(dots_xpm);
-  loadGameOver();
+  dots = (create_sprite)(dots_xpm);
+  (loadGameOver)();
   return EXIT_SUCCESS;
 }
 
-int delete_sprites() {
+int (delete_sprites)() {
   if (aim != NULL) {
     free(aim->map);
     free(aim);

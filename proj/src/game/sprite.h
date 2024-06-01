@@ -40,16 +40,16 @@ Sprite *dots;
 Sprite *GameOver;
 Sprite *GameOverESC;
 
-Sprite *create_sprite(xpm_map_t xpm);
+Sprite *(create_sprite)(xpm_map_t xpm);
 
-int draw_sprite(Sprite *sprite, int x, int y);
+int (draw_sprite)(Sprite *sprite, int x, int y);
 
-void loadMenu();
+void (loadMenu)();
 
-void loadGameOver();
+void (loadGameOver)();
 
-int load_sprites();
+int (load_sprites)();
 
-int delete_sprites();
+int (delete_sprites)();
 
 #endif

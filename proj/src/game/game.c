@@ -1,48 +1,51 @@
 #include "game.h"
 
-int16_t x;
-int16_t y;
+/* Game players */
+Player *player1 = NULL; // Current player
+Player *player2 = NULL; // Second player
 
-int score;
-int timeLeft;
-bool canShoot;
-bool slowTime;
-int timerSlowTime;
+/* Game time variables */
+int timeLeft;      /** @brief Time left in seconds * 60 */
+bool slowTime;     /** @brief Whether the game is in slow time */
+int timerSlowTime; /** @brief Time left in seconds * 60 for slow time */
 
-bool checkExplosion = false;
-int explosionX;
-int explosionY;
-int frameExplosion = 0;
+/* Game explosion variables */
+bool checkExplosion = false;      /** @brief Whether there is an explosion */
+int explosionX;                   /** @brief X position of the explosion */
+int explosionY;                   /** @brief Y position of the explosion */
+int frameExplosion = 0;           /** @brief Frame of the explosion */
+bool isUpdatingDynamites = false; /** @brief Whether the dynamite is updating */
 
-bool isUpdatingDynamites = false;
+Target *targets[NUM_TARGETS]; /** @brief Array of targets */
+Dynamite *dynamite;           /** @brief Dynamite */
 
-Target *targets[NUM_TARGETS];
-Dynamite *dynamite;
+Player *(getPlayer1) () {
+  return player1;
+}
+
+Player *(getPlayer2) () {
+  return player2;
+}
 
 /**
  * GENERIC GAME FUNCTIONS
  */
 
 void(initGame)() {
-  x = 500;
-  y = 400;
-  resetScore();
+  player1 = createPlayer();
   timeLeft = 30 * 60;
   timerSlowTime = 0;
-  canShoot = true;
   slowTime = false;
-
-  int i = 0;
+  checkExplosion = false;
 
   int targetX = -100;
   int targetY = 100;
 
-  while (i < NUM_TARGETS) {
+  for (int i = 0; i < NUM_TARGET_LINES; i++) {
     for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
-      targets[i] = createTarget(targetX, targetY, (targetY % 100) ? LEFT : RIGHT);
-      i++;
+      targets[i * NUM_TARGETS_PER_LINE + j] = createTarget(targetX, targetY, (i % 2) ? LEFT : RIGHT);
       targetX += 200;
-    }
+   }
 
     targetX = -100;
     targetY += 150;
@@ -52,8 +55,14 @@ void(initGame)() {
 }
 
 void(endGame)() {
-  // TODO
-  // METER OS DELETE
+  destroyPlayer(player1);
+  if (player2 != NULL)
+    destroyPlayer(player2);
+
+  for (int i = 0; i < NUM_TARGETS; i++)
+    destroyTarget(targets[i]);
+
+  destroyDynamite(dynamite);
 }
 
 // GAME UPDATES
@@ -95,58 +104,50 @@ void(updateDynamite)() {
   int step = slowTime ? 2 : 5;
 
   if (!isUpdatingDynamites) {
-    dynamite->pos.x = ((x + y) * timeLeft) % MAX_X; // pseudorandom
+    dynamite->pos.x = ((getPlayerX(player1) + getPlayerY(player1) * timeLeft) % MAX_X); // pseudorandom
     isUpdatingDynamites = true;
   }
 
   dynamite->pos.y += step;
-  if (getYOfDynamite() > 900) {
+  if (getDynamiteY(dynamite) > 900) {
     dynamite->pos.y = -100;
-    subractToScore(10);
+    subractToScore(player1, 10);
     isUpdatingDynamites = false;
   }
 }
 
 // SHOTS AND COLLISIONS
 
-bool(getCanShoot)() {
-  return canShoot;
-}
+bool(checkAllCollisions)(Player *player) {
 
-void(setCanShoot)(bool value) {
-  canShoot = value;
-}
-
-bool(checkAllCollisions)() {
-
-  if (checkCollisionWithDynamite())
+  if (checkCollisionWithDynamite(player))
     return true;
 
-  if (checkCollisionWithTargets()) {
+  if (checkCollisionWithTargets(player)) {
     return true;
   }
 
   return false;
 }
 
-bool(checkCollisionWithTargets)() {
-  if ((y > 46) && (y < 154)) {
+bool(checkCollisionWithTargets)(Player *player) {
+  if ((getPlayerY(player) && (getPlayerY(player) < 154))) {
     for (int i = 0; i < 7; i++) {
-      if (checkCollisionWithTarget(i))
+      if (checkCollisionWithTarget(player, i))
         return true;
     }
   }
 
-  else if ((y > 196) && (y < 304)) {
+  else if ((getPlayerY(player) > 196) && (getPlayerY(player) < 304)) {
     for (int i = 7; i < 14; i++) {
-      if (checkCollisionWithTarget(i))
+      if (checkCollisionWithTarget(player, i))
         return true;
     }
   }
 
-  else if ((y > 346) && (y < 454)) {
+  else if ((getPlayerY(player) > 346) && (getPlayerY(player) < 454)) {
     for (int i = 14; i < 21; i++) {
-      if (checkCollisionWithTarget(i))
+      if (checkCollisionWithTarget(player, i))
         return true;
     }
   }
@@ -154,22 +155,21 @@ bool(checkCollisionWithTargets)() {
   return false;
 }
 
-bool(checkCollisionWithTarget)(int i) {
-  int distance = (x - getXOfTarget(i)) * (x - getXOfTarget(i)) + (y - getYOfTarget(i)) * (y - getYOfTarget(i));
-
+bool(checkCollisionWithTarget)(Player *player, int i) {
+  int distance = (getPlayerX(player) - getTargetX(targets[i])) * (getPlayerX(player) - getTargetX(targets[i])) + (getPlayerY(player) - getTargetY(targets[i])) * (getPlayerY(player) - getTargetY(targets[i]));
   if (distance < TARGET_RADIUS_2) {
     setActiveTarget(i, false);
 
     if (distance < TARGET_RADIUS_2_CENTER) {
-      addToScore(10);
+      addToScore(player, 5);
     }
 
     else if (distance < TARGET_RADIUS_2_MIDDLE) {
-      addToScore(5);
+      addToScore(player, 3);
     }
 
     else {
-      addToScore(1);
+      addToScore(player, 1);
     }
 
     return true;
@@ -178,14 +178,14 @@ bool(checkCollisionWithTarget)(int i) {
   return false;
 }
 
-bool(checkCollisionWithDynamite)() {
-  int distance = (x - getXOfDynamite()) * (x - getXOfDynamite()) + (y - getYOfDynamite()) * (y - getYOfDynamite());
+bool(checkCollisionWithDynamite)(Player *player) {
+  int distance = (getPlayerX(player) - getDynamiteX(dynamite)) * (getPlayerX(player) - getDynamiteX(dynamite)) + (getPlayerY(player) - getDynamiteY(dynamite)) * (getPlayerY(player) - getDynamiteY(dynamite));
 
   if (distance < TARGET_RADIUS_2) {
     setActiveDynamite(false);
     checkExplosion = true;
-    explosionX = getXOfDynamite();
-    explosionY = getYOfDynamite();
+    explosionX = getDynamiteX(dynamite);
+    explosionY = getDynamiteY(dynamite);
     isUpdatingDynamites = false;
     dynamite->pos.y = -100;
     dynamite->active = true;
@@ -218,43 +218,26 @@ void(endSlowTime)() {
  */
 
 // PLAYER POSITION
+void(addToX)(Player *player, int16_t delta_x) {
 
-int16_t(getX)() {
-  return x;
+  setPlayerX(player, getPlayerX(player) + delta_x);
+
+  if (getPlayerX(player) < 0)
+    setPlayerX(player, 0);
+  if (getPlayerX(player) > MAX_X)
+    setPlayerX(player, MAX_X);
 }
 
-int16_t(getY)() {
-  return y;
+void(addToY)(Player *player, int16_t delta_y) {
+  setPlayerY(player, getPlayerY(player) - delta_y);
+
+  if (getPlayerY(player) < 0)
+    setPlayerY(player, 0);
+  if (getPlayerY(player) > MAX_Y)
+    setPlayerY(player, MAX_Y);
 }
 
-void(addToX)(int16_t delta_x) {
-  x += delta_x;
-
-  if (x < 0)
-    x = 0;
-  if (x > MAX_X)
-    x = MAX_X;
-}
-
-void(addToY)(int16_t delta_y) {
-  y -= delta_y;
-
-  if (y < 0)
-    y = 0;
-  if (y > MAX_Y)
-    y = MAX_Y;
-}
-
-// TARGETS
-
-int16_t(getXOfTarget)(int i) {
-  return targets[i]->pos.x;
-}
-
-int16_t(getYOfTarget)(int i) {
-  return targets[i]->pos.y;
-}
-
+// TRGETS
 int16_t(getFallCounterOfTarget)(int i) {
   return targets[i]->fallCounter;
 }
@@ -281,37 +264,19 @@ void(setActiveDynamite)(bool value) {
   dynamite->active = value;
 }
 
-int16_t(getXOfDynamite)() {
-  return dynamite->pos.x;
+void(addToScore)(Player *player, int value) {
+  setPlayerScore(player, getPlayerScore(player) + value);
+
+  if (getPlayerScore(player) > 9999) {
+    setPlayerScore(player, 9999);
+  }
 }
 
-int16_t(getYOfDynamite)() {
-  return dynamite->pos.y;
-}
-
-// SCORE
-
-int(getScore)() {
-  return score;
-}
-
-void(addToScore)(int value) {
-  score += value;
-
-  if (score > 99999)
-    score = 99999;
-}
-
-void(subractToScore)(int value) {
-  if (score <= value)
-    score = 0;
-
+void(subractToScore)(Player *player, int value) {
+  if (getPlayerScore(player) <= value)
+    setPlayerScore(player, 0);
   else
-    score -= value;
-}
-
-void(resetScore)() {
-  score = 0;
+    setPlayerScore(player, getPlayerScore(player) - value);
 }
 
 // TIME
@@ -338,7 +303,7 @@ void(draw_game)(bool isDay) {
   draw_lines();
   draw_targets();
   draw_dynamite();
-  draw_sprite(aim, getX(), getY());
+  draw_sprite(aim, getPlayerX(player1), getPlayerY(player1));
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
@@ -361,10 +326,10 @@ void(draw_lines)() {
 void(draw_targets)() {
   for (int i = 0; i < NUM_TARGETS; i++) {
     if (isActiveTarget(i))
-      draw_sprite(target, getXOfTarget(i), getYOfTarget(i));
+      draw_sprite(target, getTargetX(targets[i]), getTargetY(targets[i]));
 
     else if (targets[i]->fallCounter < 12) {
-      draw_sprite(fall[getFallCounterOfTarget(i) / 4], getXOfTarget(i), getYOfTarget(i));
+      draw_sprite(fall[getFallCounterOfTarget(i) / 4], getTargetX(targets[i]), getTargetY(targets[i]));
       targets[i]->fallCounter++;
     }
   }
@@ -372,7 +337,7 @@ void(draw_targets)() {
 
 void(draw_dynamite)() {
   if (isActiveDynamite()) {
-    draw_sprite(dynamiteIcon, getXOfDynamite(), getYOfDynamite());
+    draw_sprite(dynamiteIcon, getDynamiteX(dynamite), getDynamiteY(dynamite));
   }
 
   if (checkExplosion) {
@@ -388,7 +353,7 @@ void(draw_dynamite)() {
 
 void(draw_score)() {
   int numDigits = 0;
-  int tempScore = score;
+  int tempScore = getPlayerScore(player1);
   while (tempScore != 0) {
     tempScore /= 10;
     numDigits++;
@@ -399,7 +364,7 @@ void(draw_score)() {
 
   int startX = MAX_X - 30;
 
-  tempScore = score;
+  tempScore = getPlayerScore(player1);
   for (int i = numDigits - 1; i >= 0; i--) {
     int digit = tempScore % 10;
     draw_sprite(numbers[digit], startX, MAX_Y - 65);

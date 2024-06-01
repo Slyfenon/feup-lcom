@@ -13,7 +13,6 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
     draw_game(isDay);
 
     if (endTime()) {
-      endGame();
       return GAMEOVER;
     }
   }
@@ -32,7 +31,6 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
 
   if (state == GAMEOVER) {
     draw_gameover(isDay);
-    vg_page_flipping();
     return GAMEOVER;
   }
 
@@ -48,11 +46,11 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
   if (state == MENU) {
     if (keyboardBytes[0] == 0x1C) {
       switch (getCurrentOption()) {
-        case 0:
+        case SINGLEPLAYER:
           initGame();
           return GAME;
-        case 2:
-          delete_sprites(); 
+        case QUIT:
+          delete_sprites();
           return ENDGAME;
         default:
           break;
@@ -77,17 +75,17 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
 
 State(handle_mouse)(State state, struct mousePacket *pp) {
   if (state == GAME) {
-    addToX(pp->delta_x);
-    addToY(pp->delta_y);
-
+    addToX(getPlayer1(), pp->delta_x);
+    addToY(getPlayer1(), pp->delta_y);
+    
     if (pp->lb) {
-      if (getCanShoot()) {
-        checkAllCollisions();
-        setCanShoot(false);
+      if (getPlayerCanShoot(getPlayer1())) {
+        checkAllCollisions(getPlayer1());
+        setPlayerCanShoot(getPlayer1(), false);
       }
     }
     else {
-      setCanShoot(true);
+      setPlayerCanShoot(getPlayer1(), true);
     }
 
     if (pp->delta_scroll > 1) {

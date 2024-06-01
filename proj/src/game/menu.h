@@ -1,9 +1,9 @@
 #ifndef __MENU_H
 #define __MENU_H
+#include <lcom/lcf.h>
 #include "../devices/rtc/rtc.h"
 #include "game.h"
 #include "sprite.h"
-#include <lcom/lcf.h>
 
 typedef enum Option {
   SINGLEPLAYER,

@@ -82,8 +82,6 @@ int(proj_main_loop)(int argc, char **argv) {
           state = handle_keyboard(state, keyboard_scancode);
         }
       }
-
-      // AQUI DEVIA SER UMA INTERRUPÇÂO DO TIMER
     }
   }
 
