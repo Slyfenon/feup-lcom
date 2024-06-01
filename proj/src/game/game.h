@@ -36,11 +36,11 @@ void(updateDynamite)();
 
 // SHOTS AND COLLISIONS
 
-bool(checkAllCollisions)(Player *player);
+int(checkAllCollisions)(Player *player);
 
-bool(checkCollisionWithTargets)(Player *player);
+int(checkCollisionWithTargets)(Player *player);
 
-bool(checkCollisionWithTarget)(Player *player, int i);
+int(checkCollisionWithTarget)(Player *player, int i);
 
 bool(checkCollisionWithDynamite)(Player *player);
 

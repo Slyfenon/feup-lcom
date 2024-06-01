@@ -305,22 +305,39 @@ int(ser_exit)() {
 
 typedef enum {
   WAITING,
-  MOUSE_INFO,
+  PLAYER2_INFO,
   KBD_INFO
 } ser_info_t;
 
+uint8_t player2_bytes[7];
+int player2_index = 0;
+player2_info_t ser_player2_info;
+
 ser_info_t ser_info = WAITING;
-
-struct mousePacket ser_mouse_packet;
 uint8_t ser_scancode;
-int ser_mouse_index = 0;
+bool ser_player2_info_is_done = false;
+bool ser_scancode_is_done = false;
+bool ser_player2_ready = false;
 
-int(ser_get_mouse_packet)(struct mousePacket *pp) {
+bool (ser_get_player2_ready)() {
+  return ser_player2_ready;
+}
+
+bool(ser_get_player2_info_is_done)() {
+  return ser_player2_info_is_done;
+}
+
+bool(ser_get_scancode_is_done)() {
+  return ser_scancode_is_done;
+}
+
+int(ser_get_player2_info)(player2_info_t *pp) {
   if (pp == NULL) {
     printf("Null pointer inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  pp = &ser_mouse_packet;
+  *pp = ser_player2_info;
+  ser_player2_info_is_done = false;
   return EXIT_SUCCESS;
 }
 
@@ -330,6 +347,7 @@ int(ser_get_scancode)(uint8_t *scancode) {
     return EXIT_FAILURE;
   }
   *scancode = ser_scancode;
+  ser_scancode_is_done = false;
   return EXIT_SUCCESS;
 }
 
@@ -340,6 +358,7 @@ int(ser_handle_start)() {
     return EXIT_FAILURE;
   }
   if(data == WAITING) {
+    ser_player2_ready = true;
     ser_info = WAITING;
     return EXIT_SUCCESS;
   }
@@ -350,30 +369,32 @@ int(ser_read_data_from_rx_queue)() {
   uint8_t data;
   while (!queue_is_empty(rx_queue)) {
     queue_dequeue(rx_queue, &data);
-
     switch (ser_info) {
       case WAITING:
-        if (data == MOUSE_INFO) {
-          ser_info = MOUSE_INFO;
+        if (data == PLAYER2_INFO) {
+          ser_info = PLAYER2_INFO;
         }
         else if (data == KBD_INFO) {
           ser_info = KBD_INFO;
         }
         break;
-      case MOUSE_INFO:
-        ser_mouse_packet.bytes[ser_mouse_index] = data;
-        ser_mouse_index++;
-        if (ser_mouse_index == 3) {
-          ser_mouse_index = 0;
-          ser_mouse_packet.delta_x = (ser_mouse_packet.bytes[0] & MSB_X_DELTA) ? (0xFF00 | ser_mouse_packet.bytes[1]) : ser_mouse_packet.bytes[1];
-          ser_mouse_packet.delta_y = (ser_mouse_packet.bytes[0] & MSB_Y_DELTA) ? (0xFF00 | ser_mouse_packet.bytes[2]) : ser_mouse_packet.bytes[2];
-          ser_mouse_packet.lb = ser_mouse_packet.bytes[0] & LEFT_BUTTON;
-          ser_info = WAITING;
+      case PLAYER2_INFO:
+        player2_bytes[player2_index] = data;
+        player2_index++;
+        if (player2_index == 7) {
+          ser_player2_info.x = player2_bytes[0] | ((player2_bytes[1]) << 8);
+          ser_player2_info.y = player2_bytes[2] | ((player2_bytes[3]) << 8);
+          ser_player2_info.target = player2_bytes[4];
+          ser_player2_info.score = player2_bytes[5] | ((player2_bytes[6]) << 8);
+          player2_index = 0;
+          ser_info = WAITING; 
+          ser_player2_info_is_done = true;
         }
         break;
       case KBD_INFO:
         ser_scancode = data;
         ser_info = WAITING;
+        ser_scancode_is_done = true;
         break;
       default:
         break;
@@ -381,24 +402,66 @@ int(ser_read_data_from_rx_queue)() {
     break;
   }
 
+
   return EXIT_SUCCESS;
 }
 
-int(ser_send_mouse_info_to_txqueue)(struct mousePacket *pp) {
-  ser_info_t info = MOUSE_INFO;
+int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, uint8_t target, uint16_t score) {
+  ser_info_t info = PLAYER2_INFO;
+  uint8_t lsb, msb;
   if (queue_enqueue(tx_queue, &info) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if (queue_enqueue(tx_queue, &pp->bytes[0]) != 0) {
+  if(util_get_LSB(x, &lsb) != 0) {
+    printf("Error in util_get_LSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &lsb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if (queue_enqueue(tx_queue, &pp->bytes[1]) != 0) {
+  if(util_get_MSB(x, &msb) != 0) {
+    printf("Error in util_get_MSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &msb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if (queue_enqueue(tx_queue, &pp->bytes[2]) != 0) {
+  if(util_get_LSB(y, &lsb) != 0) {
+    printf("Error in util_get_LSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &lsb) != 0) {
+    printf("Error enqueuing data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(util_get_MSB(y, &msb) != 0) {
+    printf("Error in util_get_MSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &msb) != 0) {
+    printf("Error enqueuing data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &target) != 0) {
+    printf("Error enqueuing data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(util_get_LSB(score, &lsb) != 0) {
+    printf("Error in util_get_LSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &lsb) != 0) {
+    printf("Error enqueuing data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(util_get_MSB(score, &msb) != 0) {
+    printf("Error in util_get_MSB inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(queue_enqueue(tx_queue, &msb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }

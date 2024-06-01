@@ -13,6 +13,7 @@ struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
 enum State state = MENU;
 rtc_time timeRTC;
+player2_info_t *pp;
 
 int(main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -89,7 +90,14 @@ int(proj_main_loop)(int argc, char **argv) {
 
       if (msg.m_notify.interrupts & BIT(ser_irq_set)) {
         ser_ih();
-        
+        if(ser_get_player2_ready() || ser_get_player2_info_is_done()){
+          ser_get_player2_info(pp);
+          state = handle_serial(state, pp);
+        }
+        if(ser_get_scancode_is_done()){
+          ser_get_scancode(keyboard_scancode);
+          state = handle_keyboard(state, keyboard_scancode);
+        }
       }
 
       if (msg.m_notify.interrupts & BIT(mouse_irq_set)) {

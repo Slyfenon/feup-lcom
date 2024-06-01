@@ -131,44 +131,47 @@ void(updateDynamite)() {
 
 // SHOTS AND COLLISIONS
 
-bool(checkAllCollisions)(Player *player) {
+int(checkAllCollisions)(Player *player) {
 
   if (checkCollisionWithDynamite(player))
     return true;
 
-  if (checkCollisionWithTargets(player)) {
-    return true;
-  }
+  int targetShot = checkCollisionWithTargets(player);
 
-  return false;
+  return targetShot;
 }
 
-bool(checkCollisionWithTargets)(Player *player) {
+int(checkCollisionWithTargets)(Player *player) {
+  int targetShot;
+
   if ((getPlayerY(player) && (getPlayerY(player) < 154))) {
     for (int i = 0; i < 7; i++) {
-      if (checkCollisionWithTarget(player, i))
-        return true;
+      targetShot = checkCollisionWithTarget(player, i);
+      if (targetShot != -1)
+        return targetShot;
     }
   }
 
   else if ((getPlayerY(player) > 196) && (getPlayerY(player) < 304)) {
     for (int i = 7; i < 14; i++) {
-      if (checkCollisionWithTarget(player, i))
-        return true;
+      targetShot = checkCollisionWithTarget(player, i);
+      if (targetShot != -1)
+        return targetShot;
     }
   }
 
   else if ((getPlayerY(player) > 346) && (getPlayerY(player) < 454)) {
     for (int i = 14; i < 21; i++) {
-      if (checkCollisionWithTarget(player, i))
-        return true;
+      targetShot = checkCollisionWithTarget(player, i);
+      if (targetShot != -1)
+        return targetShot;
     }
   }
 
-  return false;
+  return -1;
 }
 
-bool(checkCollisionWithTarget)(Player *player, int i) {
+int(checkCollisionWithTarget)(Player *player, int i) {
   int distance = (getPlayerX(player) - getTargetX(targets[i])) * (getPlayerX(player) - getTargetX(targets[i])) + (getPlayerY(player) - getTargetY(targets[i])) * (getPlayerY(player) - getTargetY(targets[i]));
   if (distance < TARGET_RADIUS_2) {
     setActiveTarget(i, false);
@@ -185,10 +188,10 @@ bool(checkCollisionWithTarget)(Player *player, int i) {
       addToScore(player, 1);
     }
 
-    return true;
+    return i;
   }
 
-  return false;
+  return -1;
 }
 
 bool(checkCollisionWithDynamite)(Player *player) {

@@ -1,5 +1,6 @@
 #include "event_handler.h"
 #include "devices/graphics/graphics.h"
+#include "devices/uart/uart.h"
 #include "game/sprite.h"
 
 bool isDay; /** @brief indicates if the game is in day mode or night mode */
@@ -52,7 +53,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
             initGame(false);
             return GAME;
           case MULTIPLAYER:
-            initGame(true);
+            ser_handle_start();
             return WAIT;
           case QUIT:
             return ENDGAME;
@@ -77,7 +78,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
       if (keyboardBytes[0] == 0x81) {
         return MENU;
       }
-      break;  
+      break;
     default:
       break;
   }
@@ -85,6 +86,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
 }
 
 State(handle_mouse)(State state, struct mousePacket *pp) {
+  uint8_t target_index;
   switch (state) {
     case GAME:
       addToX(getPlayer1(), pp->delta_x);
@@ -92,7 +94,8 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
 
       if (pp->lb) {
         if (getPlayerCanShoot(getPlayer1())) {
-          checkAllCollisions(getPlayer1());
+          target_index = checkAllCollisions(getPlayer1());
+
           setPlayerCanShoot(getPlayer1(), false);
         }
       }
@@ -104,6 +107,9 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
         setSlowTime();
       }
 
+      if (isMultiplayer()) {
+        ser_send_player2_info_to_txqueue(getPlayerX(getPlayer1()), getPlayerY(getPlayer1()), target_index, getPlayer1()->score);
+      }
       return GAME;
     case MENU:
       return MENU;
@@ -116,5 +122,31 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
     default:
       break;
   }
+  return state;
+}
+
+State(handle_serial)(State state, player2_info_t *pp) {
+  switch (state) {
+    case WAIT:
+      initGame(true);
+      return GAME;
+      
+    case GAME:
+      if(isMultiplayer()) {
+        setPlayerX(getPlayer2(), pp->x);
+        setPlayerY(getPlayer2(), pp->y);
+        setPlayerScore(getPlayer2(), pp->score);
+        if (pp->target != -1) {
+          if (isActiveTarget(pp->target)) {
+            setActiveTarget(pp->target, false);
+          }
+        }
+      }
+      break;
+
+    default:
+      break;
+  }
+  
   return state;
 }

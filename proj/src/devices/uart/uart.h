@@ -122,6 +122,26 @@ queue_t *(ser_get_tx_queue)();
  */
 queue_t *(ser_get_rx_queue)();
 
+bool(ser_get_player2_info_is_done)();
+
+bool(ser_get_scancode_is_done)();
+
+int(ser_get_scancode)(uint8_t *scancode);
+
+int(ser_get_player2_info)(player2_info_t *pp);
+
+bool (ser_get_player2_ready)();
+
+int(ser_handle_start)();
+
+int(ser_read_data_from_rx_queue)();
+
+int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, uint8_t target, uint16_t score);
+
+int(ser_send_scancode_to_txqueue)(uint8_t scancode);
+
+int(ser_send_waiting_to_txqueue)();
+
 /**
  * @brief Subscribes serial port interrupts.
  *

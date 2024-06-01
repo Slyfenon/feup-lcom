@@ -12,6 +12,14 @@ struct mousePacket {
   int8_t delta_scroll; // scroll displacement: with a touchpad upwards is postive, with a mouse upwards is negative 
 };
 
+typedef struct {
+  int16_t x;
+  int16_t y;
+  int8_t target;
+  uint16_t score;
+} player2_info_t;
+
+
 /**
  * @brief Returns the LSB of a 2 byte integer
  *

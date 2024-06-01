@@ -23,4 +23,5 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes);
 
 State(handle_mouse)(State state, struct mousePacket *pp);
 
+State(handle_serial)(State state, player2_info_t *pp);
 #endif /* _LCOM_EVENT_HANDLER_H */
