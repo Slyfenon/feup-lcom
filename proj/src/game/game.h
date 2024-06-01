@@ -1,11 +1,12 @@
-#ifndef __GAME_H
-#define __GAME_H
+#ifndef _GAME_H_
+#define _GAME_H_
+#include <lcom/lcf.h>
+
 #include "dynamite.h"
 #include "player.h"
 #include "position.h"
 #include "sprite.h"
 #include "target.h"
-#include <lcom/lcf.h>
 
 #define MAX_X 1151
 #define MAX_Y 863
@@ -13,11 +14,15 @@
 #define NUM_TARGET_LINES 3
 #define NUM_TARGETS_PER_LINE 7
 
+
+bool(isMultiplayer)();
+void(setMultiplayer)(bool value);
+
 /**
  * GENERIC GAME FUNCTIONS
  */
 
-void(initGame)();
+void(initGame)(bool multiplayer);
 
 void(endGame)();
 
@@ -91,7 +96,9 @@ bool(endTime)();
  * DRAW FUNCTIONS
  */
 
-void(draw_game)(bool isDa);
+void(draw_game)(bool isDay);
+
+void draw_aim(Player *player);
 
 void(draw_lines)();
 

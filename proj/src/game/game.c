@@ -1,8 +1,9 @@
 #include "game.h"
 
 /* Game players */
-Player *player1 = NULL; // Current player
-Player *player2 = NULL; // Second player
+Player *player1 = NULL;       /** @brief Current player */
+Player *player2 = NULL;       /** @brief Second player */
+bool is_multiplayer = false;  /** @brief Whether the game is in multiplayer mode */
 
 /* Game time variables */
 int timeLeft;      /** @brief Time left in seconds * 60 */
@@ -27,12 +28,24 @@ Player *(getPlayer2) () {
   return player2;
 }
 
+bool(isMultiplayer)() {
+  return is_multiplayer;
+}
+
+void(setMultiplayer)(bool value) {
+  is_multiplayer = value;
+}
+
 /**
  * GENERIC GAME FUNCTIONS
  */
 
-void(initGame)() {
+void(initGame)(bool multiplayer) {
+  is_multiplayer = multiplayer;
   player1 = createPlayer();
+  if (multiplayer) {
+    player2 = createPlayer();
+  }
   timeLeft = 30 * 60;
   timerSlowTime = 0;
   slowTime = false;
@@ -45,7 +58,7 @@ void(initGame)() {
     for (int j = 0; j < NUM_TARGETS_PER_LINE; j++) {
       targets[i * NUM_TARGETS_PER_LINE + j] = createTarget(targetX, targetY, (i % 2) ? LEFT : RIGHT);
       targetX += 200;
-   }
+    }
 
     targetX = -100;
     targetY += 150;
@@ -56,7 +69,7 @@ void(initGame)() {
 
 void(endGame)() {
   destroyPlayer(player1);
-  if (player2 != NULL)
+  if (is_multiplayer && player2 != NULL)
     destroyPlayer(player2);
 
   for (int i = 0; i < NUM_TARGETS; i++)
@@ -303,7 +316,10 @@ void(draw_game)(bool isDay) {
   draw_lines();
   draw_targets();
   draw_dynamite();
-  draw_sprite(aim, getPlayerX(player1), getPlayerY(player1));
+  draw_aim(player1);
+  if(is_multiplayer) {
+    draw_aim(player2);
+  }
   draw_sprite(scoreSprite, MAX_X - 400, MAX_Y - 65);
   draw_score();
   draw_timeLeft();
@@ -312,6 +328,10 @@ void(draw_game)(bool isDay) {
     draw_sprite(clockIcon, 70, MAX_Y - 70);
 
   vg_page_flipping();
+}
+
+void(draw_aim)(Player *player) {
+  draw_sprite(aim, getPlayerX(player), getPlayerY(player));
 }
 
 void(draw_lines)() {

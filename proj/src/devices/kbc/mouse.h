@@ -31,4 +31,4 @@ int (get_mouse_id)(uint8_t* id);
 
 int (mouse_enable_scrolling)();
 
-#endif
+#endif /* MOUSE_H */

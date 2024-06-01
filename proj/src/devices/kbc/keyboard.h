@@ -12,4 +12,4 @@ bool (kbc_scancode_is_done)();
 
 void (kbc_get_scancode)(uint8_t* scancode);
 
-#endif
+#endif /* KEYBOARD_H */

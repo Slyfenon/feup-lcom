@@ -12,7 +12,6 @@ struct mousePacket {
   int8_t delta_scroll; // scroll displacement: with a touchpad upwards is postive, with a mouse upwards is negative 
 };
 
-
 /**
  * @brief Returns the LSB of a 2 byte integer
  *
@@ -39,4 +38,5 @@ int (util_get_MSB)(uint16_t val, uint8_t *msb);
  * @return Return 0 upon success and non-zero otherwise
  */
 int (util_sys_inb)(int port, uint8_t *value);
-#endif
+
+#endif /* UTILS_H */

@@ -54,4 +54,4 @@
 #define PS2_MOUSE 0X00
 #define INTELLIMOUSE 0X03
 
-#endif
+#endif /* _LCOM_I8042_H */

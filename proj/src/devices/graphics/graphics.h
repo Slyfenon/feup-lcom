@@ -22,4 +22,4 @@ int (get_vram_size)();
 
 int (draw_background)(uint32_t* map);
 
-#endif
+#endif /* GRAPHICS_H */

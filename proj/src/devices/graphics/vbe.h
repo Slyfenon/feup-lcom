@@ -16,4 +16,4 @@
 /* Graphic Modes */
 #define DIRECT_COLOR_WITH_32BITS 0x14C
 
-#endif
+#endif /* _LCOM_VBE_H */

@@ -1,6 +1,10 @@
+#ifndef _GAMEOVER_H_
+#define _GAMEOVER_H_
+
+#include <lcom/lcf.h>
+
 #include "game.h"
 #include "sprite.h"
-#include <lcom/lcf.h>
 
 /**
  * DRAW FUNCTIONS
@@ -21,3 +25,5 @@ void (draw_GameOverScore)();
  * @param isDay boolean that indicates if the game is in day mode or night mode
  */
 void (draw_gameover)(bool isDay);
+
+#endif /* _GAMEOVER_H_ */
