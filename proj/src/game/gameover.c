@@ -6,6 +6,8 @@
 
 void (draw_GameOverScore)() {
   int player1Score = getPlayerScore(getPlayer1());
+
+  if(isMultiplayer()){
   int player2Score = getPlayerScore(getPlayer2());
 
   if(player1Score >= player2Score) {
@@ -14,6 +16,15 @@ void (draw_GameOverScore)() {
   else{
     draw_sprite(lost, MAX_X / 2, MAX_Y / 2);
   }
+  }
+  else{
+    for(int i = 0; i < 5; i++){
+      uint8_t digit = player1Score % 10;
+      player1Score /= 10;
+      draw_sprite(numbers[digit], MAX_X / 2 + 100 - i * 50 , MAX_Y / 2 );
+    }
+    
+  }  
 
 }
 

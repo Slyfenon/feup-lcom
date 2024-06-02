@@ -35,6 +35,10 @@ int(proj_main_loop)(int argc, char **argv) {
     return EXIT_FAILURE;
   }
 
+  timeRTC.hours = 23;
+  timeRTC.minutes = 4;
+
+
   conf_t config;
   config.bit_rate = 115200;
   config.no_bits = 8;
