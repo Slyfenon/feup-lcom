@@ -3,6 +3,14 @@
 #include "uart.h"
 #include <stdint.h>
 
+typedef enum {
+  SLEEPING,
+  WAITING,
+  PLAYER2_INFO,
+  KBD_INFO
+} ser_info_t;
+
+
 unsigned short base_addr;
 int ser_hook_id;
 
@@ -17,42 +25,7 @@ queue_t *(ser_get_rx_queue) () {
   return rx_queue;
 }
 
-int(ser_subscribe_int)(uint8_t *bit_no) {
-  if (bit_no == NULL) {
-    printf("Null pointer inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  *bit_no = ser_hook_id;
-  if (sys_irqsetpolicy(ser_hook_id, IRQ_REENABLE | IRQ_EXCLUSIVE, &ser_hook_id) != EXIT_SUCCESS) {
-    printf("Error in sys_irqsetpolicy inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  return EXIT_SUCCESS;
-}
 
-int(ser_unsubscribe_int)() {
-  if (sys_irqrmpolicy(&ser_hook_id) != EXIT_SUCCESS) {
-    printf("Error in sys_irqrmpolicy inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  return EXIT_SUCCESS;
-}
-
-int(ser_write_reg)(uint8_t reg, uint8_t data) {
-  if (sys_outb(base_addr + reg, data) != EXIT_SUCCESS) {
-    printf("Error in sys_outb inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  return EXIT_SUCCESS;
-}
-
-int(ser_read_reg)(uint8_t reg, uint8_t *data) {
-  if (util_sys_inb(base_addr + reg, data) != EXIT_SUCCESS) {
-    printf("Error in util_sys_inb inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  return EXIT_SUCCESS;
-}
 
 int(ser_conf)(unsigned short addr, conf_t config) {
   switch (addr) {
@@ -90,6 +63,43 @@ int(ser_conf)(unsigned short addr, conf_t config) {
   }
   if (ser_enable_int() != 0) {
     printf("Error in ser_enable_int inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int(ser_subscribe_int)(uint8_t *bit_no) {
+  if (bit_no == NULL) {
+    printf("Null pointer inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  *bit_no = ser_hook_id;
+  if (sys_irqsetpolicy(ser_hook_id, IRQ_REENABLE | IRQ_EXCLUSIVE, &ser_hook_id) != EXIT_SUCCESS) {
+    printf("Error in sys_irqsetpolicy inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int(ser_unsubscribe_int)() {
+  if (sys_irqrmpolicy(&ser_hook_id) != EXIT_SUCCESS) {
+    printf("Error in sys_irqrmpolicy inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int(ser_write_reg)(uint8_t reg, uint8_t data) {
+  if (sys_outb(base_addr + reg, data) != EXIT_SUCCESS) {
+    printf("Error in sys_outb inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  return EXIT_SUCCESS;
+}
+
+int(ser_read_reg)(uint8_t reg, uint8_t *data) {
+  if (util_sys_inb(base_addr + reg, data) != EXIT_SUCCESS) {
+    printf("Error in util_sys_inb inside %s\n", __func__);
     return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;
@@ -185,20 +195,36 @@ int(ser_disable_fifo)() {
 }
 
 int(ser_enable_int)() {
+  uint8_t mcr;
   if (ser_write_reg(SER_IER, (SER_IER_RX_INT | SER_IER_TX_INT | SER_IER_LINE_ST)) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-
+  if(ser_read_reg(SER_MCR, &mcr) != 0) {
+    printf("Error in ser_read_reg inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(ser_write_reg(SER_MCR, mcr | SER_MCR_OUT2) != 0) {
+    printf("Error in ser_write_reg inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
 
 int(ser_disable_int)() {
+  uint8_t mcr;
   if (ser_write_reg(SER_IER, 0x00) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-
+  if(ser_read_reg(SER_MCR, &mcr) != 0) {
+    printf("Error in ser_read_reg inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(ser_write_reg(SER_MCR, mcr & ~SER_MCR_OUT2) != 0) {
+    printf("Error in ser_write_reg inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
 
@@ -238,6 +264,7 @@ int(ser_send_data)() {
       printf("Error dequeuing data inside %s\n", __func__);
       return EXIT_FAILURE;
     }
+    printf("Sending data %d\n", data);
     if (ser_send_byte(data) != 0) {
       printf("Error sending byte inside %s\n", __func__);
       return EXIT_FAILURE;
@@ -260,11 +287,12 @@ int(ser_receive_data)() {
     return EXIT_FAILURE;
   }
 
-  while ((lsr & SER_LSR_RX_RDY)) {
+  while ((lsr & SER_LSR_RX_RDY) && !queue_is_full(rx_queue)) {
     if (ser_receive_byte(&data) != 0) {
       printf("Error receiving byte inside %s\n", __func__);
       return EXIT_FAILURE;
     }
+    printf("Received data %d\n", data);
     if (queue_enqueue(rx_queue, &data) != 0) {
       printf("Error enqueuing data inside %s\n", __func__);
       return EXIT_FAILURE;
@@ -279,28 +307,56 @@ int(ser_receive_data)() {
 }
 
 void(ser_ih)() {
-  uint8_t iir;
+  uint8_t iir, lsr;
 
   if (ser_read_reg(SER_IIR, &iir) != 0) {
     printf("Error reading Interrupt Identification Register inside %s\n", __func__);
     return;
   }
 
+  printf("IIR: 0x%x\n", iir);
+
   if (!(iir & SER_IIR_INT_NP)) {
     /* Interrupt Status: Pending (Interruption) */
-    if (iir & SER_IIR_INT_ID) {
+    if (iir & SER_IIR_RX_INT) {
+      printf("Received data\n");
       if (ser_receive_data() != 0) {
         printf("Error receiving data inside %s\n", __func__);
         return;
       }
     }
     if (iir & SER_IIR_TX_INT) {
+      printf("Send data\n");
       /* Transmitter Empty */
       if (ser_send_data() != 0) {
         printf("Error sending data inside %s\n", __func__);
         return;
       }
     }
+    if(iir & SER_IIR_LINE_ST) {
+      /* Line Status */
+      if (ser_read_reg(SER_LSR, &lsr) != 0) {
+        printf("Error reading Line Status Register inside %s\n", __func__);
+        return;
+      }
+      if (lsr & SER_LSR_OVERRUN_ERR) {
+        printf("Serial Overrun Error\n");
+      }
+      if (lsr & SER_LSR_PAR_ERR) {
+        printf("Serial Parity Error\n");
+      }
+      if (lsr & SER_LSR_FR_ERR) {
+        printf("Serial Framing Error\n");
+      }
+    }
+    /*
+    if(iir & SER_IIR_TO_INT) {
+      if (ser_receive_data() != 0) {
+        printf("Error receiving data inside %s\n", __func__);
+        return;
+      }
+    }
+    */
   }
 }
 
@@ -321,12 +377,6 @@ int(ser_exit)() {
   free(rx_queue);
   return EXIT_SUCCESS;
 }
-
-typedef enum {
-  WAITING,
-  PLAYER2_INFO,
-  KBD_INFO
-} ser_info_t;
 
 uint8_t player2_bytes[7];
 int player2_index = 0;
@@ -428,7 +478,6 @@ int(ser_read_data_from_rx_queue)() {
 
 int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint16_t score) {
   uint8_t info = (uint8_t) PLAYER2_INFO, lsb, msb;
-  printf("Info: %d\n", info);
   if (queue_enqueue(tx_queue, &info) != 0) {
     printf("Error enqueuing data inside 1 %s\n", __func__);
     return EXIT_FAILURE;
@@ -485,7 +534,10 @@ int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint1
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-
+  if(ser_send_data() != 0) {
+    printf("Error sending data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
 
@@ -499,6 +551,10 @@ int(ser_send_scancode_to_txqueue)(uint8_t scancode) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
+  if(ser_send_data() != 0) {
+    printf("Error sending data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }
 
@@ -506,6 +562,10 @@ int(ser_send_waiting_to_txqueue)() {
   uint8_t info = (uint8_t) WAITING;
   if (queue_enqueue(tx_queue, &info) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  if(ser_send_data() != 0) {
+    printf("Error sending data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;
@@ -521,5 +581,9 @@ int ser_reset_queues() {
     return EXIT_FAILURE;
   }
   ser_info = WAITING;
+  if (ser_write_reg(SER_FCR, (SER_FCR_EN_FIFO | SER_FCR_CLR_RX_FIFO | SER_FCR_CLR_TX_FIFO | SER_FCR_TRIGGER_1)) != 0) {
+    printf("Error in ser_write_reg inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   return EXIT_SUCCESS;
 }

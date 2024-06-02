@@ -3,7 +3,7 @@
 #include <lcom/lcf.h>
 #include <stdint.h>
 
-#define QUEUE_SIZE 256
+#define QUEUE_SIZE 1024
 
 /**
  * @brief Queue structure definition.

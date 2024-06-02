@@ -49,7 +49,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
   switch (state) {
     case GAME:
       if (keyboardBytes[0] == 0x81) {
-        if(isMultiplayer()) {
+        if (isMultiplayer()) {
           ser_reset_queues();
         }
         return MENU;
@@ -63,8 +63,6 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
             return GAME;
           case MULTIPLAYER:
             ser_send_waiting_to_txqueue();
-            ser_send_data();
-            printf("Waiting for player 2\n");
             return WAIT;
           case QUIT:
             return ENDGAME;
@@ -81,7 +79,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
       return MENU;
     case GAMEOVER:
       if (keyboardBytes[0] == 0x81) {
-        if(isMultiplayer()) {
+        if (isMultiplayer()) {
           ser_reset_queues();
         }
         return MENU;
@@ -118,7 +116,7 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
         setPlayerCanShoot(getPlayer1(), true);
       }
 
-      if (pp->delta_scroll > 1) {
+      if (pp->delta_scroll > 1 && !isMultiplayer()) {
         setSlowTime();
       }
 
@@ -141,32 +139,31 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
 }
 
 State(handle_serial)(State state) {
-  player2_info_t *pp = NULL;
-  uint8_t *scancode = NULL;
+  player2_info_t pp;
+  uint8_t scancode;
   switch (state) {
     case WAIT:
       ser_handle_start();
       break;
     case GAME:
-      printf("I'm receiving data\n");
       ser_read_data_from_rx_queue();
       if (ser_get_player2_info_is_done()) {
-        ser_get_player2_info(pp);
+        ser_get_player2_info(&pp);
         printf("Received");
         if (isMultiplayer()) {
-          setPlayerX(getPlayer2(), pp->x);
-          setPlayerY(getPlayer2(), pp->y);
-          setPlayerScore(getPlayer2(), pp->score);
-          if (pp->target != -1) {
-            if (isActiveTarget(pp->target)) {
-              setActiveTarget(pp->target, false);
+          setPlayerX(getPlayer2(), pp.x);
+          setPlayerY(getPlayer2(), pp.y);
+          setPlayerScore(getPlayer2(), pp.score);
+          if (pp.target != -1) {
+            if (isActiveTarget(pp.target)) {
+              setActiveTarget(pp.target, false);
             }
           }
         }
       }
       if (ser_get_scancode_is_done()) {
-        ser_get_scancode(scancode);
-        state = handle_keyboard(state, scancode);
+        ser_get_scancode(&scancode);
+        state = handle_keyboard(state, &scancode);
       }
       break;
     default:

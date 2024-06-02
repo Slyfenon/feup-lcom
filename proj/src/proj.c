@@ -39,11 +39,10 @@ int(proj_main_loop)(int argc, char **argv) {
   config.bit_rate = 115200;
   config.no_bits = 8;
   config.stop_bits = 1;
-  config.parity = 0;
+  config.parity = 1;
 
   if (ser_conf(0x3F8, config) != OK)
     return EXIT_FAILURE;
-
   if (set_graphics_mode(DIRECT_COLOR_WITH_32BITS) != OK)
     return EXIT_FAILURE;
   if (set_frame_buffer(DIRECT_COLOR_WITH_32BITS) != OK)

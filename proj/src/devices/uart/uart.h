@@ -47,8 +47,8 @@ union lcr {
   uint8_t value;
   struct {
     uint8_t word_length: 2;
-    uint8_t stop_bits: 2;
-    uint8_t parity: 2;
+    uint8_t stop_bits: 1;
+    uint8_t parity: 3;
     uint8_t set_break_en: 1;
     uint8_t dlab: 1;
   };
@@ -89,7 +89,8 @@ typedef struct {
 #define SER_IIR_INT_ID (BIT(3) | BIT(2) | BIT(1)) /** @brief Interrupt Origin */
 #define SER_IIR_TX_INT BIT(1) /** @brief Transmitter Empty*/
 #define SER_IIR_RX_INT BIT(2) /** @brief Received Data Available */
-#define SER_IIR_LINE_ST (BIT(3) | BIT(2)) /** @brief Line Status */
+#define SER_IIR_TO_INT BIT(3) /** @brief Time Out */
+#define SER_IIR_LINE_ST (BIT(2) | BIT(1)) /** @brief Line Status */
 #define SER_IIR_FIFO_64 BIT(6) /** @brief 64 Byte FIFO Enabled */
 #define SER_IIR_FIFO_ST (BIT(7) | BIT(6)) /** @brief FIFO status */
 #define SER_IIR_NO_FIFO 0x00 /** @brief No FIFO */

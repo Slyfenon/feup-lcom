@@ -1,5 +1,5 @@
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef _UTILS_H_
+#define _UTILS_H_
 
 #include <lcom/lcf.h>
 

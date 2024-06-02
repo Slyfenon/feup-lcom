@@ -40,6 +40,7 @@ void(setMultiplayer)(bool value) {
  * GENERIC GAME FUNCTIONS
  */
 
+
 void(initGame)(bool multiplayer) {
   is_multiplayer = multiplayer;
   player1 = createPlayer();
