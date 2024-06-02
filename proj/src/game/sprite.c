@@ -61,6 +61,8 @@ int (load_sprites)() {
   scoreSprite = (create_sprite)(score_xpm);
   waitMessage = (create_sprite)(wait_xpm);
   title = (create_sprite)(title_xpm);
+  lost = (create_sprite)(lost_xpm);
+  win = (create_sprite)(win_xpm);
   for (int i = 0; i < 10; i++) {
     numbers[i] = (create_sprite)(numbers_xpm[i]);
   }
@@ -121,6 +123,14 @@ int (delete_sprites)() {
       free(explosion[i]->map);
       free(explosion[i]);
     }
+  }
+  if(lost != NULL) {
+    free(lost->map);
+    free(lost);
+  }
+  if(win != NULL) {
+    free(win->map);
+    free(win);
   }
   if (GameOver != NULL) {
     free(GameOver->map);
