@@ -105,12 +105,6 @@ int (vg_page_flipping)() {
     return EXIT_SUCCESS;
 }
 
-int (vg_reset_current_buffer)() {
-    memset(buffers[indexArrayBuffers], 0, vram_size);
-
-    return EXIT_SUCCESS;
-}
-
 uint8_t* (get_actual_buffer)() {
     return buffers[indexArrayBuffers];
 }
