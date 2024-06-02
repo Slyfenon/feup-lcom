@@ -60,6 +60,7 @@ int (load_sprites)() {
   clockIcon = (create_sprite)(clock_xpm);
   scoreSprite = (create_sprite)(score_xpm);
   waitMessage = (create_sprite)(wait_xpm);
+  title = (create_sprite)(title_xpm);
   for (int i = 0; i < 10; i++) {
     numbers[i] = (create_sprite)(numbers_xpm[i]);
   }

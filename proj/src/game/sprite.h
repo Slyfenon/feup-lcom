@@ -10,6 +10,7 @@
 #include "../resources/font/quit.xpm"
 #include "../resources/font/score.xpm"
 #include "../resources/font/singleplayer.xpm"
+#include "../resources/font/title.xpm"
 #include "../resources/font/wait.xpm"
 #include "../resources/sprites/aim.xpm"
 #include "../resources/sprites/clock.xpm"
@@ -45,6 +46,7 @@ Sprite *singleplayer; /** Pointer to the singleplayer sprite. */
 Sprite *multiplayer;  /** Pointer to the multiplayer sprite. */
 Sprite *quit;         /** Pointer to the quit sprite. */
 Sprite *dots;         /** Pointer to the dots sprite. */
+Sprite *title;        /** Pointer to the title sprite. */
 Sprite *waitMessage;  /** Pointer to the wait Message sprite. */
 Sprite *GameOver;     /** Pointer to the Game Over sprite. */
 Sprite *GameOverESC;  /** Pointer to the Game Over ESC sprite. */

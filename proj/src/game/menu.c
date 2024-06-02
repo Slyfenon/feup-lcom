@@ -78,20 +78,20 @@ void (draw_menu)(bool isDay) {
     (draw_sprite)(minutes[i], startX, MAX_Y - 65);
     startX -= 50;
   }
-
-  draw_sprite(singleplayer, MAX_X / 2, 100);
-  draw_sprite(multiplayer, MAX_X / 2, 200);
-  draw_sprite(quit, MAX_X / 2, 300);
+  draw_sprite(title, MAX_X / 2, 150);
+  draw_sprite(singleplayer, MAX_X / 2, 400);
+  draw_sprite(multiplayer, MAX_X / 2, 500);
+  draw_sprite(quit, MAX_X / 2, 600);
 
   switch (getCurrentOption()) {
     case SINGLEPLAYER:
-      vg_draw_rectangle(MAX_X / 2 - 250, 140, 502, 6, 0x000000);
+      vg_draw_rectangle(MAX_X / 2 - 250, 440, 502, 6, 0x000000);
       break;
     case MULTIPLAYER:
-      vg_draw_rectangle(MAX_X / 2 - 240, 240, 480, 6, 0x000000);
+      vg_draw_rectangle(MAX_X / 2 - 240, 540, 480, 6, 0x000000);
       break;
     case QUIT:
-      vg_draw_rectangle(MAX_X / 2 - 85, 340, 170, 6, 0x000000);
+      vg_draw_rectangle(MAX_X / 2 - 85, 640, 170, 6, 0x000000);
       break;
     default:
       break;
