@@ -141,7 +141,6 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
 
 State(handle_serial)(State state) {
   player2_info_t pp;
-  uint8_t scancode;
   switch (state) {
     case WAIT:
       ser_handle_start();
@@ -160,10 +159,6 @@ State(handle_serial)(State state) {
             }
           }
         }
-      }
-      if (ser_get_scancode_is_done()) {
-        ser_get_scancode(&scancode);
-        state = handle_keyboard(state, &scancode);
       }
       break;
     default:

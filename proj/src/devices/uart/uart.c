@@ -7,7 +7,6 @@ typedef enum {
   SLEEPING,
   WAITING,
   PLAYER2_INFO,
-  KBD_INFO
 } ser_info_t;
 
 unsigned short base_addr;
@@ -340,14 +339,7 @@ void(ser_ih)() {
         printf("Serial Framing Error\n");
       }
     }
-    /*
-    if(iir & SER_IIR_TO_INT) {
-      if (ser_receive_data() != 0) {
-        printf("Error receiving data inside %s\n", __func__);
-        return;
-      }
-    }
-    */
+
   }
 }
 
@@ -391,9 +383,6 @@ bool(ser_get_player2_info_is_done)() {
   return ser_player2_info_is_done;
 }
 
-bool(ser_get_scancode_is_done)() {
-  return ser_scancode_is_done;
-}
 
 int(ser_get_player2_info)(player2_info_t *pp) {
   if (pp == NULL) {
@@ -402,16 +391,6 @@ int(ser_get_player2_info)(player2_info_t *pp) {
   }
   *pp = ser_player2_info;
   ser_player2_info_is_done = false;
-  return EXIT_SUCCESS;
-}
-
-int(ser_get_scancode)(uint8_t *scancode) {
-  if (scancode == NULL) {
-    printf("Null pointer inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  *scancode = ser_scancode;
-  ser_scancode_is_done = false;
   return EXIT_SUCCESS;
 }
 
@@ -436,9 +415,6 @@ int(ser_read_data_from_rx_queue)() {
         if (data == PLAYER2_INFO) {
           ser_info = PLAYER2_INFO;
         }
-        else if (data == KBD_INFO) {
-          ser_info = KBD_INFO;
-        }
         break;
       case PLAYER2_INFO:
         player2_bytes[player2_index] = data;
@@ -452,11 +428,6 @@ int(ser_read_data_from_rx_queue)() {
           ser_info = WAITING;
           ser_player2_info_is_done = true;
         }
-        break;
-      case KBD_INFO:
-        ser_scancode = data;
-        ser_info = WAITING;
-        ser_scancode_is_done = true;
         break;
       default:
         break;
@@ -520,23 +491,6 @@ int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint1
     return EXIT_FAILURE;
   }
   if (queue_enqueue(tx_queue, &msb) != 0) {
-    printf("Error enqueuing data inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  if (ser_send_data() != 0) {
-    printf("Error sending data inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  return EXIT_SUCCESS;
-}
-
-int(ser_send_scancode_to_txqueue)(uint8_t scancode) {
-  uint8_t info = 3;
-  if (queue_enqueue(tx_queue, &info) != 0) {
-    printf("Error enqueuing data inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-  if (queue_enqueue(tx_queue, &scancode) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }

@@ -8,11 +8,11 @@ void (draw_GameOverScore)() {
   int player1Score = getPlayerScore(getPlayer1());
   int player2Score = getPlayerScore(getPlayer2());
 
-  if(player1Score > player2Score) {
-    draw_sprite(win, MAX_X / 2, 200);
+  if(player1Score >= player2Score) {
+    draw_sprite(win, MAX_X / 2, MAX_Y / 2);
   }
   else{
-    draw_sprite(lost, MAX_X / 2, 200);
+    draw_sprite(lost, MAX_X / 2, MAX_Y / 2);
   }
 
 }

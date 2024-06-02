@@ -132,20 +132,6 @@ queue_t *(ser_get_rx_queue)();
  */
 bool(ser_get_player2_info_is_done)();
 
-/**
- * @brief Gets if the player 2 is done.
- *
- * @return true if player2 scancode is done, false otherwise.
- */
-bool(ser_get_scancode_is_done)();
-
-/**
- * @brief Gets the player 2 scancode.
- *
- * @param pp Pointer to the player 2 scancode.
- * @return OK on success, non-zero otherwise.
- */
-int(ser_get_scancode)(uint8_t *scancode);
 
 /**
  * @brief Gets the player 2 info.
@@ -186,14 +172,6 @@ int(ser_read_data_from_rx_queue)();
  * @return OK on success, non-zero otherwise.
  */
 int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint16_t score);
-
-/**
- * @brief Sends a scancode to the transmit queue.
- *
- * @param scancode Scancode to send.
- * @return OK on success, non-zero otherwise.
- */
-int(ser_send_scancode_to_txqueue)(uint8_t scancode);
 
 /**
  * @brief Sends waiting to the transmit queue.
