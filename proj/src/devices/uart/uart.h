@@ -31,13 +31,13 @@
 #define SER_LCR_WORD_SIZE(N) ((N) - 5) /** @brief Select word (character) length */
 
 #define SER_LCR_STOP_BIT BIT(2) /** @brief Length of the stop bit */
-#define SER_LCR_STOP_1 0x00 /** @brief One stop bit */
-#define SER_LCR_STOP_2 BIT(2) /** @brief Two stop bits */
+#define SER_LCR_STOP_1 0 /** @brief One stop bit */
+#define SER_LCR_STOP_2 1 /** @brief Two stop bits */
 
 #define SER_LCR_PAR (BIT(5) | BIT(4) | BIT(3)) /** @brief Parity Select */
-#define SER_LCR_PAR_NONE 0x00 /** @brief No parity */
-#define SER_LCR_PAR_ODD BIT(3) /** @brief Odd parity */
-#define SER_LCR_PAR_EVEN (BIT(4) | BIT(3)) /** @brief Even parity */
+#define SER_LCR_PAR_NONE 0 /** @brief No parity */
+#define SER_LCR_PAR_ODD 1 /** @brief Odd parity */
+#define SER_LCR_PAR_EVEN 3 /** @brief Even parity */
 
 #define SER_LCR_DLAB BIT(7) /** @brief DLAB: Divisor Latch Access Bit */
 
@@ -46,11 +46,11 @@
 union lcr {
   uint8_t value;
   struct {
-    uint8_t dlab: 1;
-    uint8_t set_break_en: 1;
-    uint8_t parity: 2;
-    uint8_t stop_bits: 2;
     uint8_t word_length: 2;
+    uint8_t stop_bits: 2;
+    uint8_t parity: 2;
+    uint8_t set_break_en: 1;
+    uint8_t dlab: 1;
   };
 } typedef lcr_t;
 
@@ -97,9 +97,9 @@ typedef struct {
 #define SER_IIR_FIFO_UN (BIT(6) | BIT(7)) /** @brief Enable but Unusable  */
 
 /* FCR - FIFO Control Register (Write Only Register) */
-#define SER_FCR_EN_FIFO OK /** @brief Enable FIFO */
+#define SER_FCR_EN_FIFO BIT(0) /** @brief Enable FIFO */
 #define SER_FCR_CLR_RX_FIFO BIT(1) /** @brief Clear Receive FIFO */
-#define SER_FCR_CLR_TX_FIFO BIT(1) /** @brief Clear Transmit FIFO */
+#define SER_FCR_CLR_TX_FIFO BIT(2) /** @brief Clear Transmit FIFO */
 #define SER_FCR_EN_64_FIFO BIT(5) /** @brief Clear Transmit FIFO */
 #define SER_FCR_TRIGGER_LVL (BIT(7) | BIT(6)) /** @brief Interrupt Trigger Level */
 #define SER_FCR_TRIGGER_1 0x00 /** @brief Interrupt Trigger Level 1 byte */
@@ -136,11 +136,14 @@ int(ser_handle_start)();
 
 int(ser_read_data_from_rx_queue)();
 
-int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, uint8_t target, uint16_t score);
+int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint16_t score);
 
 int(ser_send_scancode_to_txqueue)(uint8_t scancode);
 
 int(ser_send_waiting_to_txqueue)();
+
+void(ser_set_player2_ready)(bool ready);
+
 
 /**
  * @brief Subscribes serial port interrupts.
@@ -270,5 +273,13 @@ void (ser_ih)();
  * @return OK on success, non-zero otherwise.
  */
 int (ser_exit)();
+
+
+/**
+ * @brief Resets the serial port queues.
+ * 
+ * @return OK on success, non-zero otherwise.
+*/
+int ser_reset_queues();
 
 #endif /* _LCOM_UART_H */

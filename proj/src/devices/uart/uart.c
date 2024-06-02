@@ -68,6 +68,14 @@ int(ser_conf)(unsigned short addr, conf_t config) {
       printf("Invalid base address inside %s\n", __func__);
       return EXIT_FAILURE;
   }
+
+  tx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
+  rx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
+  if (tx_queue == NULL || rx_queue == NULL) {
+    printf("Error initializing queues inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+
   if (ser_set_bit_rate(config.bit_rate) != 0) {
     printf("Error in ser_set_bit_rate inside %s\n", __func__);
     return EXIT_FAILURE;
@@ -84,13 +92,6 @@ int(ser_conf)(unsigned short addr, conf_t config) {
     printf("Error in ser_enable_int inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  tx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
-  rx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
-  if (tx_queue == NULL || rx_queue == NULL) {
-    printf("Error initializing queues inside %s\n", __func__);
-    return EXIT_FAILURE;
-  }
-
   return EXIT_SUCCESS;
 }
 
@@ -125,7 +126,6 @@ int(ser_set_bit_rate)(unsigned int bit_rate) {
     printf("Error in ser_set_bit_rate inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-
   return EXIT_SUCCESS;
 }
 
@@ -133,8 +133,31 @@ int(ser_set_line_ctrl)(conf_t *config) {
   lcr_t lcr;
   lcr.value = 0;
   lcr.word_length = SER_LCR_WORD_SIZE(config->no_bits);
-  lcr.stop_bits = config->stop_bits;
-  lcr.parity = config->parity;
+  switch (config->stop_bits) {
+    case 1:
+      lcr.stop_bits = SER_LCR_STOP_1;
+      break;
+    case 2:
+      lcr.stop_bits = SER_LCR_STOP_2;
+      break;
+    default:
+      printf("Invalid stop bits inside %s\n", __func__);
+      return EXIT_FAILURE;
+  }
+  switch (config->parity) {
+    case NO_PARITY:
+      lcr.parity = SER_LCR_PAR_NONE;
+      break;
+    case ODD_PARITY:
+      lcr.parity = SER_LCR_PAR_ODD;
+      break;
+    case EVEN_PARITY:
+      lcr.parity = SER_LCR_PAR_EVEN;
+      break;
+    default:
+      printf("Invalid parity inside %s\n", __func__);
+      return EXIT_FAILURE;
+  }
   if (ser_write_reg(SER_LCR, lcr.value) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
     return EXIT_FAILURE;
@@ -144,7 +167,7 @@ int(ser_set_line_ctrl)(conf_t *config) {
 }
 
 int(ser_enable_fifo)() {
-  if (ser_write_reg(SER_FCR, SER_FCR_EN_FIFO | SER_FCR_CLR_RX_FIFO | SER_FCR_CLR_TX_FIFO | SER_FCR_TRIGGER_1) != 0) {
+  if (ser_write_reg(SER_FCR, (SER_FCR_EN_FIFO | SER_FCR_CLR_RX_FIFO | SER_FCR_CLR_TX_FIFO | SER_FCR_TRIGGER_1)) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
     return EXIT_FAILURE;
   }
@@ -162,7 +185,7 @@ int(ser_disable_fifo)() {
 }
 
 int(ser_enable_int)() {
-  if (ser_write_reg(SER_IER, SER_IER_RX_INT | SER_IER_TX_INT | SER_IER_LINE_ST) != 0) {
+  if (ser_write_reg(SER_IER, (SER_IER_RX_INT | SER_IER_TX_INT | SER_IER_LINE_ST)) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
     return EXIT_FAILURE;
   }
@@ -265,33 +288,28 @@ void(ser_ih)() {
 
   if (!(iir & SER_IIR_INT_NP)) {
     /* Interrupt Status: Pending (Interruption) */
-    switch (iir & SER_IIR_INT_ID) {
-      case SER_IIR_RX_INT:
-        /* Received Data Available */
-        if (ser_receive_data() != 0) {
-          printf("Error receiving data inside %s\n", __func__);
-          return;
-        }
-        break;
-      case SER_IIR_TX_INT:
-        /* Transmitter Empty */
-        if (ser_send_data() != 0) {
-          printf("Error sending data inside %s\n", __func__);
-          return;
-        }
-        break;
-      default:
-        break;
+    if (iir & SER_IIR_INT_ID) {
+      if (ser_receive_data() != 0) {
+        printf("Error receiving data inside %s\n", __func__);
+        return;
+      }
+    }
+    if (iir & SER_IIR_TX_INT) {
+      /* Transmitter Empty */
+      if (ser_send_data() != 0) {
+        printf("Error sending data inside %s\n", __func__);
+        return;
+      }
     }
   }
 }
 
 int(ser_exit)() {
-  if(ser_disable_int() != 0) {
+  if (ser_disable_int() != 0) {
     printf("Error disabling interrupts inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(ser_disable_fifo() != 0) {
+  if (ser_disable_fifo() != 0) {
     printf("Error disabling FIFO inside %s\n", __func__);
     return EXIT_FAILURE;
   }
@@ -299,7 +317,8 @@ int(ser_exit)() {
     printf("Error destroying queues inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-
+  free(tx_queue);
+  free(rx_queue);
   return EXIT_SUCCESS;
 }
 
@@ -319,8 +338,12 @@ bool ser_player2_info_is_done = false;
 bool ser_scancode_is_done = false;
 bool ser_player2_ready = false;
 
-bool (ser_get_player2_ready)() {
+bool(ser_get_player2_ready)() {
   return ser_player2_ready;
+}
+
+void(ser_set_player2_ready)(bool ready) {
+  ser_player2_ready = ready;
 }
 
 bool(ser_get_player2_info_is_done)() {
@@ -353,16 +376,14 @@ int(ser_get_scancode)(uint8_t *scancode) {
 
 int(ser_handle_start)() {
   uint8_t data;
-  if(queue_dequeue(rx_queue, &data) != 0) {
-    printf("Error dequeuing data inside %s\n", __func__);
-    return EXIT_FAILURE;
+  if (!queue_is_empty(rx_queue)) {
+    queue_dequeue(rx_queue, &data);
+    if (data == WAITING) {
+      ser_info = WAITING;
+      ser_player2_ready = true;
+    }
   }
-  if(data == WAITING) {
-    ser_player2_ready = true;
-    ser_info = WAITING;
-    return EXIT_SUCCESS;
-  }
-  return EXIT_FAILURE;
+  return EXIT_SUCCESS;
 }
 
 int(ser_read_data_from_rx_queue)() {
@@ -387,7 +408,7 @@ int(ser_read_data_from_rx_queue)() {
           ser_player2_info.target = player2_bytes[4];
           ser_player2_info.score = player2_bytes[5] | ((player2_bytes[6]) << 8);
           player2_index = 0;
-          ser_info = WAITING; 
+          ser_info = WAITING;
           ser_player2_info_is_done = true;
         }
         break;
@@ -402,74 +423,74 @@ int(ser_read_data_from_rx_queue)() {
     break;
   }
 
-
   return EXIT_SUCCESS;
 }
 
-int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, uint8_t target, uint16_t score) {
-  ser_info_t info = PLAYER2_INFO;
-  uint8_t lsb, msb;
+int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint16_t score) {
+  uint8_t info = (uint8_t) PLAYER2_INFO, lsb, msb;
+  printf("Info: %d\n", info);
   if (queue_enqueue(tx_queue, &info) != 0) {
-    printf("Error enqueuing data inside %s\n", __func__);
+    printf("Error enqueuing data inside 1 %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_LSB(x, &lsb) != 0) {
-    printf("Error in util_get_LSB inside %s\n", __func__);
+  if (util_get_LSB(x, &lsb) != 0) {
+    printf("Error in util_get_LSB inside 2 %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &lsb) != 0) {
-    printf("Error enqueuing data inside %s\n", __func__);
+  if (queue_enqueue(tx_queue, &lsb) != 0) {
+    printf("Error enqueuing data inside 3 %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_MSB(x, &msb) != 0) {
+  if (util_get_MSB(x, &msb) != 0) {
     printf("Error in util_get_MSB inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &msb) != 0) {
+  if (queue_enqueue(tx_queue, &msb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_LSB(y, &lsb) != 0) {
+  if (util_get_LSB(y, &lsb) != 0) {
     printf("Error in util_get_LSB inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &lsb) != 0) {
+  if (queue_enqueue(tx_queue, &lsb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_MSB(y, &msb) != 0) {
+  if (util_get_MSB(y, &msb) != 0) {
     printf("Error in util_get_MSB inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &msb) != 0) {
+  if (queue_enqueue(tx_queue, &msb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &target) != 0) {
+  if (queue_enqueue(tx_queue, &target) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_LSB(score, &lsb) != 0) {
+  if (util_get_LSB(score, &lsb) != 0) {
     printf("Error in util_get_LSB inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &lsb) != 0) {
+  if (queue_enqueue(tx_queue, &lsb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(util_get_MSB(score, &msb) != 0) {
+  if (util_get_MSB(score, &msb) != 0) {
     printf("Error in util_get_MSB inside %s\n", __func__);
     return EXIT_FAILURE;
   }
-  if(queue_enqueue(tx_queue, &msb) != 0) {
+  if (queue_enqueue(tx_queue, &msb) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
+
   return EXIT_SUCCESS;
 }
 
 int(ser_send_scancode_to_txqueue)(uint8_t scancode) {
-  ser_info_t info = KBD_INFO;
+  uint8_t info = (uint8_t) KBD_INFO;
   if (queue_enqueue(tx_queue, &info) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
@@ -482,10 +503,23 @@ int(ser_send_scancode_to_txqueue)(uint8_t scancode) {
 }
 
 int(ser_send_waiting_to_txqueue)() {
-  ser_info_t info = WAITING;
+  uint8_t info = (uint8_t) WAITING;
   if (queue_enqueue(tx_queue, &info) != 0) {
     printf("Error enqueuing data inside %s\n", __func__);
     return EXIT_FAILURE;
   }
+  return EXIT_SUCCESS;
+}
+
+int ser_reset_queues() {
+  queue_destroy(tx_queue);
+  queue_destroy(rx_queue);
+  tx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
+  rx_queue = create_queue(QUEUE_SIZE, sizeof(uint8_t));
+  if (tx_queue == NULL || rx_queue == NULL) {
+    printf("Error initializing queues inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
+  ser_info = WAITING;
   return EXIT_SUCCESS;
 }

@@ -13,7 +13,6 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
       updateTargets();
       updateDynamite();
       draw_game(isDay);
-
       if (endTime()) {
         return GAMEOVER;
       }
@@ -31,8 +30,15 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
       draw_gameover(isDay);
       return GAMEOVER;
     case WAIT:
-      draw_wait_menu(isDay);
-      return WAIT;
+      if (ser_get_player2_ready()) {
+        ser_set_player2_ready(false);
+        initGame(true);
+        return GAME;
+      }
+      else {
+        draw_wait_menu(isDay);
+        return WAIT;
+      }
     default:
       break;
   }
@@ -43,6 +49,9 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
   switch (state) {
     case GAME:
       if (keyboardBytes[0] == 0x81) {
+        if(isMultiplayer()) {
+          ser_reset_queues();
+        }
         return MENU;
       }
       break;
@@ -53,7 +62,9 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
             initGame(false);
             return GAME;
           case MULTIPLAYER:
-            ser_handle_start();
+            ser_send_waiting_to_txqueue();
+            ser_send_data();
+            printf("Waiting for player 2\n");
             return WAIT;
           case QUIT:
             return ENDGAME;
@@ -70,12 +81,16 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
       return MENU;
     case GAMEOVER:
       if (keyboardBytes[0] == 0x81) {
+        if(isMultiplayer()) {
+          ser_reset_queues();
+        }
         return MENU;
       }
       return GAMEOVER;
 
     case WAIT:
       if (keyboardBytes[0] == 0x81) {
+        ser_reset_queues();
         return MENU;
       }
       break;
@@ -86,7 +101,7 @@ State(handle_keyboard)(State state, uint8_t *keyboardBytes) {
 }
 
 State(handle_mouse)(State state, struct mousePacket *pp) {
-  uint8_t target_index;
+  int8_t target_index = -1;
   switch (state) {
     case GAME:
       addToX(getPlayer1(), pp->delta_x);
@@ -125,28 +140,38 @@ State(handle_mouse)(State state, struct mousePacket *pp) {
   return state;
 }
 
-State(handle_serial)(State state, player2_info_t *pp) {
+State(handle_serial)(State state) {
+  player2_info_t *pp = NULL;
+  uint8_t *scancode = NULL;
   switch (state) {
     case WAIT:
-      initGame(true);
-      return GAME;
-      
+      ser_handle_start();
+      break;
     case GAME:
-      if(isMultiplayer()) {
-        setPlayerX(getPlayer2(), pp->x);
-        setPlayerY(getPlayer2(), pp->y);
-        setPlayerScore(getPlayer2(), pp->score);
-        if (pp->target != -1) {
-          if (isActiveTarget(pp->target)) {
-            setActiveTarget(pp->target, false);
+      printf("I'm receiving data\n");
+      ser_read_data_from_rx_queue();
+      if (ser_get_player2_info_is_done()) {
+        ser_get_player2_info(pp);
+        printf("Received");
+        if (isMultiplayer()) {
+          setPlayerX(getPlayer2(), pp->x);
+          setPlayerY(getPlayer2(), pp->y);
+          setPlayerScore(getPlayer2(), pp->score);
+          if (pp->target != -1) {
+            if (isActiveTarget(pp->target)) {
+              setActiveTarget(pp->target, false);
+            }
           }
         }
       }
+      if (ser_get_scancode_is_done()) {
+        ser_get_scancode(scancode);
+        state = handle_keyboard(state, scancode);
+      }
       break;
-
     default:
       break;
   }
-  
+
   return state;
 }

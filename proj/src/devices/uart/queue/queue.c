@@ -47,7 +47,7 @@ int (queue_destroy)(queue_t *q) {
   q->size = 0;
   q->count = 0;
   q->el_size = 0;
-
+  
   return EXIT_SUCCESS;
 }
 

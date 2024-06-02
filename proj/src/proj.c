@@ -13,7 +13,6 @@ struct mousePacket mouse_packet;
 uint8_t keyboard_scancode[2];
 enum State state = MENU;
 rtc_time timeRTC;
-player2_info_t *pp;
 
 int(main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -36,21 +35,19 @@ int(proj_main_loop)(int argc, char **argv) {
     return EXIT_FAILURE;
   }
 
-  
   conf_t config;
   config.bit_rate = 115200;
   config.no_bits = 8;
   config.stop_bits = 1;
   config.parity = 0;
 
-  if(ser_conf(0x3F8, config) != OK)
+  if (ser_conf(0x3F8, config) != OK)
     return EXIT_FAILURE;
-  
+
   if (set_graphics_mode(DIRECT_COLOR_WITH_32BITS) != OK)
     return EXIT_FAILURE;
   if (set_frame_buffer(DIRECT_COLOR_WITH_32BITS) != OK)
     return EXIT_FAILURE;
-
   if (timer_subscribe_int(&timer_irq_set) != OK)
     return EXIT_FAILURE;
   if (kbc_subscribe_int(&keyboard_irq_set) != OK)
@@ -63,7 +60,6 @@ int(proj_main_loop)(int argc, char **argv) {
     return EXIT_FAILURE;
   if (mouse_subscribe_int(&mouse_irq_set) != OK)
     return EXIT_FAILURE;
-
   load_sprites();
 
   message msg;
@@ -89,15 +85,9 @@ int(proj_main_loop)(int argc, char **argv) {
       }
 
       if (msg.m_notify.interrupts & BIT(ser_irq_set)) {
+        printf("here\n");
         ser_ih();
-        if(ser_get_player2_ready() || ser_get_player2_info_is_done()){
-          ser_get_player2_info(pp);
-          state = handle_serial(state, pp);
-        }
-        if(ser_get_scancode_is_done()){
-          ser_get_scancode(keyboard_scancode);
-          state = handle_keyboard(state, keyboard_scancode);
-        }
+        handle_serial(state);
       }
 
       if (msg.m_notify.interrupts & BIT(mouse_irq_set)) {
@@ -116,13 +106,13 @@ int(proj_main_loop)(int argc, char **argv) {
     return EXIT_FAILURE;
   if (mouse_disable_data_reporting() != OK)
     return EXIT_FAILURE;
-  if(ser_unsubscribe_int() != OK)
+  if (ser_unsubscribe_int() != OK)
     return EXIT_FAILURE;
   if (kbc_unsubscribe_int() != OK)
     return EXIT_FAILURE;
   if (timer_unsubscribe_int() != OK)
     return EXIT_FAILURE;
-  if(ser_exit() != OK)
+  if (ser_exit() != OK)
     return EXIT_FAILURE;
   if (vg_exit() != OK)
     return EXIT_FAILURE;
