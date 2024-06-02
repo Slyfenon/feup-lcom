@@ -1,0 +1,204 @@
+\hypertarget{rtc_8c}{}\doxysection{src/devices/rtc/rtc.c File Reference}
+\label{rtc_8c}\index{src/devices/rtc/rtc.c@{src/devices/rtc/rtc.c}}
+{\ttfamily \#include \char`\"{}rtc.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for rtc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{rtc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}{rtc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes RTC interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{rtc_8c_a9d4850bb2a488644672d43287f160622}{rtc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes RTC interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{rtc_8c_a1081e5a7e6e7ebdca2b3523cef70930c}{read\+\_\+time\+\_\+register}} (uint8\+\_\+t reg, uint8\+\_\+t $\ast$output)
+\begin{DoxyCompactList}\small\item\em Reads the value of a time register. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{rtc_8c_a1c0c8de9a0e368f3815f894efeca6a98}{rtc\+\_\+is\+\_\+blocked}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the RTC is blocked. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{rtc_8c_a0d5fa2b6a299944c3c6f45d8c831e690}{rtc\+\_\+is\+\_\+binary}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the RTC is in binary mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t() \mbox{\hyperlink{rtc_8c_ac0d52de1ebf0301f7370fdcaaca0fe39}{convert\+\_\+bcd\+\_\+to\+\_\+decimal}} (uint8\+\_\+t $\ast$bcd)
+\begin{DoxyCompactList}\small\item\em Converts a BCD (Binary-\/\+Coded Decimal) value to decimal. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{rtc_8c_a4ec419448072d13b4b5ddde2e6910339}{rtc\+\_\+update\+\_\+time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$time)
+\begin{DoxyCompactList}\small\item\em Updates the time in the RTC, uses timer interrupts to keep track of time. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{rtc_8c_ae5daa2e720c099ae56979927b3505cf2}{rtc\+\_\+read\+\_\+time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$time)
+\begin{DoxyCompactList}\small\item\em Reads the current time from the RTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtc_8c_a6c52a1d32571a429369253ce7c3a3d7a}{rtc\+\_\+hook\+\_\+id}} = \mbox{\hyperlink{rtc_8h_a4e22feb6ffbc1cda32fadff5c740dc51}{RTC\+\_\+\+IRQ}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{rtc_8c_ac0d52de1ebf0301f7370fdcaaca0fe39}\label{rtc_8c_ac0d52de1ebf0301f7370fdcaaca0fe39}} 
+\index{rtc.c@{rtc.c}!convert\_bcd\_to\_decimal@{convert\_bcd\_to\_decimal}}
+\index{convert\_bcd\_to\_decimal@{convert\_bcd\_to\_decimal}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{convert\_bcd\_to\_decimal()}{convert\_bcd\_to\_decimal()}}
+{\footnotesize\ttfamily uint8\+\_\+t() convert\+\_\+bcd\+\_\+to\+\_\+decimal (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bcd }\end{DoxyParamCaption})}
+
+
+
+Converts a BCD (Binary-\/\+Coded Decimal) value to decimal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bcd} & The BCD value to convert. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The decimal value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8c_a1081e5a7e6e7ebdca2b3523cef70930c}\label{rtc_8c_a1081e5a7e6e7ebdca2b3523cef70930c}} 
+\index{rtc.c@{rtc.c}!read\_time\_register@{read\_time\_register}}
+\index{read\_time\_register@{read\_time\_register}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{read\_time\_register()}{read\_time\_register()}}
+{\footnotesize\ttfamily int() read\+\_\+time\+\_\+register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Reads the value of a time register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & The register to read from. \\
+\hline
+{\em output} & Pointer to the variable that will store the register value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{rtc_8c_a1081e5a7e6e7ebdca2b3523cef70930c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a0d5fa2b6a299944c3c6f45d8c831e690}\label{rtc_8c_a0d5fa2b6a299944c3c6f45d8c831e690}} 
+\index{rtc.c@{rtc.c}!rtc\_is\_binary@{rtc\_is\_binary}}
+\index{rtc\_is\_binary@{rtc\_is\_binary}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_is\_binary()}{rtc\_is\_binary()}}
+{\footnotesize\ttfamily int() rtc\+\_\+is\+\_\+binary (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the RTC is in binary mode. 
+
+\begin{DoxyReturn}{Returns}
+Return 1 if the RTC is in binary mode, 0 otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a0d5fa2b6a299944c3c6f45d8c831e690_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a1c0c8de9a0e368f3815f894efeca6a98}\label{rtc_8c_a1c0c8de9a0e368f3815f894efeca6a98}} 
+\index{rtc.c@{rtc.c}!rtc\_is\_blocked@{rtc\_is\_blocked}}
+\index{rtc\_is\_blocked@{rtc\_is\_blocked}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_is\_blocked()}{rtc\_is\_blocked()}}
+{\footnotesize\ttfamily int() rtc\+\_\+is\+\_\+blocked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the RTC is blocked. 
+
+\begin{DoxyReturn}{Returns}
+Return 1 if the RTC is blocked, 0 otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_a1c0c8de9a0e368f3815f894efeca6a98_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_ae5daa2e720c099ae56979927b3505cf2}\label{rtc_8c_ae5daa2e720c099ae56979927b3505cf2}} 
+\index{rtc.c@{rtc.c}!rtc\_read\_time@{rtc\_read\_time}}
+\index{rtc\_read\_time@{rtc\_read\_time}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_read\_time()}{rtc\_read\_time()}}
+{\footnotesize\ttfamily int() rtc\+\_\+read\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+Reads the current time from the RTC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure that will store the current time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rtc_8c_ae5daa2e720c099ae56979927b3505cf2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}\label{rtc_8c_a6bbe679f115cec90d36d50eb2aac1b89}} 
+\index{rtc.c@{rtc.c}!rtc\_subscribe\_int@{rtc\_subscribe\_int}}
+\index{rtc\_subscribe\_int@{rtc\_subscribe\_int}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_subscribe\_int()}{rtc\_subscribe\_int()}}
+{\footnotesize\ttfamily int() rtc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes RTC interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to the variable that will store the bit mask for the RTC interrupt. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8c_a9d4850bb2a488644672d43287f160622}\label{rtc_8c_a9d4850bb2a488644672d43287f160622}} 
+\index{rtc.c@{rtc.c}!rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}}
+\index{rtc\_unsubscribe\_int@{rtc\_unsubscribe\_int}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_unsubscribe\_int()}{rtc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() rtc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes RTC interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Return 0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rtc_8c_a4ec419448072d13b4b5ddde2e6910339}\label{rtc_8c_a4ec419448072d13b4b5ddde2e6910339}} 
+\index{rtc.c@{rtc.c}!rtc\_update\_time@{rtc\_update\_time}}
+\index{rtc\_update\_time@{rtc\_update\_time}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_update\_time()}{rtc\_update\_time()}}
+{\footnotesize\ttfamily void() rtc\+\_\+update\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$}]{time }\end{DoxyParamCaption})}
+
+
+
+Updates the time in the RTC, uses timer interrupts to keep track of time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure that contains the new time. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{rtc_8c_a6c52a1d32571a429369253ce7c3a3d7a}\label{rtc_8c_a6c52a1d32571a429369253ce7c3a3d7a}} 
+\index{rtc.c@{rtc.c}!rtc\_hook\_id@{rtc\_hook\_id}}
+\index{rtc\_hook\_id@{rtc\_hook\_id}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_hook\_id}{rtc\_hook\_id}}
+{\footnotesize\ttfamily int rtc\+\_\+hook\+\_\+id = \mbox{\hyperlink{rtc_8h_a4e22feb6ffbc1cda32fadff5c740dc51}{RTC\+\_\+\+IRQ}}}
+

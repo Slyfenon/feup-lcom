@@ -1,0 +1,148 @@
+\hypertarget{target_8h}{}\doxysection{src/game/target.h File Reference}
+\label{target_8h}\index{src/game/target.h@{src/game/target.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}position.\+h\char`\"{}}\newline
+Include dependency graph for target.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=195pt]{target_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{target_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structTarget}{Target}}
+\begin{DoxyCompactList}\small\item\em Represents a target in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{target_8h_a8b6510b91a97e17dc4515fda9ea8b5ed}{TARGET\+\_\+\+RADIUS}}~54
+\item 
+\#define \mbox{\hyperlink{target_8h_a19d0dabc2a9e678bc8422d4924819e96}{TARGET\+\_\+\+RADIUS\+\_\+2}}~2916
+\item 
+\#define \mbox{\hyperlink{target_8h_a220631c888dd46b0c150176d2e81477e}{TARGET\+\_\+\+RADIUS\+\_\+2\+\_\+\+CENTER}}~400
+\item 
+\#define \mbox{\hyperlink{target_8h_a79613cd225589944e54a4060b9660a1c}{TARGET\+\_\+\+RADIUS\+\_\+2\+\_\+\+MIDDLE}}~1600
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structTarget}{Target}} $\ast$ \mbox{\hyperlink{target_8h_a7af45f0fd6790b5ac60f619542be1ab9}{create\+Target}} (int x, int y, \mbox{\hyperlink{position_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Creates a new target with the specified position and direction. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{target_8h_aa894bd2a08b2c42b73f6f256ad6a250a}{get\+TargetX}} (\mbox{\hyperlink{structTarget}{Target}} $\ast$\mbox{\hyperlink{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}{target}})
+\begin{DoxyCompactList}\small\item\em Gets the x-\/coordinate of the target\textquotesingle{}s position. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{target_8h_a4fc294df6eed9e172abe30bacb7f6b73}{get\+TargetY}} (\mbox{\hyperlink{structTarget}{Target}} $\ast$\mbox{\hyperlink{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}{target}})
+\begin{DoxyCompactList}\small\item\em Gets the y-\/coordinate of the target\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{target_8h_a851c60c229a629725129b63147a6d5be}{destroy\+Target}} (\mbox{\hyperlink{structTarget}{Target}} $\ast$\mbox{\hyperlink{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}{target}})
+\begin{DoxyCompactList}\small\item\em Destroys a target and frees the associated memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{target_8h_a8b6510b91a97e17dc4515fda9ea8b5ed}\label{target_8h_a8b6510b91a97e17dc4515fda9ea8b5ed}} 
+\index{target.h@{target.h}!TARGET\_RADIUS@{TARGET\_RADIUS}}
+\index{TARGET\_RADIUS@{TARGET\_RADIUS}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_RADIUS}{TARGET\_RADIUS}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+RADIUS~54}
+
+\mbox{\Hypertarget{target_8h_a19d0dabc2a9e678bc8422d4924819e96}\label{target_8h_a19d0dabc2a9e678bc8422d4924819e96}} 
+\index{target.h@{target.h}!TARGET\_RADIUS\_2@{TARGET\_RADIUS\_2}}
+\index{TARGET\_RADIUS\_2@{TARGET\_RADIUS\_2}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_RADIUS\_2}{TARGET\_RADIUS\_2}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+RADIUS\+\_\+2~2916}
+
+\mbox{\Hypertarget{target_8h_a220631c888dd46b0c150176d2e81477e}\label{target_8h_a220631c888dd46b0c150176d2e81477e}} 
+\index{target.h@{target.h}!TARGET\_RADIUS\_2\_CENTER@{TARGET\_RADIUS\_2\_CENTER}}
+\index{TARGET\_RADIUS\_2\_CENTER@{TARGET\_RADIUS\_2\_CENTER}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_RADIUS\_2\_CENTER}{TARGET\_RADIUS\_2\_CENTER}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+RADIUS\+\_\+2\+\_\+\+CENTER~400}
+
+\mbox{\Hypertarget{target_8h_a79613cd225589944e54a4060b9660a1c}\label{target_8h_a79613cd225589944e54a4060b9660a1c}} 
+\index{target.h@{target.h}!TARGET\_RADIUS\_2\_MIDDLE@{TARGET\_RADIUS\_2\_MIDDLE}}
+\index{TARGET\_RADIUS\_2\_MIDDLE@{TARGET\_RADIUS\_2\_MIDDLE}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{TARGET\_RADIUS\_2\_MIDDLE}{TARGET\_RADIUS\_2\_MIDDLE}}
+{\footnotesize\ttfamily \#define TARGET\+\_\+\+RADIUS\+\_\+2\+\_\+\+MIDDLE~1600}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{target_8h_a7af45f0fd6790b5ac60f619542be1ab9}\label{target_8h_a7af45f0fd6790b5ac60f619542be1ab9}} 
+\index{target.h@{target.h}!createTarget@{createTarget}}
+\index{createTarget@{createTarget}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{createTarget()}{createTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTarget}{Target}}$\ast$ create\+Target (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{position_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Creates a new target with the specified position and direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the target\textquotesingle{}s position \\
+\hline
+{\em y} & The y-\/coordinate of the target\textquotesingle{}s position \\
+\hline
+{\em dir} & The direction of the target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created target 
+\end{DoxyReturn}
+\mbox{\Hypertarget{target_8h_a851c60c229a629725129b63147a6d5be}\label{target_8h_a851c60c229a629725129b63147a6d5be}} 
+\index{target.h@{target.h}!destroyTarget@{destroyTarget}}
+\index{destroyTarget@{destroyTarget}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{destroyTarget()}{destroyTarget()}}
+{\footnotesize\ttfamily void destroy\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTarget}{Target}} $\ast$}]{target }\end{DoxyParamCaption})}
+
+
+
+Destroys a target and frees the associated memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & A pointer to the target to be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{target_8h_aa894bd2a08b2c42b73f6f256ad6a250a}\label{target_8h_aa894bd2a08b2c42b73f6f256ad6a250a}} 
+\index{target.h@{target.h}!getTargetX@{getTargetX}}
+\index{getTargetX@{getTargetX}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{getTargetX()}{getTargetX()}}
+{\footnotesize\ttfamily int16\+\_\+t get\+TargetX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTarget}{Target}} $\ast$}]{target }\end{DoxyParamCaption})}
+
+
+
+Gets the x-\/coordinate of the target\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & A pointer to the target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of the target\textquotesingle{}s position 
+\end{DoxyReturn}
+\mbox{\Hypertarget{target_8h_a4fc294df6eed9e172abe30bacb7f6b73}\label{target_8h_a4fc294df6eed9e172abe30bacb7f6b73}} 
+\index{target.h@{target.h}!getTargetY@{getTargetY}}
+\index{getTargetY@{getTargetY}!target.h@{target.h}}
+\doxysubsubsection{\texorpdfstring{getTargetY()}{getTargetY()}}
+{\footnotesize\ttfamily int16\+\_\+t get\+TargetY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structTarget}{Target}} $\ast$}]{target }\end{DoxyParamCaption})}
+
+
+
+Gets the y-\/coordinate of the target\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & A pointer to the target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the target\textquotesingle{}s position 
+\end{DoxyReturn}

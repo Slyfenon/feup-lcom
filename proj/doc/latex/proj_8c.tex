@@ -1,0 +1,86 @@
+\hypertarget{proj_8c}{}\doxysection{src/proj.c File Reference}
+\label{proj_8c}\index{src/proj.c@{src/proj.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/proj.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}devices/graphics/graphics.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}devices/kbc/keyboard.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}devices/kbc/mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}devices/uart/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}event\+\_\+handler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game/sprite.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$lcom/timer.\+h$>$}\newline
+Include dependency graph for proj.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{proj_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\item 
+int() \mbox{\hyperlink{proj_8c_ad290208c74ef25eb347d1d96a390cd66}{proj\+\_\+main\+\_\+loop}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmousePacket}{mouse\+Packet}} \mbox{\hyperlink{proj_8c_aef2a57fa9aa7590275a0cdafcf6afb6c}{mouse\+\_\+packet}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{proj_8c_af7f88ce4d5e5169459fd81be5572a25a}{keyboard\+\_\+scancode}} \mbox{[}2\mbox{]}
+\item 
+enum \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \mbox{\hyperlink{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}{state}} = \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+\item 
+\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} \mbox{\hyperlink{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}{time\+RTC}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}\label{proj_8c_af397c014b1ca8ac21809c7b1262fbe81}} 
+\index{proj.c@{proj.c}!main@{main}}
+\index{main@{main}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int() main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{proj_8c_ad290208c74ef25eb347d1d96a390cd66}\label{proj_8c_ad290208c74ef25eb347d1d96a390cd66}} 
+\index{proj.c@{proj.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int() proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{proj_8c_ad290208c74ef25eb347d1d96a390cd66_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{proj_8c_af7f88ce4d5e5169459fd81be5572a25a}\label{proj_8c_af7f88ce4d5e5169459fd81be5572a25a}} 
+\index{proj.c@{proj.c}!keyboard\_scancode@{keyboard\_scancode}}
+\index{keyboard\_scancode@{keyboard\_scancode}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_scancode}{keyboard\_scancode}}
+{\footnotesize\ttfamily uint8\+\_\+t keyboard\+\_\+scancode\mbox{[}2\mbox{]}}
+
+\mbox{\Hypertarget{proj_8c_aef2a57fa9aa7590275a0cdafcf6afb6c}\label{proj_8c_aef2a57fa9aa7590275a0cdafcf6afb6c}} 
+\index{proj.c@{proj.c}!mouse\_packet@{mouse\_packet}}
+\index{mouse\_packet@{mouse\_packet}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_packet}{mouse\_packet}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structmousePacket}{mouse\+Packet}} mouse\+\_\+packet}
+
+\mbox{\Hypertarget{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}\label{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}} 
+\index{proj.c@{proj.c}!state@{state}}
+\index{state@{state}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} state = \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}}
+
+\mbox{\Hypertarget{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}\label{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}} 
+\index{proj.c@{proj.c}!timeRTC@{timeRTC}}
+\index{timeRTC@{timeRTC}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{timeRTC}{timeRTC}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} time\+RTC}
+

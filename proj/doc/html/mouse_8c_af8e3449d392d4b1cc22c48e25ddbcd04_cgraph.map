@@ -1,0 +1,5 @@
+<map id="write_byte_to_mouse" name="write_byte_to_mouse">
+<area shape="rect" id="node1" title="Write byte to mouse command." alt="" coords="5,31,168,57"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a79f822ee418bebe387c463fbb343106c" title="KBC write command." alt="" coords="216,5,373,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="421,31,520,57"/>
+</map>

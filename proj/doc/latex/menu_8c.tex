@@ -1,0 +1,119 @@
+\hypertarget{menu_8c}{}\doxysection{src/game/menu.c File Reference}
+\label{menu_8c}\index{src/game/menu.c@{src/game/menu.c}}
+{\ttfamily \#include \char`\"{}menu.\+h\char`\"{}}\newline
+Include dependency graph for menu.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{menu_8c_a83eb2544c4ebd17106a417ad3f2dd259}{get\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Array of sprites that represent the minutes of the clock. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8c_a94ef95fd0fa479c8218ab200f2e2d353}{set\+Current\+Option}} (int option)
+\begin{DoxyCompactList}\small\item\em Sets the current option of the menu. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8c_ae47b219e39baf5c0ccca747e84198cf8}{increase\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Increases the current option of the menu. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8c_a4d4bf6bee5fed1f2f55bd25b5b113321}{decrease\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Decreases the current option of the menu. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{menu_8c_a4550089e7307f20f640ad5390a472b8c}{read\+Time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$\mbox{\hyperlink{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}{time\+RTC}})
+\begin{DoxyCompactList}\small\item\em Constructs the hours and minutes sprites based on the current time already stored in the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8c_a37624b74afb43342e1214949952a5b59}{draw\+\_\+menu}} (bool \mbox{\hyperlink{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}{is\+Day}})
+\begin{DoxyCompactList}\small\item\em Draws the game menu, with the current option highlighted, the current time and the corresponding background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{menu_8c_aee6ce1a53652d2224480b1e2fef11171}{current\+Option}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{menu_8c_a4d4bf6bee5fed1f2f55bd25b5b113321}\label{menu_8c_a4d4bf6bee5fed1f2f55bd25b5b113321}} 
+\index{menu.c@{menu.c}!decreaseCurrentOption@{decreaseCurrentOption}}
+\index{decreaseCurrentOption@{decreaseCurrentOption}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{decreaseCurrentOption()}{decreaseCurrentOption()}}
+{\footnotesize\ttfamily void() decrease\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Decreases the current option of the menu. 
+
+\mbox{\Hypertarget{menu_8c_a37624b74afb43342e1214949952a5b59}\label{menu_8c_a37624b74afb43342e1214949952a5b59}} 
+\index{menu.c@{menu.c}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily void() draw\+\_\+menu (\begin{DoxyParamCaption}\item[{bool}]{is\+Day }\end{DoxyParamCaption})}
+
+
+
+Draws the game menu, with the current option highlighted, the current time and the corresponding background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Day} & Boolean value indicating whether it is day or night. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8c_a37624b74afb43342e1214949952a5b59_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{menu_8c_a83eb2544c4ebd17106a417ad3f2dd259}\label{menu_8c_a83eb2544c4ebd17106a417ad3f2dd259}} 
+\index{menu.c@{menu.c}!getCurrentOption@{getCurrentOption}}
+\index{getCurrentOption@{getCurrentOption}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{getCurrentOption()}{getCurrentOption()}}
+{\footnotesize\ttfamily int() get\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Array of sprites that represent the minutes of the clock. 
+
+GETTERS AND SETTERS OF MENU VARIABLES \mbox{\Hypertarget{menu_8c_ae47b219e39baf5c0ccca747e84198cf8}\label{menu_8c_ae47b219e39baf5c0ccca747e84198cf8}} 
+\index{menu.c@{menu.c}!increaseCurrentOption@{increaseCurrentOption}}
+\index{increaseCurrentOption@{increaseCurrentOption}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{increaseCurrentOption()}{increaseCurrentOption()}}
+{\footnotesize\ttfamily void() increase\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases the current option of the menu. 
+
+\mbox{\Hypertarget{menu_8c_a4550089e7307f20f640ad5390a472b8c}\label{menu_8c_a4550089e7307f20f640ad5390a472b8c}} 
+\index{menu.c@{menu.c}!readTime@{readTime}}
+\index{readTime@{readTime}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{readTime()}{readTime()}}
+{\footnotesize\ttfamily int() read\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$}]{time\+RTC }\end{DoxyParamCaption})}
+
+
+
+Constructs the hours and minutes sprites based on the current time already stored in the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure. 
+
+TIME FUNCTION \mbox{\Hypertarget{menu_8c_a94ef95fd0fa479c8218ab200f2e2d353}\label{menu_8c_a94ef95fd0fa479c8218ab200f2e2d353}} 
+\index{menu.c@{menu.c}!setCurrentOption@{setCurrentOption}}
+\index{setCurrentOption@{setCurrentOption}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{setCurrentOption()}{setCurrentOption()}}
+{\footnotesize\ttfamily void() set\+Current\+Option (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Sets the current option of the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & The option to set as the current option. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{menu_8c_aee6ce1a53652d2224480b1e2fef11171}\label{menu_8c_aee6ce1a53652d2224480b1e2fef11171}} 
+\index{menu.c@{menu.c}!currentOption@{currentOption}}
+\index{currentOption@{currentOption}!menu.c@{menu.c}}
+\doxysubsubsection{\texorpdfstring{currentOption}{currentOption}}
+{\footnotesize\ttfamily int current\+Option = 0}
+

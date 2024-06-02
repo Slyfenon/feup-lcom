@@ -1,0 +1,7 @@
+<map id="draw_aim" name="draw_aim">
+<area shape="rect" id="node1" title="Draw the aim of the player in the game." alt="" coords="5,56,92,83"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="140,5,239,32"/>
+<area shape="rect" id="node4" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="143,56,236,83"/>
+<area shape="rect" id="node5" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="143,107,235,133"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="287,5,401,32"/>
+</map>

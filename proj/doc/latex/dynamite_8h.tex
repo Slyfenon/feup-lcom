@@ -1,0 +1,140 @@
+\hypertarget{dynamite_8h}{}\doxysection{src/game/dynamite.h File Reference}
+\label{dynamite_8h}\index{src/game/dynamite.h@{src/game/dynamite.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}position.\+h\char`\"{}}\newline
+Include dependency graph for dynamite.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{dynamite_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dynamite_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDynamite}{Dynamite}}
+\begin{DoxyCompactList}\small\item\em Represents a dynamite object in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{dynamite_8h_a327bfde9051a90df283a6810d28fc488}{DYNAMITE\+\_\+X}}~106
+\item 
+\#define \mbox{\hyperlink{dynamite_8h_ac139d52e0fd4a856afde33cca48bde69}{DYNAMITE\+\_\+Y}}~109
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$() \mbox{\hyperlink{dynamite_8h_ae6d0c4e7be5791cc5df1fd60b641cf6a}{create\+Dynamite}} (int x, int y, \mbox{\hyperlink{position_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} dir)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{structDynamite}{Dynamite}} object with the specified coordinates and direction. \end{DoxyCompactList}\item 
+int16\+\_\+t() \mbox{\hyperlink{dynamite_8h_aaef8ddbba88815eed74cc00741befc1c}{get\+DynamiteX}} (\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$\mbox{\hyperlink{game_8c_a35043a0b837cf6184faa54028737b2bb}{dynamite}})
+\begin{DoxyCompactList}\small\item\em Retrieves the x-\/coordinate of a \mbox{\hyperlink{structDynamite}{Dynamite}} object. \end{DoxyCompactList}\item 
+int16\+\_\+t() \mbox{\hyperlink{dynamite_8h_a33123b9e8c7d57596ea8a5d5a0ab55a9}{get\+DynamiteY}} (\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$\mbox{\hyperlink{game_8c_a35043a0b837cf6184faa54028737b2bb}{dynamite}})
+\begin{DoxyCompactList}\small\item\em Retrieves the y-\/coordinate of a \mbox{\hyperlink{structDynamite}{Dynamite}} object. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{dynamite_8h_afd1f504def7f1faf88145bbabb0e19c2}{destroy\+Dynamite}} (\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$\mbox{\hyperlink{game_8c_a35043a0b837cf6184faa54028737b2bb}{dynamite}})
+\begin{DoxyCompactList}\small\item\em Destroys a \mbox{\hyperlink{structDynamite}{Dynamite}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{dynamite_8h_a327bfde9051a90df283a6810d28fc488}\label{dynamite_8h_a327bfde9051a90df283a6810d28fc488}} 
+\index{dynamite.h@{dynamite.h}!DYNAMITE\_X@{DYNAMITE\_X}}
+\index{DYNAMITE\_X@{DYNAMITE\_X}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{DYNAMITE\_X}{DYNAMITE\_X}}
+{\footnotesize\ttfamily \#define DYNAMITE\+\_\+X~106}
+
+\mbox{\Hypertarget{dynamite_8h_ac139d52e0fd4a856afde33cca48bde69}\label{dynamite_8h_ac139d52e0fd4a856afde33cca48bde69}} 
+\index{dynamite.h@{dynamite.h}!DYNAMITE\_Y@{DYNAMITE\_Y}}
+\index{DYNAMITE\_Y@{DYNAMITE\_Y}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{DYNAMITE\_Y}{DYNAMITE\_Y}}
+{\footnotesize\ttfamily \#define DYNAMITE\+\_\+Y~109}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dynamite_8h_ae6d0c4e7be5791cc5df1fd60b641cf6a}\label{dynamite_8h_ae6d0c4e7be5791cc5df1fd60b641cf6a}} 
+\index{dynamite.h@{dynamite.h}!createDynamite@{createDynamite}}
+\index{createDynamite@{createDynamite}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{createDynamite()}{createDynamite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDynamite}{Dynamite}}$\ast$() create\+Dynamite (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{\mbox{\hyperlink{position_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}]{dir }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{structDynamite}{Dynamite}} object with the specified coordinates and direction. 
+
+This function creates a \mbox{\hyperlink{structDynamite}{Dynamite}} object with the given x and y coordinates and sets its direction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the \mbox{\hyperlink{structDynamite}{Dynamite}} object. \\
+\hline
+{\em y} & The y-\/coordinate of the \mbox{\hyperlink{structDynamite}{Dynamite}} object. \\
+\hline
+{\em dir} & The direction of the \mbox{\hyperlink{structDynamite}{Dynamite}} object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dynamite_8h_afd1f504def7f1faf88145bbabb0e19c2}\label{dynamite_8h_afd1f504def7f1faf88145bbabb0e19c2}} 
+\index{dynamite.h@{dynamite.h}!destroyDynamite@{destroyDynamite}}
+\index{destroyDynamite@{destroyDynamite}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{destroyDynamite()}{destroyDynamite()}}
+{\footnotesize\ttfamily void() destroy\+Dynamite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$}]{dynamite }\end{DoxyParamCaption})}
+
+
+
+Destroys a \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+
+This function frees the memory allocated for the specified \mbox{\hyperlink{structDynamite}{Dynamite}} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dynamite} & A pointer to the \mbox{\hyperlink{structDynamite}{Dynamite}} object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{dynamite_8h_aaef8ddbba88815eed74cc00741befc1c}\label{dynamite_8h_aaef8ddbba88815eed74cc00741befc1c}} 
+\index{dynamite.h@{dynamite.h}!getDynamiteX@{getDynamiteX}}
+\index{getDynamiteX@{getDynamiteX}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{getDynamiteX()}{getDynamiteX()}}
+{\footnotesize\ttfamily int16\+\_\+t() get\+DynamiteX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$}]{dynamite }\end{DoxyParamCaption})}
+
+
+
+Retrieves the x-\/coordinate of a \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+
+This function returns the x-\/coordinate of the specified \mbox{\hyperlink{structDynamite}{Dynamite}} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dynamite} & A pointer to the \mbox{\hyperlink{structDynamite}{Dynamite}} object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of the \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{dynamite_8h_a33123b9e8c7d57596ea8a5d5a0ab55a9}\label{dynamite_8h_a33123b9e8c7d57596ea8a5d5a0ab55a9}} 
+\index{dynamite.h@{dynamite.h}!getDynamiteY@{getDynamiteY}}
+\index{getDynamiteY@{getDynamiteY}!dynamite.h@{dynamite.h}}
+\doxysubsubsection{\texorpdfstring{getDynamiteY()}{getDynamiteY()}}
+{\footnotesize\ttfamily int16\+\_\+t() get\+DynamiteY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$}]{dynamite }\end{DoxyParamCaption})}
+
+
+
+Retrieves the y-\/coordinate of a \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+
+This function returns the y-\/coordinate of the specified \mbox{\hyperlink{structDynamite}{Dynamite}} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dynamite} & A pointer to the \mbox{\hyperlink{structDynamite}{Dynamite}} object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the \mbox{\hyperlink{structDynamite}{Dynamite}} object. 
+\end{DoxyReturn}

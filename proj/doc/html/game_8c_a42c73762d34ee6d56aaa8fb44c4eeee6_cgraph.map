@@ -1,0 +1,9 @@
+<map id="updateDynamite" name="updateDynamite">
+<area shape="rect" id="node1" title="Updates game dynamite Updates the position of the dynamite in the game. If slow time is active,..." alt="" coords="5,81,136,108"/>
+<area shape="rect" id="node2" href="$dynamite_8c.html#a33123b9e8c7d57596ea8a5d5a0ab55a9" title="Retrieves the y&#45;coordinate of a Dynamite object." alt="" coords="187,5,301,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="197,56,291,83"/>
+<area shape="rect" id="node4" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="198,107,290,133"/>
+<area shape="rect" id="node5" href="$game_8c.html#aaf990680e7a3d361272a0236637f7dcd" title="Subtract value to the score of the player." alt="" coords="184,157,304,184"/>
+<area shape="rect" id="node6" href="$player_8c.html#a3adf651a828a373f8db2e54b5371f4d0" title="Gets the player&#39;s score." alt="" coords="352,132,472,159"/>
+<area shape="rect" id="node7" href="$player_8c.html#a5b27ba6498d6455e87ba0878a8e719d9" title="Sets the player&#39;s score." alt="" coords="353,183,471,209"/>
+</map>

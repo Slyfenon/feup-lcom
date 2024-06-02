@@ -1,0 +1,4 @@
+<map id="loadGameOver" name="loadGameOver">
+<area shape="rect" id="node1" title="Loads the game over sprites." alt="" coords="5,5,125,32"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a0493453e6a87aae925c6850296203265" title="Creates a sprite from an XPM map." alt="" coords="173,5,280,32"/>
+</map>

@@ -1,0 +1,217 @@
+\hypertarget{player_8h}{}\doxysection{src/game/player.h File Reference}
+\label{player_8h}\index{src/game/player.h@{src/game/player.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}position.\+h\char`\"{}}\newline
+Include dependency graph for player.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{player_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{player_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structPlayer}{Player}}
+\begin{DoxyCompactList}\small\item\em Represents a player in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPlayer}{Player}} $\ast$ \mbox{\hyperlink{player_8h_ae5667617b46fe0f16724a0deb73f98e3}{create\+Player}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{structPlayer}{Player}} object. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{player_8h_a0e7c01c359d5e3946f6eec5acfbcb798}{get\+PlayerX}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Gets the x-\/coordinate of the player\textquotesingle{}s position. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{player_8h_a506c3cf4469d499f5aeb211bd886f226}{get\+PlayerY}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Gets the y-\/coordinate of the player\textquotesingle{}s position. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{player_8h_a035b6f7f98d264cc2fb353f24a545813}{get\+Player\+Score}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Gets the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player_8h_af63d38dd00b91ef26e4c55c0e92c3ba8}{get\+Player\+Can\+Shoot}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Checks if the player can shoot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a536eeb93e95f9fc92b139ca58ea32690}{set\+PlayerX}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, uint16\+\_\+t x)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate of the player\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a02d553db795b89d3d429e50494929e07}{set\+PlayerY}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate of the player\textquotesingle{}s position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a21551ced2fa7ebf124a7b34434f55139}{set\+Player\+Score}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, uint16\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em Sets the player\textquotesingle{}s score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a64273f71ce83384bf1aa5c202d755fcf}{set\+Player\+Can\+Shoot}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, bool can\+Shoot)
+\begin{DoxyCompactList}\small\item\em Sets whether the player can shoot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_aeaca5c627e5599b60cc71af248c0f98e}{destroy\+Player}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Destroys a \mbox{\hyperlink{structPlayer}{Player}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{player_8h_ae5667617b46fe0f16724a0deb73f98e3}\label{player_8h_ae5667617b46fe0f16724a0deb73f98e3}} 
+\index{player.h@{player.h}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPlayer}{Player}}$\ast$ create\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new \mbox{\hyperlink{structPlayer}{Player}} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created \mbox{\hyperlink{structPlayer}{Player}} object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_aeaca5c627e5599b60cc71af248c0f98e}\label{player_8h_aeaca5c627e5599b60cc71af248c0f98e}} 
+\index{player.h@{player.h}!destroyPlayer@{destroyPlayer}}
+\index{destroyPlayer@{destroyPlayer}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{destroyPlayer()}{destroyPlayer()}}
+{\footnotesize\ttfamily void destroy\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Destroys a \mbox{\hyperlink{structPlayer}{Player}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object to destroy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{player_8h_af63d38dd00b91ef26e4c55c0e92c3ba8}\label{player_8h_af63d38dd00b91ef26e4c55c0e92c3ba8}} 
+\index{player.h@{player.h}!getPlayerCanShoot@{getPlayerCanShoot}}
+\index{getPlayerCanShoot@{getPlayerCanShoot}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{getPlayerCanShoot()}{getPlayerCanShoot()}}
+{\footnotesize\ttfamily bool get\+Player\+Can\+Shoot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Checks if the player can shoot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the player can shoot, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a035b6f7f98d264cc2fb353f24a545813}\label{player_8h_a035b6f7f98d264cc2fb353f24a545813}} 
+\index{player.h@{player.h}!getPlayerScore@{getPlayerScore}}
+\index{getPlayerScore@{getPlayerScore}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{getPlayerScore()}{getPlayerScore()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+Player\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Gets the player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s score. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a0e7c01c359d5e3946f6eec5acfbcb798}\label{player_8h_a0e7c01c359d5e3946f6eec5acfbcb798}} 
+\index{player.h@{player.h}!getPlayerX@{getPlayerX}}
+\index{getPlayerX@{getPlayerX}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{getPlayerX()}{getPlayerX()}}
+{\footnotesize\ttfamily int16\+\_\+t get\+PlayerX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Gets the x-\/coordinate of the player\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of the player\textquotesingle{}s position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a506c3cf4469d499f5aeb211bd886f226}\label{player_8h_a506c3cf4469d499f5aeb211bd886f226}} 
+\index{player.h@{player.h}!getPlayerY@{getPlayerY}}
+\index{getPlayerY@{getPlayerY}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{getPlayerY()}{getPlayerY()}}
+{\footnotesize\ttfamily int16\+\_\+t get\+PlayerY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Gets the y-\/coordinate of the player\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the player\textquotesingle{}s position. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{player_8h_a64273f71ce83384bf1aa5c202d755fcf}\label{player_8h_a64273f71ce83384bf1aa5c202d755fcf}} 
+\index{player.h@{player.h}!setPlayerCanShoot@{setPlayerCanShoot}}
+\index{setPlayerCanShoot@{setPlayerCanShoot}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{setPlayerCanShoot()}{setPlayerCanShoot()}}
+{\footnotesize\ttfamily void set\+Player\+Can\+Shoot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{bool}]{can\+Shoot }\end{DoxyParamCaption})}
+
+
+
+Sets whether the player can shoot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+{\em can\+Shoot} & True if the player can shoot, false otherwise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{player_8h_a21551ced2fa7ebf124a7b34434f55139}\label{player_8h_a21551ced2fa7ebf124a7b34434f55139}} 
+\index{player.h@{player.h}!setPlayerScore@{setPlayerScore}}
+\index{setPlayerScore@{setPlayerScore}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{setPlayerScore()}{setPlayerScore()}}
+{\footnotesize\ttfamily void set\+Player\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{uint16\+\_\+t}]{score }\end{DoxyParamCaption})}
+
+
+
+Sets the player\textquotesingle{}s score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+{\em score} & The new score. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{player_8h_a536eeb93e95f9fc92b139ca58ea32690}\label{player_8h_a536eeb93e95f9fc92b139ca58ea32690}} 
+\index{player.h@{player.h}!setPlayerX@{setPlayerX}}
+\index{setPlayerX@{setPlayerX}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{setPlayerX()}{setPlayerX()}}
+{\footnotesize\ttfamily void set\+PlayerX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{uint16\+\_\+t}]{x }\end{DoxyParamCaption})}
+
+
+
+Sets the x-\/coordinate of the player\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+{\em x} & The new x-\/coordinate. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{player_8h_a02d553db795b89d3d429e50494929e07}\label{player_8h_a02d553db795b89d3d429e50494929e07}} 
+\index{player.h@{player.h}!setPlayerY@{setPlayerY}}
+\index{setPlayerY@{setPlayerY}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{setPlayerY()}{setPlayerY()}}
+{\footnotesize\ttfamily void set\+PlayerY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the y-\/coordinate of the player\textquotesingle{}s position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The \mbox{\hyperlink{structPlayer}{Player}} object. \\
+\hline
+{\em y} & The new y-\/coordinate. \\
+\hline
+\end{DoxyParams}

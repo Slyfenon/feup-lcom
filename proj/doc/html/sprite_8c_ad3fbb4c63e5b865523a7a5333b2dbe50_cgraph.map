@@ -1,0 +1,6 @@
+<map id="load_sprites" name="load_sprites">
+<area shape="rect" id="node1" title="Loads all the sprites." alt="" coords="5,22,107,49"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a0493453e6a87aae925c6850296203265" title="Creates a sprite from an XPM map." alt="" coords="323,22,429,49"/>
+<area shape="rect" id="node3" href="$sprite_8c.html#a47ff4d7c12dd4bdcae3c920a6bce8a9f" title="Loads the game over sprites." alt="" coords="155,22,275,49"/>
+<area shape="rect" id="node4" href="$sprite_8c.html#ae1e40066053f39b327fd5d8459b3586f" title="Loads the menu sprites." alt="" coords="171,73,258,100"/>
+</map>

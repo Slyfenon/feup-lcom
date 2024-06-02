@@ -1,0 +1,4 @@
+<map id="updateTimes" name="updateTimes">
+<area shape="rect" id="node1" title="Updates game countdown. Decreases the time left in the game. If the time is over, ends the game." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#af638ce01ef2b8c8e69392b5d0852fa27" title="End Slow Time." alt="" coords="160,5,271,32"/>
+</map>

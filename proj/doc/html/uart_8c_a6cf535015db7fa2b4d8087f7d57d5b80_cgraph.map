@@ -1,0 +1,14 @@
+<map id="ser_conf" name="ser_conf">
+<area shape="rect" id="node1" title="Configures the serial port with specified settings." alt="" coords="5,107,83,133"/>
+<area shape="rect" id="node2" href="$queue_8c.html#ab1ce6fb5699ed20b7c23b447d7ffc201" title=" " alt="" coords="139,5,250,32"/>
+<area shape="rect" id="node4" href="$uart_8c.html#a67826677e65d2b1c5df21531996ec9f1" title="Enables the FIFO buffers of the serial port." alt="" coords="134,107,255,133"/>
+<area shape="rect" id="node6" href="$uart_8c.html#a1a010fb3c594ba28c8874c8da632550c" title="Enables serial port interrupts." alt="" coords="136,157,253,184"/>
+<area shape="rect" id="node9" href="$uart_8c.html#af56e5aeea19730117e537c6b831c6a1b" title="Sets the bit rate of the serial port." alt="" coords="131,208,258,235"/>
+<area shape="rect" id="node12" href="$uart_8c.html#aed1427385d2e8354b2f172e367f80e51" title="Configures the line control register." alt="" coords="131,56,259,83"/>
+<area shape="rect" id="node3" href="$queue_8c.html#a2601c0996369aed96093b33779f0d214" title="Initializes a queue." alt="" coords="317,5,407,32"/>
+<area shape="rect" id="node5" href="$uart_8c.html#a8659e6a837d82cfb88a5a66593d18261" title="Writes a value to a serial port register." alt="" coords="307,107,417,133"/>
+<area shape="rect" id="node7" href="$uart_8c.html#a54089b696d2f9403cfe7d46c4c1c037e" title="Reads a value from a serial port register." alt="" coords="309,157,415,184"/>
+<area shape="rect" id="node8" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="465,157,564,184"/>
+<area shape="rect" id="node10" href="$utils_8c.html#a81621440b3d65680979425e39aa8c789" title="Returns the LSB of a 2 byte integer." alt="" coords="311,259,413,285"/>
+<area shape="rect" id="node11" href="$utils_8c.html#a6a880076cd2ec468834438b6e0c58836" title="Returns the MSB of a 2 byte integer." alt="" coords="309,208,415,235"/>
+</map>

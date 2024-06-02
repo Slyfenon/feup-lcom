@@ -1,0 +1,8 @@
+<map id="draw_dynamite" name="draw_dynamite">
+<area shape="rect" id="node1" title="Draw the dynamite in the game If the dynamite is active, draws it in the screen." alt="" coords="5,81,128,108"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="196,5,295,32"/>
+<area shape="rect" id="node4" href="$dynamite_8c.html#aaef8ddbba88815eed74cc00741befc1c" title="Retrieves the x&#45;coordinate of a Dynamite object." alt="" coords="187,56,303,83"/>
+<area shape="rect" id="node5" href="$dynamite_8c.html#a33123b9e8c7d57596ea8a5d5a0ab55a9" title="Retrieves the y&#45;coordinate of a Dynamite object." alt="" coords="188,107,303,133"/>
+<area shape="rect" id="node6" href="$game_8c.html#a3a06917e63d551ae4761bf2379912590" title="Check if the dynamite is active." alt="" coords="176,157,315,184"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="363,5,477,32"/>
+</map>

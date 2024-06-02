@@ -1,0 +1,52 @@
+<map id="proj_main_loop" name="proj_main_loop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1177,128,1203"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#ad91e9f387ca6f66717c8b182bcde2c2f" title="Deletes all the loaded sprites." alt="" coords="248,173,363,199"/>
+<area shape="rect" id="node3" href="$event__handler_8c.html#ab0b5908878fa47002b894b7c96ac3a84" title=" " alt="" coords="239,223,372,250"/>
+<area shape="rect" id="node11" href="$event__handler_8c.html#afdfdc6e7ed2de6bc53464b6cb3976f18" title=" " alt="" coords="247,578,364,605"/>
+<area shape="rect" id="node22" href="$event__handler_8c.html#ab0c8c3f31eab66bc6d6c887759b7b5c9" title=" " alt="" coords="251,629,360,655"/>
+<area shape="rect" id="node25" href="$event__handler_8c.html#a3feb0f08181151a4662ae2d43a59fb18" title="indicates if the game is in day mode or night mode" alt="" coords="251,274,359,301"/>
+<area shape="rect" id="node26" href="$keyboard_8c.html#af6021838dd9132ea20e7e90dd0aa72ef" title="Get the scancode." alt="" coords="235,679,376,706"/>
+<area shape="rect" id="node27" href="$keyboard_8c.html#aea970a154161a35f6894898a092ed70a" title=" " alt="" coords="273,730,337,757"/>
+<area shape="rect" id="node28" href="$keyboard_8c.html#a7e1fd1e3d8c755969a65d0ebd60456f6" title="Check if the scancode is done." alt="" coords="220,781,391,807"/>
+<area shape="rect" id="node29" href="$keyboard_8c.html#a02884ada1971dbade466081413210b18" title="Subscribe keyboard interrupts." alt="" coords="236,831,375,858"/>
+<area shape="rect" id="node30" href="$keyboard_8c.html#a1102381e6a9e876e05dd78c58ccb5673" title="Unsubscribe keyboard interrupts." alt="" coords="228,882,383,909"/>
+<area shape="rect" id="node31" href="$sprite_8c.html#ad3fbb4c63e5b865523a7a5333b2dbe50" title="Loads all the sprites." alt="" coords="255,933,356,959"/>
+<area shape="rect" id="node32" href="$mouse_8c.html#a7e311379d4d64f88873ef8ade5c82a25" title="Mouse disable data reporting." alt="" coords="227,984,383,1025"/>
+<area shape="rect" id="node33" href="$mouse_8c.html#a6d0fe8b15d3adb77fc561a7520998831" title="Mouse enable data reporting." alt="" coords="176,1050,435,1077"/>
+<area shape="rect" id="node34" href="$mouse_8c.html#ac71c70d18342095fea2bdf588882914f" title="Enable mouse data reporting." alt="" coords="216,1101,395,1127"/>
+<area shape="rect" id="node35" href="$mouse_8c.html#a6a5a1a785319fb37f268666f0178985c" title="Get and parse the mouse packet." alt="" coords="233,1151,377,1178"/>
+<area shape="rect" id="node36" href="$mouse_8c.html#a210374b50462acdedab00df64d5cea3c" title=" " alt="" coords="263,1202,348,1229"/>
+<area shape="rect" id="node37" href="$mouse_8c.html#a138eaa587eae6fb6e545938a737e55e1" title="Check if the mouse packet is done." alt="" coords="219,1253,392,1279"/>
+<area shape="rect" id="node38" href="$mouse_8c.html#a20285aed4b3ef45812cd967532dd09db" title="Subscribe mouse interrupts." alt="" coords="226,1303,385,1330"/>
+<area shape="rect" id="node39" href="$mouse_8c.html#a3ecf823d80520009ae5e0d76ae40a3c3" title="Unsubscribe mouse interrupts." alt="" coords="218,1354,393,1381"/>
+<area shape="rect" id="node40" href="$rtc_8c.html#ae5daa2e720c099ae56979927b3505cf2" title="Reads the current time from the RTC." alt="" coords="249,1405,361,1431"/>
+<area shape="rect" id="node41" href="$rtc_8c.html#a4ec419448072d13b4b5ddde2e6910339" title="Updates the time in the RTC, uses timer interrupts to keep track of time." alt="" coords="241,1455,369,1482"/>
+<area shape="rect" id="node42" href="$uart_8c.html#a6cf535015db7fa2b4d8087f7d57d5b80" title="Configures the serial port with specified settings." alt="" coords="267,1506,344,1533"/>
+<area shape="rect" id="node43" href="$uart_8c.html#ae5df664a2889d62e622d1a5c07fb09b0" title="Cleans up the serial port, destroying queues." alt="" coords="268,1557,343,1583"/>
+<area shape="rect" id="node44" href="$uart_8c.html#a6b787267e9968bd736d5d96c1b56cfa3" title="Interrupt handler for the serial port." alt="" coords="275,1607,336,1634"/>
+<area shape="rect" id="node45" href="$uart_8c.html#af21628f0f9d46b62067ae790f7861e84" title="Subscribes serial port interrupts." alt="" coords="238,1658,373,1685"/>
+<area shape="rect" id="node46" href="$uart_8c.html#a30ae83ae28ebc465baa2d2f2ee51a145" title="Unsubscribes serial port interrupts." alt="" coords="230,1709,381,1735"/>
+<area shape="rect" id="node47" href="$graphics_8c.html#a55bb0148c696baca125c2c03bd585ae5" title="Sets the frame buffer." alt="" coords="239,1759,372,1786"/>
+<area shape="rect" id="node48" href="$graphics_8c.html#a29e12d989ec405e661e02556aa1a12d9" title="Initializes the graphics module." alt="" coords="231,1810,379,1837"/>
+<area shape="rect" id="node49" href="$timer_8c.html#ac57a7e1140a7e00ad95ac5488d2a671b" title=" " alt="" coords="230,1861,381,1887"/>
+<area shape="rect" id="node50" href="$timer_8c.html#afabd21de449be154dd65d5fdb2d8045d" title=" " alt="" coords="222,1911,389,1938"/>
+<area shape="rect" id="node4" href="$menu_8c.html#a4d4bf6bee5fed1f2f55bd25b5b113321" title="Decreases the current option of the menu." alt="" coords="483,71,655,98"/>
+<area shape="rect" id="node5" href="$menu_8c.html#a83eb2544c4ebd17106a417ad3f2dd259" title="Array of sprites that represent the minutes of the clock." alt="" coords="501,122,636,149"/>
+<area shape="rect" id="node6" href="$menu_8c.html#ae47b219e39baf5c0ccca747e84198cf8" title="Increases the current option of the menu." alt="" coords="485,173,653,199"/>
+<area shape="rect" id="node7" href="$game_8c.html#a7bcf7b364b82497e8d0aaad2a128654e" title="Initialize the game. Initializes the game variables and the players ." alt="" coords="527,274,610,301"/>
+<area shape="rect" id="node8" href="$game_8c.html#a432754bde7d8d94d9e3da2fdd419391d" title="Return is the game is in multiplayer mode." alt="" coords="515,730,622,757"/>
+<area shape="rect" id="node9" href="$uart_8c.html#a26416dc43ec1787e1e5b3f830438b261" title="Resets the serial port queues." alt="" coords="501,223,637,250"/>
+<area shape="rect" id="node10" href="$uart_8c.html#a744437c11f3748d75b841c812bb6c729" title="Sends waiting to the transmit queue." alt="" coords="491,5,646,47"/>
+<area shape="rect" id="node12" href="$game_8c.html#a1d05e93f41cfc88256db536dd9ce3ed6" title="Add a delta to X value." alt="" coords="534,426,603,453"/>
+<area shape="rect" id="node13" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="703,465,796,491"/>
+<area shape="rect" id="node14" href="$game_8c.html#aa3b5decd6967538d4e112fc87e4e2bd8" title="Add a delta to Y value." alt="" coords="535,527,603,554"/>
+<area shape="rect" id="node15" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="703,541,795,567"/>
+<area shape="rect" id="node16" href="$game_8c.html#af654560e590a120fe5ad6743167fd684" title="Check all collisions with targets and dynamite." alt="" coords="499,629,639,655"/>
+<area shape="rect" id="node17" href="$game_8c.html#ab801a4e26f54a0ba9515b0f9ad162268" title="Dynamite." alt="" coords="523,679,615,706"/>
+<area shape="rect" id="node18" href="$player_8c.html#ac21c4b0d3b3002bce90c9b1fa3493bb0" title="Checks if the player can shoot." alt="" coords="495,781,642,807"/>
+<area shape="rect" id="node19" href="$uart_8c.html#a32d8e9b11eb3a81c805ce5cd1b7cf3a9" title="Sends player 2 info to the transmit queue." alt="" coords="485,832,653,873"/>
+<area shape="rect" id="node20" href="$player_8c.html#a30fe61c333e175e34297b47616006786" title="Sets whether the player can shoot." alt="" coords="496,325,641,351"/>
+<area shape="rect" id="node21" href="$game_8c.html#a0d11aa44162e7e4369046bddc91740a0" title="Set Slow Time." alt="" coords="515,375,622,402"/>
+<area shape="rect" id="node23" href="$game_8c.html#a943b2c1031a69714cf94129871ae9fa5" title="Get the player 2." alt="" coords="523,949,615,975"/>
+<area shape="rect" id="node24" href="$game_8c.html#a47a3170bdfc39996d54630ec427aab4c" title="Checks if the target is active." alt="" coords="511,898,626,925"/>
+</map>

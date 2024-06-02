@@ -1,0 +1,6 @@
+<map id="mouse_set_sample_rate" name="mouse_set_sample_rate">
+<area shape="rect" id="node1" title="Mouse set stream mode." alt="" coords="5,31,187,57"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#af8e3449d392d4b1cc22c48e25ddbcd04" title="Write byte to mouse command." alt="" coords="235,31,397,57"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a79f822ee418bebe387c463fbb343106c" title="KBC write command." alt="" coords="445,5,603,32"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="651,31,749,57"/>
+</map>

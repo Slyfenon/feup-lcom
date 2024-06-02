@@ -1,0 +1,1136 @@
+\hypertarget{uart_8h}{}\doxysection{src/devices/uart/uart.h File Reference}
+\label{uart_8h}\index{src/devices/uart/uart.h@{src/devices/uart/uart.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}queue/queue.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../kbc/i8042.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../kbc/mouse.\+h\char`\"{}}\newline
+Include dependency graph for uart.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionlcr__t}{lcr\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Line Control Register. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structconf__t}{conf\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Configuration settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{uart_8h_af36a0276b0bd9eb08b0665c7e85d7b49}{SER\+\_\+\+COM1}}~0x3\+F8
+\item 
+\#define \mbox{\hyperlink{uart_8h_af0ec610995d060379690114f01c6eeaf}{SER\+\_\+\+COM1\+\_\+\+IRQ}}~4
+\item 
+\#define \mbox{\hyperlink{uart_8h_af4760f35369e57eb5e662d06897a0a88}{SER\+\_\+\+COM2}}~0x2\+F8
+\item 
+\#define \mbox{\hyperlink{uart_8h_a420c631d8b538f2a8058e793523149e2}{SER\+\_\+\+COM2\+\_\+\+IRQ}}~3
+\item 
+\#define \mbox{\hyperlink{uart_8h_aab10abea0297abdcf0aab7d7d0b5662f}{SER\+\_\+\+RBR}}~0 /$\ast$$\ast$ @brief Receiver Buffer $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a3702c28928f73b9841ab8269f64177ed}{SER\+\_\+\+THR}}~0 /$\ast$$\ast$ @brief Transmitter Holding $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a783f8e3973a5f87d8af120d49742f834}{SER\+\_\+\+IER}}~1 /$\ast$$\ast$ @brief Interrupt Enable $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a483c46ea5ed36388947426211cb63eab}{SER\+\_\+\+IIR}}~2 /$\ast$$\ast$ @brief Interrupt Identification Register $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a9261eef6859842b51e42894b61c5b1c0}{SER\+\_\+\+FCR}}~2 /$\ast$$\ast$ @brief FIFO Control $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a6475db6ed9440a92c680e54b2912b191}{SER\+\_\+\+LCR}}~3 /$\ast$$\ast$ @brief Line Control $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a0f21de7866d73161df9b492b415c370c}{SER\+\_\+\+MCR}}~4 /$\ast$$\ast$ @brief Modem Control $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a382b5d26eb113bfffbf2094eb4405042}{SER\+\_\+\+LSR}}~5 /$\ast$$\ast$ @brief Line Status $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_af161670921d63a654492758b1998d222}{SER\+\_\+\+MSR}}~6 /$\ast$$\ast$ @brief Modem Status $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a858484a29128b93600cd6b8971a91faf}{SER\+\_\+\+DLL}}~0 /$\ast$$\ast$ @brief Divisor Latch Least Significant Byte $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a54c2d9bcb790f3a6d0cd71d20ae5d427}{SER\+\_\+\+DLM}}~1 /$\ast$$\ast$ @brief Divisor Latch Most Significant Byte $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a1affde1c58c7e01cd98a0541806f9f11}{SER\+\_\+\+LCR\+\_\+\+WORD\+\_\+\+LENGTH}}~(BIT(1) $\vert$ BIT(0)) /$\ast$$\ast$ @brief Bits per character $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ab379e566865ba88dbdd5039c6984f402}{SER\+\_\+\+LCR\+\_\+\+WORD\+\_\+\+SIZE}}(N)~((N) -\/ 5) /$\ast$$\ast$ @brief Select word (character) length $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a7acd5ae3ca760328a24c3fb3b4f84a07}{SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+\+BIT}}~BIT(2) /$\ast$$\ast$ @brief Length of the stop bit $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a9e9102a8dd900decf5ba0f27fca5beb4}{SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+1}}~0 /$\ast$$\ast$ @brief One stop bit $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aab47c2f144486456a64c3a239a999b10}{SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+2}}~1 /$\ast$$\ast$ @brief Two stop bits $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a512668d92fc7bc4df0c17bc159f81e31}{SER\+\_\+\+LCR\+\_\+\+PAR}}~(BIT(5) $\vert$ BIT(4) $\vert$ BIT(3)) /$\ast$$\ast$ @brief Parity Select $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ac0bb3f1e83521009a5abac0e1259caa3}{SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+NONE}}~0 /$\ast$$\ast$ @brief No parity $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a477f10facd30d459e891e2b14a66a7ea}{SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+ODD}}~1 /$\ast$$\ast$ @brief Odd parity $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a58967a5415bca02394e334f749459432}{SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+EVEN}}~3 /$\ast$$\ast$ @brief Even parity $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a499b51a1a5ecd70b5efabdb67e933841}{SER\+\_\+\+LCR\+\_\+\+DLAB}}~BIT(7) /$\ast$$\ast$ @brief DLAB\+: Divisor Latch Access Bit $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a11a1042d7c4717472ff6fa8c49a88608}{SER\+\_\+\+MAX\+\_\+\+FREQ}}~115200 /$\ast$$\ast$ @brief Maximum frequency $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ad4ff3e70ded0da2d45446600ac632e6e}{SER\+\_\+\+LSR\+\_\+\+RX\+\_\+\+RDY}}~BIT(0) /$\ast$$\ast$ @brief Receiver Ready $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a654a9314d4e625e0e18e05b044c74171}{SER\+\_\+\+LSR\+\_\+\+OVERRUN\+\_\+\+ERR}}~BIT(1) /$\ast$$\ast$ @brief Overrun Error $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a14758f39133fde36461e40d4bbc95c11}{SER\+\_\+\+LSR\+\_\+\+PAR\+\_\+\+ERR}}~BIT(2) /$\ast$$\ast$ @brief Parity Error $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aab55c48af7fc9ff758b1621d30948bb0}{SER\+\_\+\+LSR\+\_\+\+FR\+\_\+\+ERR}}~BIT(3) /$\ast$$\ast$ @brief Framing Error $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_afdf0960837b1738d1086d123e7972e73}{SER\+\_\+\+LSR\+\_\+\+TX\+\_\+\+RDY}}~BIT(5) /$\ast$$\ast$ @brief Trasmitter ready $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a3e3f9af26c3ee268090d85ba756df067}{SER\+\_\+\+MCR\+\_\+\+OUT2}}~BIT(3) /$\ast$$\ast$ @brief Aux Output 2 $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aad4e3b31ce0354efe34f8110daae2676}{SER\+\_\+\+MCR\+\_\+\+LOOPBACK}}~BIT(4) /$\ast$$\ast$ @brief Loop\+Back Mode 2 $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a9d540a6892e6c041235ba5494ef5a6c2}{SER\+\_\+\+IER\+\_\+\+RX\+\_\+\+INT}}~BIT(0) /$\ast$$\ast$ @brief Enable Received Data Interrupt $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a7da9935b6a7223666d7c526c6907f1b6}{SER\+\_\+\+IER\+\_\+\+TX\+\_\+\+INT}}~BIT(1) /$\ast$$\ast$ @brief Enable Transmitter Empty Interrupt $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ad9e580e5d7496c5ee8ea9685e91abc75}{SER\+\_\+\+IER\+\_\+\+LINE\+\_\+\+ST}}~BIT(2) /$\ast$$\ast$ @brief Enable Receiver Line Status Interrupt $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ad2e3582cca89638d740396eeeaf31784}{SER\+\_\+\+IIR\+\_\+\+INT\+\_\+\+NP}}~BIT(0) /$\ast$$\ast$ @brief No Interrupt Pending $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_acf472141973466cbeae2d4a7bd51fc33}{SER\+\_\+\+IIR\+\_\+\+INT\+\_\+\+ID}}~(BIT(3) $\vert$ BIT(2) $\vert$ BIT(1)) /$\ast$$\ast$ @brief Interrupt Origin $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a445e463de5c6a5533eb6ea385b02cc46}{SER\+\_\+\+IIR\+\_\+\+TX\+\_\+\+INT}}~BIT(1) /$\ast$$\ast$ @brief Transmitter Empty$\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a29fb23d048d4411c545dbe08d725304e}{SER\+\_\+\+IIR\+\_\+\+RX\+\_\+\+INT}}~BIT(2) /$\ast$$\ast$ @brief Received Data Available $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a1b6c151333d08909016afb595d12174e}{SER\+\_\+\+IIR\+\_\+\+TO\+\_\+\+INT}}~BIT(3) /$\ast$$\ast$ @brief Time Out $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a201ad234db0f80540d6df38f08df1e08}{SER\+\_\+\+IIR\+\_\+\+LINE\+\_\+\+ST}}~(BIT(2) $\vert$ BIT(1)) /$\ast$$\ast$ @brief Line Status $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aff2590ef521871d3f25885af47978b6a}{SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+64}}~BIT(6) /$\ast$$\ast$ @brief 64 Byte FIFO Enabled $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a4a2f2c119511d0cb1fb90ea899e005ae}{SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+ST}}~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief FIFO status $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ae2412cf51c9a7774d3cc04e31ff519e2}{SER\+\_\+\+IIR\+\_\+\+NO\+\_\+\+FIFO}}~0x00 /$\ast$$\ast$ @brief No FIFO $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ac81e6511ca3928b84a11bc625c145f52}{SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+EN}}~BIT(7) /$\ast$$\ast$ @brief FIFO Enabled $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a8e0e7a521813630a1e8d18804becc98f}{SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+UN}}~(BIT(6) $\vert$ BIT(7)) /$\ast$$\ast$ @brief Enable but Unusable  $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a6ecc0f80fda3f92ef0b920cc9fac6cb9}{SER\+\_\+\+FCR\+\_\+\+EN\+\_\+\+FIFO}}~BIT(0) /$\ast$$\ast$ @brief Enable FIFO $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a67abdc1774e0092d258bbe3be7c7530b}{SER\+\_\+\+FCR\+\_\+\+CLR\+\_\+\+RX\+\_\+\+FIFO}}~BIT(1) /$\ast$$\ast$ @brief Clear Receive FIFO $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_adedd9fe0972a6c4aa1b69a8553700f6a}{SER\+\_\+\+FCR\+\_\+\+CLR\+\_\+\+TX\+\_\+\+FIFO}}~BIT(2) /$\ast$$\ast$ @brief Clear Transmit FIFO $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aeadd14ac239820dcae36fa11a40972aa}{SER\+\_\+\+FCR\+\_\+\+EN\+\_\+64\+\_\+\+FIFO}}~BIT(5) /$\ast$$\ast$ @brief Clear Transmit FIFO $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a1b19e4e8f4e59ca4fa7727e38b25bf22}{SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+\+LVL}}~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief Interrupt Trigger Level $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a7f3a5a50553d57028b3f355e11345027}{SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+1}}~0x00 /$\ast$$\ast$ @brief Interrupt Trigger Level 1 byte $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a04a270ce3293090f053715307a026cff}{SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+4}}~BIT(6) /$\ast$$\ast$ @brief Interrupt Trigger Level 4 bytes $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a9262f83f5c7b5a7c9f2793a81caf82fb}{SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+8}}~BIT(7) /$\ast$$\ast$ @brief Interrupt Trigger Level 8 bytes $\ast$/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ae732ffc099ae4321e5cb6a691e442346}{SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+14}}~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief Interrupt Trigger Level 14 bytes $\ast$/
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{uart_8h_a36ddc67c995d05e190cd547f01718a99}{par\+\_\+t}} \{ \mbox{\hyperlink{uart_8h_a36ddc67c995d05e190cd547f01718a99a4bffe960d7eae89d5b85412e4edfd453}{NO\+\_\+\+PARITY}}
+, \mbox{\hyperlink{uart_8h_a36ddc67c995d05e190cd547f01718a99afe2fed5b602e75007ad71639144b174b}{ODD\+\_\+\+PARITY}}
+, \mbox{\hyperlink{uart_8h_a36ddc67c995d05e190cd547f01718a99ae19a2b096e346d54f83b83723a8af70d}{EVEN\+\_\+\+PARITY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Parity -\/ excluding sticky (high and low) parity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} $\ast$() \mbox{\hyperlink{uart_8h_a8e78ba262fa9fe8db49569f2e81d1c3e}{ser\+\_\+get\+\_\+tx\+\_\+queue}} ()
+\begin{DoxyCompactList}\small\item\em Gets the transmit queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}} $\ast$() \mbox{\hyperlink{uart_8h_a9c7af8b86dd0cd6d5fb027f972595cc0}{ser\+\_\+get\+\_\+rx\+\_\+queue}} ()
+\begin{DoxyCompactList}\small\item\em Gets the receive queue. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{uart_8h_a88083d0122dfce4a20fe752f57cf3ce8}{ser\+\_\+get\+\_\+player2\+\_\+info\+\_\+is\+\_\+done}} ()
+\begin{DoxyCompactList}\small\item\em Gets if the player 2 info is done. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_aed1c250175b2412cac87bb8caaf01846}{ser\+\_\+get\+\_\+player2\+\_\+info}} (\mbox{\hyperlink{structplayer2__info__t}{player2\+\_\+info\+\_\+t}} $\ast$pp)
+\begin{DoxyCompactList}\small\item\em Gets the player 2 info. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{uart_8h_a8a81f6f93dffa542d58ccc16576c41f8}{ser\+\_\+get\+\_\+player2\+\_\+ready}} ()
+\begin{DoxyCompactList}\small\item\em Gets if the player 2 is ready to play. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a7dc7925459eed9a37a8633e7dc59227f}{ser\+\_\+handle\+\_\+start}} ()
+\begin{DoxyCompactList}\small\item\em Handler to multiplayer start. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a46392885602b558f86b8465a9520a57b}{ser\+\_\+read\+\_\+data\+\_\+from\+\_\+rx\+\_\+queue}} ()
+\begin{DoxyCompactList}\small\item\em Reads data from the receive queue. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a32d8e9b11eb3a81c805ce5cd1b7cf3a9}{ser\+\_\+send\+\_\+player2\+\_\+info\+\_\+to\+\_\+txqueue}} (int16\+\_\+t x, int16\+\_\+t y, int8\+\_\+t \mbox{\hyperlink{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}{target}}, uint16\+\_\+t score)
+\begin{DoxyCompactList}\small\item\em Sends player 2 info to the transmit queue. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a744437c11f3748d75b841c812bb6c729}{ser\+\_\+send\+\_\+waiting\+\_\+to\+\_\+txqueue}} ()
+\begin{DoxyCompactList}\small\item\em Sends waiting to the transmit queue. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{uart_8h_a0ccdb717d89a065e7bc683a7652ff240}{ser\+\_\+set\+\_\+player2\+\_\+ready}} (bool ready)
+\begin{DoxyCompactList}\small\item\em Sets the player 2 info as value of the parameter. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_af21628f0f9d46b62067ae790f7861e84}{ser\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes serial port interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a30ae83ae28ebc465baa2d2f2ee51a145}{ser\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes serial port interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a8659e6a837d82cfb88a5a66593d18261}{ser\+\_\+write\+\_\+reg}} (uint8\+\_\+t reg, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Writes a value to a serial port register. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a54089b696d2f9403cfe7d46c4c1c037e}{ser\+\_\+read\+\_\+reg}} (uint8\+\_\+t reg, uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Reads a value from a serial port register. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a6cf535015db7fa2b4d8087f7d57d5b80}{ser\+\_\+conf}} (unsigned short addr, \mbox{\hyperlink{structconf__t}{conf\+\_\+t}} config)
+\begin{DoxyCompactList}\small\item\em Configures the serial port with specified settings. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_af56e5aeea19730117e537c6b831c6a1b}{ser\+\_\+set\+\_\+bit\+\_\+rate}} (unsigned int bit\+\_\+rate)
+\begin{DoxyCompactList}\small\item\em Sets the bit rate of the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_aed1427385d2e8354b2f172e367f80e51}{ser\+\_\+set\+\_\+line\+\_\+ctrl}} (\mbox{\hyperlink{structconf__t}{conf\+\_\+t}} $\ast$config)
+\begin{DoxyCompactList}\small\item\em Configures the line control register. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a67826677e65d2b1c5df21531996ec9f1}{ser\+\_\+enable\+\_\+fifo}} ()
+\begin{DoxyCompactList}\small\item\em Enables the FIFO buffers of the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_ad0915cc294d7e4d9846a3bce916df3bc}{ser\+\_\+disable\+\_\+fifo}} ()
+\begin{DoxyCompactList}\small\item\em Disables the FIFO buffers of the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a1a010fb3c594ba28c8874c8da632550c}{ser\+\_\+enable\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Enables serial port interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_afc11965132119f303d0b38c9f323bb44}{ser\+\_\+disable\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Disables serial port interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a69e303ae328b899fd91bba99cc247a6d}{ser\+\_\+send\+\_\+byte}} (uint8\+\_\+t b)
+\begin{DoxyCompactList}\small\item\em Sends a byte through the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_ac21ebeb821e0f459ef49e5f1f3a0d579}{ser\+\_\+receive\+\_\+byte}} (uint8\+\_\+t $\ast$b)
+\begin{DoxyCompactList}\small\item\em Receives a byte from the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a4b854be056913d8cb78c216352b20b2c}{ser\+\_\+send\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Sends data from the transmit queue. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_a192897a493a4259100538603dc61b20c}{ser\+\_\+receive\+\_\+data}} ()
+\begin{DoxyCompactList}\small\item\em Receives data into the receive queue. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{uart_8h_a6b787267e9968bd736d5d96c1b56cfa3}{ser\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Interrupt handler for the serial port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{uart_8h_ae5df664a2889d62e622d1a5c07fb09b0}{ser\+\_\+exit}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up the serial port, destroying queues. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8h_a26416dc43ec1787e1e5b3f830438b261}{ser\+\_\+reset\+\_\+queues}} ()
+\begin{DoxyCompactList}\small\item\em Resets the serial port queues. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{uart_8h_af36a0276b0bd9eb08b0665c7e85d7b49}\label{uart_8h_af36a0276b0bd9eb08b0665c7e85d7b49}} 
+\index{uart.h@{uart.h}!SER\_COM1@{SER\_COM1}}
+\index{SER\_COM1@{SER\_COM1}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_COM1}{SER\_COM1}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+COM1~0x3\+F8}
+
+\mbox{\Hypertarget{uart_8h_af0ec610995d060379690114f01c6eeaf}\label{uart_8h_af0ec610995d060379690114f01c6eeaf}} 
+\index{uart.h@{uart.h}!SER\_COM1\_IRQ@{SER\_COM1\_IRQ}}
+\index{SER\_COM1\_IRQ@{SER\_COM1\_IRQ}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_COM1\_IRQ}{SER\_COM1\_IRQ}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+COM1\+\_\+\+IRQ~4}
+
+\mbox{\Hypertarget{uart_8h_af4760f35369e57eb5e662d06897a0a88}\label{uart_8h_af4760f35369e57eb5e662d06897a0a88}} 
+\index{uart.h@{uart.h}!SER\_COM2@{SER\_COM2}}
+\index{SER\_COM2@{SER\_COM2}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_COM2}{SER\_COM2}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+COM2~0x2\+F8}
+
+\mbox{\Hypertarget{uart_8h_a420c631d8b538f2a8058e793523149e2}\label{uart_8h_a420c631d8b538f2a8058e793523149e2}} 
+\index{uart.h@{uart.h}!SER\_COM2\_IRQ@{SER\_COM2\_IRQ}}
+\index{SER\_COM2\_IRQ@{SER\_COM2\_IRQ}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_COM2\_IRQ}{SER\_COM2\_IRQ}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+COM2\+\_\+\+IRQ~3}
+
+\mbox{\Hypertarget{uart_8h_a858484a29128b93600cd6b8971a91faf}\label{uart_8h_a858484a29128b93600cd6b8971a91faf}} 
+\index{uart.h@{uart.h}!SER\_DLL@{SER\_DLL}}
+\index{SER\_DLL@{SER\_DLL}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_DLL}{SER\_DLL}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+DLL~0 /$\ast$$\ast$ @brief Divisor Latch Least Significant Byte $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a54c2d9bcb790f3a6d0cd71d20ae5d427}\label{uart_8h_a54c2d9bcb790f3a6d0cd71d20ae5d427}} 
+\index{uart.h@{uart.h}!SER\_DLM@{SER\_DLM}}
+\index{SER\_DLM@{SER\_DLM}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_DLM}{SER\_DLM}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+DLM~1 /$\ast$$\ast$ @brief Divisor Latch Most Significant Byte $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a9261eef6859842b51e42894b61c5b1c0}\label{uart_8h_a9261eef6859842b51e42894b61c5b1c0}} 
+\index{uart.h@{uart.h}!SER\_FCR@{SER\_FCR}}
+\index{SER\_FCR@{SER\_FCR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR}{SER\_FCR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR~2 /$\ast$$\ast$ @brief FIFO Control $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a67abdc1774e0092d258bbe3be7c7530b}\label{uart_8h_a67abdc1774e0092d258bbe3be7c7530b}} 
+\index{uart.h@{uart.h}!SER\_FCR\_CLR\_RX\_FIFO@{SER\_FCR\_CLR\_RX\_FIFO}}
+\index{SER\_FCR\_CLR\_RX\_FIFO@{SER\_FCR\_CLR\_RX\_FIFO}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_CLR\_RX\_FIFO}{SER\_FCR\_CLR\_RX\_FIFO}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+CLR\+\_\+\+RX\+\_\+\+FIFO~BIT(1) /$\ast$$\ast$ @brief Clear Receive FIFO $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_adedd9fe0972a6c4aa1b69a8553700f6a}\label{uart_8h_adedd9fe0972a6c4aa1b69a8553700f6a}} 
+\index{uart.h@{uart.h}!SER\_FCR\_CLR\_TX\_FIFO@{SER\_FCR\_CLR\_TX\_FIFO}}
+\index{SER\_FCR\_CLR\_TX\_FIFO@{SER\_FCR\_CLR\_TX\_FIFO}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_CLR\_TX\_FIFO}{SER\_FCR\_CLR\_TX\_FIFO}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+CLR\+\_\+\+TX\+\_\+\+FIFO~BIT(2) /$\ast$$\ast$ @brief Clear Transmit FIFO $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aeadd14ac239820dcae36fa11a40972aa}\label{uart_8h_aeadd14ac239820dcae36fa11a40972aa}} 
+\index{uart.h@{uart.h}!SER\_FCR\_EN\_64\_FIFO@{SER\_FCR\_EN\_64\_FIFO}}
+\index{SER\_FCR\_EN\_64\_FIFO@{SER\_FCR\_EN\_64\_FIFO}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_EN\_64\_FIFO}{SER\_FCR\_EN\_64\_FIFO}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+EN\+\_\+64\+\_\+\+FIFO~BIT(5) /$\ast$$\ast$ @brief Clear Transmit FIFO $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a6ecc0f80fda3f92ef0b920cc9fac6cb9}\label{uart_8h_a6ecc0f80fda3f92ef0b920cc9fac6cb9}} 
+\index{uart.h@{uart.h}!SER\_FCR\_EN\_FIFO@{SER\_FCR\_EN\_FIFO}}
+\index{SER\_FCR\_EN\_FIFO@{SER\_FCR\_EN\_FIFO}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_EN\_FIFO}{SER\_FCR\_EN\_FIFO}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+EN\+\_\+\+FIFO~BIT(0) /$\ast$$\ast$ @brief Enable FIFO $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a7f3a5a50553d57028b3f355e11345027}\label{uart_8h_a7f3a5a50553d57028b3f355e11345027}} 
+\index{uart.h@{uart.h}!SER\_FCR\_TRIGGER\_1@{SER\_FCR\_TRIGGER\_1}}
+\index{SER\_FCR\_TRIGGER\_1@{SER\_FCR\_TRIGGER\_1}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_TRIGGER\_1}{SER\_FCR\_TRIGGER\_1}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+1~0x00 /$\ast$$\ast$ @brief Interrupt Trigger Level 1 byte $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ae732ffc099ae4321e5cb6a691e442346}\label{uart_8h_ae732ffc099ae4321e5cb6a691e442346}} 
+\index{uart.h@{uart.h}!SER\_FCR\_TRIGGER\_14@{SER\_FCR\_TRIGGER\_14}}
+\index{SER\_FCR\_TRIGGER\_14@{SER\_FCR\_TRIGGER\_14}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_TRIGGER\_14}{SER\_FCR\_TRIGGER\_14}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+14~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief Interrupt Trigger Level 14 bytes $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a04a270ce3293090f053715307a026cff}\label{uart_8h_a04a270ce3293090f053715307a026cff}} 
+\index{uart.h@{uart.h}!SER\_FCR\_TRIGGER\_4@{SER\_FCR\_TRIGGER\_4}}
+\index{SER\_FCR\_TRIGGER\_4@{SER\_FCR\_TRIGGER\_4}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_TRIGGER\_4}{SER\_FCR\_TRIGGER\_4}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+4~BIT(6) /$\ast$$\ast$ @brief Interrupt Trigger Level 4 bytes $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a9262f83f5c7b5a7c9f2793a81caf82fb}\label{uart_8h_a9262f83f5c7b5a7c9f2793a81caf82fb}} 
+\index{uart.h@{uart.h}!SER\_FCR\_TRIGGER\_8@{SER\_FCR\_TRIGGER\_8}}
+\index{SER\_FCR\_TRIGGER\_8@{SER\_FCR\_TRIGGER\_8}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_TRIGGER\_8}{SER\_FCR\_TRIGGER\_8}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+8~BIT(7) /$\ast$$\ast$ @brief Interrupt Trigger Level 8 bytes $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a1b19e4e8f4e59ca4fa7727e38b25bf22}\label{uart_8h_a1b19e4e8f4e59ca4fa7727e38b25bf22}} 
+\index{uart.h@{uart.h}!SER\_FCR\_TRIGGER\_LVL@{SER\_FCR\_TRIGGER\_LVL}}
+\index{SER\_FCR\_TRIGGER\_LVL@{SER\_FCR\_TRIGGER\_LVL}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_FCR\_TRIGGER\_LVL}{SER\_FCR\_TRIGGER\_LVL}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+FCR\+\_\+\+TRIGGER\+\_\+\+LVL~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief Interrupt Trigger Level $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a783f8e3973a5f87d8af120d49742f834}\label{uart_8h_a783f8e3973a5f87d8af120d49742f834}} 
+\index{uart.h@{uart.h}!SER\_IER@{SER\_IER}}
+\index{SER\_IER@{SER\_IER}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IER}{SER\_IER}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IER~1 /$\ast$$\ast$ @brief Interrupt Enable $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ad9e580e5d7496c5ee8ea9685e91abc75}\label{uart_8h_ad9e580e5d7496c5ee8ea9685e91abc75}} 
+\index{uart.h@{uart.h}!SER\_IER\_LINE\_ST@{SER\_IER\_LINE\_ST}}
+\index{SER\_IER\_LINE\_ST@{SER\_IER\_LINE\_ST}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IER\_LINE\_ST}{SER\_IER\_LINE\_ST}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IER\+\_\+\+LINE\+\_\+\+ST~BIT(2) /$\ast$$\ast$ @brief Enable Receiver Line Status Interrupt $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a9d540a6892e6c041235ba5494ef5a6c2}\label{uart_8h_a9d540a6892e6c041235ba5494ef5a6c2}} 
+\index{uart.h@{uart.h}!SER\_IER\_RX\_INT@{SER\_IER\_RX\_INT}}
+\index{SER\_IER\_RX\_INT@{SER\_IER\_RX\_INT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IER\_RX\_INT}{SER\_IER\_RX\_INT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IER\+\_\+\+RX\+\_\+\+INT~BIT(0) /$\ast$$\ast$ @brief Enable Received Data Interrupt $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a7da9935b6a7223666d7c526c6907f1b6}\label{uart_8h_a7da9935b6a7223666d7c526c6907f1b6}} 
+\index{uart.h@{uart.h}!SER\_IER\_TX\_INT@{SER\_IER\_TX\_INT}}
+\index{SER\_IER\_TX\_INT@{SER\_IER\_TX\_INT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IER\_TX\_INT}{SER\_IER\_TX\_INT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IER\+\_\+\+TX\+\_\+\+INT~BIT(1) /$\ast$$\ast$ @brief Enable Transmitter Empty Interrupt $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a483c46ea5ed36388947426211cb63eab}\label{uart_8h_a483c46ea5ed36388947426211cb63eab}} 
+\index{uart.h@{uart.h}!SER\_IIR@{SER\_IIR}}
+\index{SER\_IIR@{SER\_IIR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR}{SER\_IIR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR~2 /$\ast$$\ast$ @brief Interrupt Identification Register $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aff2590ef521871d3f25885af47978b6a}\label{uart_8h_aff2590ef521871d3f25885af47978b6a}} 
+\index{uart.h@{uart.h}!SER\_IIR\_FIFO\_64@{SER\_IIR\_FIFO\_64}}
+\index{SER\_IIR\_FIFO\_64@{SER\_IIR\_FIFO\_64}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_FIFO\_64}{SER\_IIR\_FIFO\_64}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+64~BIT(6) /$\ast$$\ast$ @brief 64 Byte FIFO Enabled $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ac81e6511ca3928b84a11bc625c145f52}\label{uart_8h_ac81e6511ca3928b84a11bc625c145f52}} 
+\index{uart.h@{uart.h}!SER\_IIR\_FIFO\_EN@{SER\_IIR\_FIFO\_EN}}
+\index{SER\_IIR\_FIFO\_EN@{SER\_IIR\_FIFO\_EN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_FIFO\_EN}{SER\_IIR\_FIFO\_EN}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+EN~BIT(7) /$\ast$$\ast$ @brief FIFO Enabled $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a4a2f2c119511d0cb1fb90ea899e005ae}\label{uart_8h_a4a2f2c119511d0cb1fb90ea899e005ae}} 
+\index{uart.h@{uart.h}!SER\_IIR\_FIFO\_ST@{SER\_IIR\_FIFO\_ST}}
+\index{SER\_IIR\_FIFO\_ST@{SER\_IIR\_FIFO\_ST}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_FIFO\_ST}{SER\_IIR\_FIFO\_ST}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+ST~(BIT(7) $\vert$ BIT(6)) /$\ast$$\ast$ @brief FIFO status $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a8e0e7a521813630a1e8d18804becc98f}\label{uart_8h_a8e0e7a521813630a1e8d18804becc98f}} 
+\index{uart.h@{uart.h}!SER\_IIR\_FIFO\_UN@{SER\_IIR\_FIFO\_UN}}
+\index{SER\_IIR\_FIFO\_UN@{SER\_IIR\_FIFO\_UN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_FIFO\_UN}{SER\_IIR\_FIFO\_UN}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+FIFO\+\_\+\+UN~(BIT(6) $\vert$ BIT(7)) /$\ast$$\ast$ @brief Enable but Unusable  $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_acf472141973466cbeae2d4a7bd51fc33}\label{uart_8h_acf472141973466cbeae2d4a7bd51fc33}} 
+\index{uart.h@{uart.h}!SER\_IIR\_INT\_ID@{SER\_IIR\_INT\_ID}}
+\index{SER\_IIR\_INT\_ID@{SER\_IIR\_INT\_ID}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_INT\_ID}{SER\_IIR\_INT\_ID}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+INT\+\_\+\+ID~(BIT(3) $\vert$ BIT(2) $\vert$ BIT(1)) /$\ast$$\ast$ @brief Interrupt Origin $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ad2e3582cca89638d740396eeeaf31784}\label{uart_8h_ad2e3582cca89638d740396eeeaf31784}} 
+\index{uart.h@{uart.h}!SER\_IIR\_INT\_NP@{SER\_IIR\_INT\_NP}}
+\index{SER\_IIR\_INT\_NP@{SER\_IIR\_INT\_NP}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_INT\_NP}{SER\_IIR\_INT\_NP}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+INT\+\_\+\+NP~BIT(0) /$\ast$$\ast$ @brief No Interrupt Pending $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a201ad234db0f80540d6df38f08df1e08}\label{uart_8h_a201ad234db0f80540d6df38f08df1e08}} 
+\index{uart.h@{uart.h}!SER\_IIR\_LINE\_ST@{SER\_IIR\_LINE\_ST}}
+\index{SER\_IIR\_LINE\_ST@{SER\_IIR\_LINE\_ST}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_LINE\_ST}{SER\_IIR\_LINE\_ST}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+LINE\+\_\+\+ST~(BIT(2) $\vert$ BIT(1)) /$\ast$$\ast$ @brief Line Status $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ae2412cf51c9a7774d3cc04e31ff519e2}\label{uart_8h_ae2412cf51c9a7774d3cc04e31ff519e2}} 
+\index{uart.h@{uart.h}!SER\_IIR\_NO\_FIFO@{SER\_IIR\_NO\_FIFO}}
+\index{SER\_IIR\_NO\_FIFO@{SER\_IIR\_NO\_FIFO}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_NO\_FIFO}{SER\_IIR\_NO\_FIFO}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+NO\+\_\+\+FIFO~0x00 /$\ast$$\ast$ @brief No FIFO $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a29fb23d048d4411c545dbe08d725304e}\label{uart_8h_a29fb23d048d4411c545dbe08d725304e}} 
+\index{uart.h@{uart.h}!SER\_IIR\_RX\_INT@{SER\_IIR\_RX\_INT}}
+\index{SER\_IIR\_RX\_INT@{SER\_IIR\_RX\_INT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_RX\_INT}{SER\_IIR\_RX\_INT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+RX\+\_\+\+INT~BIT(2) /$\ast$$\ast$ @brief Received Data Available $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a1b6c151333d08909016afb595d12174e}\label{uart_8h_a1b6c151333d08909016afb595d12174e}} 
+\index{uart.h@{uart.h}!SER\_IIR\_TO\_INT@{SER\_IIR\_TO\_INT}}
+\index{SER\_IIR\_TO\_INT@{SER\_IIR\_TO\_INT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_TO\_INT}{SER\_IIR\_TO\_INT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+TO\+\_\+\+INT~BIT(3) /$\ast$$\ast$ @brief Time Out $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a445e463de5c6a5533eb6ea385b02cc46}\label{uart_8h_a445e463de5c6a5533eb6ea385b02cc46}} 
+\index{uart.h@{uart.h}!SER\_IIR\_TX\_INT@{SER\_IIR\_TX\_INT}}
+\index{SER\_IIR\_TX\_INT@{SER\_IIR\_TX\_INT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_IIR\_TX\_INT}{SER\_IIR\_TX\_INT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+IIR\+\_\+\+TX\+\_\+\+INT~BIT(1) /$\ast$$\ast$ @brief Transmitter Empty$\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a6475db6ed9440a92c680e54b2912b191}\label{uart_8h_a6475db6ed9440a92c680e54b2912b191}} 
+\index{uart.h@{uart.h}!SER\_LCR@{SER\_LCR}}
+\index{SER\_LCR@{SER\_LCR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR}{SER\_LCR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR~3 /$\ast$$\ast$ @brief Line Control $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a499b51a1a5ecd70b5efabdb67e933841}\label{uart_8h_a499b51a1a5ecd70b5efabdb67e933841}} 
+\index{uart.h@{uart.h}!SER\_LCR\_DLAB@{SER\_LCR\_DLAB}}
+\index{SER\_LCR\_DLAB@{SER\_LCR\_DLAB}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_DLAB}{SER\_LCR\_DLAB}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+DLAB~BIT(7) /$\ast$$\ast$ @brief DLAB\+: Divisor Latch Access Bit $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a512668d92fc7bc4df0c17bc159f81e31}\label{uart_8h_a512668d92fc7bc4df0c17bc159f81e31}} 
+\index{uart.h@{uart.h}!SER\_LCR\_PAR@{SER\_LCR\_PAR}}
+\index{SER\_LCR\_PAR@{SER\_LCR\_PAR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_PAR}{SER\_LCR\_PAR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+PAR~(BIT(5) $\vert$ BIT(4) $\vert$ BIT(3)) /$\ast$$\ast$ @brief Parity Select $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a58967a5415bca02394e334f749459432}\label{uart_8h_a58967a5415bca02394e334f749459432}} 
+\index{uart.h@{uart.h}!SER\_LCR\_PAR\_EVEN@{SER\_LCR\_PAR\_EVEN}}
+\index{SER\_LCR\_PAR\_EVEN@{SER\_LCR\_PAR\_EVEN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_PAR\_EVEN}{SER\_LCR\_PAR\_EVEN}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+EVEN~3 /$\ast$$\ast$ @brief Even parity $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ac0bb3f1e83521009a5abac0e1259caa3}\label{uart_8h_ac0bb3f1e83521009a5abac0e1259caa3}} 
+\index{uart.h@{uart.h}!SER\_LCR\_PAR\_NONE@{SER\_LCR\_PAR\_NONE}}
+\index{SER\_LCR\_PAR\_NONE@{SER\_LCR\_PAR\_NONE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_PAR\_NONE}{SER\_LCR\_PAR\_NONE}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+NONE~0 /$\ast$$\ast$ @brief No parity $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a477f10facd30d459e891e2b14a66a7ea}\label{uart_8h_a477f10facd30d459e891e2b14a66a7ea}} 
+\index{uart.h@{uart.h}!SER\_LCR\_PAR\_ODD@{SER\_LCR\_PAR\_ODD}}
+\index{SER\_LCR\_PAR\_ODD@{SER\_LCR\_PAR\_ODD}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_PAR\_ODD}{SER\_LCR\_PAR\_ODD}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+PAR\+\_\+\+ODD~1 /$\ast$$\ast$ @brief Odd parity $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a9e9102a8dd900decf5ba0f27fca5beb4}\label{uart_8h_a9e9102a8dd900decf5ba0f27fca5beb4}} 
+\index{uart.h@{uart.h}!SER\_LCR\_STOP\_1@{SER\_LCR\_STOP\_1}}
+\index{SER\_LCR\_STOP\_1@{SER\_LCR\_STOP\_1}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_STOP\_1}{SER\_LCR\_STOP\_1}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+1~0 /$\ast$$\ast$ @brief One stop bit $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aab47c2f144486456a64c3a239a999b10}\label{uart_8h_aab47c2f144486456a64c3a239a999b10}} 
+\index{uart.h@{uart.h}!SER\_LCR\_STOP\_2@{SER\_LCR\_STOP\_2}}
+\index{SER\_LCR\_STOP\_2@{SER\_LCR\_STOP\_2}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_STOP\_2}{SER\_LCR\_STOP\_2}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+2~1 /$\ast$$\ast$ @brief Two stop bits $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a7acd5ae3ca760328a24c3fb3b4f84a07}\label{uart_8h_a7acd5ae3ca760328a24c3fb3b4f84a07}} 
+\index{uart.h@{uart.h}!SER\_LCR\_STOP\_BIT@{SER\_LCR\_STOP\_BIT}}
+\index{SER\_LCR\_STOP\_BIT@{SER\_LCR\_STOP\_BIT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_STOP\_BIT}{SER\_LCR\_STOP\_BIT}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+STOP\+\_\+\+BIT~BIT(2) /$\ast$$\ast$ @brief Length of the stop bit $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a1affde1c58c7e01cd98a0541806f9f11}\label{uart_8h_a1affde1c58c7e01cd98a0541806f9f11}} 
+\index{uart.h@{uart.h}!SER\_LCR\_WORD\_LENGTH@{SER\_LCR\_WORD\_LENGTH}}
+\index{SER\_LCR\_WORD\_LENGTH@{SER\_LCR\_WORD\_LENGTH}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_WORD\_LENGTH}{SER\_LCR\_WORD\_LENGTH}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+WORD\+\_\+\+LENGTH~(BIT(1) $\vert$ BIT(0)) /$\ast$$\ast$ @brief Bits per character $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ab379e566865ba88dbdd5039c6984f402}\label{uart_8h_ab379e566865ba88dbdd5039c6984f402}} 
+\index{uart.h@{uart.h}!SER\_LCR\_WORD\_SIZE@{SER\_LCR\_WORD\_SIZE}}
+\index{SER\_LCR\_WORD\_SIZE@{SER\_LCR\_WORD\_SIZE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LCR\_WORD\_SIZE}{SER\_LCR\_WORD\_SIZE}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LCR\+\_\+\+WORD\+\_\+\+SIZE(\begin{DoxyParamCaption}\item[{}]{N }\end{DoxyParamCaption})~((N) -\/ 5) /$\ast$$\ast$ @brief Select word (character) length $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a382b5d26eb113bfffbf2094eb4405042}\label{uart_8h_a382b5d26eb113bfffbf2094eb4405042}} 
+\index{uart.h@{uart.h}!SER\_LSR@{SER\_LSR}}
+\index{SER\_LSR@{SER\_LSR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR}{SER\_LSR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR~5 /$\ast$$\ast$ @brief Line Status $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aab55c48af7fc9ff758b1621d30948bb0}\label{uart_8h_aab55c48af7fc9ff758b1621d30948bb0}} 
+\index{uart.h@{uart.h}!SER\_LSR\_FR\_ERR@{SER\_LSR\_FR\_ERR}}
+\index{SER\_LSR\_FR\_ERR@{SER\_LSR\_FR\_ERR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR\_FR\_ERR}{SER\_LSR\_FR\_ERR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR\+\_\+\+FR\+\_\+\+ERR~BIT(3) /$\ast$$\ast$ @brief Framing Error $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a654a9314d4e625e0e18e05b044c74171}\label{uart_8h_a654a9314d4e625e0e18e05b044c74171}} 
+\index{uart.h@{uart.h}!SER\_LSR\_OVERRUN\_ERR@{SER\_LSR\_OVERRUN\_ERR}}
+\index{SER\_LSR\_OVERRUN\_ERR@{SER\_LSR\_OVERRUN\_ERR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR\_OVERRUN\_ERR}{SER\_LSR\_OVERRUN\_ERR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR\+\_\+\+OVERRUN\+\_\+\+ERR~BIT(1) /$\ast$$\ast$ @brief Overrun Error $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a14758f39133fde36461e40d4bbc95c11}\label{uart_8h_a14758f39133fde36461e40d4bbc95c11}} 
+\index{uart.h@{uart.h}!SER\_LSR\_PAR\_ERR@{SER\_LSR\_PAR\_ERR}}
+\index{SER\_LSR\_PAR\_ERR@{SER\_LSR\_PAR\_ERR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR\_PAR\_ERR}{SER\_LSR\_PAR\_ERR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR\+\_\+\+PAR\+\_\+\+ERR~BIT(2) /$\ast$$\ast$ @brief Parity Error $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_ad4ff3e70ded0da2d45446600ac632e6e}\label{uart_8h_ad4ff3e70ded0da2d45446600ac632e6e}} 
+\index{uart.h@{uart.h}!SER\_LSR\_RX\_RDY@{SER\_LSR\_RX\_RDY}}
+\index{SER\_LSR\_RX\_RDY@{SER\_LSR\_RX\_RDY}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR\_RX\_RDY}{SER\_LSR\_RX\_RDY}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR\+\_\+\+RX\+\_\+\+RDY~BIT(0) /$\ast$$\ast$ @brief Receiver Ready $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_afdf0960837b1738d1086d123e7972e73}\label{uart_8h_afdf0960837b1738d1086d123e7972e73}} 
+\index{uart.h@{uart.h}!SER\_LSR\_TX\_RDY@{SER\_LSR\_TX\_RDY}}
+\index{SER\_LSR\_TX\_RDY@{SER\_LSR\_TX\_RDY}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_LSR\_TX\_RDY}{SER\_LSR\_TX\_RDY}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+LSR\+\_\+\+TX\+\_\+\+RDY~BIT(5) /$\ast$$\ast$ @brief Trasmitter ready $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a11a1042d7c4717472ff6fa8c49a88608}\label{uart_8h_a11a1042d7c4717472ff6fa8c49a88608}} 
+\index{uart.h@{uart.h}!SER\_MAX\_FREQ@{SER\_MAX\_FREQ}}
+\index{SER\_MAX\_FREQ@{SER\_MAX\_FREQ}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_MAX\_FREQ}{SER\_MAX\_FREQ}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+MAX\+\_\+\+FREQ~115200 /$\ast$$\ast$ @brief Maximum frequency $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a0f21de7866d73161df9b492b415c370c}\label{uart_8h_a0f21de7866d73161df9b492b415c370c}} 
+\index{uart.h@{uart.h}!SER\_MCR@{SER\_MCR}}
+\index{SER\_MCR@{SER\_MCR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_MCR}{SER\_MCR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+MCR~4 /$\ast$$\ast$ @brief Modem Control $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aad4e3b31ce0354efe34f8110daae2676}\label{uart_8h_aad4e3b31ce0354efe34f8110daae2676}} 
+\index{uart.h@{uart.h}!SER\_MCR\_LOOPBACK@{SER\_MCR\_LOOPBACK}}
+\index{SER\_MCR\_LOOPBACK@{SER\_MCR\_LOOPBACK}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_MCR\_LOOPBACK}{SER\_MCR\_LOOPBACK}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+MCR\+\_\+\+LOOPBACK~BIT(4) /$\ast$$\ast$ @brief Loop\+Back Mode 2 $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a3e3f9af26c3ee268090d85ba756df067}\label{uart_8h_a3e3f9af26c3ee268090d85ba756df067}} 
+\index{uart.h@{uart.h}!SER\_MCR\_OUT2@{SER\_MCR\_OUT2}}
+\index{SER\_MCR\_OUT2@{SER\_MCR\_OUT2}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_MCR\_OUT2}{SER\_MCR\_OUT2}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+MCR\+\_\+\+OUT2~BIT(3) /$\ast$$\ast$ @brief Aux Output 2 $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_af161670921d63a654492758b1998d222}\label{uart_8h_af161670921d63a654492758b1998d222}} 
+\index{uart.h@{uart.h}!SER\_MSR@{SER\_MSR}}
+\index{SER\_MSR@{SER\_MSR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_MSR}{SER\_MSR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+MSR~6 /$\ast$$\ast$ @brief Modem Status $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_aab10abea0297abdcf0aab7d7d0b5662f}\label{uart_8h_aab10abea0297abdcf0aab7d7d0b5662f}} 
+\index{uart.h@{uart.h}!SER\_RBR@{SER\_RBR}}
+\index{SER\_RBR@{SER\_RBR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_RBR}{SER\_RBR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+RBR~0 /$\ast$$\ast$ @brief Receiver Buffer $\ast$/}
+
+\mbox{\Hypertarget{uart_8h_a3702c28928f73b9841ab8269f64177ed}\label{uart_8h_a3702c28928f73b9841ab8269f64177ed}} 
+\index{uart.h@{uart.h}!SER\_THR@{SER\_THR}}
+\index{SER\_THR@{SER\_THR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{SER\_THR}{SER\_THR}}
+{\footnotesize\ttfamily \#define SER\+\_\+\+THR~0 /$\ast$$\ast$ @brief Transmitter Holding $\ast$/}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{uart_8h_a36ddc67c995d05e190cd547f01718a99}\label{uart_8h_a36ddc67c995d05e190cd547f01718a99}} 
+\index{uart.h@{uart.h}!par\_t@{par\_t}}
+\index{par\_t@{par\_t}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{par\_t}{par\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{uart_8h_a36ddc67c995d05e190cd547f01718a99}{par\+\_\+t}}}
+
+
+
+Parity -\/ excluding sticky (high and low) parity. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_PARITY@{NO\_PARITY}!uart.h@{uart.h}}\index{uart.h@{uart.h}!NO\_PARITY@{NO\_PARITY}}}\mbox{\Hypertarget{uart_8h_a36ddc67c995d05e190cd547f01718a99a4bffe960d7eae89d5b85412e4edfd453}\label{uart_8h_a36ddc67c995d05e190cd547f01718a99a4bffe960d7eae89d5b85412e4edfd453}} 
+NO\+\_\+\+PARITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ODD\_PARITY@{ODD\_PARITY}!uart.h@{uart.h}}\index{uart.h@{uart.h}!ODD\_PARITY@{ODD\_PARITY}}}\mbox{\Hypertarget{uart_8h_a36ddc67c995d05e190cd547f01718a99afe2fed5b602e75007ad71639144b174b}\label{uart_8h_a36ddc67c995d05e190cd547f01718a99afe2fed5b602e75007ad71639144b174b}} 
+ODD\+\_\+\+PARITY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EVEN\_PARITY@{EVEN\_PARITY}!uart.h@{uart.h}}\index{uart.h@{uart.h}!EVEN\_PARITY@{EVEN\_PARITY}}}\mbox{\Hypertarget{uart_8h_a36ddc67c995d05e190cd547f01718a99ae19a2b096e346d54f83b83723a8af70d}\label{uart_8h_a36ddc67c995d05e190cd547f01718a99ae19a2b096e346d54f83b83723a8af70d}} 
+EVEN\+\_\+\+PARITY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{uart_8h_a6cf535015db7fa2b4d8087f7d57d5b80}\label{uart_8h_a6cf535015db7fa2b4d8087f7d57d5b80}} 
+\index{uart.h@{uart.h}!ser\_conf@{ser\_conf}}
+\index{ser\_conf@{ser\_conf}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_conf()}{ser\_conf()}}
+{\footnotesize\ttfamily int() ser\+\_\+conf (\begin{DoxyParamCaption}\item[{unsigned short}]{addr,  }\item[{\mbox{\hyperlink{structconf__t}{conf\+\_\+t}}}]{config }\end{DoxyParamCaption})}
+
+
+
+Configures the serial port with specified settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em addr} & Base address of the serial port. \\
+\hline
+{\em config} & Configuration settings. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a6cf535015db7fa2b4d8087f7d57d5b80_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_ad0915cc294d7e4d9846a3bce916df3bc}\label{uart_8h_ad0915cc294d7e4d9846a3bce916df3bc}} 
+\index{uart.h@{uart.h}!ser\_disable\_fifo@{ser\_disable\_fifo}}
+\index{ser\_disable\_fifo@{ser\_disable\_fifo}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_disable\_fifo()}{ser\_disable\_fifo()}}
+{\footnotesize\ttfamily int() ser\+\_\+disable\+\_\+fifo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables the FIFO buffers of the serial port. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=292pt]{uart_8h_ad0915cc294d7e4d9846a3bce916df3bc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_afc11965132119f303d0b38c9f323bb44}\label{uart_8h_afc11965132119f303d0b38c9f323bb44}} 
+\index{uart.h@{uart.h}!ser\_disable\_int@{ser\_disable\_int}}
+\index{ser\_disable\_int@{ser\_disable\_int}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_disable\_int()}{ser\_disable\_int()}}
+{\footnotesize\ttfamily int() ser\+\_\+disable\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables serial port interrupts. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_afc11965132119f303d0b38c9f323bb44_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a67826677e65d2b1c5df21531996ec9f1}\label{uart_8h_a67826677e65d2b1c5df21531996ec9f1}} 
+\index{uart.h@{uart.h}!ser\_enable\_fifo@{ser\_enable\_fifo}}
+\index{ser\_enable\_fifo@{ser\_enable\_fifo}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_enable\_fifo()}{ser\_enable\_fifo()}}
+{\footnotesize\ttfamily int() ser\+\_\+enable\+\_\+fifo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables the FIFO buffers of the serial port. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{uart_8h_a67826677e65d2b1c5df21531996ec9f1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a1a010fb3c594ba28c8874c8da632550c}\label{uart_8h_a1a010fb3c594ba28c8874c8da632550c}} 
+\index{uart.h@{uart.h}!ser\_enable\_int@{ser\_enable\_int}}
+\index{ser\_enable\_int@{ser\_enable\_int}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_enable\_int()}{ser\_enable\_int()}}
+{\footnotesize\ttfamily int() ser\+\_\+enable\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables serial port interrupts. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a1a010fb3c594ba28c8874c8da632550c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_ae5df664a2889d62e622d1a5c07fb09b0}\label{uart_8h_ae5df664a2889d62e622d1a5c07fb09b0}} 
+\index{uart.h@{uart.h}!ser\_exit@{ser\_exit}}
+\index{ser\_exit@{ser\_exit}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_exit()}{ser\_exit()}}
+{\footnotesize\ttfamily int() ser\+\_\+exit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cleans up the serial port, destroying queues. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_ae5df664a2889d62e622d1a5c07fb09b0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_aed1c250175b2412cac87bb8caaf01846}\label{uart_8h_aed1c250175b2412cac87bb8caaf01846}} 
+\index{uart.h@{uart.h}!ser\_get\_player2\_info@{ser\_get\_player2\_info}}
+\index{ser\_get\_player2\_info@{ser\_get\_player2\_info}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_get\_player2\_info()}{ser\_get\_player2\_info()}}
+{\footnotesize\ttfamily int() ser\+\_\+get\+\_\+player2\+\_\+info (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structplayer2__info__t}{player2\+\_\+info\+\_\+t}} $\ast$}]{pp }\end{DoxyParamCaption})}
+
+
+
+Gets the player 2 info. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pp} & Pointer to the player 2 info. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a88083d0122dfce4a20fe752f57cf3ce8}\label{uart_8h_a88083d0122dfce4a20fe752f57cf3ce8}} 
+\index{uart.h@{uart.h}!ser\_get\_player2\_info\_is\_done@{ser\_get\_player2\_info\_is\_done}}
+\index{ser\_get\_player2\_info\_is\_done@{ser\_get\_player2\_info\_is\_done}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_get\_player2\_info\_is\_done()}{ser\_get\_player2\_info\_is\_done()}}
+{\footnotesize\ttfamily bool() ser\+\_\+get\+\_\+player2\+\_\+info\+\_\+is\+\_\+done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets if the player 2 info is done. 
+
+\begin{DoxyReturn}{Returns}
+true if player2 info is done, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a8a81f6f93dffa542d58ccc16576c41f8}\label{uart_8h_a8a81f6f93dffa542d58ccc16576c41f8}} 
+\index{uart.h@{uart.h}!ser\_get\_player2\_ready@{ser\_get\_player2\_ready}}
+\index{ser\_get\_player2\_ready@{ser\_get\_player2\_ready}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_get\_player2\_ready()}{ser\_get\_player2\_ready()}}
+{\footnotesize\ttfamily bool() ser\+\_\+get\+\_\+player2\+\_\+ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets if the player 2 is ready to play. 
+
+\begin{DoxyReturn}{Returns}
+true if player2 is ready, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a9c7af8b86dd0cd6d5fb027f972595cc0}\label{uart_8h_a9c7af8b86dd0cd6d5fb027f972595cc0}} 
+\index{uart.h@{uart.h}!ser\_get\_rx\_queue@{ser\_get\_rx\_queue}}
+\index{ser\_get\_rx\_queue@{ser\_get\_rx\_queue}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_get\_rx\_queue()}{ser\_get\_rx\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}}$\ast$() ser\+\_\+get\+\_\+rx\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the receive queue. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the receive queue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a8e78ba262fa9fe8db49569f2e81d1c3e}\label{uart_8h_a8e78ba262fa9fe8db49569f2e81d1c3e}} 
+\index{uart.h@{uart.h}!ser\_get\_tx\_queue@{ser\_get\_tx\_queue}}
+\index{ser\_get\_tx\_queue@{ser\_get\_tx\_queue}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_get\_tx\_queue()}{ser\_get\_tx\_queue()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{queue_8h_aa8acf648f3b0c69d7e132fcc61dc58c7}{queue\+\_\+t}}$\ast$() ser\+\_\+get\+\_\+tx\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the transmit queue. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the transmit queue. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a7dc7925459eed9a37a8633e7dc59227f}\label{uart_8h_a7dc7925459eed9a37a8633e7dc59227f}} 
+\index{uart.h@{uart.h}!ser\_handle\_start@{ser\_handle\_start}}
+\index{ser\_handle\_start@{ser\_handle\_start}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_handle\_start()}{ser\_handle\_start()}}
+{\footnotesize\ttfamily int() ser\+\_\+handle\+\_\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handler to multiplayer start. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a7dc7925459eed9a37a8633e7dc59227f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a6b787267e9968bd736d5d96c1b56cfa3}\label{uart_8h_a6b787267e9968bd736d5d96c1b56cfa3}} 
+\index{uart.h@{uart.h}!ser\_ih@{ser\_ih}}
+\index{ser\_ih@{ser\_ih}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_ih()}{ser\_ih()}}
+{\footnotesize\ttfamily void() ser\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Interrupt handler for the serial port. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a6b787267e9968bd736d5d96c1b56cfa3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a46392885602b558f86b8465a9520a57b}\label{uart_8h_a46392885602b558f86b8465a9520a57b}} 
+\index{uart.h@{uart.h}!ser\_read\_data\_from\_rx\_queue@{ser\_read\_data\_from\_rx\_queue}}
+\index{ser\_read\_data\_from\_rx\_queue@{ser\_read\_data\_from\_rx\_queue}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_read\_data\_from\_rx\_queue()}{ser\_read\_data\_from\_rx\_queue()}}
+{\footnotesize\ttfamily int() ser\+\_\+read\+\_\+data\+\_\+from\+\_\+rx\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads data from the receive queue. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a46392885602b558f86b8465a9520a57b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a54089b696d2f9403cfe7d46c4c1c037e}\label{uart_8h_a54089b696d2f9403cfe7d46c4c1c037e}} 
+\index{uart.h@{uart.h}!ser\_read\_reg@{ser\_read\_reg}}
+\index{ser\_read\_reg@{ser\_read\_reg}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_read\_reg()}{ser\_read\_reg()}}
+{\footnotesize\ttfamily int() ser\+\_\+read\+\_\+reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Reads a value from a serial port register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register offset. \\
+\hline
+{\em data} & Pointer to store the read data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{uart_8h_a54089b696d2f9403cfe7d46c4c1c037e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_ac21ebeb821e0f459ef49e5f1f3a0d579}\label{uart_8h_ac21ebeb821e0f459ef49e5f1f3a0d579}} 
+\index{uart.h@{uart.h}!ser\_receive\_byte@{ser\_receive\_byte}}
+\index{ser\_receive\_byte@{ser\_receive\_byte}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_receive\_byte()}{ser\_receive\_byte()}}
+{\footnotesize\ttfamily int() ser\+\_\+receive\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Receives a byte from the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Pointer to store the received byte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_ac21ebeb821e0f459ef49e5f1f3a0d579_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a192897a493a4259100538603dc61b20c}\label{uart_8h_a192897a493a4259100538603dc61b20c}} 
+\index{uart.h@{uart.h}!ser\_receive\_data@{ser\_receive\_data}}
+\index{ser\_receive\_data@{ser\_receive\_data}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_receive\_data()}{ser\_receive\_data()}}
+{\footnotesize\ttfamily int() ser\+\_\+receive\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Receives data into the receive queue. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a192897a493a4259100538603dc61b20c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a26416dc43ec1787e1e5b3f830438b261}\label{uart_8h_a26416dc43ec1787e1e5b3f830438b261}} 
+\index{uart.h@{uart.h}!ser\_reset\_queues@{ser\_reset\_queues}}
+\index{ser\_reset\_queues@{ser\_reset\_queues}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_reset\_queues()}{ser\_reset\_queues()}}
+{\footnotesize\ttfamily int ser\+\_\+reset\+\_\+queues (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the serial port queues. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a26416dc43ec1787e1e5b3f830438b261_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a69e303ae328b899fd91bba99cc247a6d}\label{uart_8h_a69e303ae328b899fd91bba99cc247a6d}} 
+\index{uart.h@{uart.h}!ser\_send\_byte@{ser\_send\_byte}}
+\index{ser\_send\_byte@{ser\_send\_byte}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_send\_byte()}{ser\_send\_byte()}}
+{\footnotesize\ttfamily int() ser\+\_\+send\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+
+
+Sends a byte through the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & Byte to send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{uart_8h_a69e303ae328b899fd91bba99cc247a6d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a4b854be056913d8cb78c216352b20b2c}\label{uart_8h_a4b854be056913d8cb78c216352b20b2c}} 
+\index{uart.h@{uart.h}!ser\_send\_data@{ser\_send\_data}}
+\index{ser\_send\_data@{ser\_send\_data}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_send\_data()}{ser\_send\_data()}}
+{\footnotesize\ttfamily int() ser\+\_\+send\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends data from the transmit queue. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a4b854be056913d8cb78c216352b20b2c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a32d8e9b11eb3a81c805ce5cd1b7cf3a9}\label{uart_8h_a32d8e9b11eb3a81c805ce5cd1b7cf3a9}} 
+\index{uart.h@{uart.h}!ser\_send\_player2\_info\_to\_txqueue@{ser\_send\_player2\_info\_to\_txqueue}}
+\index{ser\_send\_player2\_info\_to\_txqueue@{ser\_send\_player2\_info\_to\_txqueue}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_send\_player2\_info\_to\_txqueue()}{ser\_send\_player2\_info\_to\_txqueue()}}
+{\footnotesize\ttfamily int() ser\+\_\+send\+\_\+player2\+\_\+info\+\_\+to\+\_\+txqueue (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{int8\+\_\+t}]{target,  }\item[{uint16\+\_\+t}]{score }\end{DoxyParamCaption})}
+
+
+
+Sends player 2 info to the transmit queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate. \\
+\hline
+{\em y} & Y coordinate. \\
+\hline
+{\em target} & index of target shot, -\/1 if no target was shot. \\
+\hline
+{\em score} & Score. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a32d8e9b11eb3a81c805ce5cd1b7cf3a9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a744437c11f3748d75b841c812bb6c729}\label{uart_8h_a744437c11f3748d75b841c812bb6c729}} 
+\index{uart.h@{uart.h}!ser\_send\_waiting\_to\_txqueue@{ser\_send\_waiting\_to\_txqueue}}
+\index{ser\_send\_waiting\_to\_txqueue@{ser\_send\_waiting\_to\_txqueue}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_send\_waiting\_to\_txqueue()}{ser\_send\_waiting\_to\_txqueue()}}
+{\footnotesize\ttfamily int() ser\+\_\+send\+\_\+waiting\+\_\+to\+\_\+txqueue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends waiting to the transmit queue. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_a744437c11f3748d75b841c812bb6c729_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_af56e5aeea19730117e537c6b831c6a1b}\label{uart_8h_af56e5aeea19730117e537c6b831c6a1b}} 
+\index{uart.h@{uart.h}!ser\_set\_bit\_rate@{ser\_set\_bit\_rate}}
+\index{ser\_set\_bit\_rate@{ser\_set\_bit\_rate}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_set\_bit\_rate()}{ser\_set\_bit\_rate()}}
+{\footnotesize\ttfamily int() ser\+\_\+set\+\_\+bit\+\_\+rate (\begin{DoxyParamCaption}\item[{unsigned int}]{bit\+\_\+rate }\end{DoxyParamCaption})}
+
+
+
+Sets the bit rate of the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+rate} & Bit rate to set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h_af56e5aeea19730117e537c6b831c6a1b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_aed1427385d2e8354b2f172e367f80e51}\label{uart_8h_aed1427385d2e8354b2f172e367f80e51}} 
+\index{uart.h@{uart.h}!ser\_set\_line\_ctrl@{ser\_set\_line\_ctrl}}
+\index{ser\_set\_line\_ctrl@{ser\_set\_line\_ctrl}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_set\_line\_ctrl()}{ser\_set\_line\_ctrl()}}
+{\footnotesize\ttfamily int() ser\+\_\+set\+\_\+line\+\_\+ctrl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structconf__t}{conf\+\_\+t}} $\ast$}]{config }\end{DoxyParamCaption})}
+
+
+
+Configures the line control register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em config} & Pointer to the configuration settings. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{uart_8h_aed1427385d2e8354b2f172e367f80e51_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{uart_8h_a0ccdb717d89a065e7bc683a7652ff240}\label{uart_8h_a0ccdb717d89a065e7bc683a7652ff240}} 
+\index{uart.h@{uart.h}!ser\_set\_player2\_ready@{ser\_set\_player2\_ready}}
+\index{ser\_set\_player2\_ready@{ser\_set\_player2\_ready}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_set\_player2\_ready()}{ser\_set\_player2\_ready()}}
+{\footnotesize\ttfamily void() ser\+\_\+set\+\_\+player2\+\_\+ready (\begin{DoxyParamCaption}\item[{bool}]{ready }\end{DoxyParamCaption})}
+
+
+
+Sets the player 2 info as value of the parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em done} & true if player2 info is done, false otherwise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{uart_8h_af21628f0f9d46b62067ae790f7861e84}\label{uart_8h_af21628f0f9d46b62067ae790f7861e84}} 
+\index{uart.h@{uart.h}!ser\_subscribe\_int@{ser\_subscribe\_int}}
+\index{ser\_subscribe\_int@{ser\_subscribe\_int}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_subscribe\_int()}{ser\_subscribe\_int()}}
+{\footnotesize\ttfamily int() ser\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribes serial port interrupts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & Pointer to the bit number to be set. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a30ae83ae28ebc465baa2d2f2ee51a145}\label{uart_8h_a30ae83ae28ebc465baa2d2f2ee51a145}} 
+\index{uart.h@{uart.h}!ser\_unsubscribe\_int@{ser\_unsubscribe\_int}}
+\index{ser\_unsubscribe\_int@{ser\_unsubscribe\_int}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_unsubscribe\_int()}{ser\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() ser\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes serial port interrupts. 
+
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{uart_8h_a8659e6a837d82cfb88a5a66593d18261}\label{uart_8h_a8659e6a837d82cfb88a5a66593d18261}} 
+\index{uart.h@{uart.h}!ser\_write\_reg@{ser\_write\_reg}}
+\index{ser\_write\_reg@{ser\_write\_reg}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{ser\_write\_reg()}{ser\_write\_reg()}}
+{\footnotesize\ttfamily int() ser\+\_\+write\+\_\+reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Writes a value to a serial port register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register offset. \\
+\hline
+{\em data} & Data to write. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OK on success, non-\/zero otherwise. 
+\end{DoxyReturn}

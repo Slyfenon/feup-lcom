@@ -1,0 +1,78 @@
+\hypertarget{keyboard_8h}{}\doxysection{src/devices/kbc/keyboard.h File Reference}
+\label{keyboard_8h}\index{src/devices/kbc/keyboard.h@{src/devices/kbc/keyboard.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for keyboard.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{keyboard_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{keyboard_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{keyboard_8h_a02884ada1971dbade466081413210b18}{kbc\+\_\+subscribe\+\_\+int}} (uint8\+\_\+t $\ast$bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribe keyboard interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}{kbc\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribe keyboard interrupts. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{keyboard_8h_a7e1fd1e3d8c755969a65d0ebd60456f6}{kbc\+\_\+scancode\+\_\+is\+\_\+done}} ()
+\begin{DoxyCompactList}\small\item\em Check if the scancode is done. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{keyboard_8h_af6021838dd9132ea20e7e90dd0aa72ef}{kbc\+\_\+get\+\_\+scancode}} (uint8\+\_\+t $\ast$scancode)
+\begin{DoxyCompactList}\small\item\em Get the scancode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keyboard_8h_af6021838dd9132ea20e7e90dd0aa72ef}\label{keyboard_8h_af6021838dd9132ea20e7e90dd0aa72ef}} 
+\index{keyboard.h@{keyboard.h}!kbc\_get\_scancode@{kbc\_get\_scancode}}
+\index{kbc\_get\_scancode@{kbc\_get\_scancode}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_get\_scancode()}{kbc\_get\_scancode()}}
+{\footnotesize\ttfamily void() kbc\+\_\+get\+\_\+scancode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{scancode }\end{DoxyParamCaption})}
+
+
+
+Get the scancode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & pointer to the scancode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{keyboard_8h_a7e1fd1e3d8c755969a65d0ebd60456f6}\label{keyboard_8h_a7e1fd1e3d8c755969a65d0ebd60456f6}} 
+\index{keyboard.h@{keyboard.h}!kbc\_scancode\_is\_done@{kbc\_scancode\_is\_done}}
+\index{kbc\_scancode\_is\_done@{kbc\_scancode\_is\_done}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_scancode\_is\_done()}{kbc\_scancode\_is\_done()}}
+{\footnotesize\ttfamily bool() kbc\+\_\+scancode\+\_\+is\+\_\+done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the scancode is done. 
+
+returns true if the scancode is done, false otherwise \mbox{\Hypertarget{keyboard_8h_a02884ada1971dbade466081413210b18}\label{keyboard_8h_a02884ada1971dbade466081413210b18}} 
+\index{keyboard.h@{keyboard.h}!kbc\_subscribe\_int@{kbc\_subscribe\_int}}
+\index{kbc\_subscribe\_int@{kbc\_subscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_subscribe\_int()}{kbc\_subscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{bit\+\_\+no }\end{DoxyParamCaption})}
+
+
+
+Subscribe keyboard interrupts. 
+
+returns 0 on success, non-\/zero otherwise \mbox{\Hypertarget{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}\label{keyboard_8h_a1102381e6a9e876e05dd78c58ccb5673}} 
+\index{keyboard.h@{keyboard.h}!kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}}
+\index{kbc\_unsubscribe\_int@{kbc\_unsubscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{kbc\_unsubscribe\_int()}{kbc\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() kbc\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribe keyboard interrupts. 
+
+returns 0 on success, non-\/zero otherwise 

@@ -1,0 +1,12 @@
+<map id="checkCollisionWithTargets" name="checkCollisionWithTargets">
+<area shape="rect" id="node1" title="Check all collisions with targets." alt="" coords="5,69,199,96"/>
+<area shape="rect" id="node2" href="$game_8c.html#ab9ad319e7024972f530545be5dc02659" title="Check collision between one target and one shot of one player." alt="" coords="247,107,433,133"/>
+<area shape="rect" id="node7" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="497,5,589,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a329cf0d7b7d51c7e871512dcf828912e" title="Add value to the score of the player." alt="" coords="495,56,591,83"/>
+<area shape="rect" id="node6" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="496,107,589,133"/>
+<area shape="rect" id="node8" href="$target_8c.html#aa13163dedcc3ee80ca1b84bae2ac8b95" title="Gets the x&#45;coordinate of the target&#39;s position." alt="" coords="497,157,589,184"/>
+<area shape="rect" id="node9" href="$target_8c.html#a18909600bdcc988342911e911226132f" title="Gets the y&#45;coordinate of the target&#39;s position." alt="" coords="497,208,588,235"/>
+<area shape="rect" id="node10" href="$game_8c.html#a407fe3ef3220ccab8ed4e0fb2c06bbc3" title="Set the target to active or inactive." alt="" coords="481,259,604,285"/>
+<area shape="rect" id="node4" href="$player_8c.html#a3adf651a828a373f8db2e54b5371f4d0" title="Gets the player&#39;s score." alt="" coords="652,31,772,57"/>
+<area shape="rect" id="node5" href="$player_8c.html#a5b27ba6498d6455e87ba0878a8e719d9" title="Sets the player&#39;s score." alt="" coords="653,81,771,108"/>
+</map>

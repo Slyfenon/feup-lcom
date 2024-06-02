@@ -1,0 +1,205 @@
+\hypertarget{menu_8h}{}\doxysection{src/game/menu.h File Reference}
+\label{menu_8h}\index{src/game/menu.h@{src/game/menu.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../devices/rtc/rtc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}sprite.\+h\char`\"{}}\newline
+Include dependency graph for menu.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}{Option}} \mbox{\hyperlink{menu_8h_a05cb8cc4ca179da6e0cd4d3f634fa892}{Option}}
+\begin{DoxyCompactList}\small\item\em The available options in the game menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}{Option}} \{ \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35fadf9c53b97637b5e5ac722fb2f6d26512}{SINGLEPLAYER}}
+, \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa403778345700cbd36b5b26352b144f78}{MULTIPLAYER}}
+, \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa76bdc8adfd6c6463ab269ff4c06be9b4}{QUIT}}
+ \}
+\begin{DoxyCompactList}\small\item\em The available options in the game menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{menu_8h_a83eb2544c4ebd17106a417ad3f2dd259}{get\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Array of sprites that represent the minutes of the clock. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8h_a94ef95fd0fa479c8218ab200f2e2d353}{set\+Current\+Option}} (int option)
+\begin{DoxyCompactList}\small\item\em Sets the current option of the menu. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8h_ae47b219e39baf5c0ccca747e84198cf8}{increase\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Increases the current option of the menu. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8h_a4d4bf6bee5fed1f2f55bd25b5b113321}{decrease\+Current\+Option}} ()
+\begin{DoxyCompactList}\small\item\em Decreases the current option of the menu. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{menu_8h_a4550089e7307f20f640ad5390a472b8c}{read\+Time}} (\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$\mbox{\hyperlink{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}{time\+RTC}})
+\begin{DoxyCompactList}\small\item\em Constructs the hours and minutes sprites based on the current time already stored in the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{menu_8h_a37624b74afb43342e1214949952a5b59}{draw\+\_\+menu}} (bool \mbox{\hyperlink{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}{is\+Day}})
+\begin{DoxyCompactList}\small\item\em Draws the game menu, with the current option highlighted, the current time and the corresponding background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{menu_8h_ac9f113b4409b8b883b6678d74e9c500a}{hours}} \mbox{[}2\mbox{]}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{menu_8h_a660ca9fbbfad5d2d977ab99413c2b1c8}{minutes}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array of sprites that represent the hours of the clock. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{menu_8h_a05cb8cc4ca179da6e0cd4d3f634fa892}\label{menu_8h_a05cb8cc4ca179da6e0cd4d3f634fa892}} 
+\index{menu.h@{menu.h}!Option@{Option}}
+\index{Option@{Option}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{Option}{Option}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}{Option}} \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}{Option}}}
+
+
+
+The available options in the game menu. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}\label{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}} 
+\index{menu.h@{menu.h}!Option@{Option}}
+\index{Option@{Option}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{Option}{Option}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{menu_8h_a0e65ad13124ea2cb5e255b640464e35f}{Option}}}
+
+
+
+The available options in the game menu. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLEPLAYER@{SINGLEPLAYER}!menu.h@{menu.h}}\index{menu.h@{menu.h}!SINGLEPLAYER@{SINGLEPLAYER}}}\mbox{\Hypertarget{menu_8h_a0e65ad13124ea2cb5e255b640464e35fadf9c53b97637b5e5ac722fb2f6d26512}\label{menu_8h_a0e65ad13124ea2cb5e255b640464e35fadf9c53b97637b5e5ac722fb2f6d26512}} 
+SINGLEPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLAYER@{MULTIPLAYER}!menu.h@{menu.h}}\index{menu.h@{menu.h}!MULTIPLAYER@{MULTIPLAYER}}}\mbox{\Hypertarget{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa403778345700cbd36b5b26352b144f78}\label{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa403778345700cbd36b5b26352b144f78}} 
+MULTIPLAYER&Singleplayer option \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{QUIT@{QUIT}!menu.h@{menu.h}}\index{menu.h@{menu.h}!QUIT@{QUIT}}}\mbox{\Hypertarget{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa76bdc8adfd6c6463ab269ff4c06be9b4}\label{menu_8h_a0e65ad13124ea2cb5e255b640464e35fa76bdc8adfd6c6463ab269ff4c06be9b4}} 
+QUIT&Multiplayer option Quit option \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{menu_8h_a4d4bf6bee5fed1f2f55bd25b5b113321}\label{menu_8h_a4d4bf6bee5fed1f2f55bd25b5b113321}} 
+\index{menu.h@{menu.h}!decreaseCurrentOption@{decreaseCurrentOption}}
+\index{decreaseCurrentOption@{decreaseCurrentOption}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{decreaseCurrentOption()}{decreaseCurrentOption()}}
+{\footnotesize\ttfamily void() decrease\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Decreases the current option of the menu. 
+
+\mbox{\Hypertarget{menu_8h_a37624b74afb43342e1214949952a5b59}\label{menu_8h_a37624b74afb43342e1214949952a5b59}} 
+\index{menu.h@{menu.h}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily void() draw\+\_\+menu (\begin{DoxyParamCaption}\item[{bool}]{is\+Day }\end{DoxyParamCaption})}
+
+
+
+Draws the game menu, with the current option highlighted, the current time and the corresponding background. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Day} & Boolean value indicating whether it is day or night. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{menu_8h_a37624b74afb43342e1214949952a5b59_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{menu_8h_a83eb2544c4ebd17106a417ad3f2dd259}\label{menu_8h_a83eb2544c4ebd17106a417ad3f2dd259}} 
+\index{menu.h@{menu.h}!getCurrentOption@{getCurrentOption}}
+\index{getCurrentOption@{getCurrentOption}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{getCurrentOption()}{getCurrentOption()}}
+{\footnotesize\ttfamily int() get\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Array of sprites that represent the minutes of the clock. 
+
+Gets the current option of the menu. \begin{DoxyReturn}{Returns}
+The current option of the menu.
+\end{DoxyReturn}
+GETTERS AND SETTERS OF MENU VARIABLES \mbox{\Hypertarget{menu_8h_ae47b219e39baf5c0ccca747e84198cf8}\label{menu_8h_ae47b219e39baf5c0ccca747e84198cf8}} 
+\index{menu.h@{menu.h}!increaseCurrentOption@{increaseCurrentOption}}
+\index{increaseCurrentOption@{increaseCurrentOption}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{increaseCurrentOption()}{increaseCurrentOption()}}
+{\footnotesize\ttfamily void() increase\+Current\+Option (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increases the current option of the menu. 
+
+\mbox{\Hypertarget{menu_8h_a4550089e7307f20f640ad5390a472b8c}\label{menu_8h_a4550089e7307f20f640ad5390a472b8c}} 
+\index{menu.h@{menu.h}!readTime@{readTime}}
+\index{readTime@{readTime}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{readTime()}{readTime()}}
+{\footnotesize\ttfamily int() read\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$}]{time\+RTC }\end{DoxyParamCaption})}
+
+
+
+Constructs the hours and minutes sprites based on the current time already stored in the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+RTC} & Pointer to the \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} structure already filled with the current time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero otherwise.
+\end{DoxyReturn}
+TIME FUNCTION \mbox{\Hypertarget{menu_8h_a94ef95fd0fa479c8218ab200f2e2d353}\label{menu_8h_a94ef95fd0fa479c8218ab200f2e2d353}} 
+\index{menu.h@{menu.h}!setCurrentOption@{setCurrentOption}}
+\index{setCurrentOption@{setCurrentOption}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{setCurrentOption()}{setCurrentOption()}}
+{\footnotesize\ttfamily void() set\+Current\+Option (\begin{DoxyParamCaption}\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Sets the current option of the menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & The option to set as the current option. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{menu_8h_ac9f113b4409b8b883b6678d74e9c500a}\label{menu_8h_ac9f113b4409b8b883b6678d74e9c500a}} 
+\index{menu.h@{menu.h}!hours@{hours}}
+\index{hours@{hours}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{hours}{hours}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ hours\mbox{[}2\mbox{]}}
+
+\mbox{\Hypertarget{menu_8h_a660ca9fbbfad5d2d977ab99413c2b1c8}\label{menu_8h_a660ca9fbbfad5d2d977ab99413c2b1c8}} 
+\index{menu.h@{menu.h}!minutes@{minutes}}
+\index{minutes@{minutes}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{minutes}{minutes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ minutes\mbox{[}2\mbox{]}}
+
+
+
+Array of sprites that represent the hours of the clock. 
+

@@ -1,0 +1,6 @@
+<map id="endGame" name="endGame">
+<area shape="rect" id="node1" title="Resets the game. Resets the game variables and the players ." alt="" coords="5,56,91,83"/>
+<area shape="rect" id="node2" href="$dynamite_8c.html#afd1f504def7f1faf88145bbabb0e19c2" title="Destroys a Dynamite object." alt="" coords="139,5,273,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#adcc264dd87c51bae7b2dba65e8cae2e7" title="Destroys a Player object." alt="" coords="150,56,262,83"/>
+<area shape="rect" id="node4" href="$target_8c.html#a754f8708093ee1991be3865fa4f7534d" title="Destroys a target and frees the associated memory." alt="" coords="151,107,261,133"/>
+</map>

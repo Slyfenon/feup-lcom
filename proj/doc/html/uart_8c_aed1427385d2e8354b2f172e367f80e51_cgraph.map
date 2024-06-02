@@ -1,0 +1,4 @@
+<map id="ser_set_line_ctrl" name="ser_set_line_ctrl">
+<area shape="rect" id="node1" title="Configures the line control register." alt="" coords="5,5,133,32"/>
+<area shape="rect" id="node2" href="$uart_8c.html#a8659e6a837d82cfb88a5a66593d18261" title="Writes a value to a serial port register." alt="" coords="181,5,292,32"/>
+</map>

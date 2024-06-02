@@ -1,0 +1,5 @@
+<map id="setSlowTime" name="setSlowTime">
+<area shape="rect" id="node1" title="Set Slow Time." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#a8e1129c9d44f5d45552e3a61eddee950" title="Get if the player can slow time." alt="" coords="160,5,269,32"/>
+<area shape="rect" id="node3" href="$game_8c.html#a432754bde7d8d94d9e3da2fdd419391d" title="Return is the game is in multiplayer mode." alt="" coords="317,5,424,32"/>
+</map>

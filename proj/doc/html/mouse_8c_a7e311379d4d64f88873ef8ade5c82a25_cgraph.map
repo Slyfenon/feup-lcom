@@ -1,0 +1,6 @@
+<map id="mouse_disable_data_reporting" name="mouse_disable_data_reporting">
+<area shape="rect" id="node1" title="Mouse disable data reporting." alt="" coords="5,23,161,65"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#af8e3449d392d4b1cc22c48e25ddbcd04" title="Write byte to mouse command." alt="" coords="209,31,372,57"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a79f822ee418bebe387c463fbb343106c" title="KBC write command." alt="" coords="420,5,577,32"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="625,31,724,57"/>
+</map>

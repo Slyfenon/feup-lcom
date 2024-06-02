@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['score_736',['score',['../structplayer2__info__t.html#a80d49c210a701af476c1bc9560ac0fac',1,'player2_info_t::score()'],['../structPlayer.html#a8f977208d1212bf7dbd7c590017d9eb4',1,'Player::score()']]],
+  ['scoresprite_737',['scoreSprite',['../sprite_8h.html#ab00b598a8c2e3ce6c265a00d501e77a0',1,'sprite.h']]],
+  ['seconds_738',['seconds',['../structrtc__time.html#a84de8da7e4fd6294adc27fa02974b4a2',1,'rtc_time']]],
+  ['ser_5fhook_5fid_739',['ser_hook_id',['../uart_8c.html#a965a9c411b8854c55368dfef16b58cf5',1,'uart.c']]],
+  ['ser_5finfo_740',['ser_info',['../uart_8c.html#ac09cb5cdfd5b308dcb088ce8f87478c8',1,'uart.c']]],
+  ['ser_5fplayer2_5finfo_741',['ser_player2_info',['../uart_8c.html#a7fd4c048fc9036b1e55ad5cb1a72178a',1,'uart.c']]],
+  ['ser_5fplayer2_5finfo_5fis_5fdone_742',['ser_player2_info_is_done',['../uart_8c.html#a4b26188ed3b1d0904b340c760584abb7',1,'uart.c']]],
+  ['ser_5fplayer2_5fready_743',['ser_player2_ready',['../uart_8c.html#ae19b4a4147c7ecaf463075dd129694d0',1,'uart.c']]],
+  ['ser_5fscancode_744',['ser_scancode',['../uart_8c.html#a84c6db9722d53b97e509d1ff3f84c9eb',1,'uart.c']]],
+  ['ser_5fscancode_5fis_5fdone_745',['ser_scancode_is_done',['../uart_8c.html#a386110651595797275604e3c01514895',1,'uart.c']]],
+  ['set_5fbreak_5fen_746',['set_break_en',['../unionlcr__t.html#ae9d37ff2bd7bdac9a37cd51135d38339',1,'lcr_t']]],
+  ['singleplayer_747',['singleplayer',['../sprite_8h.html#ab62bd6bed114d3c15065d85c7b44ccb3',1,'sprite.h']]],
+  ['size_748',['size',['../structqueue.html#afb9096840ba43e124b3a58648db557cc',1,'queue']]],
+  ['slowtime_749',['slowTime',['../game_8c.html#a64d71c361ef64dcbe91c147d180c6b34',1,'game.c']]],
+  ['stat_750',['stat',['../keyboard_8c.html#a3e0101ab4f197aedba71e5ed14c6bf20',1,'stat():&#160;keyboard.c'],['../mouse_8c.html#a3e0101ab4f197aedba71e5ed14c6bf20',1,'stat():&#160;mouse.c']]],
+  ['state_751',['state',['../proj_8c.html#a0db44bec6a2ebf1a0cc819b5c9191cee',1,'proj.c']]],
+  ['stop_5fbits_752',['stop_bits',['../structconf__t.html#a91e8cc60af168a2f909757541adab1f4',1,'conf_t::stop_bits()'],['../unionlcr__t.html#ac179336dbb09f934c81a0a3dd94b67da',1,'lcr_t::stop_bits()']]]
+];

@@ -1,0 +1,4 @@
+<map id="queue_enqueue" name="queue_enqueue">
+<area shape="rect" id="node1" title="Adds an element to the queue." alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$queue_8c.html#a72e55a8dd8b6bbae43e56ed62630c467" title="Checks if the queue is full." alt="" coords="179,5,287,32"/>
+</map>

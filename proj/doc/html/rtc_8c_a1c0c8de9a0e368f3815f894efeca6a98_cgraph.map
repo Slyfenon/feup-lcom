@@ -1,0 +1,5 @@
+<map id="rtc_is_blocked" name="rtc_is_blocked">
+<area shape="rect" id="node1" title="Checks if the RTC is blocked." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#a1081e5a7e6e7ebdca2b3523cef70930c" title="Reads the value of a time register." alt="" coords="168,5,313,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="361,5,460,32"/>
+</map>

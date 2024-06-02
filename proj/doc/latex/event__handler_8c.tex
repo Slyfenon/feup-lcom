@@ -1,0 +1,100 @@
+\hypertarget{event__handler_8c}{}\doxysection{src/event\+\_\+handler.c File Reference}
+\label{event__handler_8c}\index{src/event\_handler.c@{src/event\_handler.c}}
+{\ttfamily \#include \char`\"{}event\+\_\+handler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}devices/graphics/graphics.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}devices/uart/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game/sprite.\+h\char`\"{}}\newline
+Include dependency graph for event\+\_\+handler.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__handler_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() \mbox{\hyperlink{event__handler_8c_a3feb0f08181151a4662ae2d43a59fb18}{handle\+\_\+timer}} (\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \mbox{\hyperlink{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}{state}}, \mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$\mbox{\hyperlink{proj_8c_a81313cdd77e65c025128d2a0ec2a6dac}{time\+RTC}})
+\begin{DoxyCompactList}\small\item\em indicates if the game is in day mode or night mode \end{DoxyCompactList}\item 
+\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() \mbox{\hyperlink{event__handler_8c_ab0b5908878fa47002b894b7c96ac3a84}{handle\+\_\+keyboard}} (\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \mbox{\hyperlink{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}{state}}, uint8\+\_\+t $\ast$\mbox{\hyperlink{keyboard_8c_ab040004c0cae339a7ed2dd21656a488b}{keyboard\+Bytes}})
+\item 
+\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() \mbox{\hyperlink{event__handler_8c_afdfdc6e7ed2de6bc53464b6cb3976f18}{handle\+\_\+mouse}} (\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \mbox{\hyperlink{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}{state}}, struct \mbox{\hyperlink{structmousePacket}{mouse\+Packet}} $\ast$pp)
+\item 
+\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() \mbox{\hyperlink{event__handler_8c_ab0c8c3f31eab66bc6d6c887759b7b5c9}{handle\+\_\+serial}} (\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}} \mbox{\hyperlink{proj_8c_a0db44bec6a2ebf1a0cc819b5c9191cee}{state}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}{is\+Day}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{event__handler_8c_ab0b5908878fa47002b894b7c96ac3a84}\label{event__handler_8c_ab0b5908878fa47002b894b7c96ac3a84}} 
+\index{event\_handler.c@{event\_handler.c}!handle\_keyboard@{handle\_keyboard}}
+\index{handle\_keyboard@{handle\_keyboard}!event\_handler.c@{event\_handler.c}}
+\doxysubsubsection{\texorpdfstring{handle\_keyboard()}{handle\_keyboard()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() handle\+\_\+keyboard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}}]{state,  }\item[{uint8\+\_\+t $\ast$}]{keyboard\+Bytes }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__handler_8c_ab0b5908878fa47002b894b7c96ac3a84_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{event__handler_8c_afdfdc6e7ed2de6bc53464b6cb3976f18}\label{event__handler_8c_afdfdc6e7ed2de6bc53464b6cb3976f18}} 
+\index{event\_handler.c@{event\_handler.c}!handle\_mouse@{handle\_mouse}}
+\index{handle\_mouse@{handle\_mouse}!event\_handler.c@{event\_handler.c}}
+\doxysubsubsection{\texorpdfstring{handle\_mouse()}{handle\_mouse()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() handle\+\_\+mouse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}}]{state,  }\item[{struct \mbox{\hyperlink{structmousePacket}{mouse\+Packet}} $\ast$}]{pp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__handler_8c_afdfdc6e7ed2de6bc53464b6cb3976f18_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{event__handler_8c_ab0c8c3f31eab66bc6d6c887759b7b5c9}\label{event__handler_8c_ab0c8c3f31eab66bc6d6c887759b7b5c9}} 
+\index{event\_handler.c@{event\_handler.c}!handle\_serial@{handle\_serial}}
+\index{handle\_serial@{handle\_serial}!event\_handler.c@{event\_handler.c}}
+\doxysubsubsection{\texorpdfstring{handle\_serial()}{handle\_serial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() handle\+\_\+serial (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}}]{state }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__handler_8c_ab0c8c3f31eab66bc6d6c887759b7b5c9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{event__handler_8c_a3feb0f08181151a4662ae2d43a59fb18}\label{event__handler_8c_a3feb0f08181151a4662ae2d43a59fb18}} 
+\index{event\_handler.c@{event\_handler.c}!handle\_timer@{handle\_timer}}
+\index{handle\_timer@{handle\_timer}!event\_handler.c@{event\_handler.c}}
+\doxysubsubsection{\texorpdfstring{handle\_timer()}{handle\_timer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}() handle\+\_\+timer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{event__handler_8h_a5d74787dedbc4e11c1ab15bf487e61f8}{State}}}]{state,  }\item[{\mbox{\hyperlink{structrtc__time}{rtc\+\_\+time}} $\ast$}]{time\+RTC }\end{DoxyParamCaption})}
+
+
+
+indicates if the game is in day mode or night mode 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{event__handler_8c_a3feb0f08181151a4662ae2d43a59fb18_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}\label{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}} 
+\index{event\_handler.c@{event\_handler.c}!isDay@{isDay}}
+\index{isDay@{isDay}!event\_handler.c@{event\_handler.c}}
+\doxysubsubsection{\texorpdfstring{isDay}{isDay}}
+{\footnotesize\ttfamily bool is\+Day}
+

@@ -1,0 +1,12 @@
+<map id="src/devices/uart/uart.c" name="src/devices/uart/uart.c">
+<area shape="rect" id="node1" title=" " alt="" coords="229,5,396,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="445,304,530,331"/>
+<area shape="rect" id="node3" href="$uart_8h.html" title=" " alt="" coords="380,80,440,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="379,229,449,256"/>
+<area shape="rect" id="node4" href="$queue_8h.html" title=" " alt="" coords="351,155,469,181"/>
+<area shape="rect" id="node6" href="$i8042_8h.html" title=" " alt="" coords="494,155,603,181"/>
+<area shape="rect" id="node7" href="$mouse_8h.html" title=" " alt="" coords="158,155,275,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="149,229,231,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="255,229,354,256"/>
+<area shape="rect" id="node10" href="$utils_8h.html" title=" " alt="" coords="37,229,124,256"/>
+</map>

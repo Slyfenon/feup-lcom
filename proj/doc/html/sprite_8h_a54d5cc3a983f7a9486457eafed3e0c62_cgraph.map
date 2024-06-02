@@ -1,0 +1,4 @@
+<map id="loadMenu" name="loadMenu">
+<area shape="rect" id="node1" title="Loads the menu sprites." alt="" coords="5,5,92,32"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a0493453e6a87aae925c6850296203265" title="Creates a sprite from an XPM map." alt="" coords="140,5,247,32"/>
+</map>

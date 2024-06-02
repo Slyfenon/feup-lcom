@@ -1,0 +1,5 @@
+<map id="subractToScore" name="subractToScore">
+<area shape="rect" id="node1" title="Subtract value to the score of the player." alt="" coords="5,31,125,57"/>
+<area shape="rect" id="node2" href="$player_8c.html#a3adf651a828a373f8db2e54b5371f4d0" title="Gets the player&#39;s score." alt="" coords="173,5,293,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#a5b27ba6498d6455e87ba0878a8e719d9" title="Sets the player&#39;s score." alt="" coords="174,56,293,83"/>
+</map>

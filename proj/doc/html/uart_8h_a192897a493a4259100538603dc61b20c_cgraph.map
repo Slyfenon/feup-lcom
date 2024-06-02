@@ -1,0 +1,8 @@
+<map id="ser_receive_data" name="ser_receive_data">
+<area shape="rect" id="node1" title="Receives data into the receive queue." alt="" coords="5,56,139,83"/>
+<area shape="rect" id="node2" href="$queue_8c.html#a98ee763a2b40ca1822b7d4b298a324f3" title="Adds an element to the queue." alt="" coords="191,5,316,32"/>
+<area shape="rect" id="node4" href="$uart_8c.html#a54089b696d2f9403cfe7d46c4c1c037e" title="Reads a value from a serial port register." alt="" coords="369,81,475,108"/>
+<area shape="rect" id="node6" href="$uart_8c.html#ac21ebeb821e0f459ef49e5f1f3a0d579" title="Receives a byte from the serial port." alt="" coords="187,107,320,133"/>
+<area shape="rect" id="node3" href="$queue_8c.html#a72e55a8dd8b6bbae43e56ed62630c467" title="Checks if the queue is full." alt="" coords="368,5,476,32"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="524,81,623,108"/>
+</map>

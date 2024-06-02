@@ -1,0 +1,17 @@
+<map id="checkAllCollisions" name="checkAllCollisions">
+<area shape="rect" id="node1" title="Check all collisions with targets and dynamite." alt="" coords="5,132,145,159"/>
+<area shape="rect" id="node2" href="$game_8c.html#a01ee4af2d34e5c75020ecfb3377a6121" title="Check all collisions with dynamite." alt="" coords="435,107,645,133"/>
+<area shape="rect" id="node8" href="$game_8c.html#abf4209dae175f98a180586ecec4e8ff3" title="Check all collisions with targets." alt="" coords="193,157,387,184"/>
+<area shape="rect" id="node3" href="$dynamite_8c.html#aaef8ddbba88815eed74cc00741befc1c" title="Retrieves the x&#45;coordinate of a Dynamite object." alt="" coords="709,5,825,32"/>
+<area shape="rect" id="node4" href="$dynamite_8c.html#a33123b9e8c7d57596ea8a5d5a0ab55a9" title="Retrieves the y&#45;coordinate of a Dynamite object." alt="" coords="709,56,824,83"/>
+<area shape="rect" id="node5" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="720,208,813,235"/>
+<area shape="rect" id="node6" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="721,157,813,184"/>
+<area shape="rect" id="node7" href="$game_8c.html#a029b8edc2607f7c19e6dd6cbb4354f92" title="Set the dynamite to active or inactive." alt="" coords="693,107,840,133"/>
+<area shape="rect" id="node9" href="$game_8c.html#ab9ad319e7024972f530545be5dc02659" title="Check collision between one target and one shot of one player." alt="" coords="447,259,633,285"/>
+<area shape="rect" id="node10" href="$game_8c.html#a329cf0d7b7d51c7e871512dcf828912e" title="Add value to the score of the player." alt="" coords="719,309,815,336"/>
+<area shape="rect" id="node13" href="$target_8c.html#aa13163dedcc3ee80ca1b84bae2ac8b95" title="Gets the x&#45;coordinate of the target&#39;s position." alt="" coords="721,360,813,387"/>
+<area shape="rect" id="node14" href="$target_8c.html#a18909600bdcc988342911e911226132f" title="Gets the y&#45;coordinate of the target&#39;s position." alt="" coords="721,411,812,437"/>
+<area shape="rect" id="node15" href="$game_8c.html#a407fe3ef3220ccab8ed4e0fb2c06bbc3" title="Set the target to active or inactive." alt="" coords="705,259,828,285"/>
+<area shape="rect" id="node11" href="$player_8c.html#a3adf651a828a373f8db2e54b5371f4d0" title="Gets the player&#39;s score." alt="" coords="888,284,1008,311"/>
+<area shape="rect" id="node12" href="$player_8c.html#a5b27ba6498d6455e87ba0878a8e719d9" title="Sets the player&#39;s score." alt="" coords="889,335,1007,361"/>
+</map>

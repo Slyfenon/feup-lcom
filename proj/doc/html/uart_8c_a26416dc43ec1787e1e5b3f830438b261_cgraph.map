@@ -1,0 +1,13 @@
+<map id="ser_reset_queues" name="ser_reset_queues">
+<area shape="rect" id="node1" title="Resets the serial port queues." alt="" coords="5,81,141,108"/>
+<area shape="rect" id="node2" href="$queue_8c.html#ab1ce6fb5699ed20b7c23b447d7ffc201" title=" " alt="" coords="201,5,311,32"/>
+<area shape="rect" id="node4" href="$queue_8c.html#aa4a5cf646f62b41f118c3b7ce9a64a12" title="Destroys a queue, freeing its buffer." alt="" coords="197,56,315,83"/>
+<area shape="rect" id="node5" href="$uart_8c.html#a192897a493a4259100538603dc61b20c" title="Receives data into the receive queue." alt="" coords="189,107,323,133"/>
+<area shape="rect" id="node11" href="$uart_8c.html#a8659e6a837d82cfb88a5a66593d18261" title="Writes a value to a serial port register." alt="" coords="201,157,311,184"/>
+<area shape="rect" id="node3" href="$queue_8c.html#a2601c0996369aed96093b33779f0d214" title="Initializes a queue." alt="" coords="392,5,483,32"/>
+<area shape="rect" id="node6" href="$queue_8c.html#a98ee763a2b40ca1822b7d4b298a324f3" title="Adds an element to the queue." alt="" coords="375,56,500,83"/>
+<area shape="rect" id="node8" href="$uart_8c.html#a54089b696d2f9403cfe7d46c4c1c037e" title="Reads a value from a serial port register." alt="" coords="553,132,659,159"/>
+<area shape="rect" id="node10" href="$uart_8c.html#ac21ebeb821e0f459ef49e5f1f3a0d579" title="Receives a byte from the serial port." alt="" coords="371,157,504,184"/>
+<area shape="rect" id="node7" href="$queue_8c.html#a72e55a8dd8b6bbae43e56ed62630c467" title="Checks if the queue is full." alt="" coords="552,56,660,83"/>
+<area shape="rect" id="node9" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="708,132,807,159"/>
+</map>

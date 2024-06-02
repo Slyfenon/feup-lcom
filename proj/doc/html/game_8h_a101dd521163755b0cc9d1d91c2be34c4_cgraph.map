@@ -1,0 +1,6 @@
+<map id="draw_timeLeft" name="draw_timeLeft">
+<area shape="rect" id="node1" title="Draw the time left in the game." alt="" coords="5,31,120,57"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="169,5,267,32"/>
+<area shape="rect" id="node4" href="$game_8c.html#a89e4a21129d55044a0d19a271fae6ddf" title="Get the time left in the game." alt="" coords="168,56,268,83"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="316,5,431,32"/>
+</map>

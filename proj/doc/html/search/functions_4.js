@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['get_5factual_5fbuffer_552',['get_actual_buffer',['../graphics_8h.html#ac0dc339f4642c693fddf4a6db7b89b98',1,'get_actual_buffer():&#160;graphics.c'],['../graphics_8c.html#ac0dc339f4642c693fddf4a6db7b89b98',1,'get_actual_buffer():&#160;graphics.c']]],
+  ['get_5fmouse_5fid_553',['get_mouse_id',['../mouse_8c.html#aea34e8363fb29ff619bb6f289748690e',1,'get_mouse_id(uint8_t *id):&#160;mouse.c'],['../mouse_8h.html#aea34e8363fb29ff619bb6f289748690e',1,'get_mouse_id(uint8_t *id):&#160;mouse.c']]],
+  ['get_5fvram_5fsize_554',['get_vram_size',['../graphics_8c.html#a6a4b2b2c0719a27448fb95d354d34540',1,'get_vram_size():&#160;graphics.c'],['../graphics_8h.html#a6a4b2b2c0719a27448fb95d354d34540',1,'get_vram_size():&#160;graphics.c']]],
+  ['getcurrentoption_555',['getCurrentOption',['../menu_8c.html#a83eb2544c4ebd17106a417ad3f2dd259',1,'getCurrentOption():&#160;menu.c'],['../menu_8h.html#a83eb2544c4ebd17106a417ad3f2dd259',1,'getCurrentOption():&#160;menu.c']]],
+  ['getdynamitex_556',['getDynamiteX',['../dynamite_8c.html#aaef8ddbba88815eed74cc00741befc1c',1,'getDynamiteX(Dynamite *dynamite):&#160;dynamite.c'],['../dynamite_8h.html#aaef8ddbba88815eed74cc00741befc1c',1,'getDynamiteX(Dynamite *dynamite):&#160;dynamite.c']]],
+  ['getdynamitey_557',['getDynamiteY',['../dynamite_8c.html#a33123b9e8c7d57596ea8a5d5a0ab55a9',1,'getDynamiteY(Dynamite *dynamite):&#160;dynamite.c'],['../dynamite_8h.html#a33123b9e8c7d57596ea8a5d5a0ab55a9',1,'getDynamiteY(Dynamite *dynamite):&#160;dynamite.c']]],
+  ['getfallcounteroftarget_558',['getFallCounterOfTarget',['../game_8c.html#a1ee3a5b27e09902b62e186535227c58c',1,'getFallCounterOfTarget(int i):&#160;game.c'],['../game_8h.html#a1ee3a5b27e09902b62e186535227c58c',1,'getFallCounterOfTarget(int i):&#160;game.c']]],
+  ['getplayer1_559',['getPlayer1',['../game_8c.html#ab801a4e26f54a0ba9515b0f9ad162268',1,'getPlayer1():&#160;game.c'],['../game_8h.html#ab801a4e26f54a0ba9515b0f9ad162268',1,'getPlayer1():&#160;game.c']]],
+  ['getplayer2_560',['getPlayer2',['../game_8c.html#a943b2c1031a69714cf94129871ae9fa5',1,'getPlayer2():&#160;game.c'],['../game_8h.html#a943b2c1031a69714cf94129871ae9fa5',1,'getPlayer2():&#160;game.c']]],
+  ['getplayercanshoot_561',['getPlayerCanShoot',['../player_8c.html#ac21c4b0d3b3002bce90c9b1fa3493bb0',1,'getPlayerCanShoot(Player *player):&#160;player.c'],['../player_8h.html#af63d38dd00b91ef26e4c55c0e92c3ba8',1,'getPlayerCanShoot(Player *player):&#160;player.c']]],
+  ['getplayerscore_562',['getPlayerScore',['../player_8c.html#a3adf651a828a373f8db2e54b5371f4d0',1,'getPlayerScore(Player *player):&#160;player.c'],['../player_8h.html#a035b6f7f98d264cc2fb353f24a545813',1,'getPlayerScore(Player *player):&#160;player.c']]],
+  ['getplayerx_563',['getPlayerX',['../player_8c.html#a2699badf2cc60f7a865a41444b243a02',1,'getPlayerX(Player *player):&#160;player.c'],['../player_8h.html#a0e7c01c359d5e3946f6eec5acfbcb798',1,'getPlayerX(Player *player):&#160;player.c']]],
+  ['getplayery_564',['getPlayerY',['../player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181',1,'getPlayerY(Player *player):&#160;player.c'],['../player_8h.html#a506c3cf4469d499f5aeb211bd886f226',1,'getPlayerY(Player *player):&#160;player.c']]],
+  ['gettargetx_565',['getTargetX',['../target_8c.html#aa13163dedcc3ee80ca1b84bae2ac8b95',1,'getTargetX(Target *target):&#160;target.c'],['../target_8h.html#aa894bd2a08b2c42b73f6f256ad6a250a',1,'getTargetX(Target *target):&#160;target.c']]],
+  ['gettargety_566',['getTargetY',['../target_8c.html#a18909600bdcc988342911e911226132f',1,'getTargetY(Target *target):&#160;target.c'],['../target_8h.html#a4fc294df6eed9e172abe30bacb7f6b73',1,'getTargetY(Target *target):&#160;target.c']]],
+  ['gettimeleft_567',['getTimeLeft',['../game_8c.html#a89e4a21129d55044a0d19a271fae6ddf',1,'getTimeLeft():&#160;game.c'],['../game_8h.html#a89e4a21129d55044a0d19a271fae6ddf',1,'getTimeLeft():&#160;game.c']]]
+];

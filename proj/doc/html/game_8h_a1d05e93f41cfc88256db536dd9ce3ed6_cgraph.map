@@ -1,0 +1,5 @@
+<map id="addToX" name="addToX">
+<area shape="rect" id="node1" title="Add a delta to X value." alt="" coords="5,31,75,57"/>
+<area shape="rect" id="node2" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="123,5,216,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#a50bc26fd988df825cfbc15654a2e200f" title="Sets the x&#45;coordinate of the player&#39;s position." alt="" coords="123,56,215,83"/>
+</map>

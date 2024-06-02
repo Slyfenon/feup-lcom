@@ -1,0 +1,9 @@
+<map id="mouse_enable_scrolling" name="mouse_enable_scrolling">
+<area shape="rect" id="node1" title="Enable mouse data reporting." alt="" coords="5,42,184,69"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#aea34e8363fb29ff619bb6f289748690e" title="Get the mouse id." alt="" coords="266,15,379,42"/>
+<area shape="rect" id="node6" href="$mouse_8c.html#a2a532d4b005729d24438a3930b8c12b7" title="Mouse set stream mode." alt="" coords="232,67,413,94"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#af524dba31c73a301fc22f9035a2d2040" title="Write the get device id command to the mouse." alt="" coords="467,5,619,47"/>
+<area shape="rect" id="node4" href="$mouse_8c.html#a79f822ee418bebe387c463fbb343106c" title="KBC write command." alt="" coords="672,42,829,69"/>
+<area shape="rect" id="node5" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="877,42,976,69"/>
+<area shape="rect" id="node7" href="$mouse_8c.html#af8e3449d392d4b1cc22c48e25ddbcd04" title="Write byte to mouse command." alt="" coords="461,71,624,98"/>
+</map>

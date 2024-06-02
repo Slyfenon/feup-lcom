@@ -1,0 +1,5 @@
+<map id="addToY" name="addToY">
+<area shape="rect" id="node1" title="Add a delta to Y value." alt="" coords="5,31,73,57"/>
+<area shape="rect" id="node2" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="121,5,213,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#a2c369e7fefbd2f70f7cd48b98c3c559c" title="Sets the y&#45;coordinate of the player&#39;s position." alt="" coords="122,56,213,83"/>
+</map>

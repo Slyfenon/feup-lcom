@@ -1,0 +1,4 @@
+<map id="queue_dequeue" name="queue_dequeue">
+<area shape="rect" id="node1" title="Removes an element from the queue." alt="" coords="5,5,131,32"/>
+<area shape="rect" id="node2" href="$queue_8c.html#a5a994175c6a0a9f62035faa0030aba3c" title="Checks if the queue is empty." alt="" coords="179,5,308,32"/>
+</map>

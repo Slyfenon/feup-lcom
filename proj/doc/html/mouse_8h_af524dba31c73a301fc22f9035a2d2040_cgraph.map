@@ -1,0 +1,5 @@
+<map id="write_get_device_id_to_mouse" name="write_get_device_id_to_mouse">
+<area shape="rect" id="node1" title="Write the get device id command to the mouse." alt="" coords="5,23,157,65"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a79f822ee418bebe387c463fbb343106c" title="KBC write command." alt="" coords="205,5,363,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="411,31,509,57"/>
+</map>

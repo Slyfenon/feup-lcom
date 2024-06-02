@@ -1,0 +1,4 @@
+<map id="canSlowTime" name="canSlowTime">
+<area shape="rect" id="node1" title="Get if the player can slow time." alt="" coords="5,5,115,32"/>
+<area shape="rect" id="node2" href="$game_8c.html#a432754bde7d8d94d9e3da2fdd419391d" title="Return is the game is in multiplayer mode." alt="" coords="163,5,269,32"/>
+</map>

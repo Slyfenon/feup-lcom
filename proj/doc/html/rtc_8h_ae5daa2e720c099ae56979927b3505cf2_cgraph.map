@@ -1,0 +1,8 @@
+<map id="rtc_read_time" name="rtc_read_time">
+<area shape="rect" id="node1" title="Reads the current time from the RTC." alt="" coords="5,81,117,108"/>
+<area shape="rect" id="node2" href="$rtc_8c.html#ac0d52de1ebf0301f7370fdcaaca0fe39" title="Converts a BCD (Binary&#45;Coded Decimal) value to decimal." alt="" coords="165,5,345,32"/>
+<area shape="rect" id="node3" href="$rtc_8c.html#a1081e5a7e6e7ebdca2b3523cef70930c" title="Reads the value of a time register." alt="" coords="393,107,539,133"/>
+<area shape="rect" id="node5" href="$rtc_8c.html#a0d5fa2b6a299944c3c6f45d8c831e690" title="Checks if the RTC is in binary mode." alt="" coords="203,107,308,133"/>
+<area shape="rect" id="node6" href="$rtc_8c.html#a1c0c8de9a0e368f3815f894efeca6a98" title="Checks if the RTC is blocked." alt="" coords="198,157,313,184"/>
+<area shape="rect" id="node4" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="587,107,685,133"/>
+</map>

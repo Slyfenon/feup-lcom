@@ -1,0 +1,865 @@
+\hypertarget{game_8c}{}\doxysection{src/game/game.c File Reference}
+\label{game_8c}\index{src/game/game.c@{src/game/game.c}}
+{\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
+Include dependency graph for game.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPlayer}{Player}} $\ast$() \mbox{\hyperlink{game_8c_ab801a4e26f54a0ba9515b0f9ad162268}{get\+Player1}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structDynamite}{Dynamite}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structPlayer}{Player}} $\ast$() \mbox{\hyperlink{game_8c_a943b2c1031a69714cf94129871ae9fa5}{get\+Player2}} ()
+\begin{DoxyCompactList}\small\item\em Get the player 2. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_a432754bde7d8d94d9e3da2fdd419391d}{is\+Multiplayer}} ()
+\begin{DoxyCompactList}\small\item\em Return is the game is in multiplayer mode. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a7d33ed139c9ddf7fca66c123e5fca51c}{set\+Multiplayer}} (bool value)
+\begin{DoxyCompactList}\small\item\em Set the game to multiplayer mode . \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a7bcf7b364b82497e8d0aaad2a128654e}{init\+Game}} (bool \mbox{\hyperlink{sprite_8h_ab9a61c3d22d2185dca33f648b24d0e2c}{multiplayer}})
+\begin{DoxyCompactList}\small\item\em Initialize the game. Initializes the game variables and the players . \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a7f07c5b6ca9ed1f6543cd7ad8ca8e35e}{end\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Resets the game. Resets the game variables and the players . \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_ac4d6173d956785c1246e50d7195ea21b}{update\+Times}} ()
+\begin{DoxyCompactList}\small\item\em Updates game countdown. Decreases the time left in the game. If the time is over, ends the game. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_aa615efb415077f73d66501f2e9aabf82}{update\+Targets}} ()
+\begin{DoxyCompactList}\small\item\em Updates game targets Updates the position of the targets in the game. If slow time is active, updates the targets at a slower pace. ~\newline
+ \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a42c73762d34ee6d56aaa8fb44c4eeee6}{update\+Dynamite}} ()
+\begin{DoxyCompactList}\small\item\em Updates game dynamite Updates the position of the dynamite in the game. If slow time is active, updates the dynamite at a slower pace. ~\newline
+ \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{game_8c_af654560e590a120fe5ad6743167fd684}{check\+All\+Collisions}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Check all collisions with targets and dynamite. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{game_8c_abf4209dae175f98a180586ecec4e8ff3}{check\+Collision\+With\+Targets}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Check all collisions with targets. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{game_8c_ab9ad319e7024972f530545be5dc02659}{check\+Collision\+With\+Target}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, int i)
+\begin{DoxyCompactList}\small\item\em Check collision between one target and one shot of one player. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_a01ee4af2d34e5c75020ecfb3377a6121}{check\+Collision\+With\+Dynamite}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Check all collisions with dynamite. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_a8e1129c9d44f5d45552e3a61eddee950}{can\+Slow\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Get if the player can slow time. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a0d11aa44162e7e4369046bddc91740a0}{set\+Slow\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Set Slow Time. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_af638ce01ef2b8c8e69392b5d0852fa27}{end\+Slow\+Time}} ()
+\begin{DoxyCompactList}\small\item\em End Slow Time. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a1d05e93f41cfc88256db536dd9ce3ed6}{add\+ToX}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, int16\+\_\+t delta\+\_\+x)
+\begin{DoxyCompactList}\small\item\em Add a delta to X value. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_aa3b5decd6967538d4e112fc87e4e2bd8}{add\+ToY}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, int16\+\_\+t delta\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Add a delta to Y value. \end{DoxyCompactList}\item 
+int16\+\_\+t() \mbox{\hyperlink{game_8c_a1ee3a5b27e09902b62e186535227c58c}{get\+Fall\+Counter\+Of\+Target}} (int i)
+\item 
+void() \mbox{\hyperlink{game_8c_a1486ffa31df128ada330f9dec5195af9}{increment\+Fall\+Counter\+Of\+Target}} (int i)
+\begin{DoxyCompactList}\small\item\em Increment the fall counter of the target for the sprite animation. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_a47a3170bdfc39996d54630ec427aab4c}{is\+Active\+Target}} (int i)
+\begin{DoxyCompactList}\small\item\em Checks if the target is active. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a407fe3ef3220ccab8ed4e0fb2c06bbc3}{set\+Active\+Target}} (int i, bool value)
+\begin{DoxyCompactList}\small\item\em Set the target to active or inactive. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_a3a06917e63d551ae4761bf2379912590}{is\+Active\+Dynamite}} ()
+\begin{DoxyCompactList}\small\item\em Check if the dynamite is active. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a029b8edc2607f7c19e6dd6cbb4354f92}{set\+Active\+Dynamite}} (bool value)
+\begin{DoxyCompactList}\small\item\em Set the dynamite to active or inactive. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a329cf0d7b7d51c7e871512dcf828912e}{add\+To\+Score}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, int value)
+\begin{DoxyCompactList}\small\item\em Add value to the score of the player. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_aaf990680e7a3d361272a0236637f7dcd}{subract\+To\+Score}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player, int value)
+\begin{DoxyCompactList}\small\item\em Subtract value to the score of the player. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{game_8c_a89e4a21129d55044a0d19a271fae6ddf}{get\+Time\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Get the time left in the game. \end{DoxyCompactList}\item 
+bool() \mbox{\hyperlink{game_8c_aa5a9cddb8f90500dd8f820e37d082236}{end\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Check if the game is over. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a31cc5994d6a3203af019878dc60b9215}{draw\+\_\+game}} (bool \mbox{\hyperlink{event__handler_8c_a12473fe6184e9702d8873d7091c5a410}{is\+Day}})
+\begin{DoxyCompactList}\small\item\em Draw the game in the screen. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_ae7ac15af3305476b64868d2794e2d8b2}{draw\+\_\+aim}} (\mbox{\hyperlink{structPlayer}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Draw the aim of the player in the game. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a8cab9b1b4fc56bc0cbb384297a2c104d}{draw\+\_\+lines}} ()
+\begin{DoxyCompactList}\small\item\em Draw the lines below the targets in the game. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_aec21a333de72fc7ce66a5a79041c0757}{draw\+\_\+targets}} ()
+\begin{DoxyCompactList}\small\item\em Draw the targets in the game If the target is active, draws it in the screen. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a7d8da94bdbb07b4c038e9646c59b0d46}{draw\+\_\+dynamite}} ()
+\begin{DoxyCompactList}\small\item\em Draw the dynamite in the game If the dynamite is active, draws it in the screen. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a80af57db2938c468835bd5530bee459b}{draw\+\_\+score}} ()
+\begin{DoxyCompactList}\small\item\em Draw the score of the player. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{game_8c_a101dd521163755b0cc9d1d91c2be34c4}{draw\+\_\+time\+Left}} ()
+\begin{DoxyCompactList}\small\item\em Draw the time left in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPlayer}{Player}} $\ast$ \mbox{\hyperlink{game_8c_a427622cef5fab821a8baf9d51e68450b}{player1}} = NULL
+\item 
+\mbox{\hyperlink{structPlayer}{Player}} $\ast$ \mbox{\hyperlink{game_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}{player2}} = NULL
+\begin{DoxyCompactList}\small\item\em Current player. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a96a8e9a5d5db37b4252673ba183d763e}{is\+\_\+multiplayer}} = false
+\begin{DoxyCompactList}\small\item\em Second player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_a69638d9aedf5e9a3c35bdefec74b792d}{time\+Left}}
+\begin{DoxyCompactList}\small\item\em Whether the game is in multiplayer mode. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a64d71c361ef64dcbe91c147d180c6b34}{slow\+Time}}
+\begin{DoxyCompactList}\small\item\em Time left in seconds $\ast$ 60. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_aba765e306a7d485db6a9cc47f690b9d6}{timer\+Slow\+Time}}
+\begin{DoxyCompactList}\small\item\em Whether the game is in slow time. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a846d8944ecab91b25561d34fd5adf1ae}{check\+Explosion}} = false
+\begin{DoxyCompactList}\small\item\em Time left in seconds $\ast$ 60 for slow time. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_aef299dd46fc4dfde887e6c06186e1695}{explosionX}}
+\begin{DoxyCompactList}\small\item\em Whether there is an explosion. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_a7a53a7f673843da9c116592b41f51b06}{explosionY}}
+\begin{DoxyCompactList}\small\item\em X position of the explosion. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_ae35c0ac100d7d4c473e29d44e2707f12}{frame\+Explosion}} = 0
+\begin{DoxyCompactList}\small\item\em Y position of the explosion. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{game_8c_a53afcf0978606a0e0649a49af17c65ed}{is\+Updating\+Dynamites}} = false
+\begin{DoxyCompactList}\small\item\em Frame of the explosion. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structTarget}{Target}} $\ast$ \mbox{\hyperlink{game_8c_ad5bb68d4e40c14f05a43f2f574ca438d}{targets}} \mbox{[}\mbox{\hyperlink{game_8h_a0ffe2342c6229ee124c6ed24ac970e2a}{NUM\+\_\+\+TARGETS}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Whether the dynamite is updating. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structDynamite}{Dynamite}} $\ast$ \mbox{\hyperlink{game_8c_a35043a0b837cf6184faa54028737b2bb}{dynamite}}
+\begin{DoxyCompactList}\small\item\em Array of targets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_8c_a329cf0d7b7d51c7e871512dcf828912e}\label{game_8c_a329cf0d7b7d51c7e871512dcf828912e}} 
+\index{game.c@{game.c}!addToScore@{addToScore}}
+\index{addToScore@{addToScore}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{addToScore()}{addToScore()}}
+{\footnotesize\ttfamily void() add\+To\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Add value to the score of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & -\/ the player that will have the score added \\
+\hline
+{\em value} & -\/ the value that will be added to the score \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{game_8c_a329cf0d7b7d51c7e871512dcf828912e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a1d05e93f41cfc88256db536dd9ce3ed6}\label{game_8c_a1d05e93f41cfc88256db536dd9ce3ed6}} 
+\index{game.c@{game.c}!addToX@{addToX}}
+\index{addToX@{addToX}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{addToX()}{addToX()}}
+{\footnotesize\ttfamily void() add\+ToX (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{int16\+\_\+t}]{delta\+\_\+x }\end{DoxyParamCaption})}
+
+
+
+Add a delta to X value. 
+
+GETTERS AND SETTERS OF GAME VARIABLES Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{game_8c_a1d05e93f41cfc88256db536dd9ce3ed6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_aa3b5decd6967538d4e112fc87e4e2bd8}\label{game_8c_aa3b5decd6967538d4e112fc87e4e2bd8}} 
+\index{game.c@{game.c}!addToY@{addToY}}
+\index{addToY@{addToY}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{addToY()}{addToY()}}
+{\footnotesize\ttfamily void() add\+ToY (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{int16\+\_\+t}]{delta\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Add a delta to Y value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the player that will add the Y \\
+\hline
+{\em delta\+\_\+x} & the value to be added \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{game_8c_aa3b5decd6967538d4e112fc87e4e2bd8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a8e1129c9d44f5d45552e3a61eddee950}\label{game_8c_a8e1129c9d44f5d45552e3a61eddee950}} 
+\index{game.c@{game.c}!canSlowTime@{canSlowTime}}
+\index{canSlowTime@{canSlowTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{canSlowTime()}{canSlowTime()}}
+{\footnotesize\ttfamily bool() can\+Slow\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get if the player can slow time. 
+
+\begin{DoxyReturn}{Returns}
+true if the player can slow time, false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=278pt]{game_8c_a8e1129c9d44f5d45552e3a61eddee950_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_af654560e590a120fe5ad6743167fd684}\label{game_8c_af654560e590a120fe5ad6743167fd684}} 
+\index{game.c@{game.c}!checkAllCollisions@{checkAllCollisions}}
+\index{checkAllCollisions@{checkAllCollisions}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{checkAllCollisions()}{checkAllCollisions()}}
+{\footnotesize\ttfamily int() check\+All\+Collisions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Check all collisions with targets and dynamite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the player that will check the collisions with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the target, which the player shot, or -\/1 if the player didn\textquotesingle{}t shot in any target 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_af654560e590a120fe5ad6743167fd684_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a01ee4af2d34e5c75020ecfb3377a6121}\label{game_8c_a01ee4af2d34e5c75020ecfb3377a6121}} 
+\index{game.c@{game.c}!checkCollisionWithDynamite@{checkCollisionWithDynamite}}
+\index{checkCollisionWithDynamite@{checkCollisionWithDynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{checkCollisionWithDynamite()}{checkCollisionWithDynamite()}}
+{\footnotesize\ttfamily bool() check\+Collision\+With\+Dynamite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Check all collisions with dynamite. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the player that will check the collisions with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if collided, false other 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a01ee4af2d34e5c75020ecfb3377a6121_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_ab9ad319e7024972f530545be5dc02659}\label{game_8c_ab9ad319e7024972f530545be5dc02659}} 
+\index{game.c@{game.c}!checkCollisionWithTarget@{checkCollisionWithTarget}}
+\index{checkCollisionWithTarget@{checkCollisionWithTarget}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{checkCollisionWithTarget()}{checkCollisionWithTarget()}}
+{\footnotesize\ttfamily int() check\+Collision\+With\+Target (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Check collision between one target and one shot of one player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the player that will check the collisions with \\
+\hline
+{\em i} & the index of the target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the target or -\/1 if they didn\textquotesingle{}t collided 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_ab9ad319e7024972f530545be5dc02659_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_abf4209dae175f98a180586ecec4e8ff3}\label{game_8c_abf4209dae175f98a180586ecec4e8ff3}} 
+\index{game.c@{game.c}!checkCollisionWithTargets@{checkCollisionWithTargets}}
+\index{checkCollisionWithTargets@{checkCollisionWithTargets}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{checkCollisionWithTargets()}{checkCollisionWithTargets()}}
+{\footnotesize\ttfamily int() check\+Collision\+With\+Targets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Check all collisions with targets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & the player that will check the collisions with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of the target, which the player shot, or -\/1 if the player didn\textquotesingle{}t shot in any target 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_abf4209dae175f98a180586ecec4e8ff3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_ae7ac15af3305476b64868d2794e2d8b2}\label{game_8c_ae7ac15af3305476b64868d2794e2d8b2}} 
+\index{game.c@{game.c}!draw\_aim@{draw\_aim}}
+\index{draw\_aim@{draw\_aim}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_aim()}{draw\_aim()}}
+{\footnotesize\ttfamily void() draw\+\_\+aim (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player }\end{DoxyParamCaption})}
+
+
+
+Draw the aim of the player in the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & -\/ the player that will have the aim drawn \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_ae7ac15af3305476b64868d2794e2d8b2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a7d8da94bdbb07b4c038e9646c59b0d46}\label{game_8c_a7d8da94bdbb07b4c038e9646c59b0d46}} 
+\index{game.c@{game.c}!draw\_dynamite@{draw\_dynamite}}
+\index{draw\_dynamite@{draw\_dynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_dynamite()}{draw\_dynamite()}}
+{\footnotesize\ttfamily void() draw\+\_\+dynamite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the dynamite in the game If the dynamite is active, draws it in the screen. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a7d8da94bdbb07b4c038e9646c59b0d46_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a31cc5994d6a3203af019878dc60b9215}\label{game_8c_a31cc5994d6a3203af019878dc60b9215}} 
+\index{game.c@{game.c}!draw\_game@{draw\_game}}
+\index{draw\_game@{draw\_game}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game()}{draw\_game()}}
+{\footnotesize\ttfamily void() draw\+\_\+game (\begin{DoxyParamCaption}\item[{bool}]{is\+Day }\end{DoxyParamCaption})}
+
+
+
+Draw the game in the screen. 
+
+DRAW FUNCTIONS Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a31cc5994d6a3203af019878dc60b9215_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a8cab9b1b4fc56bc0cbb384297a2c104d}\label{game_8c_a8cab9b1b4fc56bc0cbb384297a2c104d}} 
+\index{game.c@{game.c}!draw\_lines@{draw\_lines}}
+\index{draw\_lines@{draw\_lines}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lines()}{draw\_lines()}}
+{\footnotesize\ttfamily void() draw\+\_\+lines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the lines below the targets in the game. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a8cab9b1b4fc56bc0cbb384297a2c104d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a80af57db2938c468835bd5530bee459b}\label{game_8c_a80af57db2938c468835bd5530bee459b}} 
+\index{game.c@{game.c}!draw\_score@{draw\_score}}
+\index{draw\_score@{draw\_score}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_score()}{draw\_score()}}
+{\footnotesize\ttfamily void() draw\+\_\+score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the score of the player. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a80af57db2938c468835bd5530bee459b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_aec21a333de72fc7ce66a5a79041c0757}\label{game_8c_aec21a333de72fc7ce66a5a79041c0757}} 
+\index{game.c@{game.c}!draw\_targets@{draw\_targets}}
+\index{draw\_targets@{draw\_targets}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_targets()}{draw\_targets()}}
+{\footnotesize\ttfamily void() draw\+\_\+targets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the targets in the game If the target is active, draws it in the screen. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_aec21a333de72fc7ce66a5a79041c0757_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a101dd521163755b0cc9d1d91c2be34c4}\label{game_8c_a101dd521163755b0cc9d1d91c2be34c4}} 
+\index{game.c@{game.c}!draw\_timeLeft@{draw\_timeLeft}}
+\index{draw\_timeLeft@{draw\_timeLeft}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{draw\_timeLeft()}{draw\_timeLeft()}}
+{\footnotesize\ttfamily void() draw\+\_\+time\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draw the time left in the game. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a101dd521163755b0cc9d1d91c2be34c4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a7f07c5b6ca9ed1f6543cd7ad8ca8e35e}\label{game_8c_a7f07c5b6ca9ed1f6543cd7ad8ca8e35e}} 
+\index{game.c@{game.c}!endGame@{endGame}}
+\index{endGame@{endGame}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{endGame()}{endGame()}}
+{\footnotesize\ttfamily void() end\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the game. Resets the game variables and the players . 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{game_8c_a7f07c5b6ca9ed1f6543cd7ad8ca8e35e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_af638ce01ef2b8c8e69392b5d0852fa27}\label{game_8c_af638ce01ef2b8c8e69392b5d0852fa27}} 
+\index{game.c@{game.c}!endSlowTime@{endSlowTime}}
+\index{endSlowTime@{endSlowTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{endSlowTime()}{endSlowTime()}}
+{\footnotesize\ttfamily void() end\+Slow\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+End Slow Time. 
+
+\mbox{\Hypertarget{game_8c_aa5a9cddb8f90500dd8f820e37d082236}\label{game_8c_aa5a9cddb8f90500dd8f820e37d082236}} 
+\index{game.c@{game.c}!endTime@{endTime}}
+\index{endTime@{endTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{endTime()}{endTime()}}
+{\footnotesize\ttfamily bool() end\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the game is over. 
+
+\begin{DoxyReturn}{Returns}
+true if the game is over, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a1ee3a5b27e09902b62e186535227c58c}\label{game_8c_a1ee3a5b27e09902b62e186535227c58c}} 
+\index{game.c@{game.c}!getFallCounterOfTarget@{getFallCounterOfTarget}}
+\index{getFallCounterOfTarget@{getFallCounterOfTarget}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{getFallCounterOfTarget()}{getFallCounterOfTarget()}}
+{\footnotesize\ttfamily int16\+\_\+t() get\+Fall\+Counter\+Of\+Target (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{game_8c_ab801a4e26f54a0ba9515b0f9ad162268}\label{game_8c_ab801a4e26f54a0ba9515b0f9ad162268}} 
+\index{game.c@{game.c}!getPlayer1@{getPlayer1}}
+\index{getPlayer1@{getPlayer1}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{getPlayer1()}{getPlayer1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPlayer}{Player}}$\ast$() get\+Player1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{structDynamite}{Dynamite}}. 
+
+Get the player 1. \mbox{\Hypertarget{game_8c_a943b2c1031a69714cf94129871ae9fa5}\label{game_8c_a943b2c1031a69714cf94129871ae9fa5}} 
+\index{game.c@{game.c}!getPlayer2@{getPlayer2}}
+\index{getPlayer2@{getPlayer2}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{getPlayer2()}{getPlayer2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPlayer}{Player}}$\ast$() get\+Player2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the player 2. 
+
+\begin{DoxyReturn}{Returns}
+pointer to player 2 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a89e4a21129d55044a0d19a271fae6ddf}\label{game_8c_a89e4a21129d55044a0d19a271fae6ddf}} 
+\index{game.c@{game.c}!getTimeLeft@{getTimeLeft}}
+\index{getTimeLeft@{getTimeLeft}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{getTimeLeft()}{getTimeLeft()}}
+{\footnotesize\ttfamily int() get\+Time\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the time left in the game. 
+
+\begin{DoxyReturn}{Returns}
+the time left in the game 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a1486ffa31df128ada330f9dec5195af9}\label{game_8c_a1486ffa31df128ada330f9dec5195af9}} 
+\index{game.c@{game.c}!incrementFallCounterOfTarget@{incrementFallCounterOfTarget}}
+\index{incrementFallCounterOfTarget@{incrementFallCounterOfTarget}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{incrementFallCounterOfTarget()}{incrementFallCounterOfTarget()}}
+{\footnotesize\ttfamily void() increment\+Fall\+Counter\+Of\+Target (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Increment the fall counter of the target for the sprite animation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ the index of the target \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_8c_a7bcf7b364b82497e8d0aaad2a128654e}\label{game_8c_a7bcf7b364b82497e8d0aaad2a128654e}} 
+\index{game.c@{game.c}!initGame@{initGame}}
+\index{initGame@{initGame}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily void() init\+Game (\begin{DoxyParamCaption}\item[{bool}]{multiplayer }\end{DoxyParamCaption})}
+
+
+
+Initialize the game. Initializes the game variables and the players . 
+
+GENERIC GAME FUNCTIONS Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{game_8c_a7bcf7b364b82497e8d0aaad2a128654e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a3a06917e63d551ae4761bf2379912590}\label{game_8c_a3a06917e63d551ae4761bf2379912590}} 
+\index{game.c@{game.c}!isActiveDynamite@{isActiveDynamite}}
+\index{isActiveDynamite@{isActiveDynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{isActiveDynamite()}{isActiveDynamite()}}
+{\footnotesize\ttfamily bool() is\+Active\+Dynamite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the dynamite is active. 
+
+\begin{DoxyReturn}{Returns}
+true if the dynamite is active, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a47a3170bdfc39996d54630ec427aab4c}\label{game_8c_a47a3170bdfc39996d54630ec427aab4c}} 
+\index{game.c@{game.c}!isActiveTarget@{isActiveTarget}}
+\index{isActiveTarget@{isActiveTarget}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{isActiveTarget()}{isActiveTarget()}}
+{\footnotesize\ttfamily bool() is\+Active\+Target (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Checks if the target is active. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ the index of the target \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the target is active, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{game_8c_a432754bde7d8d94d9e3da2fdd419391d}\label{game_8c_a432754bde7d8d94d9e3da2fdd419391d}} 
+\index{game.c@{game.c}!isMultiplayer@{isMultiplayer}}
+\index{isMultiplayer@{isMultiplayer}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{isMultiplayer()}{isMultiplayer()}}
+{\footnotesize\ttfamily bool() is\+Multiplayer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return is the game is in multiplayer mode. 
+
+\mbox{\Hypertarget{game_8c_a029b8edc2607f7c19e6dd6cbb4354f92}\label{game_8c_a029b8edc2607f7c19e6dd6cbb4354f92}} 
+\index{game.c@{game.c}!setActiveDynamite@{setActiveDynamite}}
+\index{setActiveDynamite@{setActiveDynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{setActiveDynamite()}{setActiveDynamite()}}
+{\footnotesize\ttfamily void() set\+Active\+Dynamite (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the dynamite to active or inactive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & -\/ true if the dynamite is active, false otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_8c_a407fe3ef3220ccab8ed4e0fb2c06bbc3}\label{game_8c_a407fe3ef3220ccab8ed4e0fb2c06bbc3}} 
+\index{game.c@{game.c}!setActiveTarget@{setActiveTarget}}
+\index{setActiveTarget@{setActiveTarget}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{setActiveTarget()}{setActiveTarget()}}
+{\footnotesize\ttfamily void() set\+Active\+Target (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the target to active or inactive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ the index of the target \\
+\hline
+{\em value} & -\/ true if the target is active, false otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_8c_a7d33ed139c9ddf7fca66c123e5fca51c}\label{game_8c_a7d33ed139c9ddf7fca66c123e5fca51c}} 
+\index{game.c@{game.c}!setMultiplayer@{setMultiplayer}}
+\index{setMultiplayer@{setMultiplayer}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{setMultiplayer()}{setMultiplayer()}}
+{\footnotesize\ttfamily void() set\+Multiplayer (\begin{DoxyParamCaption}\item[{bool}]{value }\end{DoxyParamCaption})}
+
+
+
+Set the game to multiplayer mode . 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & -\/ true if the game is in multiplayer mode, false otherwise. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{game_8c_a0d11aa44162e7e4369046bddc91740a0}\label{game_8c_a0d11aa44162e7e4369046bddc91740a0}} 
+\index{game.c@{game.c}!setSlowTime@{setSlowTime}}
+\index{setSlowTime@{setSlowTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{setSlowTime()}{setSlowTime()}}
+{\footnotesize\ttfamily void() set\+Slow\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set Slow Time. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a0d11aa44162e7e4369046bddc91740a0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_aaf990680e7a3d361272a0236637f7dcd}\label{game_8c_aaf990680e7a3d361272a0236637f7dcd}} 
+\index{game.c@{game.c}!subractToScore@{subractToScore}}
+\index{subractToScore@{subractToScore}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{subractToScore()}{subractToScore()}}
+{\footnotesize\ttfamily void() subract\+To\+Score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structPlayer}{Player}} $\ast$}]{player,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Subtract value to the score of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & -\/ the player that will have the score subtracted \\
+\hline
+{\em value} & -\/ the value that will be subtracted to the score \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=296pt]{game_8c_aaf990680e7a3d361272a0236637f7dcd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_a42c73762d34ee6d56aaa8fb44c4eeee6}\label{game_8c_a42c73762d34ee6d56aaa8fb44c4eeee6}} 
+\index{game.c@{game.c}!updateDynamite@{updateDynamite}}
+\index{updateDynamite@{updateDynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{updateDynamite()}{updateDynamite()}}
+{\footnotesize\ttfamily void() update\+Dynamite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates game dynamite Updates the position of the dynamite in the game. If slow time is active, updates the dynamite at a slower pace. ~\newline
+ 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{game_8c_a42c73762d34ee6d56aaa8fb44c4eeee6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{game_8c_aa615efb415077f73d66501f2e9aabf82}\label{game_8c_aa615efb415077f73d66501f2e9aabf82}} 
+\index{game.c@{game.c}!updateTargets@{updateTargets}}
+\index{updateTargets@{updateTargets}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{updateTargets()}{updateTargets()}}
+{\footnotesize\ttfamily void() update\+Targets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates game targets Updates the position of the targets in the game. If slow time is active, updates the targets at a slower pace. ~\newline
+ 
+
+\mbox{\Hypertarget{game_8c_ac4d6173d956785c1246e50d7195ea21b}\label{game_8c_ac4d6173d956785c1246e50d7195ea21b}} 
+\index{game.c@{game.c}!updateTimes@{updateTimes}}
+\index{updateTimes@{updateTimes}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{updateTimes()}{updateTimes()}}
+{\footnotesize\ttfamily void() update\+Times (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates game countdown. Decreases the time left in the game. If the time is over, ends the game. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{game_8c_ac4d6173d956785c1246e50d7195ea21b_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{game_8c_a846d8944ecab91b25561d34fd5adf1ae}\label{game_8c_a846d8944ecab91b25561d34fd5adf1ae}} 
+\index{game.c@{game.c}!checkExplosion@{checkExplosion}}
+\index{checkExplosion@{checkExplosion}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{checkExplosion}{checkExplosion}}
+{\footnotesize\ttfamily bool check\+Explosion = false}
+
+
+
+Time left in seconds $\ast$ 60 for slow time. 
+
+\mbox{\Hypertarget{game_8c_a35043a0b837cf6184faa54028737b2bb}\label{game_8c_a35043a0b837cf6184faa54028737b2bb}} 
+\index{game.c@{game.c}!dynamite@{dynamite}}
+\index{dynamite@{dynamite}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{dynamite}{dynamite}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDynamite}{Dynamite}}$\ast$ dynamite}
+
+
+
+Array of targets. 
+
+\mbox{\Hypertarget{game_8c_aef299dd46fc4dfde887e6c06186e1695}\label{game_8c_aef299dd46fc4dfde887e6c06186e1695}} 
+\index{game.c@{game.c}!explosionX@{explosionX}}
+\index{explosionX@{explosionX}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{explosionX}{explosionX}}
+{\footnotesize\ttfamily int explosionX}
+
+
+
+Whether there is an explosion. 
+
+\mbox{\Hypertarget{game_8c_a7a53a7f673843da9c116592b41f51b06}\label{game_8c_a7a53a7f673843da9c116592b41f51b06}} 
+\index{game.c@{game.c}!explosionY@{explosionY}}
+\index{explosionY@{explosionY}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{explosionY}{explosionY}}
+{\footnotesize\ttfamily int explosionY}
+
+
+
+X position of the explosion. 
+
+\mbox{\Hypertarget{game_8c_ae35c0ac100d7d4c473e29d44e2707f12}\label{game_8c_ae35c0ac100d7d4c473e29d44e2707f12}} 
+\index{game.c@{game.c}!frameExplosion@{frameExplosion}}
+\index{frameExplosion@{frameExplosion}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{frameExplosion}{frameExplosion}}
+{\footnotesize\ttfamily int frame\+Explosion = 0}
+
+
+
+Y position of the explosion. 
+
+\mbox{\Hypertarget{game_8c_a96a8e9a5d5db37b4252673ba183d763e}\label{game_8c_a96a8e9a5d5db37b4252673ba183d763e}} 
+\index{game.c@{game.c}!is\_multiplayer@{is\_multiplayer}}
+\index{is\_multiplayer@{is\_multiplayer}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{is\_multiplayer}{is\_multiplayer}}
+{\footnotesize\ttfamily bool is\+\_\+multiplayer = false}
+
+
+
+Second player. 
+
+\mbox{\Hypertarget{game_8c_a53afcf0978606a0e0649a49af17c65ed}\label{game_8c_a53afcf0978606a0e0649a49af17c65ed}} 
+\index{game.c@{game.c}!isUpdatingDynamites@{isUpdatingDynamites}}
+\index{isUpdatingDynamites@{isUpdatingDynamites}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{isUpdatingDynamites}{isUpdatingDynamites}}
+{\footnotesize\ttfamily bool is\+Updating\+Dynamites = false}
+
+
+
+Frame of the explosion. 
+
+\mbox{\Hypertarget{game_8c_a427622cef5fab821a8baf9d51e68450b}\label{game_8c_a427622cef5fab821a8baf9d51e68450b}} 
+\index{game.c@{game.c}!player1@{player1}}
+\index{player1@{player1}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player1}{player1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPlayer}{Player}}$\ast$ player1 = NULL}
+
+\mbox{\Hypertarget{game_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}\label{game_8c_aa1ad9a3d30291b7fbfbabd79cc45d4f9}} 
+\index{game.c@{game.c}!player2@{player2}}
+\index{player2@{player2}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{player2}{player2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPlayer}{Player}}$\ast$ player2 = NULL}
+
+
+
+Current player. 
+
+\mbox{\Hypertarget{game_8c_a64d71c361ef64dcbe91c147d180c6b34}\label{game_8c_a64d71c361ef64dcbe91c147d180c6b34}} 
+\index{game.c@{game.c}!slowTime@{slowTime}}
+\index{slowTime@{slowTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{slowTime}{slowTime}}
+{\footnotesize\ttfamily bool slow\+Time}
+
+
+
+Time left in seconds $\ast$ 60. 
+
+\mbox{\Hypertarget{game_8c_ad5bb68d4e40c14f05a43f2f574ca438d}\label{game_8c_ad5bb68d4e40c14f05a43f2f574ca438d}} 
+\index{game.c@{game.c}!targets@{targets}}
+\index{targets@{targets}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{targets}{targets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structTarget}{Target}}$\ast$ targets\mbox{[}\mbox{\hyperlink{game_8h_a0ffe2342c6229ee124c6ed24ac970e2a}{NUM\+\_\+\+TARGETS}}\mbox{]}}
+
+
+
+Whether the dynamite is updating. 
+
+\mbox{\Hypertarget{game_8c_a69638d9aedf5e9a3c35bdefec74b792d}\label{game_8c_a69638d9aedf5e9a3c35bdefec74b792d}} 
+\index{game.c@{game.c}!timeLeft@{timeLeft}}
+\index{timeLeft@{timeLeft}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{timeLeft}{timeLeft}}
+{\footnotesize\ttfamily int time\+Left}
+
+
+
+Whether the game is in multiplayer mode. 
+
+\mbox{\Hypertarget{game_8c_aba765e306a7d485db6a9cc47f690b9d6}\label{game_8c_aba765e306a7d485db6a9cc47f690b9d6}} 
+\index{game.c@{game.c}!timerSlowTime@{timerSlowTime}}
+\index{timerSlowTime@{timerSlowTime}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{timerSlowTime}{timerSlowTime}}
+{\footnotesize\ttfamily int timer\+Slow\+Time}
+
+
+
+Whether the game is in slow time. 
+

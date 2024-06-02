@@ -1,0 +1,8 @@
+<map id="draw_GameOverScore" name="draw_GameOverScore">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,172,108"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="231,5,329,32"/>
+<area shape="rect" id="node4" href="$game_8c.html#ab801a4e26f54a0ba9515b0f9ad162268" title="Dynamite." alt="" coords="234,56,326,83"/>
+<area shape="rect" id="node5" href="$game_8c.html#a943b2c1031a69714cf94129871ae9fa5" title="Get the player 2." alt="" coords="234,107,326,133"/>
+<area shape="rect" id="node6" href="$player_8c.html#a3adf651a828a373f8db2e54b5371f4d0" title="Gets the player&#39;s score." alt="" coords="220,157,340,184"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="388,5,503,32"/>
+</map>

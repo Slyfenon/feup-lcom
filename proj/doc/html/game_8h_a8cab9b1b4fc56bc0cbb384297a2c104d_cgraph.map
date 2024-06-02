@@ -1,0 +1,5 @@
+<map id="draw_lines" name="draw_lines">
+<area shape="rect" id="node1" title="Draw the lines below the targets in the game." alt="" coords="5,5,97,32"/>
+<area shape="rect" id="node2" href="$graphics_8c.html#a99d2da2559e11200c6b40c469e9977ec" title=" " alt="" coords="145,5,291,32"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="339,5,453,32"/>
+</map>

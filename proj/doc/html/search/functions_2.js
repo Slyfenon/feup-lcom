@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['decreasecurrentoption_531',['decreaseCurrentOption',['../menu_8h.html#a4d4bf6bee5fed1f2f55bd25b5b113321',1,'decreaseCurrentOption():&#160;menu.c'],['../menu_8c.html#a4d4bf6bee5fed1f2f55bd25b5b113321',1,'decreaseCurrentOption():&#160;menu.c']]],
+  ['delete_5fsprites_532',['delete_sprites',['../sprite_8h.html#ad91e9f387ca6f66717c8b182bcde2c2f',1,'delete_sprites():&#160;sprite.c'],['../sprite_8c.html#ad91e9f387ca6f66717c8b182bcde2c2f',1,'delete_sprites():&#160;sprite.c']]],
+  ['destroydynamite_533',['destroyDynamite',['../dynamite_8c.html#afd1f504def7f1faf88145bbabb0e19c2',1,'destroyDynamite(Dynamite *dynamite):&#160;dynamite.c'],['../dynamite_8h.html#afd1f504def7f1faf88145bbabb0e19c2',1,'destroyDynamite(Dynamite *dynamite):&#160;dynamite.c']]],
+  ['destroyplayer_534',['destroyPlayer',['../player_8c.html#adcc264dd87c51bae7b2dba65e8cae2e7',1,'destroyPlayer(Player *player):&#160;player.c'],['../player_8h.html#aeaca5c627e5599b60cc71af248c0f98e',1,'destroyPlayer(Player *player):&#160;player.c']]],
+  ['destroytarget_535',['destroyTarget',['../target_8c.html#a754f8708093ee1991be3865fa4f7534d',1,'destroyTarget(Target *target):&#160;target.c'],['../target_8h.html#a851c60c229a629725129b63147a6d5be',1,'destroyTarget(Target *target):&#160;target.c']]],
+  ['draw_5faim_536',['draw_aim',['../game_8c.html#ae7ac15af3305476b64868d2794e2d8b2',1,'draw_aim(Player *player):&#160;game.c'],['../game_8h.html#aaed2067a47aee1027d8f0544853248f8',1,'draw_aim(Player *player):&#160;game.c']]],
+  ['draw_5fbackground_537',['draw_background',['../graphics_8c.html#a716008258311c3c9a9e339cacd6e04e2',1,'draw_background(uint32_t *map):&#160;graphics.c'],['../graphics_8h.html#a716008258311c3c9a9e339cacd6e04e2',1,'draw_background(uint32_t *map):&#160;graphics.c']]],
+  ['draw_5fdynamite_538',['draw_dynamite',['../game_8c.html#a7d8da94bdbb07b4c038e9646c59b0d46',1,'draw_dynamite():&#160;game.c'],['../game_8h.html#a7d8da94bdbb07b4c038e9646c59b0d46',1,'draw_dynamite():&#160;game.c']]],
+  ['draw_5fgame_539',['draw_game',['../game_8c.html#a31cc5994d6a3203af019878dc60b9215',1,'draw_game(bool isDay):&#160;game.c'],['../game_8h.html#a31cc5994d6a3203af019878dc60b9215',1,'draw_game(bool isDay):&#160;game.c']]],
+  ['draw_5fgameover_540',['draw_gameover',['../gameover_8c.html#a2c849588dfcb717ff8fa19d5b274001b',1,'draw_gameover(bool isDay):&#160;gameover.c'],['../gameover_8h.html#a2c849588dfcb717ff8fa19d5b274001b',1,'draw_gameover(bool isDay):&#160;gameover.c']]],
+  ['draw_5fgameoverscore_541',['draw_GameOverScore',['../gameover_8c.html#a300ec5b6d0ebfbe2c90660139ee08697',1,'draw_GameOverScore():&#160;gameover.c'],['../gameover_8h.html#a300ec5b6d0ebfbe2c90660139ee08697',1,'draw_GameOverScore():&#160;gameover.c']]],
+  ['draw_5flines_542',['draw_lines',['../game_8c.html#a8cab9b1b4fc56bc0cbb384297a2c104d',1,'draw_lines():&#160;game.c'],['../game_8h.html#a8cab9b1b4fc56bc0cbb384297a2c104d',1,'draw_lines():&#160;game.c']]],
+  ['draw_5fmenu_543',['draw_menu',['../menu_8c.html#a37624b74afb43342e1214949952a5b59',1,'draw_menu(bool isDay):&#160;menu.c'],['../menu_8h.html#a37624b74afb43342e1214949952a5b59',1,'draw_menu(bool isDay):&#160;menu.c']]],
+  ['draw_5fscore_544',['draw_score',['../game_8h.html#a80af57db2938c468835bd5530bee459b',1,'draw_score():&#160;game.c'],['../game_8c.html#a80af57db2938c468835bd5530bee459b',1,'draw_score():&#160;game.c']]],
+  ['draw_5fsprite_545',['draw_sprite',['../sprite_8c.html#a5df5112426040b39d16227f162692f35',1,'draw_sprite(Sprite *sprite, int x, int y):&#160;sprite.c'],['../sprite_8h.html#a5df5112426040b39d16227f162692f35',1,'draw_sprite(Sprite *sprite, int x, int y):&#160;sprite.c']]],
+  ['draw_5ftargets_546',['draw_targets',['../game_8c.html#aec21a333de72fc7ce66a5a79041c0757',1,'draw_targets():&#160;game.c'],['../game_8h.html#aec21a333de72fc7ce66a5a79041c0757',1,'draw_targets():&#160;game.c']]],
+  ['draw_5ftimeleft_547',['draw_timeLeft',['../game_8c.html#a101dd521163755b0cc9d1d91c2be34c4',1,'draw_timeLeft():&#160;game.c'],['../game_8h.html#a101dd521163755b0cc9d1d91c2be34c4',1,'draw_timeLeft():&#160;game.c']]],
+  ['draw_5fwait_5fmenu_548',['draw_wait_menu',['../wait__menu_8c.html#affbc3a26654e46f87ce1bdce9fa368d8',1,'draw_wait_menu(bool isDay):&#160;wait_menu.c'],['../wait__menu_8h.html#affbc3a26654e46f87ce1bdce9fa368d8',1,'draw_wait_menu(bool isDay):&#160;wait_menu.c']]]
+];

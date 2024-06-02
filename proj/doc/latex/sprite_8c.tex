@@ -1,0 +1,142 @@
+\hypertarget{sprite_8c}{}\doxysection{src/game/sprite.c File Reference}
+\label{sprite_8c}\index{src/game/sprite.c@{src/game/sprite.c}}
+{\ttfamily \#include \char`\"{}sprite.\+h\char`\"{}}\newline
+Include dependency graph for sprite.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$() \mbox{\hyperlink{sprite_8c_a0493453e6a87aae925c6850296203265}{create\+\_\+sprite}} (xpm\+\_\+map\+\_\+t xpm)
+\begin{DoxyCompactList}\small\item\em Creates a sprite from an XPM map. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8c_a5df5112426040b39d16227f162692f35}{draw\+\_\+sprite}} (\mbox{\hyperlink{structSprite}{Sprite}} $\ast$sprite, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a sprite on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sprite_8c_ae1e40066053f39b327fd5d8459b3586f}{load\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Loads the menu sprites. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{sprite_8c_a47ff4d7c12dd4bdcae3c920a6bce8a9f}{load\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Loads the game over sprites. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8c_ad3fbb4c63e5b865523a7a5333b2dbe50}{load\+\_\+sprites}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the sprites. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8c_ad91e9f387ca6f66717c8b182bcde2c2f}{delete\+\_\+sprites}} ()
+\begin{DoxyCompactList}\small\item\em Deletes all the loaded sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sprite_8c_a0493453e6a87aae925c6850296203265}\label{sprite_8c_a0493453e6a87aae925c6850296203265}} 
+\index{sprite.c@{sprite.c}!create\_sprite@{create\_sprite}}
+\index{create\_sprite@{create\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{create\_sprite()}{create\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$() create\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+
+
+Creates a sprite from an XPM map. 
+
+Pointer to the Game Over ESC sprite. 
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM map representing the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created sprite. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sprite_8c_ad91e9f387ca6f66717c8b182bcde2c2f}\label{sprite_8c_ad91e9f387ca6f66717c8b182bcde2c2f}} 
+\index{sprite.c@{sprite.c}!delete\_sprites@{delete\_sprites}}
+\index{delete\_sprites@{delete\_sprites}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{delete\_sprites()}{delete\_sprites()}}
+{\footnotesize\ttfamily int() delete\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deletes all the loaded sprites. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sprite_8c_a5df5112426040b39d16227f162692f35}\label{sprite_8c_a5df5112426040b39d16227f162692f35}} 
+\index{sprite.c@{sprite.c}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily int() draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} $\ast$}]{sprite,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a sprite on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to be drawn. \\
+\hline
+{\em x} & The x-\/coordinate of the sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{sprite_8c_a5df5112426040b39d16227f162692f35_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8c_ad3fbb4c63e5b865523a7a5333b2dbe50}\label{sprite_8c_ad3fbb4c63e5b865523a7a5333b2dbe50}} 
+\index{sprite.c@{sprite.c}!load\_sprites@{load\_sprites}}
+\index{load\_sprites@{load\_sprites}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{load\_sprites()}{load\_sprites()}}
+{\footnotesize\ttfamily int() load\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads all the sprites. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8c_ad3fbb4c63e5b865523a7a5333b2dbe50_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8c_a47ff4d7c12dd4bdcae3c920a6bce8a9f}\label{sprite_8c_a47ff4d7c12dd4bdcae3c920a6bce8a9f}} 
+\index{sprite.c@{sprite.c}!loadGameOver@{loadGameOver}}
+\index{loadGameOver@{loadGameOver}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{loadGameOver()}{loadGameOver()}}
+{\footnotesize\ttfamily void() load\+Game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the game over sprites. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{sprite_8c_a47ff4d7c12dd4bdcae3c920a6bce8a9f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8c_ae1e40066053f39b327fd5d8459b3586f}\label{sprite_8c_ae1e40066053f39b327fd5d8459b3586f}} 
+\index{sprite.c@{sprite.c}!loadMenu@{loadMenu}}
+\index{loadMenu@{loadMenu}!sprite.c@{sprite.c}}
+\doxysubsubsection{\texorpdfstring{loadMenu()}{loadMenu()}}
+{\footnotesize\ttfamily void load\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the menu sprites. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{sprite_8c_ae1e40066053f39b327fd5d8459b3586f_cgraph}
+\end{center}
+\end{figure}

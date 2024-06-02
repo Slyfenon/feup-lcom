@@ -1,0 +1,9 @@
+<map id="draw_targets" name="draw_targets">
+<area shape="rect" id="node1" title="Draw the targets in the game If the target is active, draws it in the screen." alt="" coords="5,107,112,133"/>
+<area shape="rect" id="node2" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="196,5,295,32"/>
+<area shape="rect" id="node4" href="$game_8c.html#a1ee3a5b27e09902b62e186535227c58c" title=" " alt="" coords="160,56,331,83"/>
+<area shape="rect" id="node5" href="$target_8c.html#aa13163dedcc3ee80ca1b84bae2ac8b95" title="Gets the x&#45;coordinate of the target&#39;s position." alt="" coords="199,107,291,133"/>
+<area shape="rect" id="node6" href="$target_8c.html#a18909600bdcc988342911e911226132f" title="Gets the y&#45;coordinate of the target&#39;s position." alt="" coords="200,157,291,184"/>
+<area shape="rect" id="node7" href="$game_8c.html#a47a3170bdfc39996d54630ec427aab4c" title="Checks if the target is active." alt="" coords="188,208,303,235"/>
+<area shape="rect" id="node3" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="379,5,493,32"/>
+</map>

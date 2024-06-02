@@ -1,0 +1,5 @@
+<map id="ser_receive_byte" name="ser_receive_byte">
+<area shape="rect" id="node1" title="Receives a byte from the serial port." alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$uart_8c.html#a54089b696d2f9403cfe7d46c4c1c037e" title="Reads a value from a serial port register." alt="" coords="187,5,293,32"/>
+<area shape="rect" id="node3" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Invokes sys_inb() system call but reads the value into a uint8_t variable." alt="" coords="341,5,440,32"/>
+</map>

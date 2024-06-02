@@ -1,0 +1,8 @@
+<map id="checkCollisionWithDynamite" name="checkCollisionWithDynamite">
+<area shape="rect" id="node1" title="Check all collisions with dynamite." alt="" coords="5,107,216,133"/>
+<area shape="rect" id="node2" href="$dynamite_8c.html#aaef8ddbba88815eed74cc00741befc1c" title="Retrieves the x&#45;coordinate of a Dynamite object." alt="" coords="279,5,395,32"/>
+<area shape="rect" id="node3" href="$dynamite_8c.html#a33123b9e8c7d57596ea8a5d5a0ab55a9" title="Retrieves the y&#45;coordinate of a Dynamite object." alt="" coords="280,56,395,83"/>
+<area shape="rect" id="node4" href="$player_8c.html#a2699badf2cc60f7a865a41444b243a02" title="Gets the x&#45;coordinate of the player&#39;s position." alt="" coords="291,107,384,133"/>
+<area shape="rect" id="node5" href="$player_8c.html#ac1cb9c96b19bdb22efe0144e65ef9181" title="Gets the y&#45;coordinate of the player&#39;s position." alt="" coords="291,157,383,184"/>
+<area shape="rect" id="node6" href="$game_8c.html#a029b8edc2607f7c19e6dd6cbb4354f92" title="Set the dynamite to active or inactive." alt="" coords="264,208,411,235"/>
+</map>

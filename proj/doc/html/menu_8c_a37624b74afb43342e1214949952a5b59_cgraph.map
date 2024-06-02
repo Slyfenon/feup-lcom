@@ -1,0 +1,9 @@
+<map id="draw_menu" name="draw_menu">
+<area shape="rect" id="node1" title="Draws the game menu, with the current option highlighted, the current time and the corresponding back..." alt="" coords="5,107,104,133"/>
+<area shape="rect" id="node2" href="$graphics_8c.html#a716008258311c3c9a9e339cacd6e04e2" title="Draw background." alt="" coords="156,5,293,32"/>
+<area shape="rect" id="node3" href="$sprite_8c.html#a5df5112426040b39d16227f162692f35" title="Draws a sprite on the screen." alt="" coords="175,56,274,83"/>
+<area shape="rect" id="node5" href="$menu_8c.html#a83eb2544c4ebd17106a417ad3f2dd259" title="Array of sprites that represent the minutes of the clock." alt="" coords="157,107,292,133"/>
+<area shape="rect" id="node6" href="$graphics_8c.html#a99d2da2559e11200c6b40c469e9977ec" title=" " alt="" coords="152,157,297,184"/>
+<area shape="rect" id="node7" href="$graphics_8c.html#a93bc89458326fdc4bbe1170ac23b1010" title="Do the page flipping." alt="" coords="159,208,291,235"/>
+<area shape="rect" id="node4" href="$graphics_8c.html#a08c498ffeb0a3962e3b7711b57397741" title="Draws a pixel in the screen." alt="" coords="345,107,460,133"/>
+</map>

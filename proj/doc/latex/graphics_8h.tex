@@ -1,0 +1,130 @@
+\hypertarget{graphics_8h}{}\doxysection{src/devices/graphics/graphics.h File Reference}
+\label{graphics_8h}\index{src/devices/graphics/graphics.h@{src/devices/graphics/graphics.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}vbe.\+h\char`\"{}}\newline
+Include dependency graph for graphics.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{graphics_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{graphics_8h_a29e12d989ec405e661e02556aa1a12d9}{set\+\_\+graphics\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the graphics module. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_a55bb0148c696baca125c2c03bd585ae5}{set\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the frame buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_a08c498ffeb0a3962e3b7711b57397741}{vg\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel in the screen. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_a93bc89458326fdc4bbe1170ac23b1010}{vg\+\_\+page\+\_\+flipping}} ()
+\begin{DoxyCompactList}\small\item\em Do the page flipping. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$() \mbox{\hyperlink{graphics_8h_ac0dc339f4642c693fddf4a6db7b89b98}{get\+\_\+actual\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Get the actual buffer. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_a6a4b2b2c0719a27448fb95d354d34540}{get\+\_\+vram\+\_\+size}} ()
+\begin{DoxyCompactList}\small\item\em Get the vram size. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{graphics_8h_a716008258311c3c9a9e339cacd6e04e2}{draw\+\_\+background}} (uint32\+\_\+t $\ast$map)
+\begin{DoxyCompactList}\small\item\em Draw background. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{graphics_8h_a716008258311c3c9a9e339cacd6e04e2}\label{graphics_8h_a716008258311c3c9a9e339cacd6e04e2}} 
+\index{graphics.h@{graphics.h}!draw\_background@{draw\_background}}
+\index{draw\_background@{draw\_background}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{draw\_background()}{draw\_background()}}
+{\footnotesize\ttfamily int() draw\+\_\+background (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Draw background. 
+
+return 0 on success, 1 otherwise \mbox{\Hypertarget{graphics_8h_ac0dc339f4642c693fddf4a6db7b89b98}\label{graphics_8h_ac0dc339f4642c693fddf4a6db7b89b98}} 
+\index{graphics.h@{graphics.h}!get\_actual\_buffer@{get\_actual\_buffer}}
+\index{get\_actual\_buffer@{get\_actual\_buffer}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{get\_actual\_buffer()}{get\_actual\_buffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$() get\+\_\+actual\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the actual buffer. 
+
+return The actual buffer \mbox{\Hypertarget{graphics_8h_a6a4b2b2c0719a27448fb95d354d34540}\label{graphics_8h_a6a4b2b2c0719a27448fb95d354d34540}} 
+\index{graphics.h@{graphics.h}!get\_vram\_size@{get\_vram\_size}}
+\index{get\_vram\_size@{get\_vram\_size}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{get\_vram\_size()}{get\_vram\_size()}}
+{\footnotesize\ttfamily int() get\+\_\+vram\+\_\+size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the vram size. 
+
+return The vram size \mbox{\Hypertarget{graphics_8h_a55bb0148c696baca125c2c03bd585ae5}\label{graphics_8h_a55bb0148c696baca125c2c03bd585ae5}} 
+\index{graphics.h@{graphics.h}!set\_frame\_buffer@{set\_frame\_buffer}}
+\index{set\_frame\_buffer@{set\_frame\_buffer}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{set\_frame\_buffer()}{set\_frame\_buffer()}}
+{\footnotesize\ttfamily int() set\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the frame buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The graphics mode to set return 0 on success, 1 otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphics_8h_a29e12d989ec405e661e02556aa1a12d9}\label{graphics_8h_a29e12d989ec405e661e02556aa1a12d9}} 
+\index{graphics.h@{graphics.h}!set\_graphics\_mode@{set\_graphics\_mode}}
+\index{set\_graphics\_mode@{set\_graphics\_mode}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{set\_graphics\_mode()}{set\_graphics\_mode()}}
+{\footnotesize\ttfamily int() set\+\_\+graphics\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The graphics mode to set return 0 on success, 1 otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphics_8h_a08c498ffeb0a3962e3b7711b57397741}\label{graphics_8h_a08c498ffeb0a3962e3b7711b57397741}} 
+\index{graphics.h@{graphics.h}!vg\_draw\_pixel@{vg\_draw\_pixel}}
+\index{vg\_draw\_pixel@{vg\_draw\_pixel}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_pixel()}{vg\_draw\_pixel()}}
+{\footnotesize\ttfamily int() vg\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel in the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate of the pixel \\
+\hline
+{\em y} & The y coordinate of the pixel \\
+\hline
+{\em color} & The color of the pixel return 0 on success, 1 otherwise \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{graphics_8h_a93bc89458326fdc4bbe1170ac23b1010}\label{graphics_8h_a93bc89458326fdc4bbe1170ac23b1010}} 
+\index{graphics.h@{graphics.h}!vg\_page\_flipping@{vg\_page\_flipping}}
+\index{vg\_page\_flipping@{vg\_page\_flipping}!graphics.h@{graphics.h}}
+\doxysubsubsection{\texorpdfstring{vg\_page\_flipping()}{vg\_page\_flipping()}}
+{\footnotesize\ttfamily int() vg\+\_\+page\+\_\+flipping (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Do the page flipping. 
+
+return 0 on success, 1 otherwise 

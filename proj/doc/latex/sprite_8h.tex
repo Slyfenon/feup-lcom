@@ -1,0 +1,373 @@
+\hypertarget{sprite_8h}{}\doxysection{src/game/sprite.h File Reference}
+\label{sprite_8h}\index{src/game/sprite.h@{src/game/sprite.h}}
+{\ttfamily \#include \char`\"{}../devices/graphics/graphics.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/font.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/gameover.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/gameover\+Esc.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/multiplayer.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/numbers.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/quit.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/score.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/singleplayer.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/lost.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/win.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/wait.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/font/title.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/aim.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/clock.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/day\+Desert.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/dynamite.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/explosion.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/fall.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/night\+Desert.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../resources/sprites/target.\+xpm\char`\"{}}\newline
+Include dependency graph for sprite.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSprite}{Sprite}}
+\begin{DoxyCompactList}\small\item\em Structure representing a sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sprite_8h_a6c54e72c6142d317114a29adbcbb24b6}{TRANSPARENT}}~0x\+FF000000
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structSprite}{Sprite}} \mbox{\hyperlink{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2}{Sprite}}
+\begin{DoxyCompactList}\small\item\em Structure representing a sprite. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$() \mbox{\hyperlink{sprite_8h_a0493453e6a87aae925c6850296203265}{create\+\_\+sprite}} (xpm\+\_\+map\+\_\+t xpm)
+\begin{DoxyCompactList}\small\item\em Creates a sprite from an XPM map. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8h_a5df5112426040b39d16227f162692f35}{draw\+\_\+sprite}} (\mbox{\hyperlink{structSprite}{Sprite}} $\ast$sprite, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a sprite on the screen. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{sprite_8h_a54d5cc3a983f7a9486457eafed3e0c62}{load\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Loads the menu sprites. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{sprite_8h_a47ff4d7c12dd4bdcae3c920a6bce8a9f}{load\+Game\+Over}} ()
+\begin{DoxyCompactList}\small\item\em Loads the game over sprites. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8h_ad3fbb4c63e5b865523a7a5333b2dbe50}{load\+\_\+sprites}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the sprites. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{sprite_8h_ad91e9f387ca6f66717c8b182bcde2c2f}{delete\+\_\+sprites}} ()
+\begin{DoxyCompactList}\small\item\em Deletes all the loaded sprites. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a3d4220c9035094564442ba63e932b239}{day\+Desert}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a583fb154862b22ebb8d30ad19e583806}{night\+Desert}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_abfb25add27b157a42b0682b54fad1ef6}{aim}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}{target}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a2d6e09313c528ed3350eb8724908394d}{fall}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_abc8ad216f4edd7df75df90338c3c7076}{dynamite\+Icon}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_abcaa581111e11e7e067716cfb7c05d09}{explosion}} \mbox{[}5\mbox{]}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a8f7a6d7d030ab122ba8d399a10a63703}{clock\+Icon}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_ab00b598a8c2e3ce6c265a00d501e77a0}{score\+Sprite}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_abcaf3710da80f4abb35014eca6c83320}{numbers}} \mbox{[}10\mbox{]}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_ab62bd6bed114d3c15065d85c7b44ccb3}{singleplayer}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_ab9a61c3d22d2185dca33f648b24d0e2c}{multiplayer}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_ad9b3c6c4c5ea5d002bb6c6787f5c39b6}{quit}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a25adae8a16cb314534d863661f409173}{lost}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a20a052a2983f2538d901f2aa48463c48}{win}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a33eefef17e0687ca94239d5639cf41c1}{dots}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a7ed19362995df3f6b3e6f2705848df86}{title}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a72e5c8952c431f2cb5ccdd4189a9e369}{wait\+Message}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_a9f638c1a2dbf01be5762a79611119bfa}{Game\+Over}}
+\item 
+\mbox{\hyperlink{structSprite}{Sprite}} $\ast$ \mbox{\hyperlink{sprite_8h_addca3012c4605212a1097c9d44867b41}{Game\+Over\+ESC}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{sprite_8h_a6c54e72c6142d317114a29adbcbb24b6}\label{sprite_8h_a6c54e72c6142d317114a29adbcbb24b6}} 
+\index{sprite.h@{sprite.h}!TRANSPARENT@{TRANSPARENT}}
+\index{TRANSPARENT@{TRANSPARENT}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{TRANSPARENT}{TRANSPARENT}}
+{\footnotesize\ttfamily \#define TRANSPARENT~0x\+FF000000}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2}\label{sprite_8h_abb1060e0b7ecf8b4eba2c1bb55cfe5e2}} 
+\index{sprite.h@{sprite.h}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{Sprite}{Sprite}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSprite}{Sprite}} \mbox{\hyperlink{structSprite}{Sprite}}}
+
+
+
+Structure representing a sprite. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{sprite_8h_a0493453e6a87aae925c6850296203265}\label{sprite_8h_a0493453e6a87aae925c6850296203265}} 
+\index{sprite.h@{sprite.h}!create\_sprite@{create\_sprite}}
+\index{create\_sprite@{create\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{create\_sprite()}{create\_sprite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$() create\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{xpm }\end{DoxyParamCaption})}
+
+
+
+Creates a sprite from an XPM map. 
+
+Pointer to the Game Over ESC sprite. 
+\begin{DoxyParams}{Parameters}
+{\em xpm} & The XPM map representing the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created sprite. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sprite_8h_ad91e9f387ca6f66717c8b182bcde2c2f}\label{sprite_8h_ad91e9f387ca6f66717c8b182bcde2c2f}} 
+\index{sprite.h@{sprite.h}!delete\_sprites@{delete\_sprites}}
+\index{delete\_sprites@{delete\_sprites}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{delete\_sprites()}{delete\_sprites()}}
+{\footnotesize\ttfamily int() delete\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Deletes all the loaded sprites. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sprite_8h_a5df5112426040b39d16227f162692f35}\label{sprite_8h_a5df5112426040b39d16227f162692f35}} 
+\index{sprite.h@{sprite.h}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily int() draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSprite}{Sprite}} $\ast$}]{sprite,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a sprite on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sprite} & The sprite to be drawn. \\
+\hline
+{\em x} & The x-\/coordinate of the sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{sprite_8h_a5df5112426040b39d16227f162692f35_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_ad3fbb4c63e5b865523a7a5333b2dbe50}\label{sprite_8h_ad3fbb4c63e5b865523a7a5333b2dbe50}} 
+\index{sprite.h@{sprite.h}!load\_sprites@{load\_sprites}}
+\index{load\_sprites@{load\_sprites}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{load\_sprites()}{load\_sprites()}}
+{\footnotesize\ttfamily int() load\+\_\+sprites (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads all the sprites. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sprite_8h_ad3fbb4c63e5b865523a7a5333b2dbe50_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_a47ff4d7c12dd4bdcae3c920a6bce8a9f}\label{sprite_8h_a47ff4d7c12dd4bdcae3c920a6bce8a9f}} 
+\index{sprite.h@{sprite.h}!loadGameOver@{loadGameOver}}
+\index{loadGameOver@{loadGameOver}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{loadGameOver()}{loadGameOver()}}
+{\footnotesize\ttfamily void() load\+Game\+Over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the game over sprites. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=286pt]{sprite_8h_a47ff4d7c12dd4bdcae3c920a6bce8a9f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{sprite_8h_a54d5cc3a983f7a9486457eafed3e0c62}\label{sprite_8h_a54d5cc3a983f7a9486457eafed3e0c62}} 
+\index{sprite.h@{sprite.h}!loadMenu@{loadMenu}}
+\index{loadMenu@{loadMenu}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{loadMenu()}{loadMenu()}}
+{\footnotesize\ttfamily void() load\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the menu sprites. 
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{sprite_8h_a54d5cc3a983f7a9486457eafed3e0c62_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{sprite_8h_abfb25add27b157a42b0682b54fad1ef6}\label{sprite_8h_abfb25add27b157a42b0682b54fad1ef6}} 
+\index{sprite.h@{sprite.h}!aim@{aim}}
+\index{aim@{aim}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{aim}{aim}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ aim}
+
+Pointer to the night desert sprite. \mbox{\Hypertarget{sprite_8h_a8f7a6d7d030ab122ba8d399a10a63703}\label{sprite_8h_a8f7a6d7d030ab122ba8d399a10a63703}} 
+\index{sprite.h@{sprite.h}!clockIcon@{clockIcon}}
+\index{clockIcon@{clockIcon}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{clockIcon}{clockIcon}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ clock\+Icon}
+
+Array of pointers to the explosion sprites. \mbox{\Hypertarget{sprite_8h_a3d4220c9035094564442ba63e932b239}\label{sprite_8h_a3d4220c9035094564442ba63e932b239}} 
+\index{sprite.h@{sprite.h}!dayDesert@{dayDesert}}
+\index{dayDesert@{dayDesert}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{dayDesert}{dayDesert}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ day\+Desert}
+
+\mbox{\Hypertarget{sprite_8h_a33eefef17e0687ca94239d5639cf41c1}\label{sprite_8h_a33eefef17e0687ca94239d5639cf41c1}} 
+\index{sprite.h@{sprite.h}!dots@{dots}}
+\index{dots@{dots}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{dots}{dots}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ dots}
+
+Pointer to the win sprite. \mbox{\Hypertarget{sprite_8h_abc8ad216f4edd7df75df90338c3c7076}\label{sprite_8h_abc8ad216f4edd7df75df90338c3c7076}} 
+\index{sprite.h@{sprite.h}!dynamiteIcon@{dynamiteIcon}}
+\index{dynamiteIcon@{dynamiteIcon}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{dynamiteIcon}{dynamiteIcon}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ dynamite\+Icon}
+
+Array of pointers to the fall sprites. \mbox{\Hypertarget{sprite_8h_abcaa581111e11e7e067716cfb7c05d09}\label{sprite_8h_abcaa581111e11e7e067716cfb7c05d09}} 
+\index{sprite.h@{sprite.h}!explosion@{explosion}}
+\index{explosion@{explosion}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{explosion}{explosion}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ explosion\mbox{[}5\mbox{]}}
+
+Pointer to the dynamite icon sprite. \mbox{\Hypertarget{sprite_8h_a2d6e09313c528ed3350eb8724908394d}\label{sprite_8h_a2d6e09313c528ed3350eb8724908394d}} 
+\index{sprite.h@{sprite.h}!fall@{fall}}
+\index{fall@{fall}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{fall}{fall}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ fall\mbox{[}3\mbox{]}}
+
+Pointer to the target sprite. \mbox{\Hypertarget{sprite_8h_a9f638c1a2dbf01be5762a79611119bfa}\label{sprite_8h_a9f638c1a2dbf01be5762a79611119bfa}} 
+\index{sprite.h@{sprite.h}!GameOver@{GameOver}}
+\index{GameOver@{GameOver}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{GameOver}{GameOver}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ Game\+Over}
+
+Pointer to the wait Message sprite. \mbox{\Hypertarget{sprite_8h_addca3012c4605212a1097c9d44867b41}\label{sprite_8h_addca3012c4605212a1097c9d44867b41}} 
+\index{sprite.h@{sprite.h}!GameOverESC@{GameOverESC}}
+\index{GameOverESC@{GameOverESC}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{GameOverESC}{GameOverESC}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ Game\+Over\+ESC}
+
+Pointer to the Game Over sprite. \mbox{\Hypertarget{sprite_8h_a25adae8a16cb314534d863661f409173}\label{sprite_8h_a25adae8a16cb314534d863661f409173}} 
+\index{sprite.h@{sprite.h}!lost@{lost}}
+\index{lost@{lost}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{lost}{lost}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ lost}
+
+Pointer to the quit sprite. \mbox{\Hypertarget{sprite_8h_ab9a61c3d22d2185dca33f648b24d0e2c}\label{sprite_8h_ab9a61c3d22d2185dca33f648b24d0e2c}} 
+\index{sprite.h@{sprite.h}!multiplayer@{multiplayer}}
+\index{multiplayer@{multiplayer}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{multiplayer}{multiplayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ multiplayer}
+
+Pointer to the singleplayer sprite. \mbox{\Hypertarget{sprite_8h_a583fb154862b22ebb8d30ad19e583806}\label{sprite_8h_a583fb154862b22ebb8d30ad19e583806}} 
+\index{sprite.h@{sprite.h}!nightDesert@{nightDesert}}
+\index{nightDesert@{nightDesert}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{nightDesert}{nightDesert}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ night\+Desert}
+
+Pointer to the day desert sprite. \mbox{\Hypertarget{sprite_8h_abcaf3710da80f4abb35014eca6c83320}\label{sprite_8h_abcaf3710da80f4abb35014eca6c83320}} 
+\index{sprite.h@{sprite.h}!numbers@{numbers}}
+\index{numbers@{numbers}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{numbers}{numbers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ numbers\mbox{[}10\mbox{]}}
+
+Pointer to the score sprite. \mbox{\Hypertarget{sprite_8h_ad9b3c6c4c5ea5d002bb6c6787f5c39b6}\label{sprite_8h_ad9b3c6c4c5ea5d002bb6c6787f5c39b6}} 
+\index{sprite.h@{sprite.h}!quit@{quit}}
+\index{quit@{quit}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{quit}{quit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ quit}
+
+Pointer to the multiplayer sprite. \mbox{\Hypertarget{sprite_8h_ab00b598a8c2e3ce6c265a00d501e77a0}\label{sprite_8h_ab00b598a8c2e3ce6c265a00d501e77a0}} 
+\index{sprite.h@{sprite.h}!scoreSprite@{scoreSprite}}
+\index{scoreSprite@{scoreSprite}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{scoreSprite}{scoreSprite}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ score\+Sprite}
+
+Pointer to the clock icon sprite. \mbox{\Hypertarget{sprite_8h_ab62bd6bed114d3c15065d85c7b44ccb3}\label{sprite_8h_ab62bd6bed114d3c15065d85c7b44ccb3}} 
+\index{sprite.h@{sprite.h}!singleplayer@{singleplayer}}
+\index{singleplayer@{singleplayer}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{singleplayer}{singleplayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ singleplayer}
+
+Array of pointers to the number sprites. \mbox{\Hypertarget{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}\label{sprite_8h_aa8a4e30cfc4319608bed2c86d7bfeeb5}} 
+\index{sprite.h@{sprite.h}!target@{target}}
+\index{target@{target}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ target}
+
+Pointer to the aim sprite. \mbox{\Hypertarget{sprite_8h_a7ed19362995df3f6b3e6f2705848df86}\label{sprite_8h_a7ed19362995df3f6b3e6f2705848df86}} 
+\index{sprite.h@{sprite.h}!title@{title}}
+\index{title@{title}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ title}
+
+Pointer to the dots sprite. \mbox{\Hypertarget{sprite_8h_a72e5c8952c431f2cb5ccdd4189a9e369}\label{sprite_8h_a72e5c8952c431f2cb5ccdd4189a9e369}} 
+\index{sprite.h@{sprite.h}!waitMessage@{waitMessage}}
+\index{waitMessage@{waitMessage}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{waitMessage}{waitMessage}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ wait\+Message}
+
+Pointer to the title sprite. \mbox{\Hypertarget{sprite_8h_a20a052a2983f2538d901f2aa48463c48}\label{sprite_8h_a20a052a2983f2538d901f2aa48463c48}} 
+\index{sprite.h@{sprite.h}!win@{win}}
+\index{win@{win}!sprite.h@{sprite.h}}
+\doxysubsubsection{\texorpdfstring{win}{win}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSprite}{Sprite}}$\ast$ win}
+
+Pointer to the lost sprite. 

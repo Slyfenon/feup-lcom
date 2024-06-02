@@ -1,0 +1,10 @@
+<map id="src/devices/kbc/mouse.c" name="src/devices/kbc/mouse.c">
+<area shape="rect" id="node1" title=" " alt="" coords="53,5,235,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,91,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="85,155,184,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="427,155,498,181"/>
+<area shape="rect" id="node5" href="$mouse_8h.html" title=" " alt="" coords="213,80,291,107"/>
+<area shape="rect" id="node8" href="$i8042_8h.html" title=" " alt="" coords="35,80,106,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="320,155,403,181"/>
+<area shape="rect" id="node7" href="$utils_8h.html" title=" " alt="" coords="209,155,295,181"/>
+</map>

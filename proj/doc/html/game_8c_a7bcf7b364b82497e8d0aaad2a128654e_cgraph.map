@@ -1,0 +1,6 @@
+<map id="initGame" name="initGame">
+<area shape="rect" id="node1" title="Initialize the game. Initializes the game variables and the players ." alt="" coords="5,56,88,83"/>
+<area shape="rect" id="node2" href="$dynamite_8c.html#ae6d0c4e7be5791cc5df1fd60b641cf6a" title="Creates a Dynamite object with the specified coordinates and direction." alt="" coords="136,5,263,32"/>
+<area shape="rect" id="node3" href="$player_8c.html#abbf9e1ef84852fb9377cb9a84cd507a4" title="Creates a new Player object." alt="" coords="147,56,251,83"/>
+<area shape="rect" id="node4" href="$target_8c.html#a38563c20690e2eb93e8fae017b9c990b" title="Creates a new target with the specified position and direction." alt="" coords="148,107,251,133"/>
+</map>
