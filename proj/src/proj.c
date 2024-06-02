@@ -84,7 +84,6 @@ int(proj_main_loop)(int argc, char **argv) {
       }
 
       if (msg.m_notify.interrupts & BIT(ser_irq_set)) {
-        printf("here\n");
         ser_ih();
         handle_serial(state);
       }

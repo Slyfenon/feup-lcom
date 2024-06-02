@@ -74,13 +74,13 @@ int (queue_enqueue)(queue_t *q, void *elem) {
   }
 
   if (queue_is_full(q)) {
+    printf("Queue is full inside %s\n", __func__);
     return EXIT_FAILURE;
   }
 
   memcpy((char *)q->buf + q->in * q->el_size, elem, q->el_size);
   q->in = (q->in + 1) % q->size;
   q->count++;
-
   return EXIT_SUCCESS;
 }
 
@@ -98,7 +98,6 @@ int (queue_dequeue)(queue_t *q, void *elem) {
   memcpy(elem, (char *)q->buf + q->out * q->el_size, q->el_size);
   q->out = (q->out + 1) % q->size;
   q->count--;
-
   return EXIT_SUCCESS;
 }
 
