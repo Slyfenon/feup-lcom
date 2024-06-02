@@ -580,6 +580,10 @@ int ser_reset_queues() {
     printf("Error initializing queues inside %s\n", __func__);
     return EXIT_FAILURE;
   }
+  if(ser_receive_data() != 0) {
+    printf("Error receiving data inside %s\n", __func__);
+    return EXIT_FAILURE;
+  }
   ser_info = WAITING;
   if (ser_write_reg(SER_FCR, (SER_FCR_EN_FIFO | SER_FCR_CLR_RX_FIFO | SER_FCR_CLR_TX_FIFO | SER_FCR_TRIGGER_1)) != 0) {
     printf("Error in ser_write_reg inside %s\n", __func__);
