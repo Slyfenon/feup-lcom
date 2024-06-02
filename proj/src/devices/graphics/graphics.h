@@ -7,6 +7,11 @@
 
 #include "vbe.h"
 
+/** @brief graphics graphics
+ * @{
+ *
+ * Functions for using the graphics card
+ */
 int (set_graphics_mode)(uint16_t mode);
 int (set_frame_buffer)(uint16_t mode);
 

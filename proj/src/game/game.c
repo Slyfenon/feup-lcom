@@ -125,7 +125,7 @@ void(updateDynamite)() {
   dynamite->pos.y += step;
   if (getDynamiteY(dynamite) > 900) {
     dynamite->pos.y = -100;
-    subractToScore(player1, 10);
+    subractToScore(player1, 2);
     isUpdatingDynamites = false;
   }
 }
@@ -215,7 +215,7 @@ bool(checkCollisionWithDynamite)(Player *player) {
 // SLOW TIME
 
 bool(canSlowTime)() {
-  return (!slowTime && (timerSlowTime == 0));
+  return (!slowTime && (timerSlowTime == 0) && !isMultiplayer());
 }
 
 void(setSlowTime)() {

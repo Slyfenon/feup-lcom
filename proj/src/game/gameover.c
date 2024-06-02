@@ -11,7 +11,18 @@ void (draw_GameOverScore)() {
     tempScore /= 10;
     draw_sprite(numbers[digit], MAX_X / 2 + 100 - i * 50, MAX_Y / 2);
   }
+
+    if(isMultiplayer()) {
+    int tempScore2 = getPlayerScore(getPlayer2());
+    for (int i = 0; i < 5; i++) {
+      uint8_t digit = tempScore2 % 10;
+      tempScore2 /= 10;
+      draw_sprite(numbers[digit], MAX_X / 2 + 100 - i * 50, MAX_Y / 2 + 100);
+  }
+  }
 }
+
+
 
 void (draw_gameover)(bool isDay) {
   if (isDay) {

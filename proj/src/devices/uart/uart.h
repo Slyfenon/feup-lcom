@@ -43,6 +43,7 @@
 
 #define SER_MAX_FREQ 115200 /** @brief Maximum frequency */
 
+/** @brief Line Control Register */
 union lcr {
   uint8_t value;
   struct {
@@ -61,6 +62,7 @@ typedef enum {
   EVEN_PARITY 
 } par_t;
 
+/** @brief Configuration settings */
 typedef struct {
     unsigned int bit_rate;
     unsigned int no_bits;
@@ -123,28 +125,89 @@ queue_t *(ser_get_tx_queue)();
  */
 queue_t *(ser_get_rx_queue)();
 
+/**
+ * @brief Gets if the player 2 info is done.
+ *
+ * @return true if player2 info is done, false otherwise.
+ */
 bool(ser_get_player2_info_is_done)();
 
+/**
+ * @brief Gets if the player 2 is done.
+ *
+ * @return true if player2 scancode is done, false otherwise.
+ */
 bool(ser_get_scancode_is_done)();
 
+/**
+ * @brief Gets the player 2 scancode.
+ *
+ * @param pp Pointer to the player 2 scancode.
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_get_scancode)(uint8_t *scancode);
 
+/**
+ * @brief Gets the player 2 info.
+ *
+ * @param pp Pointer to the player 2 info.
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_get_player2_info)(player2_info_t *pp);
 
+/**
+ * @brief Gets if the player 2 is ready to play.
+ *
+ * @return true if player2 is ready, false otherwise.
+ */
 bool (ser_get_player2_ready)();
 
+/**
+ * @brief Handler to multiplayer start.
+ *
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_handle_start)();
 
+/**
+ * @brief Reads data from the receive queue.
+ *
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_read_data_from_rx_queue)();
 
+/**
+ * @brief Sends player 2 info to the transmit queue.
+ *
+ * @param x X coordinate.
+ * @param y Y coordinate.
+ * @param target index of target shot, -1 if no target was shot.
+ * @param score Score.
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_send_player2_info_to_txqueue)(int16_t x, int16_t y, int8_t target, uint16_t score);
 
+/**
+ * @brief Sends a scancode to the transmit queue.
+ *
+ * @param scancode Scancode to send.
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_send_scancode_to_txqueue)(uint8_t scancode);
 
+/**
+ * @brief Sends waiting to the transmit queue.
+ *
+ * @return OK on success, non-zero otherwise.
+ */
 int(ser_send_waiting_to_txqueue)();
 
+/**
+ * @brief Sets the player 2 info as value of the parameter.
+ *
+ * @param done true if player2 info is done, false otherwise.
+ */
 void(ser_set_player2_ready)(bool ready);
-
 
 /**
  * @brief Subscribes serial port interrupts.

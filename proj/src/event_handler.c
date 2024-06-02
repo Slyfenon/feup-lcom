@@ -14,27 +14,9 @@ State(handle_timer)(State state, rtc_time *timeRTC) {
       updateDynamite();
       draw_game(isDay);
       if (endTime()) {
+        ser_reset_queues();
         return GAMEOVER;
       }
-      /*
-      if (isMultiplayer()) {
-        ser_read_data_from_rx_queue();
-        if (ser_get_player2_info_is_done()) {
-          player2_info_t pp;
-          ser_get_player2_info(&pp);
-          printf("Received");
-          if (isMultiplayer()) {
-            setPlayerX(getPlayer2(), pp.x);
-            setPlayerY(getPlayer2(), pp.y);
-            setPlayerScore(getPlayer2(), pp.score);
-            if (pp.target != -1) {
-              if (isActiveTarget(pp.target)) {
-                setActiveTarget(pp.target, false);
-              }
-            }
-          }
-        }
-      }*/
       break;
     case MENU:
       if (readTime(timeRTC) != 0) {
